@@ -20,19 +20,19 @@ method: the method in which the http uses to submit form. post: uses form and po
             <legend> <span class="number">1</span> basic info</legend> 
 
             <label for="name">Name</label>
-            <input type="text" id="name" name="user_name">
+            <input type="text" id="name" name="user_name" required>
 
             <label for="mail">Email / Username</label>
-            <input type="email" id="mail" name="user_email">
+            <input type="email" id="mail" name="user_email" required>
 
             <label for="password">Password</label>
-            <input type="password" id="password" name="user_password">
+            <input type="password" id="password" name="user_password" required>
 
             <!-- radio type for input creates check box that user can select
                  if radio have same "name" attribute you can only select 1, if they have different name attribute  you can select multiple -->
             <label>Type of User</label>
-            <input type = "radio" id = "manager" name = "user_type" value="m"><label for="manager" class = "radio" >Management</label><br>
-            <input type = "radio" id = "customer" name = "user_type" value="c"><label for="customer" class = "radio">Customer</label>
+            <input type = "radio" id = "manager" name = "user_type" value="m"><label for="manager" class = "radio" required >Management</label><br>
+            <input type = "radio" id = "customer" name = "user_type" value="c"><label for="customer" class = "radio" required>Customer</label>
 
         </fieldset>
         <fieldset>
@@ -41,7 +41,7 @@ method: the method in which the http uses to submit form. post: uses form and po
 
             <!-- select: similar syntax to input and textarea. Gives user a list of options to choose from-->
             <label for="type">Hotel type</label>
-            <select id="type" name="hotel_type">
+            <select id="type" name="hotel_type" required>
                 <!-- option tag allows user to select from a group of options. "value" attribute is the eqivalent of "id" attribute. 
                  beahves like an unordered list. To group options into groups use <optgroup label = "group name"></optgroup>-->
                 <optgroup label=" Cheap Hotel" selected hidden value = "">
@@ -62,16 +62,16 @@ method: the method in which the http uses to submit form. post: uses form and po
                 </optgroup>
             </select>
             <label>Hotel amenities:</label>
-            <input type = "checkbox" id = "wifi"  name = "free-wifi">
+            <input type = "checkbox" id = "wifi"  name = "free_wifi" required>
             <label for="wifi" class = "check-box">free-wifi</label><br>
 
-            <input type = "checkbox" id = "room service"  name = "room-service">
+            <input type = "checkbox" id = "room service"  name = "room_service" required>
             <label for="room service" class = "check-box">Room service</label><br>
 
-            <input type = "checkbox" id = "spa"  name = "spa">
+            <input type = "checkbox" id = "spa"  name = "spa" required>
             <label for="spa" class = "check-box">spa</label><br>
 
-            <input type = "checkbox" id = "free breakfast"  name = "breakfast">
+            <input type = "checkbox" id = "free breakfast"  name = "breakfast" required>
             <label for="free breakfast" class = "check-box">free breakfast</label><br>
 
         </fieldset>
