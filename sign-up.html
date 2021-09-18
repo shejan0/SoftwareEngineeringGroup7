@@ -13,7 +13,7 @@
     <!-- creates a form tag, form tag cannot be nested inside other form tag 
     action: name of url or file that processes the form info
 method: the method in which the http uses to submit form. post: uses form and post to server, get uses a '?' to send info through the url  -->
-    <form action="index.html" method="POST">
+    <form action="insert.php" method = "POST">
         <h1>Sign up</h1>
         <!-- fieldset groups similar input together -->
         <fieldset>
@@ -31,8 +31,8 @@ method: the method in which the http uses to submit form. post: uses form and po
             <!-- radio type for input creates check box that user can select
                  if radio have same "name" attribute you can only select 1, if they have different name attribute  you can select multiple -->
             <label>Type of User</label>
-            <input type = "radio" id = "manager" name = "user_type"><label for="manager" class = "radio" >Management</label><br>
-            <input type = "radio" id = "customer" name = "user_type"><label for="customer" class = "radio">Customer</label>
+            <input type = "radio" id = "manager" name = "user_type" value="m"><label for="manager" class = "radio" >Management</label><br>
+            <input type = "radio" id = "customer" name = "user_type" value="c"><label for="customer" class = "radio">Customer</label>
 
         </fieldset>
         <fieldset>
@@ -44,7 +44,7 @@ method: the method in which the http uses to submit form. post: uses form and po
             <select id="type" name="hotel_type">
                 <!-- option tag allows user to select from a group of options. "value" attribute is the eqivalent of "id" attribute. 
                  beahves like an unordered list. To group options into groups use <optgroup label = "group name"></optgroup>-->
-                <optgroup label=" Cheap Hotel">
+                <optgroup label=" Cheap Hotel" selected hidden value = "">
                     <option value="h1">Hotel 1</option>
                     <option value="h2">Hotel 2</option>
                     <option value="h3">Hotel 3</option>
@@ -79,5 +79,5 @@ method: the method in which the http uses to submit form. post: uses form and po
         <button type="submit">Sign up</button>
     </form>
 </body>
-<footer><button><a href = "main-page.html">home</a></button></footer>
+<footer><button><a href = "home.html">home</a></button></footer>
 </html>
