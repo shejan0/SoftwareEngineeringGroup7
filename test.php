@@ -3,10 +3,10 @@ $username = filter_input(INPUT_POST, 'username');
 $password = filter_input(INPUT_POST, 'password');
 if (!empty($username)) {
     if (!empty($password)) {
-        $host = "localhost";
-        $dbusername = "root";
-        $dbpassword = "";
-        $dbname = "test";
+        $host = "swe-project-db.ckec3iue5fvo.us-east-2.rds.amazonaws.com";
+        $dbusername = "admin";
+        $dbpassword = "softwareengineering";
+        $dbname = "swe-project-db";
         // Create connection
         $conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
         if (mysqli_connect_error()) {
