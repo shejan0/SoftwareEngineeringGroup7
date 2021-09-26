@@ -6,7 +6,7 @@ if (!empty($username)) {
         $host = "swe-project-db.ckec3iue5fvo.us-east-2.rds.amazonaws.com";
         $dbusername = "admin";
         $dbpassword = "softwareengineering";
-        $dbname = "swe-project-db";
+        $dbname = "sys";
         // Create connection
         $conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
         if (mysqli_connect_error()) {
