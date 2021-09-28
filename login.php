@@ -1,5 +1,5 @@
 <?php
-$username = filter_input(INPUT_POST, 'username');
+$username = filter_input(INPUT_POST, 'email');
 $password = filter_input(INPUT_POST, 'password');
 if (!empty($username)) {
     if (!empty($password)) {
