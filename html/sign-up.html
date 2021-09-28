@@ -13,12 +13,12 @@
     <form action="../php/sign-up.php" method = "POST">
         <h1>Sign up</h1>
         <fieldset>
-            <legend> <span class="number">1</span> basic info</legend> 
+            <legend> <span class="number">1</span> Basic Info</legend> 
 
             <label for="name">Name</label>
             <input type="text" id="name" name="name" required>
 
-            <label for="username">username</label>
+            <label for="username">Username</label>
             <input type="text" id="username" name="username" required>
 
             <label for="mail">Email</label>
@@ -26,16 +26,12 @@
 
             <label for="password">Password</label>
             <input type="password" id="password" name="user_password" required>
-
-            <label>User Type</label>
-            <input type = "radio" id = "employee" name = "usertype" value="employee" required><label for="employee" class = "radio" >Employee</label><br>
-            <input type = "radio" id = "customer" name = "usertype" value="customer" required><label for="customer" class = "radio">Customer</label>
-
         </fieldset>
+        <!--If the previous screen gives a argument to what hotel to use, it should be automatically filled-->
+        <!--Use JavaScript or PHP to automatically fill these with the hotels options-->
         <fieldset>
-
             <legend> <span class="number">2</span> Your profile</legend>
-            <label for="type">Hotel type</label>
+            <label for="type">Hotels</label>
             <select id="type" name="hoteltype" required>
 
                 <optgroup label=" Cheap Hotel">
@@ -56,7 +52,7 @@
                 </optgroup>
             </select>
         </fieldset>
-        <button type="Submit">Sign up</button>
+        <button type="submit">Sign up</button>
     </form>
 </body>
 </html>
