@@ -1,7 +1,8 @@
 <?php
 $name = filter_input(INPUT_POST, 'name');
-$password = filter_input(INPUT_POST, 'user_password');
-$email = filter_input(INPUT_POST, 'user_email');
+$password = filter_input(INPUT_POST, 'password');
+$email = filter_input(INPUT_POST, 'email');
+$username = filter_input(INPUT_POST, 'username');
 
 if (!empty($email)) {
     if (!empty($password)) {
@@ -12,18 +13,31 @@ if (!empty($email)) {
 
         // Create connection
         $conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
-
-        // insert into tables
         if (mysqli_connect_error())
             die('Connect Error (' . mysqli_connect_errno() . ') ' . mysqli_connect_error());
+
+        // insert into tables
         else {
-            $sql = "INSERT INTO sign_up (name,email,password) values ('$name','$email','$password')";
+        // checks if username or email is already taken
+            $check_email = "SELECT * FROM sign_up WHERE email ='$email'";
+            $check_username = "SELECT * FROM sign_up WHERE username ='$username'";
+            $validate_email = mysqli_query($conn, $check_email);
+            $validate_username = mysqli_query($conn, $check_username);
 
-            if ($conn->query($sql))
-                echo "New record is inserted sucessfully";
-            else
-                echo "Error: " . $sql . " " . $conn->error;
+            if (mysqli_num_rows($validate_email) > 0) {
+                echo "Email already taken";
+            } else if (mysqli_num_rows($validate_username) > 0) {
+                echo "Username already taken";
+            } 
+            // if username and email isn't taken, insert into database
+            else {
+                $sql = "INSERT INTO sign_up (name,email,password,username) values ('$name','$email','$password','$username')";
 
+                if ($conn->query($sql))
+                    echo "<script> window.location.assign('../html/home.html'); </script>";
+                else
+                    echo "Error: " . $sql . " " . $conn->error;
+            }
             $conn->close();
         }
     } else {
@@ -31,6 +45,6 @@ if (!empty($email)) {
         die();
     }
 } else {
-    echo "Username should not be empty";
+    echo "email should not be empty";
     die();
 }
