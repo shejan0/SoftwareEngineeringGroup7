@@ -1,17 +1,14 @@
 <?php
 $name = filter_input(INPUT_POST, 'name');
-$username = filter_input(INPUT_POST, 'username');
 $password = filter_input(INPUT_POST, 'user_password');
 $email = filter_input(INPUT_POST, 'user_email');
-$usertype = filter_input(INPUT_POST, 'usertype');
-$hoteltype = filter_input(INPUT_POST, 'hoteltype');
 
-if (!empty($username)) {
+if (!empty($email)) {
     if (!empty($password)) {
         $host = "swe-project-db.ckec3iue5fvo.us-east-2.rds.amazonaws.com";
         $dbusername = "admin";
         $dbpassword = "softwareengineering";
-        $dbname = "user-info";
+        $dbname = "user";
 
         // Create connection
         $conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
@@ -20,8 +17,7 @@ if (!empty($username)) {
         if (mysqli_connect_error())
             die('Connect Error (' . mysqli_connect_errno() . ') ' . mysqli_connect_error());
         else {
-            $sql = "INSERT INTO 
-            signup (name,email,password,username,user_type,hotel_type) values ('$name','$email','$password','$username','$usertype','$hoteltype')";
+            $sql = "INSERT INTO sign_up (name,email,password) values ('$name','$email','$password')";
 
             if ($conn->query($sql))
                 echo "New record is inserted sucessfully";
