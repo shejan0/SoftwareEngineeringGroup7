@@ -1,33 +1,43 @@
 <?php
 $name = filter_input(INPUT_POST, 'name');
+$password = filter_input(INPUT_POST, 'password');
+$email = filter_input(INPUT_POST, 'email');
 $username = filter_input(INPUT_POST, 'username');
-$password = filter_input(INPUT_POST, 'user_password');
-$email = filter_input(INPUT_POST, 'user_email');
-$usertype = filter_input(INPUT_POST, 'usertype');
-$hoteltype = filter_input(INPUT_POST, 'hoteltype');
 
-if (!empty($username)) {
+if (!empty($email)) {
     if (!empty($password)) {
         $host = "swe-project-db.ckec3iue5fvo.us-east-2.rds.amazonaws.com";
         $dbusername = "admin";
         $dbpassword = "softwareengineering";
-        $dbname = "user-info";
+        $dbname = "user";
 
         // Create connection
         $conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
-
-        // insert into tables
         if (mysqli_connect_error())
             die('Connect Error (' . mysqli_connect_errno() . ') ' . mysqli_connect_error());
+
+        // insert into tables
         else {
-            $sql = "INSERT INTO 
-            signup (name,email,password,username,user_type,hotel_type) values ('$name','$email','$password','$username','$usertype','$hoteltype')";
+        // checks if username or email is already taken
+            $check_email = "SELECT * FROM sign_up WHERE email ='$email'";
+            $check_username = "SELECT * FROM sign_up WHERE username ='$username'";
+            $validate_email = mysqli_query($conn, $check_email);
+            $validate_username = mysqli_query($conn, $check_username);
 
-            if ($conn->query($sql))
-                echo "New record is inserted sucessfully";
-            else
-                echo "Error: " . $sql . " " . $conn->error;
+            if (mysqli_num_rows($validate_email) > 0) {
+                echo "Email already taken";
+            } else if (mysqli_num_rows($validate_username) > 0) {
+                echo "Username already taken";
+            } 
+            // if username and email isn't taken, insert into database
+            else {
+                $sql = "INSERT INTO sign_up (name,email,password,username) values ('$name','$email','$password','$username')";
 
+                if ($conn->query($sql))
+                    echo "<script> window.location.assign('../html/home.html'); </script>";
+                else
+                    echo "Error: " . $sql . " " . $conn->error;
+            }
             $conn->close();
         }
     } else {
@@ -35,6 +45,6 @@ if (!empty($username)) {
         die();
     }
 } else {
-    echo "Username should not be empty";
+    echo "email should not be empty";
     die();
 }
