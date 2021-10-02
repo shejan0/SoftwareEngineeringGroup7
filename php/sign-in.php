@@ -30,7 +30,7 @@ if (!empty($email)) {
                     // if password user enters matches the one in the database
                     if ($_POST['password'] === $password) {
                         // upon successful login, redirect user to landing apge
-                        echo "<script> window.location.assign('../html/home.html'); </script>";
+                        echo "<script> window.location.assign('../index.html'); </script>";
                     } else {
                         // Incorrect password
                         echo 'Incorrect email and/or password!';
