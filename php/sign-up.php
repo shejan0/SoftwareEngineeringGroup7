@@ -31,7 +31,7 @@ if (!empty($email)) {
                 $sql = "INSERT INTO sign_up (name,email,password) values ('$name','$email','$password')";
 
                 if ($conn->query($sql))
-                    echo "<script> window.location.assign('../index.html'); </script>";
+                    echo "<script> window.location.assign('../html/dashboard.html'); </script>";
                 else
                     echo "Error: " . $sql . " " . $conn->error;
             }
