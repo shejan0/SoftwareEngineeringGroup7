@@ -28,3 +28,11 @@ CREATE TABLE `Reservation` (
   `date`			varchar(1000)	DEFAULT NULL,
   PRIMARY KEY (`roomNo`)
 );
+
+create table admin(
+    ID int not null AUTO_INCREMENT,
+    name varchar(20),
+    email VARCHAR(20),
+    password VARCHAR(20),
+    PRIMARY KEY (ID)
+);
