@@ -437,8 +437,8 @@
                         <li class="breadcrumb-item active" aria-current="page">Transactions</li>
                     </ol>
                 </nav>
-                <h2 class="h4">All Orders</h2>
-                <p class="mb-0">Your web analytics dashboard template.</p>
+                <h2 class="h4">Admin</h2>
+                <p class="mb-0">List of employees and admin information.</p>
             </div>
             <div class="btn-toolbar mb-2 mb-md-0">
                 <a href="#" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center">
@@ -462,7 +462,7 @@
                                 <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
                             </svg>
                         </span>
-                        <input type="text" class="form-control" placeholder="Search orders">
+                        <input type="text" class="form-control" placeholder="Search admin">
                     </div>
                 </div>
                 <div class="col-4 col-md-2 col-xl-1 ps-md-0 text-end">
