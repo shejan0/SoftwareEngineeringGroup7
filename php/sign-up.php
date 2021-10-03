@@ -24,7 +24,7 @@ if (!empty($email)) {
             $validate_email = mysqli_query($conn, $check_email);
 
             if (mysqli_num_rows($validate_email) > 0) {
-                echo "Email already taken";
+                header("location: ../html/sign-up-error.html");
             }
             // if  email isn't taken, insert into database
             else {
@@ -33,7 +33,7 @@ if (!empty($email)) {
                 if ($conn->query($sql))
                     echo "<script> window.location.assign('../html/dashboard.html'); </script>";
                 else
-                    echo "Error: " . $sql . " " . $conn->error;
+                header("location: ../html/sign-up-error.html");
             }
             $conn->close();
         }

@@ -33,11 +33,11 @@ if (!empty($email)) {
                         echo "<script> window.location.assign('../html/dashboard.html'); </script>";
                     } else {
                         // Incorrect password
-                        echo 'Incorrect email and/or password!';
+                        header("location: ../html/sign-in-error.html");
                     }
                 } else {
                     // Incorrect username
-                    echo 'Incorrect email and/or password!';
+                    header("location: ../html/sign-in-error.html");
                 }
                 $stmt->close();
             }
