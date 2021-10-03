@@ -1,3 +1,5 @@
+<?php include_once "inc/connection.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -485,18 +487,9 @@
                 </div>
             </div>
         </div>
+
         <!-- Employee Table -->
         <div class="card card-body border-0 shadow table-wrapper table-responsive">
-            <?php
-            $con = mysqli_connect("swe-project-db.ckec3iue5fvo.us-east-2.rds.amazonaws.com", "admin", "softwareengineering", "user");
-
-            if (mysqli_connect_errno()) {
-                echo "Failed to connect to MySQL: " . mysqli_connect_error();
-                exit();
-            }
-            $query = mysqli_query($con, "SELECT * FROM admin");
-
-            ?>
             <table class="table table-hover">
                 <thread>
                     <tr>
@@ -507,6 +500,7 @@
                     </tr>
                     <thread>
                         <?php
+                        $query = mysqli_query($con, "SELECT * FROM admin;");
                         while ($row = mysqli_fetch_array($query)) { ?>
                             <tr>
                                 <td><span class="fw-bold"><?php echo $row['ID']; ?></span></td>
