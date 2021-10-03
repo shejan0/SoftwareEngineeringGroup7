@@ -494,12 +494,13 @@
                 echo "Failed to connect to MySQL: " . mysqli_connect_error();
                 exit();
             }
-            $query = mysqli_query($con, "SELECT * FROM sign_up");
+            $query = mysqli_query($con, "SELECT * FROM admin");
 
             ?>
             <table class="table table-hover">
                 <thread>
                     <tr>
+                        <th class="border-gray-200">ID</th>
                         <th class="border-gray-200">Name</th>
                         <th class="border-gray-200">Email</th>
                         <th class="border-gray-200">Password</th>
@@ -508,9 +509,10 @@
                         <?php
                         while ($row = mysqli_fetch_array($query)) { ?>
                             <tr>
-                                <td><?php echo $row['name']; ?></td>
-                                <td><?php echo $row['email']; ?></td>
-                                <td><?php echo $row['password']; ?></td>
+                                <td><span class="fw-bold"><?php echo $row['ID']; ?></span></td>
+                                <td><span class="fw-normal"><?php echo $row['name']; ?></span></td>
+                                <td><span class="fw-normal"><?php echo $row['email']; ?></span></td>
+                                <td><span class="fw-normal"><?php echo $row['password']; ?></span></td>
                             </tr>
                         <?php  } ?>
             </table>
