@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none">
     <a class="navbar-brand me-lg-5" href="#">
         <img class="navbar-brand-dark" src="../assets/img/brand/volt-light.svg" alt="Volt logo" /> <img class="navbar-brand-light" src="../assets/img/brand/volt-dark.svg" alt="Volt logo" />
@@ -17,9 +20,9 @@
                     <img src="../assets/img/team/avatar.jpeg" class="card-img-top rounded-circle border-white" alt="Profile Picture">
                 </div>
                 <div class="d-block">
-                    <h2 class="h5 mb-3">Hi, Admin</h2>
+                    <h1 class="lead fw-normal text-muted mb-4 px-lg-10">Hello, <?php echo $_SESSION['email']; ?></h1>    
 
-                    <a href="../index.html" class="btn btn-secondary btn-sm d-inline-flex align-items-center">
+                    <a href="../index.html?logout='1'" class="btn btn-secondary btn-sm d-inline-flex align-items-center">
                         <svg class="icon icon-xxs me-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
                             </path>
@@ -133,7 +136,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="../index.html" class="btn btn-secondary d-flex align-items-center justify-content-center btn-upgrade-pro">
+                <a href="../index.html?logout='1'" class="btn btn-secondary d-flex align-items-center justify-content-center btn-upgrade-pro">
                     <svg class="icon icon-xxs me-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
                         </path>
