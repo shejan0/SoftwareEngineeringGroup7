@@ -1,5 +1,5 @@
 <?php
-include_once "inc/connection.php";
+include_once "inc/user-connection.php";
 
 $name = mysqli_real_escape_string($conn, $_POST['name']);
 $password = mysqli_real_escape_string($conn, $_POST['password']);
@@ -20,7 +20,7 @@ if (!empty($email)) {
             $sql = "INSERT INTO sign_up (name,email,password) values ('$name','$email','$password')";
 
             if ($conn->query($sql))
-                header("location: ../html/dashboard.html");
+                header("location: dashboard.php");
             else
                 header("location: ../html/sign-up-error.html");
         }

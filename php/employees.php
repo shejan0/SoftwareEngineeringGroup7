@@ -1,5 +1,5 @@
 <?php
-include_once "inc/connection.php";
+include_once "inc/user-connection.php";
 include_once "inc/header.php";
 include_once "inc/dashboard/dashboard-header-nav.php";
 ?>
