@@ -1,5 +1,5 @@
 <?php
-include_once "inc/connection.php";
+include_once "inc/user-connection.php";
 
 // get the input the user entered, protect from sql injections
 $email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -22,7 +22,7 @@ if (!empty($email)) {
                 // if password user enters matches the one in the database
                 if ($_POST['password'] === $password) {
                     // upon successful login, redirect user to landing apge
-                    header ("location: ../html/dashboard.html");
+                    header ("location: dashboard.php");
                 } else {
                     // Incorrect password
                     header("location: ../html/sign-in-error.html");
