@@ -1,0 +1,67 @@
+$utilities: () !default;
+
+$textSizes: ("xs": $font-size-xs,
+        "sm": $font-size-sm,
+        "base": $font-size-base,
+        "lg": $font-size-lg,
+        "xl": $font-size-xl);
+
+$sizes: 1rem 2rem 3rem 6rem;
+
+$opacity: (0: 0,
+        1: .1,
+        2: .2,
+        3: .3,
+        4: .4,
+        5: .5,
+        6: .6,
+        7: .7,
+        8: .8,
+        9: .9,
+        10: 1);
+
+$z-index: 10 20 30 40 50;
+
+$letterSpacing: (1: .1em,
+        2: .2em,
+        3: .3em,
+        4: .4em,
+        5: .5em);
+
+$utilities: map-merge(("background-color-grays": (property: background-color,
+                        class: bg,
+                        values: $graysNamed),
+                "background-color-colors": (property: background-color,
+                        class: bg,
+                        values: $colors),
+                "border": (property: border,
+                        responsive: true,
+                        values: (null: $border-width solid $border-color,
+                                0: 0,
+                        )),
+                "text-hover": (property: color,
+                        class: text,
+                        state: hover,
+                        values: $theme-colors),
+                "letter-spacing": (property: letter-spacing,
+                        values: $letterSpacing), 
+                "width-custom": (property: width,
+                        class: w,
+                        values: $sizes),
+                "height-custom": (property: height,
+                        class: h,
+                        values: $sizes),
+
+                "opacity-custom": (property: opacity,
+                        values: $opacity),
+                "z-index-custom": (property: z-index,
+                        values: $z-index),
+                "rounded-custom": (property: border-radius,
+                        class: rounded,
+                        values: (4: $border-radius-xl)),
+                "font-size-custom": (property: font-size,
+                        class: text,
+                        values:$textSizes),
+                "color-custom-grays": (property: color,
+                        class: text,
+                        values: $graysNamed), ), $utilities);

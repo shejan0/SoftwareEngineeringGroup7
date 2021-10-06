@@ -1,0 +1,52 @@
+/*
+* ===================================================
+*     User & Host
+* ===================================================
+*/
+/*
+* ===================================================
+*    Customer section
+* ===================================================
+*/
+
+.customer-sidebar {
+    box-shadow: $box-shadow;
+    border: none;
+}
+
+.customer-profile {
+    padding: 2rem;
+    text-align: center;
+    background: $gray-100;
+    border-bottom: none;
+}
+
+.list-group.customer-nav {
+    border-radius: 0;
+    .list-group-item {
+        color: $gray-700;
+        border-color: $gray-200;
+        font-size: 0.9rem;
+        border-left: none;
+        border-right: none;
+        &:hover, &:focus {
+            text-decoration: none;
+            background: $gray-100;
+        }
+
+        &.active {
+            border-color: $gray-300;
+            background: $gray-300;
+        }
+
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    .svg-icon {
+        position: relative;
+        top: -2px;
+    }
+}

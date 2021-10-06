@@ -1,0 +1,48 @@
+/*
+* ===================================================
+*    Avatars
+* ===================================================
+*/
+
+.avatar {
+    display: inline-block;
+    position: relative;
+    width: 3rem;
+    height: 3rem;
+    text-align: center;
+    border: $border-color;
+    border-radius: 50%;
+    background: $white;
+    box-shadow: $box-shadow;
+    line-height: 3rem;
+
+    &.avatar-sm {
+        width: 2.5rem;
+        height: 2.5rem;
+        line-height: 2.5rem;
+    }
+
+    &.avatar-lg {
+        width: 5rem;
+        height: 5rem;
+        line-height: 5rem;
+    }
+
+    &.avatar-xl {
+        width: 7rem;
+        height: 7rem;
+        line-height: 7rem;
+    }
+
+
+    &.avatar-xxl {
+        width: 10rem;
+        min-width: 10rem;
+        height: 10rem;
+        line-height: 10rem;
+    }
+
+    &.avatar-border-white {
+        border: solid 2px $white;
+    }
+}

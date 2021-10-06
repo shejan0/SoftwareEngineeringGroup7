@@ -1,0 +1,31 @@
+/*
+* ===================================================
+*     The rest 🙂
+* ===================================================
+*/
+
+body {
+    position: relative;
+}
+
+.notification-badge {
+    position: absolute;
+    top: 0.2rem;
+    right: -.2rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    text-align: center;
+    color: $white;
+    border-radius: 50%;
+
+    &.notification-badge-number {
+        top: -.1rem;
+        right: -.4rem;
+        width: 1.2rem;
+        height: 1.2rem;
+        vertical-align: middle;
+        font-size: .7rem;
+        line-height: 1.2rem;
+    }
+
+}

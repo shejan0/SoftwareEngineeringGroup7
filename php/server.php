@@ -25,7 +25,7 @@ if (isset($_POST['sign-up'])) {
                 $_SESSION['name'] = $name;
 
                 if ($conn->query($sql))
-                    header("location: dashboard.php");
+                    header("location: ../html/sign-in.html");
                 else
                     header("location: ../html/sign-up-error.html");
             }
@@ -70,7 +70,7 @@ if (isset($_POST['sign-in'])) {
                         $_SESSION['name'] = $name;
 
                         // upon successful login, redirect user to landing apge
-                        header("location: dashboard.php");
+                        header("location: ../customer-view//html/index.html");
                     } else {
                         // Incorrect password
                         header("location: ../html/sign-in-error.html");

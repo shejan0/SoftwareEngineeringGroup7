@@ -1,0 +1,45 @@
+/*
+* ===================================================
+*     Testimonials
+* ===================================================
+*/
+
+.testimonial-quote {
+    margin-bottom: 10px;
+    color: map-get($theme-colors,"primary");
+    font-size: 1.5rem;
+}
+
+.testimonial {
+    position: relative;
+    margin-left: 3rem;
+    padding: 4rem;
+    padding-left: 70px;
+}
+
+.testimonial-text {
+    color: #656565;
+    font-size: 0.9rem;
+    line-height: 1.8rem;
+    line-height: 1.7rem;
+}
+
+.testimonial-avatar {
+    
+    transform: translate(-50%, -50%);
+    @include position(absolute, 50%, $left: 0);
+}
+
+
+@include media-breakpoint-down(xl) {
+
+    .testimonial {
+        margin-top: 2rem;
+        margin-left: 0;
+        padding: 60px 40px 40px; // margin: 0;
+
+        .testimonial-avatar {
+            @include position(absolute, 0, $left: 50%);
+        }
+    }
+}

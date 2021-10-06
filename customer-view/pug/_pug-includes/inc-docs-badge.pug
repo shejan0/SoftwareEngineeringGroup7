@@ -1,0 +1,35 @@
+- bgs = ['primary', 'secondary', 'success', 'warning', 'info', 'danger']
+
+
+h6.text-uppercase.fw-normal Classic Badges
+.mb-4
+    each val in bgs 
+        span.badge.me-2.p-2(class=`bg-${val}`) #{val}
+
+h6.text-uppercase.fw-normal Pill Badges
+.mb-4
+    each val in bgs 
+        span.badge.rounded-pill.me-2.p-2(class=`bg-${val}`) #{val}
+
+h6.text-uppercase.fw-normal Light Badges
+.mb-4
+    each val in bgs 
+        span.badge.rounded-pill.me-2.p-2(class=`badge-${val}-light`) #{val}
+
+h6.text-uppercase.fw-normal.mb-3 Notification Badges
+
+a.position-relative.text-gray-400.p-2.me-3.text-decoration-none(href='#')
+    +svgIcon('paper-plane-1', 'svg-icon-md')
+    span.notification-badge.notification-badge-number.bg-primary 10
+
+a.position-relative.text-gray-400.py-2.px-1.me-3.text-decoration-none(href='#')
+    +svgIcon('smartphone-1', 'svg-icon-md')
+    span.notification-badge.notification-badge-number.bg-warning 5
+
+a.position-relative.text-gray-400.py-2.px-1.me-3.text-decoration-none(href='#')
+    +svgIcon('money-box-1', 'svg-icon-md')
+    span.notification-badge.bg-green
+
+a.position-relative.text-gray-400.py-2.px-1.me-3.text-decoration-none(href='#')
+    +svgIcon('bank-cards-1', 'svg-icon-md')
+    span.notification-badge.bg-blue

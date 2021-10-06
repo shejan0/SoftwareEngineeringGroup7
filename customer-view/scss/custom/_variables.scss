@@ -1,0 +1,416 @@
+// Variables
+//
+// Variables should follow the `$component-state-property-size` formula for
+// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+
+// Color system
+
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+
+// fusv-disable
+$grays: ("100": $gray-100,
+  "200": $gray-200,
+  "300": $gray-300,
+  "400": $gray-400,
+  "500": $gray-500,
+  "600": $gray-600,
+  "700": $gray-700,
+  "800": $gray-800,
+  "900": $gray-900) !default;
+// fusv-enable
+
+$graysNamed: ("gray-100": $gray-100,
+  "gray-200": $gray-200,
+  "gray-300": $gray-300,
+  "gray-400": $gray-400,
+  "gray-500": $gray-500,
+  "gray-600": $gray-600,
+  "gray-700": $gray-700,
+  "gray-800": $gray-800,
+  "gray-900": $gray-900);
+
+$blue: #0d6efd !default;
+$indigo: #6610f2 !default;
+$purple: #6f42c1 !default;
+$pink: #d63384 !default;
+$red: #dc3545 !default;
+$orange: #fd7e14 !default;
+$yellow: #ffc107 !default;
+$green: #35b653 !default;
+$teal: #20c997 !default;
+$cyan: #17a2b8 !default;
+
+// BOOTSTRAPIOUS DYNAMIC BRANDING
+
+$headerHeight: 125px;
+$navbarHeight: 72px;
+
+@if $templateColour == red and not $primary {
+  $primary: #E63946;
+  @if not $secondary {
+    $secondary: #3c69ea;
+  }      
+}
+@else if $templateColour == pink and not $primary {
+  $primary:  #ef5285;
+  @if not $secondary {
+    $secondary: #4E66F8;
+  }    
+}
+@else if $templateColour == green and not $primary {
+  $primary:  #1cb36e;
+  @if not $secondary {
+    $secondary: #48a3e0;
+  }  
+}
+@else if $templateColour == blue and not $primary {
+  $primary:  #4E66F8;
+  @if not $secondary {
+    $secondary: #e83e8c;
+  }
+}
+@else if $templateColour == sea and not $primary {
+  $primary:  #59a4b5;
+  @if not $secondary {
+    $secondary: #e646a6;
+  }      
+}
+@else if $templateColour == violet and not $primary {
+  $primary:  #9a6ee2;
+  @if not $secondary {
+    $secondary: #46bac5;
+  }      
+}
+@if not $secondary {
+  $secondary: $pink;
+}   
+
+$success:       $green !default;
+$info:          $cyan !default;
+$warning:       $yellow !default;
+$danger:        $red !default;
+$light:         $gray-100 !default;
+$dark:          $gray-800 !default;
+
+
+// scss-docs-start theme-colors-map
+$theme-colors: ("primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark) !default;
+// scss-docs-end theme-colors-map
+
+// Set a specific jump point for requesting color jumps
+$theme-color-interval: 8% !default;
+
+// The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
+// See https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast
+$min-contrast-ratio: 3 !default;
+
+// Customize the light and dark text colors for use in our color contrast function.
+$color-contrast-dark: $gray-900 !default;
+$color-contrast-light: $white !default;
+
+// fusv-disable
+$blue-100: tint-color($blue, 80%) !default;
+$blue-200: tint-color($blue, 60%) !default;
+$blue-300: tint-color($blue, 40%) !default;
+$blue-400: tint-color($blue, 20%) !default;
+$blue-500: $blue !default;
+$blue-600: shade-color($blue, 20%) !default;
+$blue-700: shade-color($blue, 40%) !default;
+$blue-800: shade-color($blue, 60%) !default;
+$blue-900: shade-color($blue, 80%) !default;
+
+$indigo-100: tint-color($indigo, 80%) !default;
+$indigo-200: tint-color($indigo, 60%) !default;
+$indigo-300: tint-color($indigo, 40%) !default;
+$indigo-400: tint-color($indigo, 20%) !default;
+$indigo-500: $indigo !default;
+$indigo-600: shade-color($indigo, 20%) !default;
+$indigo-700: shade-color($indigo, 40%) !default;
+$indigo-800: shade-color($indigo, 60%) !default;
+$indigo-900: shade-color($indigo, 80%) !default;
+
+$purple-100: tint-color($purple, 80%) !default;
+$purple-200: tint-color($purple, 60%) !default;
+$purple-300: tint-color($purple, 40%) !default;
+$purple-400: tint-color($purple, 20%) !default;
+$purple-500: $purple !default;
+$purple-600: shade-color($purple, 20%) !default;
+$purple-700: shade-color($purple, 40%) !default;
+$purple-800: shade-color($purple, 60%) !default;
+$purple-900: shade-color($purple, 80%) !default;
+
+$pink-100: tint-color($pink, 80%) !default;
+$pink-200: tint-color($pink, 60%) !default;
+$pink-300: tint-color($pink, 40%) !default;
+$pink-400: tint-color($pink, 20%) !default;
+$pink-500: $pink !default;
+$pink-600: shade-color($pink, 20%) !default;
+$pink-700: shade-color($pink, 40%) !default;
+$pink-800: shade-color($pink, 60%) !default;
+$pink-900: shade-color($pink, 80%) !default;
+
+$red-100: tint-color($red, 80%) !default;
+$red-200: tint-color($red, 60%) !default;
+$red-300: tint-color($red, 40%) !default;
+$red-400: tint-color($red, 20%) !default;
+$red-500: $red !default;
+$red-600: shade-color($red, 20%) !default;
+$red-700: shade-color($red, 40%) !default;
+$red-800: shade-color($red, 60%) !default;
+$red-900: shade-color($red, 80%) !default;
+
+$orange-100: tint-color($orange, 80%) !default;
+$orange-200: tint-color($orange, 60%) !default;
+$orange-300: tint-color($orange, 40%) !default;
+$orange-400: tint-color($orange, 20%) !default;
+$orange-500: $orange !default;
+$orange-600: shade-color($orange, 20%) !default;
+$orange-700: shade-color($orange, 40%) !default;
+$orange-800: shade-color($orange, 60%) !default;
+$orange-900: shade-color($orange, 80%) !default;
+
+$yellow-100: tint-color($yellow, 80%) !default;
+$yellow-200: tint-color($yellow, 60%) !default;
+$yellow-300: tint-color($yellow, 40%) !default;
+$yellow-400: tint-color($yellow, 20%) !default;
+$yellow-500: $yellow !default;
+$yellow-600: shade-color($yellow, 20%) !default;
+$yellow-700: shade-color($yellow, 40%) !default;
+$yellow-800: shade-color($yellow, 60%) !default;
+$yellow-900: shade-color($yellow, 80%) !default;
+
+$green-100: tint-color($green, 80%) !default;
+$green-200: tint-color($green, 60%) !default;
+$green-300: tint-color($green, 40%) !default;
+$green-400: tint-color($green, 20%) !default;
+$green-500: $green !default;
+$green-600: shade-color($green, 20%) !default;
+$green-700: shade-color($green, 40%) !default;
+$green-800: shade-color($green, 60%) !default;
+$green-900: shade-color($green, 80%) !default;
+
+$teal-100: tint-color($teal, 80%) !default;
+$teal-200: tint-color($teal, 60%) !default;
+$teal-300: tint-color($teal, 40%) !default;
+$teal-400: tint-color($teal, 20%) !default;
+$teal-500: $teal !default;
+$teal-600: shade-color($teal, 20%) !default;
+$teal-700: shade-color($teal, 40%) !default;
+$teal-800: shade-color($teal, 60%) !default;
+$teal-900: shade-color($teal, 80%) !default;
+
+$cyan-100: tint-color($cyan, 80%) !default;
+$cyan-200: tint-color($cyan, 60%) !default;
+$cyan-300: tint-color($cyan, 40%) !default;
+$cyan-400: tint-color($cyan, 20%) !default;
+$cyan-500: $cyan !default;
+$cyan-600: shade-color($cyan, 20%) !default;
+$cyan-700: shade-color($cyan, 40%) !default;
+$cyan-800: shade-color($cyan, 60%) !default;
+$cyan-900: shade-color($cyan, 80%) !default;
+// fusv-enable
+
+// scss-docs-start colors-map
+$colors: ("blue": $blue-500,
+  "indigo": $indigo,
+  "purple": $purple,
+  "pink": $pink,
+  "red": $red,
+  "orange": $orange,
+  "yellow": $yellow,
+  "green": $green,
+  "teal": $teal,
+  "cyan": $cyan,
+  "white": $white,
+  "gray": $gray-600,
+  "gray-dark": $gray-800) !default;
+// scss-docs-end colors-map
+
+
+// Characters which are escaped by the escape-svg function
+$escaped-characters: (("<", "%3c"),
+  (">", "%3e"),
+  ("#", "%23"),
+  ("(", "%28"),
+  (")", "%29"),
+) !default;
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+
+$enable-caret: true !default;
+$enable-rounded: true !default;
+$enable-shadows: false !default;
+$enable-gradients: false !default;
+$enable-transitions: true !default;
+$enable-reduced-motion: true !default;
+$enable-grid-classes: true !default;
+$enable-button-pointers: true !default;
+$enable-rfs: true !default;
+$enable-validation-icons: true !default;
+$enable-negative-margins: true !default;
+$enable-deprecation-messages: true !default;
+$enable-important-utilities: true !default;
+
+$primary-100: theme-color-level('primary', -12);
+$primary-200: theme-color-level('primary', -11);
+
+$spacer: 1rem !default;
+$spacers: (0: 0,
+  1: $spacer / 4,
+  2: $spacer / 2,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+  6: $spacer * 6,
+  7: $spacer * 8
+) !default;
+
+$negative-spacers: if($enable-negative-margins, negativify-map($spacers), null) !default;
+
+$component-active-color:      $white !default;
+$component-active-bg:         $primary !default;
+
+$body-color:                $gray-900 !default;
+
+$link-decoration:             none !default;
+$link-hover-decoration:       underline !default;
+
+$border-width:                1px !default;
+$border-color:                $gray-300 !default;
+
+$border-radius:               .4rem !default;
+$border-radius-lg:            .6rem !default;
+$border-radius-sm:            .2rem !default;
+$border-radius-xl:            10rem !default;
+
+$box-shadow-sm:               0 .1rem .3rem rgba($black, .1) !default;
+$box-shadow:                  0 0 1rem rgba($black, .15) !default;
+$box-shadow-lg:               0 1rem 3rem rgba($black, .175) !default;
+
+$font-family-serif:       'Playfair Display', serif !default;
+$font-family-sans-serif:  'Poppins', sans-serif !default;
+$font-family-heading:     'Poppins' , sans-serif !default;
+$font-family-monospace:   Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-base:        $font-family-sans-serif !default;
+
+$font-size-base:              1rem;
+$font-size-xl:                ($font-size-base * 2) !default;
+$font-size-lg:                ($font-size-base * 1.25) !default;
+$font-size-sm:                ($font-size-base * .875) !default;
+$font-size-xs:                ($font-size-base * .7) !default;
+
+$font-weight-lighter:         lighter !default;
+$font-weight-light:           300 !default;
+$font-weight-normal:          400 !default;
+$font-weight-bold:            700 !default;
+$font-weight-bolder:          bolder !default;
+
+$line-height-base:            1.6 !default;
+$line-height-sm:              1.5 !default;
+$line-height-lg:              2 !default;
+
+$h1-font-size:                $font-size-base * 2.5 !default;
+$h2-font-size:                $font-size-base * 2 !default;
+$h3-font-size:                $font-size-base * 1.75 !default;
+$h4-font-size:                $font-size-base * 1.5 !default;
+$h5-font-size:                $font-size-base * 1.25 !default;
+$h6-font-size:                $font-size-base !default;
+
+$headings-font-family:   $font-family-heading !default;
+$headings-font-weight:   700 !default;
+$headings-line-height:   1.3 !default;
+
+$display-font-sizes: (
+  1: 6rem,
+  2: 5.5rem,
+  3: 4.5rem,
+  4: 3.5rem,
+  5: 3rem,
+  6: 2.5rem
+) !default;
+
+$display-font-weight: 400 !default;
+
+$input-focus-border-color:              tint-color($component-active-bg, 50%) !default;
+//$input-focus-box-shadow:                none !default;
+
+$dropdown-item-padding-y:           .7rem !default;
+$dropdown-item-padding-x:           1.5rem !default;
+$dropdown-header-color:             $gray-500 !default;
+$dropdown-box-shadow:               0 0rem 1.5rem rgba($black, .175) !default;
+$dropdown-border-width:             0 !default;
+$dropdown-link-hover-color:         $primary !default;
+$dropdown-link-hover-bg:            $gray-100 !default;
+
+$navbar-brand-font-size:            $font-size-base !default;
+$navbar-padding-y:                  $spacer !default;
+$navbar-padding-y-collapsed:        .5rem !default;
+$navbar-link-size:                  .9rem;
+
+$navbar-dark-color:                 rgba($white, .8) !default;
+$navbar-dark-hover-color:           $white !default;
+$navbar-dark-active-color:          $white !default;
+
+$navbar-light-color:                rgba($black, .5) !default;
+$navbar-light-hover-color:          rgba($black, .9) !default;
+$navbar-light-active-color:         $black !default;
+
+$list-group-color:                  null !default;
+$list-group-bg:                     $white !default;
+$list-group-border-color:           rgba($black, .075) !default;
+
+$breadcrumb-margin-bottom:          .5rem !default;
+$breadcrumb-divider:                quote("—") !default;
+
+$btn-padding-y:               .525rem !default;
+$btn-font-size:               .8rem !default;
+
+$btn-font-size-sm:            $font-size-sm - .1rem !default;
+
+$btn-padding-y-lg:            .75rem !default;
+$btn-padding-x-lg:            1rem !default;
+$btn-font-size-lg:            1rem !default;
+
+$form-switch-width:                          3em !default;
+$form-switch-height:                          1.5rem;
+
+$modal-content-border-color:        transparent !default;
+
+$alert-bg-scale:                -85% !default;
+$alert-border-scale:            -85% !default;
+
+$table-cell-padding-y:        1.25rem !default;
+$table-cell-padding-x:        1.25rem !default;
+
+$table-hover-bg-factor:       .025 !default;
+$table-striped-bg-factor:     .01 !default;
+
+$badge-padding-y:                   .5em !default;
+$badge-padding-x:                   .7em !default;
+
+$blockquoteiconfill: tint-color($primary, 70%);
+$hr-opacity: .1 !default;
+
+$card-spacer-y:                     1.2rem !default;
+$card-spacer-x:                     1.2rem !default;
+
+$list-group-item-padding-x:         1.2rem !default;
