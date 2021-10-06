@@ -20,6 +20,7 @@ Icon
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
 .env
+.env.swp
 
 # Directories potentially created on remote AFP share
 .AppleDB
