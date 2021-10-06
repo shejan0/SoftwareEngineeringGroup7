@@ -4,8 +4,8 @@ include_once "inc/header.php";
 include_once "inc/dashboard/dashboard-header-nav.php";
 ?>
 <main class="content">
-   <?php include_once "inc/dashboard/dashboard-main-nav.php";?>
-   <div class="py-4">
+    <?php include_once "inc/dashboard/dashboard-main-nav.php"; ?>
+    <div class="py-4">
         <div class="dropdown">
             <button class="btn btn-gray-800 d-inline-flex align-items-center me-2 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -123,7 +123,8 @@ include_once "inc/dashboard/dashboard-header-nav.php";
                 <thread>
                     <?php
                     $query = mysqli_query($conn, "SELECT * FROM admin;");
-                    while ($row = mysqli_fetch_array($query)) { ?>
+                    while ($row = mysqli_fetch_array($query)) {
+                    ?>
                         <tr>
                             <td><span class="fw-bold"><?php echo $row['ID']; ?></span></td>
                             <td><span class="fw-normal"><?php echo $row['name']; ?></span></td>
@@ -133,48 +134,48 @@ include_once "inc/dashboard/dashboard-header-nav.php";
                     <?php  } ?>
         </table>
     </div>
-    <?php include_once "inc/dashboard/dashboard-footer.php"?>
-<!-- Core -->
-<script src="../vendor/@popperjs/core/dist/umd/popper.min.js"></script>
-<script src="../vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <?php include_once "inc/dashboard/dashboard-footer.php" ?>
+    <!-- Core -->
+    <script src="../vendor/@popperjs/core/dist/umd/popper.min.js"></script>
+    <script src="../vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 
-<!-- Vendor JS -->
-<script src="../vendor/onscreen/dist/on-screen.umd.min.js"></script>
+    <!-- Vendor JS -->
+    <script src="../vendor/onscreen/dist/on-screen.umd.min.js"></script>
 
-<!-- Slider -->
-<script src="../vendor/nouislider/dist/nouislider.min.js"></script>
+    <!-- Slider -->
+    <script src="../vendor/nouislider/dist/nouislider.min.js"></script>
 
-<!-- Smooth scroll -->
-<script src="../vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <!-- Smooth scroll -->
+    <script src="../vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
 
-<!-- Charts -->
-<script src="../vendor/chartist/dist/chartist.min.js"></script>
-<script src="../vendor/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+    <!-- Charts -->
+    <script src="../vendor/chartist/dist/chartist.min.js"></script>
+    <script src="../vendor/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
 
-<!-- Datepicker -->
-<script src="../vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
+    <!-- Datepicker -->
+    <script src="../vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
 
-<!-- Sweet Alerts 2 -->
-<script src="../vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    <!-- Sweet Alerts 2 -->
+    <script src="../vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
 
-<!-- Moment JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <!-- Moment JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
 
-<!-- Vanilla JS Datepicker -->
-<script src="../vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
+    <!-- Vanilla JS Datepicker -->
+    <script src="../vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
 
-<!-- Notyf -->
-<script src="../vendor/notyf/notyf.min.js"></script>
+    <!-- Notyf -->
+    <script src="../vendor/notyf/notyf.min.js"></script>
 
-<!-- Simplebar -->
-<script src="../vendor/simplebar/dist/simplebar.min.js"></script>
+    <!-- Simplebar -->
+    <script src="../vendor/simplebar/dist/simplebar.min.js"></script>
 
-<!-- Github buttons -->
-<script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- Github buttons -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
 
-<!-- Volt JS -->
-<script src="../assets/js/volt.js"></script>
+    <!-- Volt JS -->
+    <script src="../assets/js/volt.js"></script>
 
-</body>
+    </body>
 
-</html>
+    </html>

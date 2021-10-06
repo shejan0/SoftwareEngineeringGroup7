@@ -6,24 +6,26 @@ session_start();
 $name = mysqli_real_escape_string($conn, $_POST['name']);
 $password = mysqli_real_escape_string($conn, $_POST['password']);
 $email = mysqli_real_escape_string($conn, $_POST['email']);
+$username = mysqli_real_escape_string($conn, $_POST['username']);
 
+$_SESSION['name'] = $row;
 // sign up 
 if (isset($_POST['sign-up'])) {
-    if (!empty($email)) {
+    if (!empty($email) and !empty($username)) {
         if (!empty($password)) {
             $check_email = "SELECT * FROM sign_up WHERE email ='$email'";
             $validate_email = mysqli_query($conn, $check_email);
 
+            $check_username = "SELECT * FROM sign_up WHERE username ='$username'";
+            $validate_username = mysqli_query($conn, $check_username);
+
             // if email is taken
-            if (mysqli_num_rows($validate_email) > 0) {
+            if (mysqli_num_rows($validate_email) > 0 or mysqli_num_rows($validate_username)) {
                 header("location: ../html/sign-up-error.html");
             }
             // if  email isn't taken, insert into database
             else {
-                $sql = "INSERT INTO sign_up (name,email,password) values ('$name','$email','$password')";
-                $_SESSION['email'] = $email;
-                $_SESSION['name'] = $name;
-
+                $sql = "INSERT INTO sign_up (name,email,password,username) values ('$name','$email','$password','$username')";
                 if ($conn->query($sql))
                     header("location: ../html/sign-in.html");
                 else
@@ -42,12 +44,6 @@ if (isset($_POST['sign-up'])) {
 
 // sign in
 if (isset($_POST['sign-in'])) {
-
-    // Data sanitization to prevent SQL injection
-    $name = mysqli_real_escape_string($conn, $_POST['name']);
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $password = mysqli_real_escape_string($conn, $_POST['password']);
-
     if (!empty($email)) {
         if (!empty($password)) {
             $sql = 'SELECT email, password FROM sign_up WHERE email = ?';
@@ -65,10 +61,6 @@ if (isset($_POST['sign-in'])) {
 
                     // if password user enters matches the one in the database
                     if ($_POST['password'] === $password) {
-
-                        $_SESSION['email'] = $email;
-                        $_SESSION['name'] = $name;
-
                         // upon successful login, redirect user to landing apge
                         header("location: ../customer-view//html/index.html");
                     } else {
@@ -92,12 +84,6 @@ if (isset($_POST['sign-in'])) {
 }
 
 if (isset($_POST['admin-sign-in'])) {
-
-    // Data sanitization to prevent SQL injection
-    $name = mysqli_real_escape_string($conn, $_POST['name']);
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $password = mysqli_real_escape_string($conn, $_POST['password']);
-
     if (!empty($email)) {
         if (!empty($password)) {
             $sql = 'SELECT email, password FROM admin WHERE email = ?';
@@ -115,12 +101,8 @@ if (isset($_POST['admin-sign-in'])) {
 
                     // if password user enters matches the one in the database
                     if ($_POST['password'] === $password) {
-
-                        $_SESSION['email'] = $email;
-                        $_SESSION['name'] = $name;
-
                         // upon successful login, redirect user to landing apge
-                        header("location: dashboard.php");
+                        header("location: dashboard.php?name=" . $name);
                     } else {
                         // Incorrect password
                         header("location: ../html/sign-in-error.html");
