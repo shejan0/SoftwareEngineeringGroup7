@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once "inc/user-connection.php";
 ?>
 <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none">
     <a class="navbar-brand me-lg-5" href="#">
