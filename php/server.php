@@ -5,6 +5,7 @@ session_start();
 
 $name = mysqli_real_escape_string($conn, $_POST['name']);
 $password = mysqli_real_escape_string($conn, $_POST['password']);
+$hashed_password = password_hash($password, PASSWORD_DEFAULT);
 $email = mysqli_real_escape_string($conn, $_POST['email']);
 $username = mysqli_real_escape_string($conn, $_POST['username']);
 
@@ -60,7 +61,7 @@ if (isset($_POST['sign-in'])) {
                     $stmt->fetch();
 
                     // if password user enters matches the one in the database
-                    if ($_POST['password'] === $password) {
+                    if (password_verify($password,$hashed_password)) {
                         // upon successful login, redirect user to landing apge
                         header("location: ../customer-view//html/index.html");
                     } else {
@@ -100,7 +101,7 @@ if (isset($_POST['admin-sign-in'])) {
                     $stmt->fetch();
 
                     // if password user enters matches the one in the database
-                    if ($_POST['password'] === $password) {
+                    if (password_verify($password,$hashed_password)) {
                         // upon successful login, redirect user to landing apge
                         header("location: dashboard.php?name=" . $name);
                     } else {
