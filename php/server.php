@@ -9,29 +9,41 @@ $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 $email = mysqli_real_escape_string($conn, $_POST['email']);
 $username = mysqli_real_escape_string($conn, $_POST['username']);
 
-$_SESSION['name'] = $row;
 // sign up 
 if (isset($_POST['sign-up'])) {
     if (!empty($email) and !empty($username)) {
         if (!empty($password)) {
-            $check_email = "SELECT * FROM sign_up WHERE email ='$email'";
-            $validate_email = mysqli_query($conn, $check_email);
+            $check_email = "SELECT * FROM sign_up WHERE email=?";
+            $check_username = "SELECT * FROM sign_up WHERE username=?";
 
-            $check_username = "SELECT * FROM sign_up WHERE username ='$username'";
-            $validate_username = mysqli_query($conn, $check_username);
+
+            $stmt2 = $conn->prepare($check_email);
+            $stmt2->bind_param('s', $email);
+            $stmt2->execute();
+            $stmt2->store_result();
+
+            $stmt_username = $conn->prepare($check_username);
+            $stmt_username->bind_param('s', $username);
+            $stmt_username->execute();
+            $stmt_username->store_result();
 
             // if email is taken
-            if (mysqli_num_rows($validate_email) > 0 or mysqli_num_rows($validate_username)) {
+            if ($stmt2->num_rows() > 0 or $stmt_username->num_rows() > 0) {
                 header("location: ../html/sign-up-error.html");
             }
             // if  email isn't taken, insert into database
             else {
-                $sql = "INSERT INTO sign_up (name,email,password,username) values ('$name','$email','$password','$username')";
-                if ($conn->query($sql))
+                $sql = "INSERT INTO sign_up (name,email,password,username) values (?,?,?,?)";
+
+                if ($stmt = $conn->prepare($sql)) {
+                    $stmt->bind_param('ssss', $name, $email, $password, $username);
+                    $stmt->execute();
+                    $stmt->store_result();
                     header("location: ../html/sign-in.html");
-                else
+                } else
                     header("location: ../html/sign-up-error.html");
             }
+            $stmt->close();
             $conn->close();
         } else {
             header("location: ../html/404-error.html");
@@ -61,7 +73,7 @@ if (isset($_POST['sign-in'])) {
                     $stmt->fetch();
 
                     // if password user enters matches the one in the database
-                    if (password_verify($password,$hashed_password)) {
+                    if (password_verify($password, $hashed_password)) {
                         // upon successful login, redirect user to landing apge
                         header("location: ../customer-view//html/index.html");
                     } else {
@@ -101,7 +113,7 @@ if (isset($_POST['admin-sign-in'])) {
                     $stmt->fetch();
 
                     // if password user enters matches the one in the database
-                    if (password_verify($password,$hashed_password)) {
+                    if (password_verify($password, $hashed_password)) {
                         // upon successful login, redirect user to landing apge
                         header("location: dashboard.php?name=" . $name);
                     } else {
