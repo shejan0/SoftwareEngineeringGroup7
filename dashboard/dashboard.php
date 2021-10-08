@@ -1,9 +1,9 @@
 <?php
-include_once "inc/header.php";
-include_once "inc/dashboard/dashboard-header-nav.php";
+include_once "inc/head.php";
+include_once "inc/side-bar.php";
 ?>
   <main class="content">
-  <?php include_once "inc/dashboard/dashboard-main-nav.php";?>
+  <?php include_once "inc/header.php";?>
     <div class="py-4">
       <div class="dropdown">
         <button class="btn btn-gray-800 d-inline-flex align-items-center me-2 dropdown-toggle" data-bs-toggle="dropdown"
@@ -756,7 +756,7 @@ include_once "inc/dashboard/dashboard-header-nav.php";
         </div>
       </div>
     </div>
-  <?php include_once "inc/dashboard/dashboard-footer.php"?>
+  <?php include_once "inc/footer.php"?>
   <!-- Core -->
   <script src="../vendor/@popperjs/core/dist/umd/popper.min.js"></script>
   <script src="../vendor/bootstrap/dist/js/bootstrap.min.js"></script>

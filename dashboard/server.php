@@ -2,6 +2,7 @@
 include_once "inc/user-connection.php";
 
 session_start();
+
 $name = mysqli_real_escape_string($conn, $_POST['name']);
 $password = mysqli_real_escape_string($conn, $_POST['password']);
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -66,7 +67,6 @@ if (isset($_POST['sign-in'])) {
 
                 // if password user enters matches the one in the database
                 if (password_verify($password, $hashed_password)) {
-                    $_SESSION['email'] = $email;
                     // upon successful login, redirect user to landing apge
                     header("location: ../customer-view//html/index.html");
                     die();
@@ -106,7 +106,7 @@ if (isset($_POST['admin-sign-in'])) {
                 if (password_verify($password, $hashed_password)) {
                     $_SESSION['name'] = $name;
                     // upon successful login, redirect user to landing apge
-                    header("location: ../dashboard/dashboard.php");
+                    header("location: dashboard.php");
                     die();
                 } else {
                     // Incorrect password
@@ -121,4 +121,27 @@ if (isset($_POST['admin-sign-in'])) {
             $stmt->close();
         }
     }
+}
+if (isset($_POST['sign-out'])) {
+
+    // Unset all of the session variables.
+    $_SESSION = array();
+
+    // If it's desired to kill the session, also delete the session cookie.
+    // Note: This will destroy the session, and not just the session data!
+    if (ini_get("session.use_cookies")) {
+        $params = session_get_cookie_params();
+        setcookie(
+            session_name(),
+            '',
+            time() - 42000,
+            $params["path"],
+            $params["domain"],
+            $params["secure"],
+            $params["httponly"]
+        );
+    }
+
+    // Finally, destroy the session.
+    session_destroy();
 }

@@ -1,9 +1,10 @@
 <?php
-include_once "inc/header.php";
-include_once "inc/dashboard/dashboard-header-nav.php";
+include_once "inc/user-connection.php";
+include_once "inc/head.php";
+include_once "inc/side-bar.php";
 ?>
 <main class="content">
-    <?php include_once "inc/dashboard/dashboard-main-nav.php"; ?>
+    <?php include_once "inc/header.php"; ?>
     <div class="py-4">
         <div class="dropdown">
             <button class="btn btn-gray-800 d-inline-flex align-items-center me-2 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -60,8 +61,8 @@ include_once "inc/dashboard/dashboard-header-nav.php";
                     <li class="breadcrumb-item active" aria-current="page">Transactions</li>
                 </ol>
             </nav>
-            <h2 class="h4">Hotel</h2>
-            <p class="mb-0">List of hotels and its description.</p>
+            <h2 class="h4">Admin</h2>
+            <p class="mb-0">List of employees and admin information.</p>
         </div>
         <div class="btn-toolbar mb-2 mb-md-0">
             <a href="#" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center">
@@ -114,38 +115,26 @@ include_once "inc/dashboard/dashboard-header-nav.php";
         <table class="table table-hover">
             <thread>
                 <tr>
-                    <th class="border-gray-200">Hotel ID</th>
-                    <th class="border-gray-200">Hotel Name</th>
-                    <th class="border-gray-200">Number of Rooms</th>
-                    <th class="border-gray-200">Standard</th>
-                    <th class="border-gray-200">Queen</th>
-                    <th class="border-gray-200">King</th>
-                    <th class="border-gray-200">Weekend Surge</th>
+                    <th class="border-gray-200">ID</th>
+                    <th class="border-gray-200">Name</th>
+                    <th class="border-gray-200">Email</th>
+                    <th class="border-gray-200">Password</th>
                 </tr>
                 <thread>
                     <?php
-                    $conn = mysqli_connect("swe-project-db.ckec3iue5fvo.us-east-2.rds.amazonaws.com", "admin", "softwareengineering", "hotel");
-        
-                    if (mysqli_connect_errno()) {
-                        echo "Failed to connect to MySQL: " . mysqli_connect_error();
-                        exit();
-                    }
-                    $query = mysqli_query($conn, "SELECT * FROM hotel;");
+                    $query = mysqli_query($conn, "SELECT * FROM admin;");
                     while ($row = mysqli_fetch_array($query)) {
                     ?>
                         <tr>
-                            <td><span class="fw-bold"><?php echo $row['hotelID']; ?></span></td>
-                            <td><span class="fw-normal"><?php echo $row['hotelName']; ?></span></td>
-                            <td><span class="fw-normal"><?php echo $row['number_of_rooms']; ?></span></td>
-                            <td><span class="fw-normal"><?php echo $row['Standard']; ?></span></td>
-                            <td><span class="fw-normal"><?php echo $row['Queen']; ?></span></td>
-                            <td><span class="fw-normal"><?php echo $row['King']; ?></span></td>
-                            <td><span class="fw-normal"><?php echo $row['weekendSurge']; ?></span></td>
+                            <td><span class="fw-bold"><?php echo $row['ID']; ?></span></td>
+                            <td><span class="fw-normal"><?php echo $row['name']; ?></span></td>
+                            <td><span class="fw-normal"><?php echo $row['email']; ?></span></td>
+                            <td><span class="fw-normal"><?php echo $row['password']; ?></span></td>
                         </tr>
                     <?php  } ?>
         </table>
     </div>
-    <?php include_once "inc/dashboard/dashboard-footer.php" ?>
+    <?php include_once "inc/footer.php" ?>
     <!-- Core -->
     <script src="../vendor/@popperjs/core/dist/umd/popper.min.js"></script>
     <script src="../vendor/bootstrap/dist/js/bootstrap.min.js"></script>
