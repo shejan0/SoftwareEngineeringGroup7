@@ -1,6 +1,5 @@
 <?php
 session_start();
-include_once "inc/user-connection.php";
 ?>
 <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none">
     <a class="navbar-brand me-lg-5" href="#">
@@ -18,10 +17,15 @@ include_once "inc/user-connection.php";
         <div class="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
             <div class="d-flex align-items-center">
                 <div class="avatar-lg me-4">
-                    <img src="../assets/img/team/avatar.jpeg" class="card-img-top rounded-circle border-white" alt="Profile Picture">
+                    <img src="../assets/img/team/discord.png" class="card-img-top rounded-circle border-white" alt="Profile Picture">
                 </div>
                 <div class="d-block">
-                    <h1 class="lead fw-normal text-muted mb-4 px-lg-10">Hello, <?php echo $_SESSION['name']; ?></h1>
+                    <h1 class="lead fw-normal text-muted mb-4 px-lg-10">Hello,
+
+                        <?php
+                        echo $_SESSION['name'];
+                        ?>
+                    </h1>
 
                     <a href="../index.html?logout='1'" class="btn btn-secondary btn-sm d-inline-flex align-items-center">
                         <svg class="icon icon-xxs me-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

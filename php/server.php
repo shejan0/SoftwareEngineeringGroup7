@@ -17,10 +17,10 @@ if (isset($_POST['sign-up'])) {
             $check_username = "SELECT * FROM sign_up WHERE username=?";
 
 
-            $stmt2 = $conn->prepare($check_email);
-            $stmt2->bind_param('s', $email);
-            $stmt2->execute();
-            $stmt2->store_result();
+            $stmt_email = $conn->prepare($check_email);
+            $stmt_email->bind_param('s', $email);
+            $stmt_email->execute();
+            $stmt_email->store_result();
 
             $stmt_username = $conn->prepare($check_username);
             $stmt_username->bind_param('s', $username);
@@ -28,7 +28,7 @@ if (isset($_POST['sign-up'])) {
             $stmt_username->store_result();
 
             // if email is taken
-            if ($stmt2->num_rows() > 0 or $stmt_username->num_rows() > 0) {
+            if ($stmt_email->num_rows() > 0 or $stmt_username->num_rows() > 0) {
                 header("location: ../html/sign-up-error.html");
             }
             // if  email isn't taken, insert into database
@@ -40,8 +40,11 @@ if (isset($_POST['sign-up'])) {
                     $stmt->execute();
                     $stmt->store_result();
                     header("location: ../html/sign-in.html");
-                } else
+                    die();
+                } else{
                     header("location: ../html/sign-up-error.html");
+                    die();
+                }
             }
             $stmt->close();
             $conn->close();
@@ -76,13 +79,16 @@ if (isset($_POST['sign-in'])) {
                     if (password_verify($password, $hashed_password)) {
                         // upon successful login, redirect user to landing apge
                         header("location: ../customer-view//html/index.html");
+                        die();
                     } else {
                         // Incorrect password
                         header("location: ../html/sign-in-error.html");
+                        die();
                     }
                 } else {
                     // Incorrect username
                     header("location: ../html/sign-in-error.html");
+                    die();
                 }
                 $stmt->close();
             }
@@ -99,9 +105,10 @@ if (isset($_POST['sign-in'])) {
 if (isset($_POST['admin-sign-in'])) {
     if (!empty($email)) {
         if (!empty($password)) {
-            $sql = 'SELECT email, password FROM admin WHERE email = ?';
+           
+            $sql = 'SELECT email, password, name FROM admin WHERE email = ?';
 
-            // preparing the SQL statement will prevent SQL injection.
+            // preparing the SQL statement
             if ($stmt = $conn->prepare($sql)) {
                 $stmt->bind_param('s', $_POST['email']);
                 $stmt->execute();
@@ -109,20 +116,24 @@ if (isset($_POST['admin-sign-in'])) {
 
                 // If email exists in sign_up table
                 if ($stmt->num_rows > 0) {
-                    $stmt->bind_result($email, $password);
+                    $stmt->bind_result($email, $password, $name);
                     $stmt->fetch();
 
                     // if password user enters matches the one in the database
                     if (password_verify($password, $hashed_password)) {
+                        $_SESSION['name'] = $name;
                         // upon successful login, redirect user to landing apge
-                        header("location: dashboard.php?name=" . $name);
+                        header("location: dashboard.php");
+                        die();
                     } else {
                         // Incorrect password
                         header("location: ../html/sign-in-error.html");
+                        die();
                     }
                 } else {
                     // Incorrect username
                     header("location: ../html/sign-in-error.html");
+                    die();
                 }
                 $stmt->close();
             }
