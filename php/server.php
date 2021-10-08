@@ -41,7 +41,7 @@ if (isset($_POST['sign-up'])) {
                     $stmt->store_result();
                     header("location: ../html/sign-in.html");
                     die();
-                } else{
+                } else {
                     header("location: ../html/sign-up-error.html");
                     die();
                 }
@@ -60,8 +60,7 @@ if (isset($_POST['sign-up'])) {
 
 // sign in
 if (isset($_POST['sign-in'])) {
-    if (!empty($email)) {
-        if (!empty($password)) {
+    if (!empty($email) and !empty($password)) {
             $sql = 'SELECT email, password FROM sign_up WHERE email = ?';
 
             // preparing the SQL statement will prevent SQL injection.
@@ -92,57 +91,43 @@ if (isset($_POST['sign-in'])) {
                 }
                 $stmt->close();
             }
-        } else {
-            header("location: ../html/404-error.html");
-            die();
         }
-    } else {
-        header("location: ../html/404-error.html");
-        die();
     }
-}
 
 if (isset($_POST['admin-sign-in'])) {
-    if (!empty($email)) {
-        if (!empty($password)) {
-           
-            $sql = 'SELECT email, password, name FROM admin WHERE email = ?';
+    if (!empty($email) and !empty($password)) {
 
-            // preparing the SQL statement
-            if ($stmt = $conn->prepare($sql)) {
-                $stmt->bind_param('s', $_POST['email']);
-                $stmt->execute();
-                $stmt->store_result(); // Store the result so we can check if the account exists in the database.
 
-                // If email exists in sign_up table
-                if ($stmt->num_rows > 0) {
-                    $stmt->bind_result($email, $password, $name);
-                    $stmt->fetch();
+        $sql = 'SELECT email, password, name FROM admin WHERE email = ?';
 
-                    // if password user enters matches the one in the database
-                    if (password_verify($password, $hashed_password)) {
-                        $_SESSION['name'] = $name;
-                        // upon successful login, redirect user to landing apge
-                        header("location: dashboard.php");
-                        die();
-                    } else {
-                        // Incorrect password
-                        header("location: ../html/sign-in-error.html");
-                        die();
-                    }
+        // preparing the SQL statement
+        if ($stmt = $conn->prepare($sql)) {
+            $stmt->bind_param('s', $_POST['email']);
+            $stmt->execute();
+            $stmt->store_result(); // Store the result so we can check if the account exists in the database.
+
+            // If email exists in sign_up table
+            if ($stmt->num_rows > 0) {
+                $stmt->bind_result($email, $password, $name);
+                $stmt->fetch();
+
+                // if password user enters matches the one in the database
+                if (password_verify($password, $hashed_password)) {
+                    $_SESSION['name'] = $name;
+                    // upon successful login, redirect user to landing apge
+                    header("location: dashboard.php");
+                    die();
                 } else {
-                    // Incorrect username
+                    // Incorrect password
                     header("location: ../html/sign-in-error.html");
                     die();
                 }
-                $stmt->close();
+            } else {
+                // Incorrect email
+                header("location: ../html/sign-in-error.html");
+                die();
             }
-        } else {
-            header("location: ../html/404-error.html");
-            die();
+            $stmt->close();
         }
-    } else {
-        header("location: ../html/404-error.html");
-        die();
     }
 }
