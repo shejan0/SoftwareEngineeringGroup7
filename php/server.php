@@ -41,58 +41,49 @@ if (isset($_POST['sign-up'])) {
                     $stmt->store_result();
                     header("location: ../html/sign-in.html");
                     die();
-                } else {
-                    header("location: ../html/sign-up-error.html");
-                    die();
                 }
             }
             $stmt->close();
             $conn->close();
-        } else {
-            header("location: ../html/404-error.html");
-            die();
         }
-    } else {
-        header("location: ../html/404-error.html");
-        die();
     }
 }
 
 // sign in
 if (isset($_POST['sign-in'])) {
     if (!empty($email) and !empty($password)) {
-            $sql = 'SELECT email, password FROM sign_up WHERE email = ?';
+        $sql = 'SELECT email, password FROM sign_up WHERE email = ?';
 
-            // preparing the SQL statement will prevent SQL injection.
-            if ($stmt = $conn->prepare($sql)) {
-                $stmt->bind_param('s', $_POST['email']);
-                $stmt->execute();
-                $stmt->store_result(); // Store the result so we can check if the account exists in the database.
+        // preparing the SQL statement will prevent SQL injection.
+        if ($stmt = $conn->prepare($sql)) {
+            $stmt->bind_param('s', $_POST['email']);
+            $stmt->execute();
+            $stmt->store_result(); // Store the result so we can check if the account exists in the database.
 
-                // If email exists in sign_up table
-                if ($stmt->num_rows > 0) {
-                    $stmt->bind_result($email, $password);
-                    $stmt->fetch();
+            // If email exists in sign_up table
+            if ($stmt->num_rows > 0) {
+                $stmt->bind_result($email, $password);
+                $stmt->fetch();
 
-                    // if password user enters matches the one in the database
-                    if (password_verify($password, $hashed_password)) {
-                        // upon successful login, redirect user to landing apge
-                        header("location: ../customer-view//html/index.html");
-                        die();
-                    } else {
-                        // Incorrect password
-                        header("location: ../html/sign-in-error.html");
-                        die();
-                    }
+                // if password user enters matches the one in the database
+                if (password_verify($password, $hashed_password)) {
+                    // upon successful login, redirect user to landing apge
+                    header("location: ../customer-view//html/index.html");
+                    die();
                 } else {
-                    // Incorrect username
+                    // Incorrect password
                     header("location: ../html/sign-in-error.html");
                     die();
                 }
-                $stmt->close();
+            } else {
+                // Incorrect username
+                header("location: ../html/sign-in-error.html");
+                die();
             }
+            $stmt->close();
         }
     }
+}
 
 if (isset($_POST['admin-sign-in'])) {
     if (!empty($email) and !empty($password)) {
@@ -130,4 +121,27 @@ if (isset($_POST['admin-sign-in'])) {
             $stmt->close();
         }
     }
+}
+if (isset($_POST['sign-out'])) {
+
+    // Unset all of the session variables.
+    $_SESSION = array();
+
+    // If it's desired to kill the session, also delete the session cookie.
+    // Note: This will destroy the session, and not just the session data!
+    if (ini_get("session.use_cookies")) {
+        $params = session_get_cookie_params();
+        setcookie(
+            session_name(),
+            '',
+            time() - 42000,
+            $params["path"],
+            $params["domain"],
+            $params["secure"],
+            $params["httponly"]
+        );
+    }
+
+    // Finally, destroy the session.
+    session_destroy();
 }
