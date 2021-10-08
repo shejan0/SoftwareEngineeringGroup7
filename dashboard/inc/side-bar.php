@@ -84,7 +84,7 @@ session_start();
                 </a>
             </li>
             <li class="nav-item ">
-                <a href="#" class="nav-link">
+                <a href="settings.php" class="nav-link">
                     <span class="sidebar-icon">
                         <span class="fas fa-cog">
                         </span>
