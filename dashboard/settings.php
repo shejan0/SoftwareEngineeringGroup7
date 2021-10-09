@@ -296,7 +296,7 @@ include_once "inc/side-bar.php";
                 <h4 class="h3">
                   <?php  echo $_SESSION['name']; ?>
                 </h4>
-                <h5 class="fw-normal"><?php if(isset($_POST['email']))echo $_SESSION['email']; ?></h5>
+                <h5 class="fw-normal"><?php echo $_SESSION['email']; ?></h5>
                 <p class="text-gray mb-4">Texas, USA</p>
                 <a class="btn btn-sm btn-gray-800 d-inline-flex align-items-center me-2" href="#">
                   <svg class="icon icon-xs me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
