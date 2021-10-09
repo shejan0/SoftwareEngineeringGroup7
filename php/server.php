@@ -41,13 +41,14 @@ if (isset($_POST['sign-up'])) {
                     header("location: ../html/sign-in.html");
                     die();
                 }
+                $_SESSION['email'] = $email;
+                $_SESSION['name'] = $name;
             }
             $stmt->close();
             $conn->close();
         }
     }
 }
-
 // sign in
 if (isset($_POST['sign-in'])) {
     if (!empty($email) and !empty($password)) {
@@ -67,6 +68,7 @@ if (isset($_POST['sign-in'])) {
                 // if password user enters matches the one in the database
                 if (password_verify($password, $hashed_password)) {
                     $_SESSION['email'] = $email;
+                    $_SESSION['name'] = $name;
                     // upon successful login, redirect user to landing apge
                     header("location: ../customer-view//html/index.html");
                     die();
@@ -105,6 +107,7 @@ if (isset($_POST['admin-sign-in'])) {
                 // if password user enters matches the one in the database
                 if (password_verify($password, $hashed_password)) {
                     $_SESSION['name'] = $name;
+                    $_SESSION['email'] = $email;
                     // upon successful login, redirect user to landing apge
                     header("location: ../dashboard/dashboard.php");
                     die();
