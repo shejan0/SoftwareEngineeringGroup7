@@ -3,11 +3,11 @@ include_once "inc/user-connection.php";
 
 session_start();
 
-$name = mysqli_real_escape_string($conn, $_POST['name']);
-$password = mysqli_real_escape_string($conn, $_POST['password']);
+$name = $_POST['name'];
+$password = $_POST['password'];
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-$email = mysqli_real_escape_string($conn, $_POST['email']);
-$username = mysqli_real_escape_string($conn, $_POST['username']);
+$email = $_POST['email'];
+$username = $_POST['username'];
 
 // sign up 
 if (isset($_POST['sign-up'])) {
@@ -67,6 +67,8 @@ if (isset($_POST['sign-in'])) {
 
                 // if password user enters matches the one in the database
                 if (password_verify($password, $hashed_password)) {
+                    $_SESSION['name'] = $name;
+                    $_SESSION['email'] = $email;
                     // upon successful login, redirect user to landing apge
                     header("location: ../customer-view//html/index.html");
                     die();
@@ -87,13 +89,11 @@ if (isset($_POST['sign-in'])) {
 
 if (isset($_POST['admin-sign-in'])) {
     if (!empty($email) and !empty($password)) {
-
-
         $sql = 'SELECT email, password, name FROM admin WHERE email = ?';
 
         // preparing the SQL statement
         if ($stmt = $conn->prepare($sql)) {
-            $stmt->bind_param('s', $_POST['email']);
+            $stmt->bind_param('sss', $_POST['email'],$_POST['password'],$_POST['name']);
             $stmt->execute();
             $stmt->store_result(); // Store the result so we can check if the account exists in the database.
 
@@ -105,6 +105,7 @@ if (isset($_POST['admin-sign-in'])) {
                 // if password user enters matches the one in the database
                 if (password_verify($password, $hashed_password)) {
                     $_SESSION['name'] = $name;
+                    $_SESSION['email'] = $email;
                     // upon successful login, redirect user to landing apge
                     header("location: dashboard.php");
                     die();

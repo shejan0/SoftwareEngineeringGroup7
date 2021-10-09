@@ -1,11 +1,11 @@
 <?php
-// $db_host = $_ENV['DB_HOST'];
-// $db_username = $_ENV['DB_USERNAME'];
-// $db_password = $_ENV['DB_PASSWORD'];
-// $db_name = $_ENV['DB_DATABASE'];
+$config = parse_ini_file('/var/www/database/hotel_db.ini');
+$host = getenv('DB_HOST');
+$username = getenv('DB_USERNAME');
+$password = getenv('DB_PASSWORD');
+$database_name = getenv('DB_DATABASE');
 
-$conn = mysqli_connect("swe-project-db.ckec3iue5fvo.us-east-2.rds.amazonaws.com", "admin", "softwareengineering", "user");
-
+$conn = mysqli_connect($config['DB_HOST'],$config['DB_USERNAME'],$config['DB_PASSWORD'],$config['DB_DATABASE']);
 if (mysqli_connect_errno()) {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
     exit();

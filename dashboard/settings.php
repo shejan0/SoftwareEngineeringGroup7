@@ -10,7 +10,7 @@ include_once "inc/side-bar.php";
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
       <div>
         <div class="dropdown">
-          <button class="btn btn-secondary d-inline-flex align-items-center me-2 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button class="btn btn-primary d-inline-flex align-items-center me-2 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
             </svg>
@@ -294,9 +294,9 @@ include_once "inc/side-bar.php";
               <div class="card-body pb-5">
                 <img src="../assets/img/team/discord.png" class="avatar-xl rounded-circle mx-auto mt-n7 mb-4" alt="Neil Portrait">
                 <h4 class="h3">
-                  <?php echo $_SESSION['name']; ?>
+                  <?php  echo $_SESSION['name']; ?>
                 </h4>
-                <h5 class="fw-normal"><?php echo $_SESSION['email']; ?></h5>
+                <h5 class="fw-normal"><?php if(isset($_POST['email']))echo $_SESSION['email']; ?></h5>
                 <p class="text-gray mb-4">Texas, USA</p>
                 <a class="btn btn-sm btn-gray-800 d-inline-flex align-items-center me-2" href="#">
                   <svg class="icon icon-xs me-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -304,7 +304,8 @@ include_once "inc/side-bar.php";
                   </svg>
                   Connect
                 </a>
-                <a class="btn btn-sm btn-secondary" href="#">Send Message</a>
+
+                <a class="btn btn-sm btn-primary" href="#">Send Message</a>
               </div>
             </div>
           </div>
@@ -314,7 +315,7 @@ include_once "inc/side-bar.php";
               <div class="d-flex align-items-center">
                 <div class="me-3">
                   <!-- Avatar -->
-                  <img class="avatar-xl me-4 rounded" src="../assets/img/team/avatar.jpeg" alt="change avatar">
+                  <img class="avatar-xl me-4 rounded" src="../assets/img/team/discord.png" alt="change avatar">
                 </div>
                 <div class="file-field">
                   <div class="d-flex justify-content-xl-center ms-xl-3">
