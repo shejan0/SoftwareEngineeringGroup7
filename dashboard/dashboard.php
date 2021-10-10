@@ -1,4 +1,5 @@
 <?php
+ob_start();
 include_once "inc/head.php";
 include_once "inc/side-bar.php";
 
