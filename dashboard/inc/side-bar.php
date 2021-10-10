@@ -73,7 +73,7 @@ session_start();
 
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link d-flex justify-content-between">
+                <a href="reservations.php" class="nav-link d-flex justify-content-between">
                     <span>
                         <span class="sidebar-icon">
                             <span class="fas fa-calendar-week">

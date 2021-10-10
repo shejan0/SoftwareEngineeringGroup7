@@ -323,7 +323,7 @@ include_once "inc/side-bar.php";
                       <svg class="icon text-gray-500 me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd"></path>
                       </svg>
-                      <input type="file">
+                      <input type="file" name='profile-photo'>
                       <div class="d-md-block text-left">
                         <div class="fw-normal text-dark mb-1">Choose Image</div>
                         <div class="text-gray small">JPG, GIF or PNG. Max size of 800K</div>
@@ -348,7 +348,7 @@ include_once "inc/side-bar.php";
                       <svg class="icon text-gray-500 me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd"></path>
                       </svg>
-                      <input type="file">
+                      <input type="file" name='cover-photo'>
                       <div class="d-md-block text-left">
                         <div class="fw-normal text-dark mb-1">Choose Image</div>
                         <div class="text-gray small">JPG, GIF or PNG. Max size of 800K</div>

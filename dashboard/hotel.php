@@ -4,7 +4,7 @@ include_once "inc/head.php";
 include_once "inc/side-bar.php";
 ?>
 <main class="content">
-<?php include_once "inc/header.php"; ?>
+    <?php include_once "inc/header.php"; ?>
     <div class="py-4">
         <div class="dropdown">
             <button class="btn btn-gray-800 d-inline-flex align-items-center me-2 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -126,7 +126,7 @@ include_once "inc/side-bar.php";
                 <thread>
                     <?php
                     $conn = mysqli_connect("swe-project-db.ckec3iue5fvo.us-east-2.rds.amazonaws.com", "admin", "softwareengineering", "hotel");
-        
+
                     if (mysqli_connect_errno()) {
                         echo "Failed to connect to MySQL: " . mysqli_connect_error();
                         exit();
@@ -148,46 +148,50 @@ include_once "inc/side-bar.php";
     </div>
     <?php include_once "inc/footer.php" ?>
     <!-- Core -->
-    <script src="../vendor/@popperjs/core/dist/umd/popper.min.js"></script>
-    <script src="../vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src=" ../vendor/@popperjs/core/dist/umd/popper.min.js">
+            </script>
+            <script src="../vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 
-    <!-- Vendor JS -->
-    <script src="../vendor/onscreen/dist/on-screen.umd.min.js"></script>
+            <!-- table -->
+            <script src="cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 
-    <!-- Slider -->
-    <script src="../vendor/nouislider/dist/nouislider.min.js"></script>
+            <!-- Vendor JS -->
+            <script src="../vendor/onscreen/dist/on-screen.umd.min.js"></script>
 
-    <!-- Smooth scroll -->
-    <script src="../vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+            <!-- Slider -->
+            <script src="../vendor/nouislider/dist/nouislider.min.js"></script>
 
-    <!-- Charts -->
-    <script src="../vendor/chartist/dist/chartist.min.js"></script>
-    <script src="../vendor/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+            <!-- Smooth scroll -->
+            <script src="../vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
 
-    <!-- Datepicker -->
-    <script src="../vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
+            <!-- Charts -->
+            <script src="../vendor/chartist/dist/chartist.min.js"></script>
+            <script src="../vendor/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
 
-    <!-- Sweet Alerts 2 -->
-    <script src="../vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
+            <!-- Datepicker -->
+            <script src="../vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
 
-    <!-- Moment JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+            <!-- Sweet Alerts 2 -->
+            <script src="../vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
 
-    <!-- Vanilla JS Datepicker -->
-    <script src="../vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
+            <!-- Moment JS -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
 
-    <!-- Notyf -->
-    <script src="../vendor/notyf/notyf.min.js"></script>
+            <!-- Vanilla JS Datepicker -->
+            <script src="../vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
 
-    <!-- Simplebar -->
-    <script src="../vendor/simplebar/dist/simplebar.min.js"></script>
+            <!-- Notyf -->
+            <script src="../vendor/notyf/notyf.min.js"></script>
 
-    <!-- Github buttons -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
+            <!-- Simplebar -->
+            <script src="../vendor/simplebar/dist/simplebar.min.js"></script>
 
-    <!-- Volt JS -->
-    <script src="../assets/js/volt.js"></script>
+            <!-- Github buttons -->
+            <script async defer src="https://buttons.github.io/buttons.js"></script>
 
-    </body>
+            <!-- Volt JS -->
+            <script src="../assets/js/volt.js"></script>
 
-    </html>
+            </body>
+
+            </html>
