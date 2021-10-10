@@ -10,6 +10,7 @@ if(!isset($_SESSION['email']))
 ?>
   <main class="content">
   <?php include_once "inc/header.php";?>
+  
     <div class="py-4">
       <div class="dropdown">
         <button class="btn btn-gray-800 d-inline-flex align-items-center me-2 dropdown-toggle" data-bs-toggle="dropdown"

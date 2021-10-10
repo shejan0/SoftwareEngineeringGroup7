@@ -48,6 +48,37 @@ if (isset($_POST['sign-up'])) {
         }
     }
 }
+if (isset($_POST['admin-sign-up'])) {
+    if (!empty($email)) {
+        if (!empty($password)) {
+            $check_email = "SELECT * FROM admin WHERE email=?";
+    
+            $stmt_email = $conn->prepare($check_email);
+            $stmt_email->bind_param('s', $email);
+            $stmt_email->execute();
+            $stmt_email->store_result();
+
+            // if email is taken
+            if ($stmt_email->num_rows() > 0 ) {
+                header("location: ../html/sign-up-error.html");
+            }
+            // if  email isn't taken, insert into database
+            else {
+                $sql = "INSERT INTO admin (name,email,password) values (?,?,?)";
+
+                if ($stmt = $conn->prepare($sql)) {
+                    $stmt->bind_param('sss', $name, $email, $password);
+                    $stmt->execute();
+                    $stmt->store_result();
+                    header("location: employees.php");
+                    die();
+                }
+            }
+            $stmt->close();
+            $conn->close();
+        }
+    }
+}
 
 // sign in
 if (isset($_POST['sign-in'])) {
