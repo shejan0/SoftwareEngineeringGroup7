@@ -113,12 +113,26 @@ session_start();
                 </a>
             </li>
             <li class="nav-item">
-                <a href="../php/logout.php" class="btn btn-info d-flex align-items-center justify-content-center btn-upgrade-pro animate-up-2">
+                <button class="btn btn-info d-flex align-items-center justify-content-center btn-upgrade-pro animate-up-2" id='sign-out'>
                     <svg class="icon icon-xxs me-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
                     </svg>
                     sign out
-                </a>
+                </button>
+                <script>
+                    document.getElementById('sign-out').addEventListener('click', function() {
+                        Swal.fire({
+                            title: 'Sign out?',
+                            icon: 'info',
+                            html: 'Are you sure you want to sign out?',
+                            showCancelButton: true,
+                            focusConfirm: false,
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: '<a class="text-white" href="../php/logout.php">Sign out</a>',
+                        
+                        })
+                    });
+                </script>
             </li>
         </ul>
     </div>

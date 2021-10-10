@@ -32,7 +32,6 @@ include_once "inc/side-bar.php";
                 </svg>
                 Add employee
             </button>
-
             <!-- Modal Content -->
             <div class="modal fade" id="modalSignUp" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -92,7 +91,7 @@ include_once "inc/side-bar.php";
                                         </label>
                                     </div>
                                 </div>
-                                 <!-- submit -->
+                                <!-- submit -->
                                 <div class="d-grid">
                                     <button type="submit" class="btn btn-primary" name='admin-sign-up'>Submit</button>
                                 </div>

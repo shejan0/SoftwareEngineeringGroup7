@@ -80,6 +80,7 @@ if (isset($_POST['admin-sign-up'])) {
                     alert('Employee Successfully added!');
                     window.location.href='employees.php';
                     </script>";
+                    $script = "<script> $(document).ready(function(){ $('#errorAlert').modal('show'); }); </script>";
 
                     die();
                 }
