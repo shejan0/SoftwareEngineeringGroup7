@@ -3,10 +3,10 @@ ob_start();
 include_once "inc/head.php";
 include_once "inc/side-bar.php";
 
-// if(!isset($_SESSION['email']))
-// {
-//     header("Location: ../html/sign-in.html");
-// }
+if(!isset($_SESSION['email']))
+{
+    header("Location: ../html/sign-in.html");
+}
 ?>
   <main class="content">
   <?php include_once "inc/header.php";?>
