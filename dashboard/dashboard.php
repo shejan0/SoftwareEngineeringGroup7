@@ -5,7 +5,7 @@ include_once "inc/side-bar.php";
 
 if(!isset($_SESSION['email']))
 {
-    header("Location: ../html/sign-in.html");
+    header("Location: ../html/admin-sign-in.html");
 }
 ?>
   <main class="content">
