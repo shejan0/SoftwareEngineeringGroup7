@@ -244,47 +244,6 @@ include_once "inc/side-bar.php";
             </div>
           </form>
         </div>
-        <div class="card card-body border-0 shadow mb-4 mb-xl-0">
-          <h2 class="h5 mb-4">Alerts & Notifications</h2>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item d-flex align-items-center justify-content-between px-0 border-bottom">
-              <div>
-                <h3 class="h6 mb-1">Company News</h3>
-                <p class="small pe-4">Get Rocket news, announcements, and product updates</p>
-              </div>
-              <div>
-                <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" id="user-notification-1">
-                  <label class="form-check-label" for="user-notification-1"></label>
-                </div>
-              </div>
-            </li>
-            <li class="list-group-item d-flex align-items-center justify-content-between px-0 border-bottom">
-              <div>
-                <h3 class="h6 mb-1">Account Activity</h3>
-                <p class="small pe-4">Get important notifications about you or activity you've missed</p>
-              </div>
-              <div>
-                <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" id="user-notification-2" checked>
-                  <label class="form-check-label" for="user-notification-2"></label>
-                </div>
-              </div>
-            </li>
-            <li class="list-group-item d-flex align-items-center justify-content-between px-0">
-              <div>
-                <h3 class="h6 mb-1">Meetups Near You</h3>
-                <p class="small pe-4">Get an email when a Dribbble Meetup is posted close to my location</p>
-              </div>
-              <div>
-                <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" id="user-notification-3" checked>
-                  <label class="form-check-label" for="user-notification-3"></label>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
       </div>
       <div class="col-12 col-xl-4">
         <div class="row">
@@ -309,6 +268,7 @@ include_once "inc/side-bar.php";
               </div>
             </div>
           </div>
+          <form action="../php/upload.php" method=POST>
           <div class="col-12">
             <div class="card card-body border-0 shadow mb-4">
               <h2 class="h5 mb-4">Select profile photo</h2>
@@ -359,6 +319,7 @@ include_once "inc/side-bar.php";
               </div>
             </div>
           </div>
+          </form>
         </div>
       </div>
     </div>
