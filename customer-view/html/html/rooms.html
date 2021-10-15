@@ -12,14 +12,11 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,400i,700">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
   <link rel="stylesheet" href="../vendor/magnific-popup/magnific-popup.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-    crossorigin="">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css">
   <link rel="stylesheet" href="../css/style.default.css" id="theme-stylesheet">
   <link rel="stylesheet" href="../css/custom.css">
-  <link rel="shortcut icon" href="../img/favicon.png">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="shortcut icon" href="../../../assets/img/brand/favicon.png">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 </head>
 
 <body style="padding-top: 72px;">
@@ -29,18 +26,7 @@
       <div class="container-fluid">
         <div class="d-flex align-items-center">
           <a class="navbar-brand py-1" href="#">
-            <img src="../img/logo.svg" alt="Directory logo"></a>
-
-          <!-- Search bar -->
-          <form class="form-inline d-none d-sm-flex" action="#" id="search">
-            <div class="input-label-absolute input-label-absolute-left input-expand ms-lg-2 ms-xl-3">
-              <label class="label-absolute" for="search_search">
-                <i class="fa fa-search"></i><span class="sr-only">What are you looking for?</span></label>
-
-              <input class="form-control form-control-sm border-0 shadow-0 bg-gray-200" id="search_search"
-                placeholder="Search" aria-label="Search" type="search">
-            </div>
-          </form>
+            <img src="../../../assets/img/brand/logo.svg" alt="Directory logo"></a>
         </div>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
           data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
@@ -49,21 +35,24 @@
         </button>
         <!-- Navbar Collapse -->
         <div class="collapse navbar-collapse" id="navbarCollapse">
-          <form class="form-inline mt-4 mb-2 d-sm-none" action="#" id="searchcollapsed">
-            <div class="input-label-absolute input-label-absolute-left w-100">
-              <label class="label-absolute" for="searchcollapsed_search"><i class="fa fa-search"></i><span
-                  class="sr-only">What are you looking for?</span></label>
-              <input class="form-control form-control-sm border-0 shadow-0 bg-gray-200" id="searchcollapsed_search"
-                placeholder="Search" aria-label="Search" type="search">
-            </div>
-          </form>
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="../index.html">Home</a>
-            </li>
-            <!-- /Megamenu end-->
-            <li class="nav-item"><a class="nav-link" href="#">Contact</a>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Things to do</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Support</a></li>
+            <li class="nav-item dropdown ms-lg-3"><a id="userDropdownMenuLink" href="#" data-bs-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <img class="avatar avatar-sm avatar-border-white me-2" src="../../../assets/img/team/discord.png"
+                alt="User profile"></a>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdownMenuLink">
+              <a class="dropdown-item" href="html/user-profile.html">User profile</a>
+              <a class="dropdown-item" href="#">Bookings </a>
+              <a class="dropdown-item" href="#">Settings </a>
+              <div class="dropdown-divider"></div><a class="dropdown-item" href="../../../html/sign-in.html"><i
+                  class="fas fa-sign-out-alt me-2 text-muted"></i> Sign out</a>
+            </div>
+          </li>
           </ul>
+       
         </div>
       </div>
     </nav>
@@ -95,12 +84,13 @@
               </select>
             </div>
             <div class="col-xl-4 col-md-6 mb-4">
-              <label class="form-label" for="form_type">Home type</label>
-              <select class="selectpicker form-control" name="type" id="form_type" multiple
-                data-style="btn-selectpicker" data-none-selected-text="">
-                <option value="type_0">Entire place </option>
-                <option value="type_1">Private room </option>
-                <option value="type_2">Shared room </option>
+              <label class="form-label" for="form_type">Room type</label>
+              <select class="selectpicker form-control" name="type" id="form_type"
+                data-style="btn-selectpicker" data-none-selected-text="" title = " ">
+                <option value="type_0">Any </option>
+                <option value="type_1">Standard suite </option>
+                <option value="type_2">Queen suite</option>
+                <option value="type_3">King suite</option>
               </select>
             </div>
             <div class="col-xl-4 col-md-6 mb-4">
@@ -111,7 +101,7 @@
                 <div class="max">To $<span id="slider-snap-value-to"></span></div>
               </div>
               <input type="hidden" name="pricefrom" id="slider-snap-input-from" value="40">
-              <input type="hidden" name="priceto" id="slider-snap-input-to" value="110">
+              <input type="hidden" name="priceto" id="slider-snap-input-to" value="300">
             </div>
             <div class="col-md-6 col-lg-12 col-xl-8 mb-4 d-xl-flex justify-content-center">
               <div>
@@ -160,7 +150,7 @@
           <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92">
             <div class="card h-100 border-0 shadow">
               <div class="card-img-top overflow-hidden gradient-overlay">
-                <img class="img-fluid" src="../img/photo/photo-1484154218962-a197022b5858.jpg"
+                <img class="img-fluid" src="../../../assets/img/hotels/hotel-room1.jpeg"
                   alt="Modern, Well-Appointed Room" />
                 <a class="tile-link" href="#"></a>
                 <div class="card-img-overlay-bottom z-index-20">
@@ -186,7 +176,7 @@
                         class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i>
                     </p>
                   </div>
-                  <p class="card-text text-muted"><span class="h4 text-primary">$80</span> per night</p>
+                  <p class="card-text text-muted"><span class="h4 text-primary">$180</span> per night</p>
                 </div>
               </div>
             </div>
@@ -195,7 +185,7 @@
           <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e322f3375db4d89128">
             <div class="card h-100 border-0 shadow">
               <div class="card-img-top overflow-hidden gradient-overlay">
-                <img class="img-fluid" src="../img/photo/photo-1426122402199-be02db90eb90.jpg"
+                <img class="img-fluid" src="../../../assets/img/hotels/hotel-room2.jpeg"
                   alt="Cute Quirky Garden apt, NYC adjacent" />
                 <a class="tile-link" href="#"></a>
                 <div class="card-img-overlay-bottom z-index-20">
@@ -214,7 +204,7 @@
                   <h6 class="card-title"><a class="text-decoration-none text-dark" href="#">Cute Quirky
                       Garden apt, NYC adjacent</a></h6>
                   <div class="d-flex card-subtitle mb-3">
-                    <p class="flex-grow-1 mb-0 text-muted text-sm">Entire apartment</p>
+                    <p class="flex-grow-1 mb-0 text-muted text-sm">King suitet</p>
                     <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i class="fa fa-star text-warning"></i><i
                         class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i
                         class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"> </i>
@@ -229,7 +219,7 @@
           <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e3a31e62979bf147c9">
             <div class="card h-100 border-0 shadow">
               <div class="card-img-top overflow-hidden gradient-overlay">
-                <img class="img-fluid" src="../img/photo/photo-1512917774080-9991f1c4c750.jpg"
+                <img class="img-fluid" src="../../../assets/img/hotels/hotel-room3.jpeg"
                   alt="Modern Apt - Vibrant Neighborhood!" />
                 <a class="tile-link" href="#"></a>
                 <div class="card-img-overlay-bottom z-index-20">
@@ -245,11 +235,10 @@
               <div class="card-body d-flex align-items-center">
                 <div class="w-100">
                   <h6 class="card-title"><a class="text-decoration-none text-dark" href="#">
-                      Modern Apt - Vibrant
-                      Neighborhood!</a>
+                      Modern Vibrant room</a>
                   </h6>
                   <div class="d-flex card-subtitle mb-3">
-                    <p class="flex-grow-1 mb-0 text-muted text-sm">Entire apartment</p>
+                    <p class="flex-grow-1 mb-0 text-muted text-sm">Queen suite</p>
                     <p class="flex-shrink-1 mb-0 card-stars text-xs text-end">
                       <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i
                         class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"> </i><i
@@ -265,7 +254,7 @@
           <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e3503eb77d487e8082">
             <div class="card h-100 border-0 shadow">
               <div class="card-img-top overflow-hidden gradient-overlay">
-                <img class="img-fluid" src="../img/photo/photo-1494526585095-c41746248156.jpg"
+                <img class="img-fluid" src="../../../assets/img/hotels/hotel-room4.jpeg"
                   alt="Sunny Private Studio-Apartment" />
                 <a class="tile-link" href="#"></a>
                 <div class="card-img-overlay-bottom z-index-20">
@@ -281,9 +270,9 @@
               <div class="card-body d-flex align-items-center">
                 <div class="w-100">
                   <h6 class="card-title"><a class="text-decoration-none text-dark" href="#">Sunny
-                      Private Studio-Apartment</a></h6>
+                      Private Studio room</a></h6>
                   <div class="d-flex card-subtitle mb-3">
-                    <p class="flex-grow-1 mb-0 text-muted text-sm">Shared room</p>
+                    <p class="flex-grow-1 mb-0 text-muted text-sm">Standard suite</p>
                     <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i class="fa fa-star text-warning"></i><i
                         class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i
                         class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"> </i>
@@ -298,7 +287,7 @@
           <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e39aa2eed0626e485d">
             <div class="card h-100 border-0 shadow">
               <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid"
-                  src="../img/photo/photo-1522771739844-6a9f6d5f14af.jpg" alt="Mid-Century Modern Garden Paradise" /><a
+                  src="../../../assets/img/hotels/hotel-room5.jpeg" alt="Mid-Century Modern Garden Paradise" /><a
                   class="tile-link" href="#"></a>
                 <div class="card-img-overlay-bottom z-index-20">
                   <div class="d-flex text-white text-sm align-items-center">
@@ -313,9 +302,9 @@
               <div class="card-body d-flex align-items-center">
                 <div class="w-100">
                   <h6 class="card-title"><a class="text-decoration-none text-dark" href="#">Mid-Century
-                      Modern Garden Paradise</a></h6>
+                      Modern Garden room</a></h6>
                   <div class="d-flex card-subtitle mb-3">
-                    <p class="flex-grow-1 mb-0 text-muted text-sm">Entire house</p>
+                    <p class="flex-grow-1 mb-0 text-muted text-sm">Standard suite</p>
                     <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i class="fa fa-star text-warning"></i><i
                         class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i
                         class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i>
@@ -330,7 +319,7 @@
           <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e39aa2edasd626e485d">
             <div class="card h-100 border-0 shadow">
               <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid"
-                  src="../img/photo/photo-1488805990569-3c9e1d76d51c.jpg" alt="Brooklyn Life, Easy to Manhattan" /><a
+                  src="../../../assets/img/hotels/hotel-room6.jpeg" alt="Brooklyn Life, Easy to Manhattan" /><a
                   class="tile-link" href="#"></a>
                 <div class="card-img-overlay-bottom z-index-20">
                   <div class="d-flex text-white text-sm align-items-center">
@@ -344,10 +333,9 @@
               </div>
               <div class="card-body d-flex align-items-center">
                 <div class="w-100">
-                  <h6 class="card-title"><a class="text-decoration-none text-dark" href="#">Brooklyn
-                      Life, Easy to Manhattan</a></h6>
+                  <h6 class="card-title"><a class="text-decoration-none text-dark" href="#">Standard room</a></h6>
                   <div class="d-flex card-subtitle mb-3">
-                    <p class="flex-grow-1 mb-0 text-muted text-sm">Private room</p>
+                    <p class="flex-grow-1 mb-0 text-muted text-sm">Studio suite</p>
                     <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i class="fa fa-star text-warning"></i><i
                         class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i
                         class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"> </i>
@@ -445,10 +433,12 @@
           </div>
           <div class="col-md-6">
             <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-end">
-              <li class="list-inline-item"><img class="w-2rem" src="../img/visa.svg" alt="..."></li>
-              <li class="list-inline-item"><img class="w-2rem" src="../img/mastercard.svg" alt="..."></li>
-              <li class="list-inline-item"><img class="w-2rem" src="../img/paypal.svg" alt="..."></li>
-              <li class="list-inline-item"><img class="w-2rem" src="../img/western-union.svg" alt="..."></li>
+              <li class="list-inline-item"><img class="w-2rem" src="../../../assets/img/brand/visa.svg" alt="..."></li>
+              <li class="list-inline-item"><img class="w-2rem" src="../../../assets/img/brand//mastercard.svg" alt="...">
+              </li>
+              <li class="list-inline-item"><img class="w-2rem" src="../../../assets/img/brand/paypal.svg" alt="..."></li>
+              <li class="list-inline-item"><img class="w-2rem" src="../../../assets/img/brand/western-union.svg" alt="...">
+              </li>
             </ul>
           </div>
         </div>
