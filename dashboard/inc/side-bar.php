@@ -1,7 +1,7 @@
 <?php
 session_start();
 ?>
-<nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none bg-primary">
+<nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none bg-primary  ">
     <a class="navbar-brand me-lg-5" href="dashboard.php">
         <img class="navbar-brand-dark" src="../assets/img/technologies/react-logo.svg" alt="Volt logo" /> <img class="navbar-brand-light" src="../assets/img/brand/volt-dark.svg" alt="Volt logo" />
     </a>
@@ -12,12 +12,12 @@ session_start();
     </div>
 </nav>
 
-<nav id="sidebarMenu" class="sidebar d-lg-block bg-primary text-white collapse" data-simplebar>
+<nav id="sidebarMenu" class="sidebar d-lg-block bg-primary text-white collapse  shadow-soft " data-simplebar>
     <div class="sidebar-inner px-4 pt-3">
         <div class="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
             <div class="d-flex align-items-center">
-                <div class="avatar-lg me-4">
-                    <img src="../assets/img/team/discord.png" class="card-img-top rounded-circle border-white" alt="Profile Picture">
+                <div class="avatar-md me-3 ">
+                    <img src="../assets/img/team/discord.png" class="card-img-top rounded-pill border-white animate-up-2" alt="Profile Picture">
                 </div>
                 <div class="d-block">
                     <h1 class="lead fw-normal text-white mb-4 px-lg-10">Hello,
@@ -44,7 +44,7 @@ session_start();
             </li>
             <li class="nav-item ">
                 <a href="#" class="nav-link">
-                    <span class="sidebar-icon">
+                    <span class="sidebar-icon" >
                         <span class="fas fa-user-plus">
                         </span>
                     </span>
@@ -100,7 +100,7 @@ session_start();
                             <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path>
                         </svg>
                     </span>
-                    <span class="sidebar-text">Documentation</span>
+                    <span class="sidebar-text">Support</span>
                 </a>
             </li>
             <li class="nav-item">

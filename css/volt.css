@@ -12594,7 +12594,29 @@ textarea.form-control-lg {
 .invisible {
     visibility: hidden !important;
 }
+[class*="shadow"] {
+    transition: all 0.2s ease;
+}
 
+.shadow-soft {
+    box-shadow: 6px 6px 12px #b8b9be, -6px -6px 12px #ffffff !important;
+}
+
+.shadow-hover:hover {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px !important;
+}
+
+.shadow-sm-hover:hover {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px !important;
+}
+
+.shadow-lg-hover:hover {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px !important;
+}
+
+.shadow-none-hover:hover {
+    box-shadow: none !important;
+}
 .blur-0 {
     -webkit-backdrop-filter: blur(0) !important;
     backdrop-filter: blur(0) !important;
@@ -27786,6 +27808,9 @@ label {
     padding: 0.375rem 0.75rem;
 }
 
+.border-light {
+    border-color: #D1D9E6 !important;
+}
 .dataTable-pagination li:first-child a {
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
@@ -28635,16 +28660,19 @@ article .h1, article .h2, article .h3, article .h4, article .h5, article .h6 {
 }
 
 .search-bar .form-control {
+    background-color: #e6e7ee !important;
     width: 280px;
     transition: width .2s ease-in-out;
 }
 
 @media (max-width: 575.98px) {
     .search-bar .form-control {
+        background-color: #e6e7ee !important;
         width: 120px;
     }
 
     .search-bar .form-control:focus {
+        background-color: #e6e7ee !important;
         width: 150px;
     }
 }

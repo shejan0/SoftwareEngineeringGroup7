@@ -5,17 +5,11 @@ include_once "inc/side-bar.php";
 ?>
 
 <body>
-  <main class="content">
+  <main class="content bg-white">
     <?php include_once "inc/header.php"; ?>
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
       <div>
         <div class="dropdown">
-          <button class="btn btn-primary d-inline-flex align-items-center me-2 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-            </svg>
-            New
-          </button>
           <div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
             <a class="dropdown-item d-flex align-items-center" href="#">
               <svg class="dropdown-icon text-gray-400 me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -47,21 +41,6 @@ include_once "inc/side-bar.php";
         </div>
       </div>
       <div>
-        <button type="button" class="btn btn-gray-800 d-inline-flex align-items-center me-2">
-          <svg class="icon icon-xs" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
-          </svg>
-        </button>
-        <button class="btn btn-gray-800 d-inline-flex align-items-center dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
-            <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"></path>
-          </svg>
-          Reports
-          <svg class="icon icon-xs ms-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-          </svg>
-        </button>
         <div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
           <a class="dropdown-item d-flex align-items-center" href="#">
             <svg class="dropdown-icon text-gray-400 me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -101,7 +80,7 @@ include_once "inc/side-bar.php";
     </div>
     <div class="row">
       <div class="col-12 col-xl-8">
-        <div class="card card-body border-0 shadow mb-4">
+        <div class="card card-body bg-white border-0 shadow-soft border border-light mb-4 animate-up-5">
           <h2 class="h5 mb-4">General information</h2>
           <form>
             <div class="row">
@@ -248,7 +227,7 @@ include_once "inc/side-bar.php";
       <div class="col-12 col-xl-4">
         <div class="row">
           <div class="col-12 mb-4">
-            <div class="card shadow border-0 text-center p-0">
+            <div class="card  bg-white shadow-soft border border-light text-center animate-up-5 p-0">
               <div class="profile-cover rounded-top" data-background="../assets/img/profile-cover.jpg"></div>
               <div class="card-body pb-5">
                 <img src="../assets/img/team/discord.png" class="avatar-xl rounded-circle mx-auto mt-n7 mb-4" alt="Neil Portrait">
@@ -270,12 +249,12 @@ include_once "inc/side-bar.php";
           </div>
           <form action="../php/upload.php" method=POST>
           <div class="col-12">
-            <div class="card card-body border-0 shadow mb-4">
+            <div class="card card-body bg-white border-0 shadow-soft border border-light animate-up-5 mb-4">
               <h2 class="h5 mb-4">Select profile photo</h2>
               <div class="d-flex align-items-center">
                 <div class="me-3">
                   <!-- Avatar -->
-                  <img class="avatar-xl me-4 rounded" src="../assets/img/team/discord.png" alt="change avatar">
+                  <img class="avatar-xl me-4 rounded-circle shadow-soft border border-light" src="../assets/img/team/discord.png" alt="change avatar">
                 </div>
                 <div class="file-field">
                   <div class="d-flex justify-content-xl-center ms-xl-3">
@@ -295,12 +274,12 @@ include_once "inc/side-bar.php";
             </div>
           </div>
           <div class="col-12">
-            <div class="card card-body border-0 shadow">
+            <div class="card card-body bg-white border-0 shadow-soft border border-light animate-up-5 mb-4">
               <h2 class="h5 mb-4">Select cover photo</h2>
               <div class="d-flex align-items-center">
                 <div class="me-3">
                   <!-- Avatar -->
-                  <img class="rounded avatar-xl" src="../assets/img/profile-cover.jpg" alt="change cover">
+                  <img class="avatar-xl me-4 rounded-circle shadow-soft border border-light" src="../assets/img/profile-cover.jpg" alt="change cover">
                 </div>
                 <div class="file-field">
                   <div class="d-flex justify-content-xl-center ms-xl-3">

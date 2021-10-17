@@ -11,11 +11,11 @@ if(!isset($_SESSION['email']))
   <main class="content bg-white">
   <?php include_once "inc/header.php";?>
   
-    <div class="py-4">
+  <div class="py-4">
     </div>
     <div class="row">
       <div class="col-12 mb-4">
-        <div class="card bg-cream border-0 shadow">
+        <div class="card bg-white shadow-soft border-light text-center py-4 animate-up-5">
           <div class="card-header d-sm-flex flex-row align-items-center flex-0">
             <div class="d-block mb-3 mb-sm-0">
               <div class="fs-5 fw-normal mb-2">Sales Value</div>
@@ -37,7 +37,8 @@ if(!isset($_SESSION['email']))
         </div>
       </div>
       <div class="col-12 col-sm-6 col-xl-4 mb-4">
-        <div class="card border-0 shadow">
+  
+        <div class="card bg-white shadow-soft border-light text-center py-4 animate-up-5">
           <div class="card-body">
             <div class="row d-block d-xl-flex align-items-center">
               <div
@@ -83,7 +84,7 @@ if(!isset($_SESSION['email']))
         </div>
       </div>
       <div class="col-12 col-sm-6 col-xl-4 mb-4">
-        <div class="card border-0 shadow">
+        <div class="card bg-white shadow-soft border-light text-center py-4 animate-up-5">
           <div class="card-body">
             <div class="row d-block d-xl-flex align-items-center">
               <div
@@ -129,7 +130,7 @@ if(!isset($_SESSION['email']))
         </div>
       </div>
       <div class="col-12 col-sm-6 col-xl-4 mb-4">
-        <div class="card border-0 shadow">
+        <div class="card bg-white shadow-soft border-light text-center py-4 animate-up-5">
           <div class="card-body">
             <div class="row d-block d-xl-flex align-items-center">
               <div
@@ -172,14 +173,14 @@ if(!isset($_SESSION['email']))
       <div class="col-12 col-xl-8">
         <div class="row">
           <div class="col-12 col-xxl-6 mb-4">
-            <div class="card border-0 shadow">
+            <div class="card bg-white shadow-soft border-light text-center py-4 animate-up-5">
               <div class="card-header border-bottom d-flex align-items-center justify-content-between">
                 <h2 class="fs-5 fw-bold mb-0">Admin / Manager
                 </h2>
                 <a href="employees.php" class="btn btn-sm btn-primary">See all</a>
               </div>
-              <div class="card-body">
-                <ul class="list-group list-group-flush list my--3">
+              <div class="card-body ">
+                <ul class="list-group list-group-flush list my--3 bg-white">
                   <li class="list-group-item px-0">
                     <div class="row align-items-center">
                       <div class="col-auto">
@@ -261,7 +262,7 @@ if(!isset($_SESSION['email']))
             </div>
           </div>
           <div class="col-12 col-xxl-6 mb-4">
-            <div class="card border-0 shadow">
+            <div class="card bg-white shadow-soft border-light text-center py-4 animate-up-5">
               <div class="card-header border-bottom d-flex align-items-center justify-content-between">
                 <h2 class="fs-5 fw-bold mb-0">Progress track</h2>
                 <a href="#" class="btn btn-sm btn-primary">See tasks</a>
@@ -370,7 +371,7 @@ if(!isset($_SESSION['email']))
       </div>
       <div class="col-12 col-xl-4">
         <div class="col-12 px-0 mb-4">
-          <div class="card border-0 shadow">
+          <div class="card bg-white shadow-soft border-light text-center py-4 animate-up-5">
             <div class="card-body">
               <div class="d-flex align-items-center justify-content-between border-bottom pb-3">
                 <div>
@@ -467,7 +468,7 @@ if(!isset($_SESSION['email']))
           </div>
         </div>
         <div class="col-12 px-0">
-          <div class="card border-0 shadow">
+          <div class="card bg-white shadow-soft border-light text-center py-4 animate-up-5">
             <div class="card-body">
               <h2 class="fs-5 fw-bold mb-1">Users</h2>
               <p>Tells you where your visitors originated from, such as search engines, social networks or website
