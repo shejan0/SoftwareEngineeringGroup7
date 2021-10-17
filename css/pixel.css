@@ -12385,11 +12385,11 @@ fieldset:disabled .btn {
 }
 
 .bg-primary {
-    background-color: #174f84 !important;
+    background-color: #1c2540 !important;
 }
 
 .bg-secondary {
-    background-color: #1c2540 !important;
+    background-color: #242e4c !important;
 }
 
 .bg-tertiary {
@@ -12423,9 +12423,14 @@ fieldset:disabled .btn {
 .bg-white {
     background-color: #e6e7ee !important;
 }
-
+.bg-cream {
+    background-color: #f4efe2 !important;
+}
 .bg-gray {
     background-color: #1F2937 !important;
+}
+.bg-beige {
+    background-color: #EBF4F6 !important;
 }
 
 .bg-dark {
