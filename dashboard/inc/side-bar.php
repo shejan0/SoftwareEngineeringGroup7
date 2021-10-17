@@ -1,7 +1,7 @@
 <?php
 session_start();
 ?>
-<nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none">
+<nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none bg-primary">
     <a class="navbar-brand me-lg-5" href="dashboard.php">
         <img class="navbar-brand-dark" src="../assets/img/technologies/react-logo.svg" alt="Volt logo" /> <img class="navbar-brand-light" src="../assets/img/brand/volt-dark.svg" alt="Volt logo" />
     </a>

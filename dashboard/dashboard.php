@@ -8,14 +8,14 @@ if(!isset($_SESSION['email']))
     header("Location: ../html/admin-sign-in.html");
 }
 ?>
-  <main class="content">
+  <main class="content bg-white">
   <?php include_once "inc/header.php";?>
   
     <div class="py-4">
     </div>
     <div class="row">
       <div class="col-12 mb-4">
-        <div class="card bg-yellow-100 border-0 shadow">
+        <div class="card bg-cream border-0 shadow">
           <div class="card-header d-sm-flex flex-row align-items-center flex-0">
             <div class="d-block mb-3 mb-sm-0">
               <div class="fs-5 fw-normal mb-2">Sales Value</div>
