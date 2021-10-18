@@ -3641,7 +3641,22 @@ textarea.form-control-lg {
     clip: rect(0, 0, 0, 0);
     pointer-events: none;
 }
-
+.btn-2 {
+    display: inline-block;
+    font-weight: 400;
+    color: #44476A;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 0.0625rem solid transparent;
+    padding: 0.55rem 0.95rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.55rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
 .btn-check[disabled]+.btn,
 .btn-check:disabled+.btn {
     pointer-events: none;
@@ -4593,24 +4608,21 @@ fieldset:disabled .btn {
 }
 
 .btn-white {
-    color: #1c2540;
+    color: #31344b;
     background-color: #e6e7ee;
     border-color: #e6e7ee;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(23, 31, 56, 0.075);
+    box-shadow: inset 0 1px 0 rgba(236, 240, 243, 0.15), 0 1px 1px rgba(38, 40, 51, 0.075);
 }
 
 .btn-white:hover {
-    color: #1c2540;
-    background-color: white;
-    border-color: white;
+    color: #31344b;
+    background-color: #cfd1df;
+    border-color: #c8cad9;
 }
 
-.btn-check:focus+.btn-white,
-.btn-white:focus {
-    color: #1c2540;
-    background-color: white;
-    border-color: white;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(23, 31, 56, 0.075), 0 0 0 0.2rem rgba(221, 222, 226, 0.5);
+.btn-white:focus, .btn-white.focus {
+    box-shadow: inset 0 1px 0 rgba(236, 240, 243, 0.15), 0 1px 1px rgba(38, 40, 51, 0.075), 0 0 0 0.0625rem rgba(203, 204, 214, 0.5);
+
 }
 
 .btn-check:checked+.btn-white,
@@ -4722,7 +4734,20 @@ fieldset:disabled .btn {
 .show>.btn-dark.dropdown-toggle:focus {
     box-shadow: inset 0 3px 5px rgba(23, 31, 56, 0.125), 0 0 0 0.2rem rgba(62, 70, 93, 0.5);
 }
+.btn-block {
+    display: block;
+    width: 100%;
+}
 
+.btn-block + .btn-block {
+    margin-top: 0.5rem;
+}
+
+input[type="submit"].btn-block,
+input[type="reset"].btn-block,
+input[type="button"].btn-block {
+    width: 100%;
+}
 .btn-dark:disabled,
 .btn-dark.disabled {
     color: #ffffff;
@@ -23712,6 +23737,9 @@ fieldset:disabled .btn {
 
 .shadow-soft {
     box-shadow: 6px 6px 12px #b8b9be, -6px -6px 12px #ffffff !important;
+}
+ .shadow-inset {
+    box-shadow: inset 2px 2px 5px #b8b9be, inset -3px -3px 7px #FFFFFF !important;
 }
 .shadow-lg {
     box-shadow: 0 1rem 3rem rgba(17, 24, 39, 0.175) !important;
