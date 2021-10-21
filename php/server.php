@@ -12,8 +12,8 @@ $username = mysqli_real_escape_string($conn, $_POST['username']);
 if (isset($_POST['sign-up'])) {
     if (!empty($email) and !empty($username)) {
         if (!empty($password)) {
-            $check_email = "SELECT * FROM sign_up WHERE email=?";
-            $check_username = "SELECT * FROM sign_up WHERE username=?";
+            $check_email = "SELECT * FROM user WHERE email=?";
+            $check_username = "SELECT * FROM user WHERE username=?";
 
 
             $stmt_email = $conn->prepare($check_email);
@@ -32,7 +32,7 @@ if (isset($_POST['sign-up'])) {
             }
             // if  email isn't taken, insert into database
             else {
-                $sql = "INSERT INTO sign_up (name,email,password,username) values (?,?,?,?)";
+                $sql = "INSERT INTO user (name,email,password,username) values (?,?,?,?)";
 
                 if ($stmt = $conn->prepare($sql)) {
                     $stmt->bind_param('ssss', $name, $email, $password, $username);
@@ -52,7 +52,7 @@ if (isset($_POST['sign-up'])) {
 // sign in
 if (isset($_POST['sign-in'])) {
     if (!empty($email) and !empty($password)) {
-        $sql = 'SELECT email, password FROM sign_up WHERE email = ?';
+        $sql = 'SELECT email, password FROM user WHERE email = ?';
 
         // preparing the SQL statement will prevent SQL injection.
         if ($stmt = $conn->prepare($sql)) {
