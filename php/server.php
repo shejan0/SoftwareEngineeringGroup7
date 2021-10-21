@@ -9,7 +9,7 @@ $email = mysqli_real_escape_string($conn, $_POST['email']);
 $username = mysqli_real_escape_string($conn, $_POST['username']);
 
 // sign up 
-if (isset($_POST['user'])) {
+if (isset($_POST['sign-up'])) {
     if (!empty($email) and !empty($username)) {
         if (!empty($password)) {
             $check_email = "SELECT * FROM user WHERE email=?";
@@ -52,7 +52,7 @@ if (isset($_POST['user'])) {
 // sign in
 if (isset($_POST['sign-in'])) {
     if (!empty($email) and !empty($password)) {
-        $sql = 'SELECT email, password FROM sign_up WHERE email = ?';
+        $sql = 'SELECT email, password FROM user WHERE email = ?';
 
         // preparing the SQL statement will prevent SQL injection.
         if ($stmt = $conn->prepare($sql)) {
