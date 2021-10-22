@@ -15,7 +15,6 @@ if (isset($_POST['sign-up'])) {
             $check_email = "SELECT * FROM user WHERE email=?";
             $check_username = "SELECT * FROM user WHERE username=?";
 
-
             $stmt_email = $conn->prepare($check_email);
             $stmt_email->bind_param('s', $email);
             $stmt_email->execute();
