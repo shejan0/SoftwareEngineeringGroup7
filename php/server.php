@@ -69,7 +69,7 @@ if (isset($_POST['sign-in'])) {
                     $_SESSION['email'] = $email;
                     $_SESSION['name'] = $name;
                     // upon successful login, redirect user to landing apge
-                    header("location: ../customer-view/html/index.html");
+                    header("location: ../customer/search.html");
                     die();
                 } else {
                     // Incorrect password
