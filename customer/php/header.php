@@ -1,3 +1,7 @@
+<?php 
+session_set_cookie_params(0);
+session_start();
+?>
 <body style="padding-top: 72px;">
   <header class="header">
     <!-- Navbar-->
@@ -38,10 +42,14 @@
                             <span class="fas fa-user"></span>
                         </button>
                         <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
-                            <span class="mb-0 font-medium">user</span>
+                            <span class="mb-0 font-medium">
+                                <?php echo $_SESSION['name'];?>
+                            </span>
                         </div>
                         <div class="dropdown-menu dropdown-menu-end">
-                            <span class="dropdown-item rounded-top" >Hi, User!</span>
+                            <span class="dropdown-item rounded-top" >Hi, 
+                            <?php echo $_SESSION['name'];?>
+                            </span>
                             <a class="dropdown-item" href="#">Another action</a>
                             <a class="dropdown-item" href="#">Something else here</a>
                             <div class="dropdown-divider"></div>

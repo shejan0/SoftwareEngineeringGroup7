@@ -1,6 +1,7 @@
 <?php
 include_once "php/head.php";
 include_once "php/header.php";
+
 ?>
   <div class="container-fluid bg-white">
     <div class="row">

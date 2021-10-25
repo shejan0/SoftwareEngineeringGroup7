@@ -1,7 +1,7 @@
 <?php
 ob_start();
-include_once "php/head.php";
-include_once "php/header.php";
+include_once "../customer/php/head.php";
+include_once "../customer/php/header.php";
 
 if(!isset($_SESSION['email']))
 {

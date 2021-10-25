@@ -546,8 +546,5 @@ if(!isset($_SESSION['email']))
 
   <!-- Volt JS -->
   <script src="../assets/js/volt.js"></script>
-
-
 </body>
-
 </html>

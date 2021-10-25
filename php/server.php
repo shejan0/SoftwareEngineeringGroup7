@@ -88,8 +88,6 @@ if (isset($_POST['sign-in'])) {
 
 if (isset($_POST['admin-sign-in'])) {
     if (!empty($email) and !empty($password)) {
-
-
         $sql = 'SELECT email, password, name FROM admin WHERE email = ?';
 
         // preparing the SQL statement
@@ -108,7 +106,7 @@ if (isset($_POST['admin-sign-in'])) {
                     $_SESSION['name'] = $name;
                     $_SESSION['email'] = $email;
                     // upon successful login, redirect user to landing apge
-                    header("location: ../dashboard/dashboard.php");
+                    header("location: ../dashboard/test.php");
                     die();
                 } else {
                     // Incorrect password
