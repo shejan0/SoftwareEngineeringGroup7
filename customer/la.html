@@ -7,7 +7,7 @@
   <title>Portal - Hotel View</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../vendor/nouislider/dist/nouislider.min.css">
+  <link rel="stylesheet" href="../vendor/nouislider/dist/nouislider.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,400i,700">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
@@ -47,25 +47,27 @@
                         <li class="nav-item"><a class="nav-link" href="html/contact.html">Settings</a></li>
                         <li class="nav-item"><a class="nav-link" href="../html/sign-in.html">Help</a></li>
                         <li class="nav-item"><a class="nav-link" href="../html/sign-up.html">Support</a></li>
+                        <li class="nav-item"><a class="nav-link" href="search.html">Home</a></li>
+
                     </ul>
                 </div>
                 <div class="d-flex align-items-center ">
                     <div class="btn-group mb-2 me-2">
-                        <button type="button" class="btn btn-sm btn-icon-only dropdown-toggle btn-white shadow-inset shadow-light border-light animate-up-2"
+                        <button type="button" class="btn btn-sm btn-icon-only dropdown-toggle btn-white shadow-soft border-light animate-up-2"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="fas fa-user"></span>
                         </button>
                         <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
                             <span class="mb-0 font-medium">user</span>
                         </div>
-                        <div class="dropdown-menu py-0">
+                        <div class="dropdown-menu dropdown-menu-end">
                             <span class="dropdown-item rounded-top" >Hi, User!</span>
                             <a class="dropdown-item" href="#">Another action</a>
                             <a class="dropdown-item" href="#">Something else here</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item rounded-bottom" href="#">Sign out</a>
                         </div>
-                        <button class="navbar-toggler ms-2 shadow-inset shadow-light border-light" type="button" data-bs-toggle="collapse"
+                        <button class="navbar-toggler ms-2  shadow-soft border-light" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false"
                         aria-label="Toggle navigation">
                         <i class="fa fa-bars"></i>
@@ -87,30 +89,40 @@
             <div class="col-xl-4 col-md-6 mb-4 ">
               <label class="form-label" for="form_dates">Dates</label>
               <div class="datepicker-container datepicker-container-left">
-                <input class="form-control bg-white shadow-inset shadow-light border-light" type="text" name="bookingDate" id="form_dates"
+                <input class="form-control  input-group btn-pill bg-white shadow-soft border-light" type="text" name="bookingDate" id="form_dates"
                   placeholder="Choose your dates">
               </div>
             </div>
-            <div class="col-xl-4 col-md-6 mb-4 ">
-              <label class="form-label" for="form_dates">Dates</label>
-              <div class="datepicker-container datepicker-container-left">
-                <input class="form-control bg-white shadow-inset shadow-light border-light" type="text" name="bookingDate" id="form_dates"
-                  placeholder="Choose your dates">
-              </div>
+            <div class="col-xl-4 col-md-6 mb-4">
+              <label class="form-label" for="form_guests">Guests</label>
+              <select class="form-select input-group btn-pill bg-white  shadow-soft border-light" name="guests" id="form_guests" 
+                title=" ">
+                <option value="guests_0">1 </option>
+                <option value="guests_1">2 </option>
+                <option value="guests_2">3 </option>
+                <option value="guests_3">4 </option>
+                <option value="guests_4">5 </option>
+              </select>
             </div>
-            <div class="col-xl-4 col-md-6 mb-4 ">
-              <label class="form-label" for="form_dates">Dates</label>
-              <div class="datepicker-container datepicker-container-left">
-                <input class="form-control bg-white shadow-inset shadow-light border-light" type="text" name="bookingDate" id="form_dates"
-                  placeholder="Choose your dates">
-              </div>
+            <div class="col-xl-4 col-md-6 mb-4">
+              <label class="form-label" for="form_type">Room type</label>
+              <select class="form-select input-group btn-pill bg-white shadow-soft border-light" name="guests" id="form_guests" 
+              title=" ">
+                <option value="type_0">Any </option>
+                <option value="type_1">Standard suite </option>
+                <option value="type_2">Queen suite</option>
+                <option value="type_3">King suite</option>
+              </select>
             </div>
-            <div class="col-xl-4 col-md-6 mb-4 ">
-              <label class="form-label" for="form_dates">Dates</label>
-              <div class="datepicker-container datepicker-container-left">
-                <input class="form-control bg-white shadow-inset shadow-light border-light" type="text" name="bookingDate" id="form_dates"
-                  placeholder="Choose your dates">
+            <div class="col-xl-4 col-md-6 mb-4">
+              <label class="form-label">Price range</label>
+              <div class="text-primary" id="slider-snap"></div>
+              <div class="nouislider-values">
+                <div class="min">From $<span id="slider-snap-value-from"></span></div>
+                <div class="max">To $<span id="slider-snap-value-to"></span></div>
               </div>
+              <input type="hidden" name="pricefrom" id="slider-snap-input-from" value="40">
+              <input type="hidden" name="priceto" id="slider-snap-input-to" value="300">
             </div>
             <div class="col-md-6 col-lg-12 col-xl-8 mb-4 d-xl-flex justify-content-center">
               <div>
@@ -118,14 +130,14 @@
                 <ul class="list-inline mb-0 mt-1">
                   <li class="list-inline-item">
                     <div class="form-check form-switch">
-                      <input class="form-check-input" id="instantBook" type="checkbox">
+                      <input class="form-check-input " id="instantBook" type="checkbox">
                       <label class="form-check-label" for="instantBook"> <span class="text-sm">Instant
                           book</span></label>
                     </div>
                   </li>
                   <li class="list-inline-item">
                     <div class="form-check form-switch">
-                      <input class="form-check-input" id="superhost" type="checkbox">
+                      <input class="form-check-input " id="superhost" type="checkbox">
                       <label class="form-check-label" for="superhost"> <span class="text-sm">Superhost</span></label>
                     </div>
                   </li>
@@ -135,7 +147,7 @@
           </div>
           <div class="row">
             <div class="col-sm-6 mb-4 order-2 order-sm-1">
-              <button class="btn btn-primary" type="submit"> <i class="fas fa-search me-1"></i>Search </button>
+              <button class="btn btn-primary shadow-soft border-light animate-up-2" type="submit"> <i class="fas fa-search me-1"></i>Search </button>
             </div>
           </div>
         </form>
@@ -157,7 +169,7 @@
         <div class="row">
           <!-- place item-->
           <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92">
-            <div class="card h-100 border-0 shadow">
+            <div class="card h-100  shadow-soft border-light animate-up-2 bg-white">
               <div class="card-img-top overflow-hidden gradient-overlay">
                 <img class="img-fluid" src="../assets/img/hotels/hotel-room1.jpeg"
                   alt="Modern, Well-Appointed Room" />
@@ -180,14 +192,14 @@
                         class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i>
                     </p>
                   </div>
-                  <p class="card-text text-muted"><span class="h4 text-primary">$180</span> per night</p>
+                  <p class="card-text text-muted"><span class="h4 text-secondary">$180</span> per night</p>
                 </div>
               </div>
             </div>
           </div>
           <!-- place item-->
           <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e322f3375db4d89128">
-            <div class="card h-100 border-0 shadow">
+            <div class="card h-100 shadow-soft border-light animate-up-2 bg-white">
               <div class="card-img-top overflow-hidden gradient-overlay">
                 <img class="img-fluid" src="../assets/img/hotels/hotel-room2.jpeg"
                   alt="Cute Quirky Garden apt, NYC adjacent" />
@@ -215,7 +227,7 @@
           </div>
           <!-- place item-->
           <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e3a31e62979bf147c9">
-            <div class="card h-100 border-0 shadow">
+            <div class="card h-100 shadow-soft border-light animate-up-2 bg-white">
               <div class="card-img-top overflow-hidden gradient-overlay">
                 <img class="img-fluid" src="../assets/img/hotels/hotel-room3.jpeg"
                   alt="Modern Apt - Vibrant Neighborhood!" />
@@ -245,7 +257,7 @@
           </div>
           <!-- place item-->
           <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e3503eb77d487e8082">
-            <div class="card h-100 border-0 shadow">
+            <div class="card h-100 shadow-soft border-light animate-up-2 bg-white">
               <div class="card-img-top overflow-hidden gradient-overlay">
                 <img class="img-fluid" src="../assets/img/hotels/hotel-room4.jpeg"
                   alt="Sunny Private Studio-Apartment" />
@@ -273,7 +285,7 @@
           </div>
           <!-- place item-->
           <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e39aa2eed0626e485d">
-            <div class="card h-100 border-0 shadow">
+            <div class="card h-100 shadow-soft border-light animate-up-2 bg-white">
               <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid"
                   src="../assets/img/hotels/hotel-room5.jpeg" alt="Mid-Century Modern Garden Paradise" /><a
                   class="tile-link" href="#"></a>
@@ -300,7 +312,7 @@
           </div>
           <!-- place item-->
           <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e39aa2edasd626e485d">
-            <div class="card h-100 border-0 shadow">
+            <div class="card h-100 shadow-soft border-light animate-up-2 bg-white">
               <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid"
                   src="../assets/img/hotels/hotel-room6.jpeg" alt="Brooklyn Life, Easy to Manhattan" /><a
                   class="tile-link" href="#"></a>
@@ -327,8 +339,8 @@
         </div>
         <!-- Pagination -->
         <nav aria-label="Page navigation example">
-          <ul class="pagination pagination-template d-flex justify-content-center">
-            <li class="page-item"><a class="page-link" href="#"> <i class="fa fa-angle-left"></i></a></li>
+          <ul class="pagination pagination-template d-flex justify-content-center ">
+            <li class="page-item "><a class="page-link" href="#"> <i class="fa fa-angle-left"></i></a></li>
             <li class="page-item active"><a class="page-link" href="#">1</a></li>
             <li class="page-item"><a class="page-link" href="#">2</a></li>
             <li class="page-item"><a class="page-link" href="#">3</a></li>
@@ -337,12 +349,12 @@
         </nav>
       </div>
       <div class="col-lg-6 map-side-lg pe-lg-0">
-        <div class="map-full shadow-left" id="categorySideMap"></div>
+        <div class="map-full shadow-soft border-light" id="categorySideMap"></div>
       </div>
     </div>
   </div>
   <!-- Footer-->
-  <footer class="position-relative z-index-10 d-print-none">
+  <footer class="position-relative z-index-10 d-print-none shadow-soft border-light  bg-white">
     <!-- Main block - menus, subscribe form-->
     <div class="py-6  text-muted bg-white">
       <div class="container">
@@ -466,7 +478,7 @@
     var basePath = ''
   </script>
   <!-- Main Theme JS file    -->
-  <script src="../assets/js/theme.js"></script>
+  <script src="../customer-view/html/js/theme.js"></script>
   <!-- Map-->
   <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
   <!-- Available tile layers-->
@@ -487,7 +499,7 @@
   </script>
   <script src="../assets/js/datepicker-category.js"> </script>
   <!-- Price Slider-->
-  <script src="../vendor/nouislider/dist/nouislider.min.css"></script>
+  <script src="../vendor/nouislider/dist/nouislider.min.js"></script>
   <script>
     var snapSlider = document.getElementById('slider-snap');
 

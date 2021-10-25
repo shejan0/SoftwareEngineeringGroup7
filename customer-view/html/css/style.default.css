@@ -8595,8 +8595,7 @@ fieldset:disabled .btn {
 }
 
 .bg-white {
-  --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-white-rgb), var(--bs-bg-opacity)) !important;
+  background-color: #e6e7ee !important;
 }
 
 .bg-body {
@@ -14783,21 +14782,6 @@ body {
 *     Daterange Picker
 * ===================================================
 */
-.datepicker-container-left,
-.datepicker-container-right {
-  position: relative;
-}
-
-.datepicker-container-left .inline-wrapper {
-  position: absolute;
-  left: 0;
-}
-
-.datepicker-container-right .inline-wrapper {
-  position: absolute;
-  right: 0;
-}
-
 .date-picker {
   width: 170px;
   height: 25px;

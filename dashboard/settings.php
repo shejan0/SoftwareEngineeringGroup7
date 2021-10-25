@@ -80,7 +80,7 @@ include_once "inc/side-bar.php";
     </div>
     <div class="row">
       <div class="col-12 col-xl-8">
-        <div class="card card-body bg-white border-0 shadow-soft border border-light mb-4 animate-up-5">
+        <div class="card card-body bg-white border-0 shadow-soft border border-light mb-4 ">
           <h2 class="h5 mb-4">General information</h2>
           <form>
             <div class="row">
@@ -219,7 +219,7 @@ include_once "inc/side-bar.php";
               </div>
             </div>
             <div class="mt-3">
-              <button class="btn btn-gray-800 mt-2 animate-up-2" type="submit">Save all</button>
+              <button class="btn btn-gray-800 mt-2 " type="submit">Save all</button>
             </div>
           </form>
         </div>
@@ -227,7 +227,7 @@ include_once "inc/side-bar.php";
       <div class="col-12 col-xl-4">
         <div class="row">
           <div class="col-12 mb-4">
-            <div class="card  bg-white shadow-soft border border-light text-center animate-up-5 p-0">
+            <div class="card  bg-white shadow-soft border border-light text-center  p-0">
               <div class="profile-cover rounded-top" data-background="../assets/img/profile-cover.jpg"></div>
               <div class="card-body pb-5">
                 <img src="../assets/img/team/discord.png" class="avatar-xl rounded-circle mx-auto mt-n7 mb-4" alt="Neil Portrait">
@@ -249,7 +249,7 @@ include_once "inc/side-bar.php";
           </div>
           <form action="../php/upload.php" method=POST>
           <div class="col-12">
-            <div class="card card-body bg-white border-0 shadow-soft border border-light animate-up-5 mb-4">
+            <div class="card card-body bg-white border-0 shadow-soft border border-light  mb-4">
               <h2 class="h5 mb-4">Select profile photo</h2>
               <div class="d-flex align-items-center">
                 <div class="me-3">
@@ -274,7 +274,7 @@ include_once "inc/side-bar.php";
             </div>
           </div>
           <div class="col-12">
-            <div class="card card-body bg-white border-0 shadow-soft border border-light animate-up-5 mb-4">
+            <div class="card card-body bg-white border-0 shadow-soft border border-light  mb-4">
               <h2 class="h5 mb-4">Select cover photo</h2>
               <div class="d-flex align-items-center">
                 <div class="me-3">
