@@ -40,7 +40,7 @@ if(!isset($_SESSION['email']))
             <div class="container">
                 <div class="row mb-2 mb-lg-2">
                     <div class="col-12 col-md-9 col-lg-8 text-center mx-auto">
-                        <h2 class="h1 mb-4">Book your next destination from the best hotels in your city. <?php echo $_SESSION['name']?>
+                        <h2 class="h1 mb-4">Book your next destination from the best hotels in your city.
                         </h2>
                     </div>
                 </div>

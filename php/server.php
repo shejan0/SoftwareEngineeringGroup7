@@ -51,7 +51,7 @@ if (isset($_POST['sign-up'])) {
 // sign in
 if (isset($_POST['sign-in'])) {
     if (!empty($email) and !empty($password)) {
-        $sql = 'SELECT email, password FROM user WHERE email = ?';
+        $sql = 'SELECT email, password,name FROM user WHERE email = ?';
 
         // preparing the SQL statement will prevent SQL injection.
         if ($stmt = $conn->prepare($sql)) {
@@ -61,7 +61,7 @@ if (isset($_POST['sign-in'])) {
 
             // If email exists in sign_up table
             if ($stmt->num_rows > 0) {
-                $stmt->bind_result($email, $password);
+                $stmt->bind_result($email, $password,$name);
                 $stmt->fetch();
 
                 // if password user enters matches the one in the database
@@ -106,7 +106,7 @@ if (isset($_POST['admin-sign-in'])) {
                     $_SESSION['name'] = $name;
                     $_SESSION['email'] = $email;
                     // upon successful login, redirect user to landing apge
-                    header("location: ../dashboard/test.php");
+                    header("location: ../dashboard/dashboard.php");
                     die();
                 } else {
                     // Incorrect password
