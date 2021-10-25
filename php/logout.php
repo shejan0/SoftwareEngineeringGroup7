@@ -18,4 +18,4 @@
     }
     // Finally, destroy the session.
     session_destroy();
-    header("Location: ../html/admin-sign-in.html");
+    header("Location: ../index.html");

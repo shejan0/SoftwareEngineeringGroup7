@@ -1,73 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <!-- Primary Meta Tags -->
-    <title>Portal: Online Reservation system for Hotels</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="canonical" href="https://themesberg.com/product/ui-kit/pixel-free-bootstrap-5-ui-kit">
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon/favicon.ico">
-    <link type="text/css" href="../vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link type="text/css" href="../css/pixel.css" rel="stylesheet">
-</head>
-
-<body>
-    <header class="header-global">
-        <nav id="navbar-main" aria-label="Primary navigation"
-            class="navbar navbar-main navbar-expand-lg navbar-theme-primary headroom navbar-dark">
-            <div class="container position-relative">
-                <a class="navbar-brand me-lg-5" href="../index.html">
-                    <img class="navbar-brand-dark" src="../assets/img/brand/light.svg" alt="Logo light">
-                </a>
-                <div class="navbar-collapse collapse me-auto" id="navbar_global">
-                    <div class="navbar-collapse-header">
-                        <div class="row">
-                            <div class="col-6 collapse-brand">
-                                </a>
-                            </div>
-                            <div class="col-6 collapse-close">
-                                <a href="#navbar_global" class="fas fa-times" data-bs-toggle="collapse"
-                                    data-bs-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false"
-                                    title="close" aria-label="Toggle navigation"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
-                        <li class="nav-item"><a class="nav-link" href="#"></a></li>
-                        <li class="nav-item"><a class="nav-link" href="../html/pricing.html">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link" href="html/contact.html">Settings</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../html/sign-in.html">Help</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../html/sign-up.html">Support</a></li>
-                    </ul>
-                </div>
-                <div class="d-flex align-items-center ">
-                    <div class="btn-group mb-2 me-2">
-                        <button type="button" class="btn btn-sm btn-icon-only dropdown-toggle mr-2 btn-primary"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="fas fa-user"></span>
-                        </button>
-                        <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
-                            <span class="mb-0 font-medium fw-bold">user</span>
-                        </div>
-                        <div class="dropdown-menu py-0">
-                            <span class="dropdown-item rounded-top" >Hi, User!</span>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item rounded-bottom" href="#">Sign out</a>
-                        </div>
-                        <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                    </div>
-                </div>
-            </div>
-            </div>
-        </nav>
-    </header>
+<?php
+ob_start();
+include_once "php/head.php";
+include_once "php/header.php";
+?>
     <main>
         <section class="section section-header bg-primary text-white ">
             <img class="bg-image" src="../assets/img/city/coastline.jpg" alt="">
@@ -105,7 +40,7 @@
                 <div class="row mb-5 mb-lg-6">
                     <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-0">
                         <div class="card shadow border-gray-300 bg-white shadow-soft border-light animate-up-4">
-                            <a href="la.html">
+                            <a href="la.php">
                                 <img src="../assets/img/city/la.jpg" class="card-img-top rounded" alt="LA">
                                 <div class="card-body">
                                     <h3 class="h4 card-title mb-2">Los Angeles, CA</h3>
@@ -116,7 +51,7 @@
                     </div>
                     <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-0">
                         <div class="card shadow border-gray-300 bg-white shadow-soft border-light animate-up-4">
-                            <a href="ny.html">
+                            <a href="ny.php">
                             <img src="../assets/img/city/ny.jpeg" class="card-img-top rounded" alt="NYC">
                             <div class="card-body">
                                 <h3 class="h4 card-title mb-2">New York City, NY</h3>
@@ -127,7 +62,7 @@
                     </div>
                     <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-0">
                         <div class="card shadow border-gray-300 bg-white shadow-soft border-light animate-up-4">
-                            <a href="chicago.html">
+                            <a href="chicago.php">
                             <img src="../assets/img/city/chicago.jpeg" class="card-img-top rounded"
                                 alt="Chicago">
                             <div class="card-body">
@@ -143,7 +78,7 @@
                     </div>
                     <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-0">
                         <div class="card shadow border-gray-300 bg-white shadow-soft border-light animate-up-4">
-                            <a href="seattle.html">
+                            <a href="seattle.php">
                             <img src="../assets/img/city/seattle.jpeg" class="card-img-top rounded"
                                 alt="Seattle">
                             <div class="card-body">
@@ -155,7 +90,7 @@
                     </div>
                     <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-0">
                         <div class="card shadow border-gray-300 bg-white shadow-soft border-light animate-up-4">
-                            <a href="sf.html">
+                            <a href="sf.php">
                             <img src="../assets/img/city/golden-gate.jpg" class="card-img-top rounded"
                                 alt="San Francisco">
                             <div class="card-body">
@@ -167,7 +102,7 @@
                     </div>
                     <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-0">
                         <div class="card shadow border-gray-300 bg-white shadow-soft border-light animate-up-4">
-                            <a href="sa.html">
+                            <a href="sa.php">
                             <img src="../assets/img/city/san-antonio.jpeg" class="card-img-top rounded"
                                 alt="San antonio">
                             <div class="card-body">
