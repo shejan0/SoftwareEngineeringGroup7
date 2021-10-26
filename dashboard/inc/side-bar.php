@@ -42,7 +42,7 @@ session_start();
                     <span class="mt-1 ms-1 sidebar-text">Portal Dashboard</span>
                 </a>
             </li>
-            <li class="nav-item ">
+            <!-- <li class="nav-item ">
                 <a href="#" class="nav-link">
                     <span class="sidebar-icon" >
                         <span class="fas fa-user-plus">
@@ -50,7 +50,7 @@ session_start();
                     </span>
                     <span class="sidebar-text">Add user</span>
                 </a>
-            </li>
+            </li> -->
             <li class="nav-item ">
                 <a href="employees.php" class="nav-link">
                     <span class="sidebar-icon">
@@ -93,7 +93,7 @@ session_start();
                 </a>
             </li>
             <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a href="#" class="nav-link d-flex align-items-center">
                     <span class="sidebar-icon">
                         <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -111,7 +111,7 @@ session_start();
                     </span>
                     <span class="sidebar-text">Back to homepage </span>
                 </a>
-            </li>
+            </li> -->
             <li class="nav-item">
                 <button class="btn btn-info d-flex align-items-center justify-content-center btn-upgrade-pro animate-up-2" id='sign-out'>
                     <svg class="icon icon-xxs me-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

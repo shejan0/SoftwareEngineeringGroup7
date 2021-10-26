@@ -173,93 +173,101 @@ if(!isset($_SESSION['email']))
       <div class="col-12 col-xl-8">
         <div class="row">
           <div class="col-12 col-xxl-6 mb-4">
-            <div class="card bg-white shadow-soft border-light text-center py-4 animate-up-5">
-              <div class="card-header border-bottom d-flex align-items-center justify-content-between">
-                <h2 class="fs-5 fw-bold mb-0">Admin / Manager
-                </h2>
-                <a href="employees.php" class="btn btn-sm btn-primary">See all</a>
+          <div class="card bg-white shadow-soft border-light text-center py-4 animate-up-5">
+            <div class="card-body">
+              <div class="d-flex align-items-center justify-content-between border-bottom pb-3">
+                <div>
+                  <div class="h6 mb-0 d-flex align-items-center">
+                    <svg class="icon icon-xs text-gray-500 me-2" fill="currentColor" viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                    Global Rank
+                  </div>
+                </div>
+                <div>
+                  <a href="#" class="d-flex align-items-center fw-bold">
+                    #755
+                    <svg class="icon icon-xs text-gray-500 ms-1" fill="currentColor" viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                  </a>
+                </div>
               </div>
-              <div class="card-body ">
-                <ul class="list-group list-group-flush list my--3 bg-white">
-                  <li class="list-group-item px-0">
-                    <div class="row align-items-center">
-                      <div class="col-auto">
-                        <!-- Avatar -->
-                        <a href="#" class="avatar">
-                          <img class="rounded" alt="Image placeholder" src="../assets/img/team/discord.png">
-                        </a>
-                      </div>
-                      <div class="col-auto ms--2">
-                        <h4 class="h6 mb-0">
-                          <a href="#">Kevin Nguyen</a>
-                        </h4>
-                        <div class="d-flex align-items-center">
-                          <div class="bg-success dot rounded-circle me-1"></div>
-                          <small>Online</small>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="list-group-item px-0">
-                    <div class="row align-items-center">
-                      <div class="col-auto">
-                        <!-- Avatar -->
-                        <a href="#" class="avatar">
-                          <img class="rounded" alt="Image placeholder" src="../assets/img/team/discord.png">
-                        </a>
-                      </div>
-                      <div class="col-auto ms--2">
-                        <h4 class="h6 mb-0">
-                          <a href="#">Place Holder</a>
-                        </h4>
-                        <div class="d-flex align-items-center">
-                          <div class="bg-warning dot rounded-circle me-1"></div>
-                          <small>Busy</small>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="list-group-item px-0">
-                    <div class="row align-items-center">
-                      <div class="col-auto">
-                        <!-- Avatar -->
-                        <a href="#" class="avatar">
-                          <img class="rounded" alt="Image placeholder" src="../assets/img/team/female.jpeg">
-                        </a>
-                      </div>
-                      <div class="col-auto ms--2">
-                        <h4 class="h6 mb-0">
-                          <a href="#">Place Holder</a>
-                        </h4>
-                        <div class="d-flex align-items-center">
-                          <div class="bg-danger dot rounded-circle me-1"></div>
-                          <small>Offline</small>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="list-group-item px-0">
-                    <div class="row align-items-center">
-                      <div class="col-auto">
-                        <!-- Avatar -->
-                        <a href="#" class="avatar">
-                          <img class="rounded" alt="Image placeholder" src="../assets/img/team/male.jpeg">
-                        </a>
-                      </div>
-                      <div class="col-auto ms--2">
-                        <h4 class="h6 mb-0">
-                          <a href="#">Place Holder</a>
-                        </h4>
-                        <div class="d-flex align-items-center">
-                          <div class="bg-danger dot rounded-circle me-1"></div>
-                          <small>Offline</small>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
+              <div class="d-flex align-items-center justify-content-between border-bottom py-3">
+                <div>
+                  <div class="h6 mb-0 d-flex align-items-center">
+                    <svg class="icon icon-xs text-gray-500 me-2" fill="currentColor" viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                    Country Rank
+                  </div>
+                  <div class="small card-stats">
+                    United States
+                    <svg class="icon icon-xs text-success" fill="currentColor" viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                  </div>
+                </div>
+                <div>
+                  <a href="#" class="d-flex align-items-center fw-bold">
+                    #32
+                    <svg class="icon icon-xs text-gray-500 ms-1" fill="currentColor" viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+              <div class="d-flex align-items-center justify-content-between pt-3">
+                <div>
+                  <div class="h6 mb-0 d-flex align-items-center">
+                    <svg class="icon icon-xs text-gray-500 me-2" fill="currentColor" viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M2 6a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1H8a3 3 0 00-3 3v1.5a1.5 1.5 0 01-3 0V6z"
+                        clip-rule="evenodd"></path>
+                      <path d="M6 12a2 2 0 012-2h8a2 2 0 012 2v2a2 2 0 01-2 2H2h2a2 2 0 002-2v-2z"></path>
+                    </svg>
+                    Category Rank
+                  </div>
+                  <div class="small card-stats">
+                    Technlogy > Hospitality
+                    <svg class="icon icon-xs text-success" fill="currentColor" viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                  </div>
+                </div>
+                <div>
+                  <a href="#" class="d-flex align-items-center fw-bold">
+                    #3
+                    <svg class="icon icon-xs text-gray-500 ms-1" fill="currentColor" viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                  </a>
+                </div>
               </div>
             </div>
+          </div>
           </div>
           <div class="col-12 col-xxl-6 mb-4">
             <div class="card bg-white shadow-soft border-light text-center py-4 animate-up-5">

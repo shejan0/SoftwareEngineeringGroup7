@@ -6,8 +6,7 @@
         <div class="row">
           <div class="col-lg-4 mb-5 mb-lg-0">
             <div class="fw-bold text-uppercase text-dark mb-3">Portal</div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
-
+            <a class="text-muted list-inline-item" href="customer.php">Home</a>
             <ul class="list-inline">
               <li class="list-inline-item">
                 <a class="text-muted text-primary-hover" href="https://twitter.com"
@@ -36,12 +35,13 @@
                         <i class="fab fa-pinterest"></i>
                       </a>
                       </li>
+
             </ul>
           </div>
-          <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+          <!-- <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
             <h6 class="text-uppercase text-dark mb-3">Rentals</h6>
             <ul class="list-unstyled">
-              <li><a class="text-muted" href="../index.html">Home</a></li>
+              <li><a class="text-muted" href="customer.php">Home</a></li>
             </ul>
           </div>
           <div class="col-lg-4">
@@ -55,7 +55,7 @@
                     class="fa fa-paper-plane text-lg"></i></button>
               </div>
             </form>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
