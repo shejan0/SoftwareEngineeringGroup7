@@ -1,9 +1,3 @@
-/**
- * Directory – Directory & Listing Bootstrap Theme v. 2.0.1
- * Homepage: https://themes.getbootstrap.com/product/directory-directory-listing-bootstrap-4-theme/
- * Copyright 2021, Bootstrapious - https://bootstrapious.com
- */
-
 'use strict';
 
 function createListingsMap(options) {

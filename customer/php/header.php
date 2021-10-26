@@ -27,17 +27,15 @@ session_start();
                     </div>
                     <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
                         <li class="nav-item"><a class="nav-link" href="#"></a></li>
-                        <li class="nav-item"><a class="nav-link" href="../html/pricing.html">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link" href="html/contact.html">Settings</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../html/sign-in.html">Help</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../html/sign-up.html">Support</a></li>
-                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-
+                        <li class="nav-item"><a class="nav-link" href="">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link" href="">Settings</a></li>
+                        <li class="nav-item"><a class="nav-link" href="">Help</a></li>
+                        <li class="nav-item"><a class="nav-link" href="">Support</a></li>
                     </ul>
                 </div>
                 <div class="d-flex align-items-center ">
                     <div class="btn-group mb-2 me-2">
-                        <button type="button" class="btn btn-sm btn-icon-only dropdown-toggle btn-white shadow-soft border-light animate-up-2"
+                        <button type="button" class="btn btn-sm btn-white rounded-circle shadow-soft border-light"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="fas fa-user"></span>
                         </button>
