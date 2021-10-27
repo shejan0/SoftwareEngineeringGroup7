@@ -6,8 +6,9 @@
         "type": "Point",
         "_comment": "coordinates [longitude, latitude]",
         "coordinates": [
-          -118.257811,
-          34.042419        ]
+          -98.488633,
+          29.427061
+        ]
       },
       "properties": {
         "id": "59c0c8e33b1527bfe2abaf92",
@@ -31,8 +32,9 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -118.266400,
-          34.055788        ]
+          -98.486047,
+          29.436458
+        ]
       },
       "properties": {
         "id": "59c0c8e322f3375db4d89128",
@@ -56,11 +58,12 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -118.248151,
-          34.051450        ]
+          -98.484157,
+          29.415975
+        ]
       },
-      "properties": {         
-         "id": "59c0c8e3a31e62979bf147c9",
+      "properties": {
+        "id": "59c0c8e3a31e62979bf147c9",
         "index": 2,
         "isActive": true,
         "image": "hotel-la-3.jpeg",
@@ -81,14 +84,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -118.226203,
-          34.048677        ]
+          -98.493219,
+          29.417012
+        ]
       },
       "properties": {
         "id": "59c0c8e3503eb77d487e8082",
         "index": 3,
         "isActive": false,
-        "image":"hotel-la-4.jpeg",
+        "image": "hotel-la-4.jpeg",
         "link": "#",
         "url": "#",
         "name": "The Regency Rooms",
@@ -105,8 +109,9 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -118.233762,
-          34.037867        ]
+          -98.497041,
+          29.426740
+        ]
       },
       "properties": {
         "id": "59c0c8e39aa2eed0626e485d",
@@ -126,8 +131,9 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -118.264471,
-          34.041636        ]
+          -98.495838,
+          29.416274
+        ]
       },
       "properties": {
         "id": "59c0c8e39aa2edasd626e485d",
