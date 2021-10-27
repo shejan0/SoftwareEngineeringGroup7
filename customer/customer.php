@@ -212,8 +212,7 @@ include_once "php/header.php";
                 </div>
             </div>
         </div>
-    </footer>
-?>
+</footer>
     <!-- Core -->
     <script src="../vendor/@popperjs/core/dist/umd/popper.min.js"></script>
     <script src="../vendor/bootstrap/dist/js/bootstrap.min.js"></script>
