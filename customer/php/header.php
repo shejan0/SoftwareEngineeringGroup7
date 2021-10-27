@@ -33,7 +33,7 @@ if(!isset($_SESSION['email']))
                     <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
                         <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
                         <li class="nav-item"><a class="nav-link" href="accountsettings.php">Settings</a></li>
-                        <li class="nav-item"><a class="nav-link" href="customer.php">Your home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="customer.php">home</a></li>
 
                     </ul>
                 </div>
