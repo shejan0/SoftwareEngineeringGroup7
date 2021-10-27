@@ -192,7 +192,7 @@ include_once "php/header.php";
   </div>
 </div>
 <?php
-include_once "php/footer.php";  ?>
+include_once "../php/footer.php";  ?>
 
 <!-- Map script -->
 <script>

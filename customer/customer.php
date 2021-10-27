@@ -3,10 +3,10 @@ ob_start();
 include_once "php/head.php";
 include_once "php/header.php";
 
-if(!isset($_SESSION['email']))
+/*if(!isset($_SESSION['email']))
 {
     header("Location: ../html/sign-in.html");
-}
+}*/
 ?>
     <main>
         <section class="section section-header bg-primary text-white ">
@@ -137,6 +137,7 @@ if(!isset($_SESSION['email']))
             </div>
         </section>
     </main>
+    <?php /*
     <footer class="footer pt-6 pb-5 bg-primary text-white ">
         <div class="container">
             <div class="row">
@@ -218,7 +219,9 @@ if(!isset($_SESSION['email']))
             </div>
         </div>
     </footer>
-
+*/
+include_once "../php/footer.php";
+?>
     <!-- Core -->
     <script src="../vendor/@popperjs/core/dist/umd/popper.min.js"></script>
     <script src="../vendor/bootstrap/dist/js/bootstrap.min.js"></script>

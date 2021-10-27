@@ -281,5 +281,5 @@ if(!isset($_SESSION['email']))
     </div>
   </div>
   <?php
-  include_once "php/footer.php";
+  include_once "../php/footer.php";
   ?>
