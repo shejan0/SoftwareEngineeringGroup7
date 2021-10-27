@@ -9,7 +9,7 @@ if(!isset($_SESSION['email']))
   <div class="container-fluid bg-white">
     <div class="row">
       <div class="col-lg-6 py-4 p-xl-5">
-        <h2 class="mb-4">Stay on Manhattan, NY</h2>
+        <h2 class="mb-4">Chicago, IL</h2>
         <hr class="my-4">
         <form action="#" autocomplete="off">
           <div class="row">
@@ -281,5 +281,16 @@ if(!isset($_SESSION['email']))
     </div>
   </div>
   <?php
+
   include_once "../php/footer.php";
   ?>
+  <script>
+  createListingsMap({
+    mapId: 'categorySideMap',
+    jsonFile: '../assets/js/cities-map/chicago.json',
+    mapPopupType: 'rental',
+    useTextIcon: true,
+    // tileLayer: tileLayers[5]  - uncomment for a different map styling
+  });
+</script>
+

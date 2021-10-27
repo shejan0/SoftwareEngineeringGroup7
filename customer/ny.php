@@ -281,5 +281,16 @@ if(!isset($_SESSION['email']))
     </div>
   </div>
   <?php
-  include_once "../php/footer.php";
+
+include_once "../php/footer.php";
   ?>
+  <script>
+  createListingsMap({
+    mapId: 'categorySideMap',
+    jsonFile: '../assets/js/cities-map/ny.json',
+    mapPopupType: 'rental',
+    useTextIcon: true,
+    // tileLayer: tileLayers[5]  - uncomment for a different map styling
+  });
+</script>
+
