@@ -1,10 +1,6 @@
 <?php
 include_once "php/head.php";
 include_once "php/header.php";
-if(!isset($_SESSION['email']))
-{
-    header("Location: ../html/sign-in.html");
-}
 ?>
   <div class="container-fluid bg-white">
     <div class="row">
@@ -281,9 +277,7 @@ if(!isset($_SESSION['email']))
     </div>
   </div>
   <?php
-
-  include_once "../php/footer.php";
-  ?>
+include_once "php/footer.php";  ?>
   <script>
   createListingsMap({
     mapId: 'categorySideMap',
