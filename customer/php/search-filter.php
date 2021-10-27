@@ -1,3 +1,9 @@
+<?php
+if(!isset($_SESSION['email']))
+{
+    header("Location: ../html/sign-in.html");
+}
+?>
 <form action="#" autocomplete="off">
           <div class="row">
             <div class="col-xl-4 col-md-6 mb-4 ">

@@ -1,6 +1,11 @@
 <?php
 session_set_cookie_params(0);
 session_start();
+
+if(!isset($_SESSION['email']))
+{
+    header("Location: ../html/sign-in.html");
+}
 ?>
 
 <body style="padding-top: 72px;">
