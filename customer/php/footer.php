@@ -129,17 +129,7 @@
 
   <!-- Available tile layers-->
   <script src="../assets/js/map-detail.js"> </script>
-  <script src="../assets/js/map-category.js"> </script>
-  <script>
-    createListingsMap({
-      mapId: 'categorySideMap',
-      jsonFile: '../assets/js/rooms-geojson.json',
-      mapPopupType: 'rental',
-      useTextIcon: true,
-      // tileLayer: tileLayers[5]  - uncomment for a different map styling
-    });
-
-  </script>
+<script src="../assets/js/map-category.js"> </script>
   <!-- Daterange picker-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"> </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-date-range-picker/0.19.0/jquery.daterangepicker.min.js">
