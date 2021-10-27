@@ -20,7 +20,7 @@ include_once "php/header.php";
                             <div class="form-group">
                                 <div class="input-group">
                                     <input type="text" class="form-control form-control-lg rounded-start"
-                                        placeholder="City">
+                                        placeholder="Search">
                                     <button class="btn btn-primary">Search</button>
                                 </div>
                             </div>
