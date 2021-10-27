@@ -2,11 +2,6 @@
 ob_start();
 include_once "php/head.php";
 include_once "php/header.php";
-
-if(!isset($_SESSION['email']))
-{
-    header("Location: ../html/sign-in.html");
-}
 ?>
     <main>
         <section class="section section-header bg-primary text-white ">
@@ -218,7 +213,7 @@ if(!isset($_SESSION['email']))
             </div>
         </div>
     </footer>
-
+?>
     <!-- Core -->
     <script src="../vendor/@popperjs/core/dist/umd/popper.min.js"></script>
     <script src="../vendor/bootstrap/dist/js/bootstrap.min.js"></script>

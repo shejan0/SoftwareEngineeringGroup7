@@ -277,8 +277,7 @@ include_once "php/header.php";
     </div>
   </div>
   <?php
-  include_once "php/footer.php";
-  ?>
+include_once "php/footer.php";  ?>
   <script>
   createListingsMap({
     mapId: 'categorySideMap',
@@ -288,3 +287,4 @@ include_once "php/header.php";
     // tileLayer: tileLayers[5]  - uncomment for a different map styling
   });
 </script>
+

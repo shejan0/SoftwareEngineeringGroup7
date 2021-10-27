@@ -29,9 +29,9 @@ if(!isset($_SESSION['email']))
                         </div>
                     </div>
                     <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
-                        <li class="nav-item"><a class="nav-link" href="">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link" href="">Settings</a></li>
-                        <li class="nav-item"><a class="nav-link" href="customer.php">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link" href="accountsettings.php">Settings</a></li>
+                        <li class="nav-item"><a class="nav-link" href="customer.php">Your home</a></li>
 
                     </ul>
                 </div>
