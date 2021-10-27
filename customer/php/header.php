@@ -2,6 +2,8 @@
 session_set_cookie_params(0);
 session_start();
 
+// Checks if user is logged in by checkign if email is set, if not logged in redirect to sign-in page.
+// ensures along with logout.php that once sign out - user won't be able to access the site that only is available to logged in users
 if(!isset($_SESSION['email']))
 {
     header("Location: ../html/sign-in.html");
