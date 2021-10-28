@@ -18,7 +18,6 @@ include_once "php/header.php";
           <div>
             <label class="form-label me-2" for="form_sort">Sort by</label>
             <select class="selectpicker" name="sort" id="form_sort" data-style="btn-selectpicker" title="">
-              <option value="sortBy_0">Most popular </option>
               <option value="sortBy_1">A-Z </option>
               <option value="sortBy_2">High-Low </option>
               <option value="sortBy_3">Low-High </option>
@@ -197,7 +196,7 @@ include_once "php/header.php";
           </div>
         </div>
         <!-- Pagination -->
-        <nav aria-label="Page navigation example">
+        <!-- <nav aria-label="Page navigation example">
           <ul class="pagination pagination-template d-flex justify-content-center ">
             <li class="page-item "><a class="page-link" href="#"> <i class="fa fa-angle-left"></i></a></li>
             <li class="page-item active"><a class="page-link" href="#">1</a></li>
@@ -205,7 +204,7 @@ include_once "php/header.php";
             <li class="page-item"><a class="page-link" href="#">3</a></li>
             <li class="page-item"><a class="page-link" href="#"> <i class="fa fa-angle-right"></i></a></li>
           </ul>
-        </nav>
+        </nav> -->
       </div>
       <div class="col-lg-6 map-side-lg pe-lg-0">
         <div class="map-full shadow-soft border-light" id="categorySideMap"></div>

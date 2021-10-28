@@ -61,8 +61,8 @@ if(!isset($_SESSION['email']))
                                 }
                                 ?>
                             </span>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="../index.html">Home</a>
+                            <a class="dropdown-item" href="#">Profile</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item rounded-bottom" href="../php/logout.php">
                                 <span class="fas fa-sign-out-alt"></span>
