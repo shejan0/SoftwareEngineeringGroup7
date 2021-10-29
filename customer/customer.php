@@ -174,6 +174,22 @@ include_once "php/header.php";
             </div>
           </div>
         </div>
+<<<<<<< HEAD
+=======
+        <!-- Pagination -->
+        <!-- <nav aria-label="Page navigation example">
+          <ul class="pagination pagination-template d-flex justify-content-center ">
+            <li class="page-item "><a class="page-link" href="#"> <i class="fa fa-angle-left"></i></a></li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#"> <i class="fa fa-angle-right"></i></a></li>
+          </ul>
+        </nav> -->
+      </div>
+      <div class="col-lg-6 map-side-lg pe-lg-0">
+        <div class="map-full shadow-soft border-light" id="categorySideMap"></div>
+>>>>>>> b3c204d0252b8062c4db491dfad56c74d4a60686
       </div>
       <!-- Pagination -->
       <nav aria-label="Page navigation example">
