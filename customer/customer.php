@@ -37,7 +37,7 @@ include_once "php/header.php";
             <div class="card-body d-flex align-items-center">
               <div class="w-100">
                 <h6 class="card-title">
-                  <a class="text-decoration-none text-dark" href="../index.html">Modern,
+                  <a class="text-decoration-none text-dark" href="#">Modern,
                     Well-Appointed Room</a>
                 </h6>
                 <div class="d-flex card-subtitle mb-3">
@@ -54,15 +54,11 @@ include_once "php/header.php";
         <!-- place item-->
         <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e322f3375db4d89128">
           <div class="card h-100 shadow-soft border-light animate-up-2 bg-white">
-            <div class="card-img-top overflow-hidden gradient-overlay">
-              <img class="img-fluid" src="../assets/img/hotels/hotel-room2.jpeg" alt="Cute Quirky Garden apt, NYC adjacent" />
-              <a class="tile-link" href="../index.html"></a>
-              <div class="card-img-overlay-bottom z-index-20">
-                <div class="d-flex text-white text-sm align-items-center">
-                </div>
-              </div>
-
-            </div>
+          <div class="card-img-top overflow-hidden shadow-soft border-light animate-up-2">
+            <a href="room-details.php">
+              <img src="../assets/img/hotels/hotel-room2.jpeg" alt="Front pages overview">
+            </a>
+          </div>
             <div class="card-body d-flex align-items-center">
               <div class="w-100">
                 <h6 class="card-title"><a class="text-decoration-none text-dark" href="#">Cute Quirky
@@ -80,14 +76,11 @@ include_once "php/header.php";
         <!-- place item-->
         <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e3a31e62979bf147c9">
           <div class="card h-100 shadow-soft border-light animate-up-2 bg-white">
-            <div class="card-img-top overflow-hidden gradient-overlay">
-              <img class="img-fluid" src="../assets/img/hotels/hotel-room3.jpeg" alt="Modern Apt - Vibrant Neighborhood!" />
-              <a class="tile-link" href="#"></a>
-              <div class="card-img-overlay-bottom z-index-20">
-                <div class="d-flex text-white text-sm align-items-center">
-                </div>
-              </div>
-            </div>
+          <div class="card-img-top overflow-hidden shadow-soft border-light animate-up-2">
+            <a href="room-details.php">
+              <img src="../assets/img/hotels/hotel-room3.jpeg" alt="Front pages overview">
+            </a>
+          </div>
             <div class="card-body d-flex align-items-center">
               <div class="w-100">
                 <h6 class="card-title"><a class="text-decoration-none text-dark" href="#">
@@ -107,14 +100,11 @@ include_once "php/header.php";
         <!-- place item-->
         <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e3503eb77d487e8082">
           <div class="card h-100 shadow-soft border-light animate-up-2 bg-white">
-            <div class="card-img-top overflow-hidden gradient-overlay">
-              <img class="img-fluid" src="../assets/img/hotels/hotel-room4.jpeg" alt="Sunny Private Studio-Apartment" />
-              <a class="tile-link" href="#"></a>
-              <div class="card-img-overlay-bottom z-index-20">
-                <div class="d-flex text-white text-sm align-items-center">
-                </div>
-              </div>
-            </div>
+          <div class="card-img-top overflow-hidden shadow-soft border-light animate-up-2">
+            <a href="room-details.php">
+              <img src="../assets/img/hotels/hotel-room4.jpeg" alt="Front pages overview">
+            </a>
+          </div>
             <div class="card-body d-flex align-items-center">
               <div class="w-100">
                 <h6 class="card-title"><a class="text-decoration-none text-dark" href="#">Sunny
@@ -132,12 +122,11 @@ include_once "php/header.php";
         <!-- place item-->
         <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e39aa2eed0626e485d">
           <div class="card h-100 shadow-soft border-light animate-up-2 bg-white">
-            <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid" src="../assets/img/hotels/hotel-room5.jpeg" alt="Mid-Century Modern Garden Paradise" /><a class="tile-link" href="#"></a>
-              <div class="card-img-overlay-bottom z-index-20">
-                <div class="d-flex text-white text-sm align-items-center">
-                </div>
-              </div>
-            </div>
+          <div class="card-img-top overflow-hidden shadow-soft border-light animate-up-2">
+            <a href="room-details.php">
+              <img src="../assets/img/hotels/hotel-room5.jpeg" alt="Front pages overview">
+            </a>
+          </div>
             <div class="card-body d-flex align-items-center">
               <div class="w-100">
                 <h6 class="card-title"><a class="text-decoration-none text-dark" href="#">Mid-Century
@@ -155,12 +144,11 @@ include_once "php/header.php";
         <!-- place item-->
         <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e39aa2edasd626e485d">
           <div class="card h-100 shadow-soft border-light animate-up-2 bg-white">
-            <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid" src="../assets/img/hotels/hotel-room6.jpeg" alt="Brooklyn Life, Easy to Manhattan" /><a class="tile-link" href="#"></a>
-              <div class="card-img-overlay-bottom z-index-20">
-                <div class="d-flex text-white text-sm align-items-center">
-                </div>
-              </div>
-            </div>
+          <div class="card-img-top overflow-hidden shadow-soft border-light animate-up-2">
+            <a href="room-details.php">
+              <img src="../assets/img/hotels/hotel-room6.jpeg" alt="Front pages overview">
+            </a>
+          </div>
             <div class="card-body d-flex align-items-center">
               <div class="w-100">
                 <h6 class="card-title"><a class="text-decoration-none text-dark" href="#">Standard room</a></h6>
@@ -174,25 +162,9 @@ include_once "php/header.php";
             </div>
           </div>
         </div>
-<<<<<<< HEAD
-=======
-        <!-- Pagination -->
-        <!-- <nav aria-label="Page navigation example">
-          <ul class="pagination pagination-template d-flex justify-content-center ">
-            <li class="page-item "><a class="page-link" href="#"> <i class="fa fa-angle-left"></i></a></li>
-            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#"> <i class="fa fa-angle-right"></i></a></li>
-          </ul>
-        </nav> -->
-      </div>
-      <div class="col-lg-6 map-side-lg pe-lg-0">
-        <div class="map-full shadow-soft border-light" id="categorySideMap"></div>
->>>>>>> b3c204d0252b8062c4db491dfad56c74d4a60686
       </div>
       <!-- Pagination -->
-      <nav aria-label="Page navigation example">
+      <!-- <nav aria-label="Page navigation example">
         <ul class="pagination pagination-template d-flex justify-content-center ">
           <li class="page-item "><a class="page-link" href="#"> <i class="fa fa-angle-left"></i></a></li>
           <li class="page-item active"><a class="page-link" href="#">1</a></li>
@@ -200,7 +172,7 @@ include_once "php/header.php";
           <li class="page-item"><a class="page-link" href="#">3</a></li>
           <li class="page-item"><a class="page-link" href="#"> <i class="fa fa-angle-right"></i></a></li>
         </ul>
-      </nav>
+      </nav> -->
     </div>
     <div class="col-lg-6 map-side-lg pe-lg-0">
       <div class="map-full shadow-soft border-light" id="categorySideMap"></div>
