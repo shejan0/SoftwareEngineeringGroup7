@@ -37,15 +37,14 @@ include_once "php/header.php";
             <div class="card-body d-flex align-items-center">
               <div class="w-100">
                 <h6 class="card-title">
-                  <a class="text-decoration-none text-dark" href="#">Modern,
-                    Well-Appointed Room</a>
+                  <a class="text-decoration-none text-dark" href="room-details.php">The Magnolia All</a>
                 </h6>
                 <div class="d-flex card-subtitle mb-3">
                   <p class="flex-grow-1 mb-0 text-muted text-sm">Private room</p>
                   <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i>
                   </p>
                 </div>
-                <p class="card-text text-muted"><span class="h4 text-secondary">$180</span> per night</p>
+                <p class="card-text text-muted"><span class="h4 text-secondary">$282</span> per night</p>
               </div>
             </div>
           </div>
@@ -61,20 +60,19 @@ include_once "php/header.php";
           </div>
             <div class="card-body d-flex align-items-center">
               <div class="w-100">
-                <h6 class="card-title"><a class="text-decoration-none text-dark" href="#">Cute Quirky
-                    Garden apt, NYC adjacent</a></h6>
+                <h6 class="card-title"><a class="text-decoration-none text-dark" href="room-details.php">The Lofts at Town Centre</a></h6>
                 <div class="d-flex card-subtitle mb-3">
                   <p class="flex-grow-1 mb-0 text-muted text-sm">King suitet</p>
                   <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"> </i>
                   </p>
                 </div>
-                <p class="card-text text-muted"><span class="h4 text-primary">$121</span> per night</p>
+                <p class="card-text text-muted"><span class="h4 text-primary">$242</span> per night</p>
               </div>
             </div>
           </div>
         </div>
         <!-- place item-->
-        <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e3a31e62979bf147c9">
+        <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e3a31e62979bf147c8">
           <div class="card h-100 shadow-soft border-light animate-up-2 bg-white">
           <div class="card-img-top overflow-hidden shadow-soft border-light animate-up-2">
             <a href="room-details.php">
@@ -83,16 +81,16 @@ include_once "php/header.php";
           </div>
             <div class="card-body d-flex align-items-center">
               <div class="w-100">
-                <h6 class="card-title"><a class="text-decoration-none text-dark" href="#">
-                    Modern Vibrant room</a>
+                <h6 class="card-title"><a class="text-decoration-none text-dark" href="room-details.php">
+                    The Courtyard Suites</a>
                 </h6>
                 <div class="d-flex card-subtitle mb-3">
                   <p class="flex-grow-1 mb-0 text-muted text-sm">Queen suite</p>
-                  <p class="flex-shrink-1 mb-0 card-stars text-xs text-end">
+                  <p class="flex-shrink-1 m b-0 card-stars text-xs text-end">
                     <i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"> </i><i class="fa fa-star text-gray-300"> </i>
                   </p>
                 </div>
-                <p class="card-text text-muted"><span class="h4 text-primary">$75</span> per night</p>
+                <p class="card-text text-muted"><span class="h4 text-primary">$189</span> per night</p>
               </div>
             </div>
           </div>
@@ -107,14 +105,13 @@ include_once "php/header.php";
           </div>
             <div class="card-body d-flex align-items-center">
               <div class="w-100">
-                <h6 class="card-title"><a class="text-decoration-none text-dark" href="#">Sunny
-                    Private Studio room</a></h6>
+                <h6 class="card-title"><a class="text-decoration-none text-dark" href="room-details.php">The Regency Rooms</a></h6>
                 <div class="d-flex card-subtitle mb-3">
                   <p class="flex-grow-1 mb-0 text-muted text-sm">Standard suite</p>
                   <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"> </i>
                   </p>
                 </div>
-                <p class="card-text text-muted"><span class="h4 text-primary">$93</span> per night</p>
+                <p class="card-text text-muted"><span class="h4 text-primary">$153</span> per night</p>
               </div>
             </div>
           </div>
@@ -129,14 +126,14 @@ include_once "php/header.php";
           </div>
             <div class="card-body d-flex align-items-center">
               <div class="w-100">
-                <h6 class="card-title"><a class="text-decoration-none text-dark" href="#">Mid-Century
+                <h6 class="card-title"><a class="text-decoration-none text-dark" href="room-details.php">Town Inn Budget Rooms
                     Modern Garden room</a></h6>
                 <div class="d-flex card-subtitle mb-3">
                   <p class="flex-grow-1 mb-0 text-muted text-sm">Standard suite</p>
                   <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i>
                   </p>
                 </div>
-                <p class="card-text text-muted"><span class="h4 text-primary">$115</span> per night</p>
+                <p class="card-text text-muted"><span class="h4 text-primary">$176</span> per night</p>
               </div>
             </div>
           </div>
@@ -151,13 +148,13 @@ include_once "php/header.php";
           </div>
             <div class="card-body d-flex align-items-center">
               <div class="w-100">
-                <h6 class="card-title"><a class="text-decoration-none text-dark" href="#">Standard room</a></h6>
+                <h6 class="card-title"><a class="text-decoration-none text-dark" href="room-details.php">HomeAway Inn</a></h6>
                 <div class="d-flex card-subtitle mb-3">
                   <p class="flex-grow-1 mb-0 text-muted text-sm">Studio suite</p>
                   <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"> </i>
                   </p>
                 </div>
-                <p class="card-text text-muted"><span class="h4 text-primary">$123</span> per night</p>
+                <p class="card-text text-muted"><span class="h4 text-primary">$167</span> per night</p>
               </div>
             </div>
           </div>
