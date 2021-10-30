@@ -1,9 +1,9 @@
-<form action="#" autocomplete="off">
+<form action="#" autocomplete="off" method="get">
           <div class="row">
             <div class="col-xl-4 col-md-6 mb-4 ">
               <label class="form-label" for="form_dates">Dates</label>
               <div class="datepicker-container datepicker-container-left">
-                <input class="form-control  input-group btn-pill bg-white shadow-soft border-light" type="text" name="bookingDate" id="form_dates"
+                <input class="form-control input-group btn-pill bg-white shadow-soft border-light" type="text" name="bookingDate" id="form_dates"
                   placeholder="Choose your dates">
               </div>
             </div>
@@ -11,11 +11,11 @@
               <label class="form-label" for="form_guests">Guests</label>
               <select class="form-select input-group btn-pill bg-white  shadow-soft border-light" name="guests" id="form_guests" 
                 title=" ">
-                <option value="guests_0">1 </option>
-                <option value="guests_1">2 </option>
-                <option value="guests_2">3 </option>
-                <option value="guests_3">4 </option>
-                <option value="guests_4">5 </option>
+                <option value="1">1 </option>
+                <option value="2">2 </option>
+                <option value="3">3 </option>
+                <option value="3">4 </option>
+                <option value="4">5 </option>
               </select>
             </div>
             <div class="col-xl-4 col-md-6 mb-4">
