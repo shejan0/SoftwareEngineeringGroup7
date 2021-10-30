@@ -4,9 +4,8 @@
     <div class="py-6  text-muted bg-white">
       <div class="container">
         <div class="row">
-          <div class="col-lg-4 mb-5 mb-lg-0">
-            <div class="fw-bold text-uppercase text-dark mb-3">Portal</div>
-            <a class="text-muted list-inline-item" href="customer.php">Home</a>
+          <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+            <div class="fw-bold text-uppercase text-dark mb-3">Portal</div>            
             <ul class="list-inline">
               <li class="list-inline-item">
                 <a class="text-muted text-primary-hover" href="https://twitter.com"
@@ -35,13 +34,12 @@
                         <i class="fab fa-pinterest"></i>
                       </a>
                       </li>
-
             </ul>
           </div>
-          <!-- <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+          <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
             <h6 class="text-uppercase text-dark mb-3">Rentals</h6>
             <ul class="list-unstyled">
-              <li><a class="text-muted" href="customer.php">Home</a></li>
+              <li><a class="text-muted" href="../index.html">Home</a></li>
             </ul>
           </div>
           <div class="col-lg-4">
@@ -55,7 +53,7 @@
                     class="fa fa-paper-plane text-lg"></i></button>
               </div>
             </form>
-          </div> -->
+          </div>
         </div>
       </div>
     </div>
@@ -123,7 +121,7 @@
     var basePath = ''
   </script>
   <!-- Main Theme JS file    -->
-  <script src="../customer-view/html/js/theme.js"></script>
+  <script src="../../assets/js/theme.js"></script>
   <!-- Map-->
   <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
 
