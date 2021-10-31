@@ -21,7 +21,6 @@ include_once "user-connection.php";
                   echo "<option value\"$i\">$i</option>";
                 }
                 ?>
-
               </select>
             </div>
             <div class="col-xl-4 col-md-6 mb-4">
