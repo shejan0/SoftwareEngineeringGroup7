@@ -14,8 +14,8 @@
         "id": "59c0c8e33b1527bfe2abaf92",
         "index": 0,
         "isActive": true,
-        "image": "hotel-la.jpeg",
-        "link": "detail-rooms.html",
+        "image": "hotel-1.jpeg",
+        "link": "room-details.php",
         "url": "#",
         "name": "The Magnolia All Suites",
         "stars": 5,
@@ -40,8 +40,8 @@
         "id": "59c0c8e322f3375db4d89128",
         "index": 1,
         "isActive": true,
-        "image": "hotel-la-2.jpeg",
-        "link": "#",
+        "image": "hotel-2.jpeg",
+        "link": "room-details.php",
         "url": "#",
         "name": "The Lofts at Town Centre",
         "stars": 5,
@@ -58,16 +58,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.484157,
-          29.415975
-        ]
+          -98.484070,
+          29.422912        ]
       },
       "properties": {
-        "id": "59c0c8e3a31e62979bf147c9",
+        "id": "59c0c8e3a31e62979bf147c8",
         "index": 2,
         "isActive": true,
-        "image": "hotel-la-3.jpeg",
-        "link": "#",
+        "image": "hotel-3.jpeg",
+        "link": "room-details.php",
         "url": "#",
         "name": "The Courtyard Suites",
         "stars": 4,
@@ -84,20 +83,19 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.493219,
-          29.417012
-        ]
+          -98.491660,
+          29.433513     ]
       },
       "properties": {
         "id": "59c0c8e3503eb77d487e8082",
         "index": 3,
         "isActive": false,
-        "image": "hotel-la-4.jpeg",
-        "link": "#",
+        "image": "hotel-4.jpeg",
+        "link": "room-details.php",
         "url": "#",
         "name": "The Regency Rooms",
         "stars": 4,
-        "price": 93,
+        "price": 153,
         "about": "\r",
         "tags": [
           "eiusmod"
@@ -117,12 +115,12 @@
         "id": "59c0c8e39aa2eed0626e485d",
         "index": 4,
         "isActive": false,
-        "image": "hotel-la-5.jpeg",
-        "link": "",
+        "image": "hotel-0.jpeg",
+        "link": "room-details.php",
         "url": "#",
         "name": "Town Inn Budget Rooms",
         "stars": 4,
-        "price": 112,
+        "price": 176,
         "about": "\r"
       }
     },
@@ -131,17 +129,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.495838,
-          29.416274
-        ]
+          -98.499048,
+          29.428737        ]
       },
       "properties": {
         "id": "59c0c8e39aa2edasd626e485d",
         "index": 5,
         "isActive": false,
-        "image": "hotel-la-6.jpeg",
+        "image": "hotel-6.jpeg",
         "link": "detail-rooms.html",
-        "url": "#",
+        "url": "room-details.php",
         "name": "HomeAway Inn",
         "stars": 4,
         "price": 167,

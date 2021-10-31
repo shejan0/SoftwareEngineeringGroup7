@@ -14,14 +14,12 @@ include_once "php/header.php";
                     </nav>
         <div class="col-lg-8"> 
           <div class="text-block">
-            <p class="text-primary"><i class="fa-map-marker-alt fa me-1"></i> Brooklyn, New York</p>
-            <h1>Mid-Century Modern Garden Paradise</h1>
-            <p class="text-muted text-uppercase mb-4">Entire Apartment </p>
+            <p class="text-primary"><i class="fa-map-marker-alt fa me-1"></i> San Antonio, TX</p>
+            <h1>Hotel Name Here.</h1>
+            <p class="text-muted text-uppercase mb-4">1/2/3 bedroom </p>
             <ul class="list-inline text-sm mb-4">
-              <li class="list-inline-item me-3"><i class="fa fa-users me-1 text-secondary"></i> 4 guests</li>
-              <li class="list-inline-item me-3"><i class="fa fa-door-open me-1 text-secondary"></i> 1 bedroom</li>
+              <li class="list-inline-item me-3"><i class="fa fa-users me-1 text-secondary"></i> Number of guests</li>
               <li class="list-inline-item me-3"><i class="fa fa-bed me-1 text-secondary"></i> 3 beds</li>
-              <li class="list-inline-item me-3"><i class="fa fa-bath me-1 text-secondary"></i> 1 bath</li>
             </ul>
             <p class="text-muted fw-light">Our garden basement apartment is fully equipped with everything you need to enjoy your stay. Very comfortable for a couple but plenty of space for a small family. Close to many wonderful Brooklyn attractions and quick trip to Manhattan. </p>
             <h6 class="mb-3">The space</h6>
@@ -103,26 +101,38 @@ include_once "php/header.php";
                             <div id="Carousel2" class="carousel slide shadow-soft border border-light p-4 rounded-pill animate-up-3"
                                 data-ride="carousel">
                                 <div class="carousel-inner rounded-pill ">
-                                    <div class="carousel-item active  dark-overlay rounded-pill">
+                                    <div class="carousel-item active  rounded-pill">
                                         <img class="d-block w-100 " src="../assets/img/hotels/hotel5.jpeg"
                                             alt="First slide">
                                     </div>
-                                    <div class="carousel-item  dark-overlay rounded-pill">
-                                        <img class="d-block w-100" src="../assets/img/hotels/hotel0.jpeg"
+                                    <div class="carousel-item   rounded-pill">
+                                        <img class="d-block w-100" src="../assets/img/hotels/hotel-room1.jpeg"
                                             alt="West hotel">
                                     </div>
-                                    <div class="carousel-item  dark-overlay rounded-pill">
-                                        <img class="d-block w-100" src="../assets/img/hotels/hotel3.jpeg"
+                                    <div class="carousel-item   rounded-pill">
+                                        <img class="d-block w-100" src="../assets/img/hotels/lobby1.jpeg"
+                                            alt="West hotel">
+                                    </div>
+                                  
+                                    <div class="carousel-item   rounded-pill">
+                                        <img class="d-block w-100" src="../assets/img/hotels/bathroom1.jpeg"
                                             alt="Bellagio hotel">
                                     </div>
-                                    <div class="carousel-item  dark-overlay rounded-pill">
-                                        <img class="d-block w-100" src="../assets/img/hotels/hotel6.jpeg"
+                                    <div class="carousel-item  rounded-pill">
+                                        <img class="d-block w-100" src="../assets/img/hotels/dining1.jpeg"
                                             alt="Bellagio hotel">
                                     </div>
-                                    <div class="carousel-item  dark-overlay rounded-pill">
-                                        <img class="d-block w-100" src="../assets/img/hotels/hotel8.jpeg"
+                                    <div class="carousel-item  rounded-pill">
+                                        <img class="d-block w-100" src="../assets/img/hotels/gym1.jpeg"
                                             alt="Bellagio hotel">
                                     </div>
+                                    
+                                    <div class="carousel-item   rounded-pill">
+                                        <img class="d-block w-100" src="../assets/img/hotels/pool.jpeg"
+                                            alt="Bellagio hotel">
+                                    </div>
+                                    
+                                    
     
                                 </div>
                                 <a class="carousel-control-prev" href="#Carousel2" role="button" data-bs-slide="prev">
