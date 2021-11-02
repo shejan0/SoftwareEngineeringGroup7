@@ -12,8 +12,8 @@ include_once "user-connection.php";
               </div>
             </div>
             <div class="col-xl-4 col-md-6 mb-4">
-              <label class="form-label" for="form_guests">Guests</label>
-              <select class="form-select input-group btn-pill bg-white  shadow-soft border-light" name="guests" id="form_guests" 
+              <label class="form-label" for="form_rooms">Rooms</label>
+              <select class="form-select input-group btn-pill bg-white  shadow-soft border-light" name="rooms" id="form_rooms" 
                 title=" ">
 
                 <?php
@@ -27,7 +27,12 @@ include_once "user-connection.php";
               <label class="form-label" for="form_type">Room type</label>
               <select class="form-select input-group btn-pill bg-white shadow-soft border-light" name="roomType" id="form_guests" 
               title=" ">
+                <option value="Standard">Standard</option>
+                <option value="Queen">Queen</option>
+                <option value="King">King</option>
+                
                 <?php
+                /*
                   $roomTypequery = "SELECT DISTINCT typeName FROM RoomType;";
                   $result = $conn->query($roomTypequery);
                   //print_r($result);
@@ -40,6 +45,7 @@ include_once "user-connection.php";
                       echo "<option value=\"$name\">$name</option>";
                    }
                   }
+                  */
                 ?>
               </select>
             </div>
