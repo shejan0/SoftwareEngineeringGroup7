@@ -65,6 +65,9 @@ include_once "inc/side-bar.php";
                     <th class="border-gray-200">Hotel ID</th>
                     <th class="border-gray-200">Hotel Name</th>
                     <th class="border-gray-200">Number of Rooms</th>
+                    <th class="border-gray-200">Standard</th>
+                    <th class="border-gray-200">Queen</th>
+                    <th class="border-gray-200">King</th>
                     <th class="border-gray-200">Weekend Surge</th>
                 </tr>
                 <thread>
@@ -77,6 +80,9 @@ include_once "inc/side-bar.php";
                             <td><span class="fw-bold"><?php echo $row['hotelID']; ?></span></td>
                             <td><span class="fw-normal"><?php echo $row['hotelName']; ?></span></td>
                             <td><span class="fw-normal"><?php echo $row['number_of_rooms']; ?></span></td>
+                            <td><span class="fw-normal"><?php echo $row['Standard']; ?></span></td>
+                            <td><span class="fw-normal"><?php echo $row['Queen']; ?></span></td>
+                            <td><span class="fw-normal"><?php echo $row['King']; ?></span></td>
                             <td><span class="fw-normal"><?php echo $row['weekendSurge']; ?></span></td>
                         </tr>
                     <?php  } ?>
