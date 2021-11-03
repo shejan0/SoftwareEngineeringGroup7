@@ -32,7 +32,6 @@ if(!isset($_SESSION['email']))
                     </div>
                     <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
                         <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link" href="accountsettings.php">Settings</a></li>
                         <li class="nav-item"><a class="nav-link" href="customer.php">home</a></li>
 
                     </ul>
@@ -62,7 +61,7 @@ if(!isset($_SESSION['email']))
                                 ?>
                             </span>
                             <a class="dropdown-item" href="../index.html">Home</a>
-                            <a class="dropdown-item" href="#">Profile</a>
+                            <a class="dropdown-item" href="profile.php">Profile</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item rounded-bottom" href="../php/logout.php">
                                 <span class="fas fa-sign-out-alt"></span>
