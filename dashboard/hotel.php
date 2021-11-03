@@ -64,13 +64,13 @@ include_once "inc/side-bar.php";
                 <tr>
                     <th class="border-gray-200">Hotel ID</th>
                     <th class="border-gray-200">Hotel Name</th>
-                    <th class="border-gray-200">Number of Rooms</th>
+                    <th class="border-gray-200">Total Number of Rooms</th>
+                    <th class="border-gray-200">Number of Standard Rooms</th>
+                    <th class="border-gray-200">Number of Queen Rooms</th>
+                    <th class="border-gray-200">Number of King Rooms</th>
                     <th class="border-gray-200">Price of Standard</th>
                     <th class="border-gray-200">Price of Queen</th>
                     <th class="border-gray-200">Price of King</th>
-                    <th class="border-gray-200">Number of Standard</th>
-                    <th class="border-gray-200">Number of Queen</th>
-                    <th class="border-gray-200">Number of King </th>
                     <th class="border-gray-200">Weekend Surge</th>
                 </tr>
                 <thread>
@@ -83,12 +83,12 @@ include_once "inc/side-bar.php";
                             <td><span class="fw-bold"><?php echo $row['hotelID']; ?></span></td>
                             <td><span class="fw-normal"><?php echo $row['hotelName']; ?></span></td>
                             <td><span class="fw-normal"><?php echo $row['number_of_rooms']; ?></span></td>
-                            <td><span class="fw-normal"><?php echo $row['priceStandard']; ?></span></td>
-                            <td><span class="fw-normal"><?php echo $row['priceQueen']; ?></span></td>
-                            <td><span class="fw-normal"><?php echo $row['priceKing']; ?></span></td>
                             <td><span class="fw-normal"><?php echo $row['numStandard']; ?></span></td>
                             <td><span class="fw-normal"><?php echo $row['numQueen']; ?></span></td>
                             <td><span class="fw-normal"><?php echo $row['numKing']; ?></span></td>
+                            <td><span class="fw-normal"><?php echo $row['priceStandard']; ?></span></td>
+                            <td><span class="fw-normal"><?php echo $row['priceQueen']; ?></span></td>
+                            <td><span class="fw-normal"><?php echo $row['priceKing']; ?></span></td>
                             <td><span class="fw-normal"><?php echo $row['weekendSurge']; ?></span></td>
                         </tr>
                     <?php  } ?>
