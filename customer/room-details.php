@@ -95,6 +95,7 @@ include_once "../php/inc/user-connection.php"
                     echo "<li class=\"mb-2\"><span class=\"text-sm\">$amenity</span></li>";
                   }
                   echo "</ul></div>";
+                  $prepared->close();
                 }
               ?>
               <!--
@@ -140,6 +141,7 @@ include_once "../php/inc/user-connection.php"
                 if($priceKing!=0){
                   echo "<p class=\"text-muted\"><span class=\"text-primary h2\">$$priceKing</span> per night <b>KING</b></p>";
                 }
+                $prepared->close();
               }
             ?>
             <hr class="my-4">
@@ -156,8 +158,35 @@ include_once "../php/inc/user-connection.php"
                 <select class="form-control input-group btn-pill bg-white shadow-soft border-light" name="rooms" id="rooms">
                   <?php
                     for($i = 1; $i<=10;$i++){
-                      echo "<option value\"$i\">$i</option>";
+                      echo "<option value=\"$i\">$i</option>";
                     }
+                  ?>
+                </select>
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label" for="type">Room Type *</label>
+                <select class="form-control input-group btn-pill bg-white shadow-soft border-light" name="type" id="type">
+                  <?php
+                    if(empty($_GET["hotelID"])){
+                      echo "<option>FAILED</option>";
+                     }else{
+                      $numquery="SELECT numStandard,numQueen,numKing FROM hotel.hotel WHERE hotelID=?;";
+                      $prepared=$conn->prepare($numquery);
+                      $prepared->bind_param("i",$_GET["hotelID"]);
+                      $prepared->execute();
+                      $prepared->bind_result($numStandard,$numQueen,$numKing);
+                      $prepared->fetch();
+                      if($numStandard!=0){
+                        echo "<option value=\"Standard\">Standard</option>";
+                      }
+                      if($numQueen!=0){
+                        echo "<option value=\"Queen\">Queen</option>";
+                      }
+                      if($numKing!=0){
+                        echo "<option value=\"King\">King</option>";
+                      }
+                     }
                   ?>
                 </select>
               </div>
