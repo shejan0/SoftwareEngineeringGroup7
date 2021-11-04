@@ -39,7 +39,7 @@
           <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
             <h6 class="text-uppercase text-dark mb-3">Rentals</h6>
             <ul class="list-unstyled">
-              <li><a class="text-muted" href="../index.html">Home</a></li>
+              <li><a class="text-muted" href="../">Home</a></li>
             </ul>
           </div>
           <div class="col-lg-4">
