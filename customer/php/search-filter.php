@@ -1,5 +1,5 @@
 <?php
-include_once "user-connection.php";
+include_once "../../user-connection.php";
 
 ?>
 <form autocomplete="off" method="get"> <!--Get the action back to the host page -->
@@ -56,6 +56,17 @@ include_once "user-connection.php";
                 <div class="min">From $<span id="slider-snap-value-from"></span></div>
                 <div class="max">To $<span id="slider-snap-value-to"></span></div>
               </div>
+              <?php
+                $greatestquery = "SELECT GREATEST(MAX(priceStandard),MAX(priceQueen),MAX(priceKing)) FROM hotel.hotel";
+                $leastquery = "SELECT LEAST(MIN(priceStandard),MIN(priceQueen),MIN(priceKing)) FROM hotel.hotel";
+                $greatestresult = $conn->query($greatestquery);
+                $leastresult=$conn->query($leastquery);
+                $least = $leastresult->fetch_row();
+                $greatest = $greatestresult->fetch_row();
+                print_r($least);
+                print_r($greatest);
+                
+              ?>
               <input type="hidden" name="pricefrom" id="slider-snap-input-from" value="40">
               <input type="hidden" name="priceto" id="slider-snap-input-to" value="300">
             </div>
