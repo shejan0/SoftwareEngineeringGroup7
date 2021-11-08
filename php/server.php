@@ -71,6 +71,10 @@ if (isset($_POST['sign-in'])) {
                     die();
                 }
             }
+            else{
+                header('location: ../html/error.php');
+                die();
+            }
             $stmt->close();
         }
     }
@@ -105,6 +109,10 @@ if (isset($_POST['admin-sign-in'])) {
                     die();
                 }
             } 
+            else{
+                header('location: ../html/error.php');
+                die();
+            }
             $stmt->close();
         }
     }
