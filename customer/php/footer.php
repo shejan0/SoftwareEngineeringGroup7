@@ -137,15 +137,15 @@
   <script src="../vendor/nouislider/dist/nouislider.min.js"></script>
   <script>
     var snapSlider = document.getElementById('slider-snap');
-
+    min = 80, max = 300
     noUiSlider.create(snapSlider, {
-      start: [40, 110],
+      start: [min, max],
       snap: false,
       connect: true,
       step: 1,
       range: {
-        'min': 40,
-        'max': 110
+        'min': min,
+        'max': max
       }
     });
     var snapValues = [

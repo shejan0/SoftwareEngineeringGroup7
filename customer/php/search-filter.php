@@ -56,7 +56,7 @@ include_once "user-connection.php";
                 <div class="min">From $<span id="slider-snap-value-from"></span></div>
                 <div class="max">To $<span id="slider-snap-value-to"></span></div>
               </div>
-              <input type="hidden" name="pricefrom" id="slider-snap-input-from" value="40">
+              <input type="hidden" name="pricefrom" id="slider-snap-input-from" value="80">
               <input type="hidden" name="priceto" id="slider-snap-input-to" value="300">
             </div>
             <div class="col-md-6 col-lg-12 col-xl-8 mb-4 d-xl-flex justify-content-center">
