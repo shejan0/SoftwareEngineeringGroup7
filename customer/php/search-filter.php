@@ -1,6 +1,5 @@
 <?php
-include_once "../../user-connection.php";
-
+include_once "user-connection.php"
 ?>
 <form autocomplete="off" method="get"> <!--Get the action back to the host page -->
           <div class="row">
@@ -30,23 +29,6 @@ include_once "../../user-connection.php";
                 <option value="Standard">Standard</option>
                 <option value="Queen">Queen</option>
                 <option value="King">King</option>
-                
-                <?php
-                /*
-                  $roomTypequery = "SELECT DISTINCT typeName FROM RoomType;";
-                  $result = $conn->query($roomTypequery);
-                  //print_r($result);
-                  if($result->num_rows<=0){
-                    echo "<option>FAILED</option>";
-                  }else{
-                    while($roomType = $result->fetch_assoc()){
-                      
-                      $name=$roomType["typeName"];
-                      echo "<option value=\"$name\">$name</option>";
-                   }
-                  }
-                  */
-                ?>
               </select>
             </div>
             <div class="col-xl-4 col-md-6 mb-4">
@@ -56,19 +38,8 @@ include_once "../../user-connection.php";
                 <div class="min">From $<span id="slider-snap-value-from"></span></div>
                 <div class="max">To $<span id="slider-snap-value-to"></span></div>
               </div>
-              <?php
-                $greatestquery = "SELECT GREATEST(MAX(priceStandard),MAX(priceQueen),MAX(priceKing)) FROM hotel.hotel";
-                $leastquery = "SELECT LEAST(MIN(priceStandard),MIN(priceQueen),MIN(priceKing)) FROM hotel.hotel";
-                $greatestresult = $conn->query($greatestquery);
-                $leastresult=$conn->query($leastquery);
-                $least = $leastresult->fetch_row();
-                $greatest = $greatestresult->fetch_row();
-                print_r($least);
-                print_r($greatest);
-                
-              ?>
-              <input type="hidden" name="pricefrom" id="slider-snap-input-from" value="40">
-              <input type="hidden" name="priceto" id="slider-snap-input-to" value="300">
+              <input type="hidden" name="pricefrom" id="slider-snap-input-from" value="30">
+              <input type="hidden" name="priceto" id="slider-snap-input-to" value="200">
             </div>
             <div class="col-md-6 col-lg-12 col-xl-8 mb-4 d-xl-flex justify-content-center">
               <div>

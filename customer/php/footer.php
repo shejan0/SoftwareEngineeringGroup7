@@ -144,8 +144,23 @@
       connect: true,
       step: 1,
       range: {
-        'min': 40,
-        'max': 110
+        <?php
+                $greatestquery = "SELECT GREATEST(MAX(priceStandard),MAX(priceQueen),MAX(priceKing)) FROM hotel.hotel";
+                $leastquery = "SELECT LEAST(MIN(priceStandard),MIN(priceQueen),MIN(priceKing)) FROM hotel.hotel";
+                $greatestresult = $conn->query($greatestquery);
+                $leastresult=$conn->query($leastquery);
+                $least = $leastresult->fetch_row();
+                $greatest = $greatestresult->fetch_row();
+                //print_r($least[0]);
+                //print_r($greatest[0]);
+               // echo "<input type=\"hidden\" name=\"pricefrom\" id=\"slider-snap-input-from\" value=\"$least[0]\">";
+               /*
+               'min': 40,
+                'max': 110
+               */
+        ?>
+        'min':<?php echo $least[0];?>,
+        'max':<?php echo $greatest[0];?>
       }
     });
     var snapValues = [
