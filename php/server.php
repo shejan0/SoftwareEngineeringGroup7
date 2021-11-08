@@ -6,7 +6,6 @@ $name = mysqli_real_escape_string($conn, $_POST['name']);
 $password = mysqli_real_escape_string($conn, $_POST['password']);
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 $email = mysqli_real_escape_string($conn, $_POST['email']);
-
 // sign up 
 if (isset($_POST['sign-up'])) {
     if (!empty($email)) {
@@ -20,6 +19,7 @@ if (isset($_POST['sign-up'])) {
 
             // if email is taken
             if ($stmt_email->num_rows() > 0) {
+                $err = "Email already taken";
                 header("location: ../html/sign-up-error.html");
             }
             // if  email isn't taken, insert into database
@@ -66,13 +66,10 @@ if (isset($_POST['sign-in'])) {
                     die();
                 } else {
                     // Incorrect password
-                    header("location: ../html/sign-in-error.html");
+                    $err = "Incorrect email or password";
+                    header("location: ../html/error.php");
                     die();
                 }
-            } else {
-                // Incorrect username
-                header("location: ../html/sign-in-error.html");
-                die();
             }
             $stmt->close();
         }
@@ -103,14 +100,11 @@ if (isset($_POST['admin-sign-in'])) {
                     die();
                 } else {
                     // Incorrect password
-                    header("location: ../html/sign-in-error.html");
+                    $err = "Incorrect email or password";
+                    header("location: ../html/error.php");
                     die();
                 }
-            } else {
-                // Incorrect email
-                header("location: ../html/sign-in-error.html");
-                die();
-            }
+            } 
             $stmt->close();
         }
     }
