@@ -6,35 +6,28 @@ $name = mysqli_real_escape_string($conn, $_POST['name']);
 $password = mysqli_real_escape_string($conn, $_POST['password']);
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 $email = mysqli_real_escape_string($conn, $_POST['email']);
-$username = mysqli_real_escape_string($conn, $_POST['username']);
 
 // sign up 
 if (isset($_POST['sign-up'])) {
-    if (!empty($email) and !empty($username)) {
+    if (!empty($email)) {
         if (!empty($password)) {
             $check_email = "SELECT * FROM user WHERE email=?";
-            $check_username = "SELECT * FROM user WHERE username=?";
 
             $stmt_email = $conn->prepare($check_email);
             $stmt_email->bind_param('s', $email);
             $stmt_email->execute();
             $stmt_email->store_result();
 
-            $stmt_username = $conn->prepare($check_username);
-            $stmt_username->bind_param('s', $username);
-            $stmt_username->execute();
-            $stmt_username->store_result();
-
             // if email is taken
-            if ($stmt_email->num_rows() > 0 or $stmt_username->num_rows() > 0) {
+            if ($stmt_email->num_rows() > 0) {
                 header("location: ../html/sign-up-error.html");
             }
             // if  email isn't taken, insert into database
             else {
-                $sql = "INSERT INTO user (name,email,password,username) values (?,?,?,?)";
+                $sql = "INSERT INTO user (name,email,password) values (?,?,?)";
 
                 if ($stmt = $conn->prepare($sql)) {
-                    $stmt->bind_param('ssss', $name, $email, $password, $username);
+                    $stmt->bind_param('sss', $name, $email, $password);
                     $stmt->execute();
                     $stmt->store_result();
                     header("location: ../html/sign-in.html");
