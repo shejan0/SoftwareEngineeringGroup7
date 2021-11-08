@@ -39,7 +39,7 @@
           <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
             <h6 class="text-uppercase text-dark mb-3">Rentals</h6>
             <ul class="list-unstyled">
-              <li><a class="text-muted" href="../index.html">Home</a></li>
+              <li><a class="text-muted" href="../">Home</a></li>
             </ul>
           </div>
           <div class="col-lg-4">
@@ -137,9 +137,9 @@
   <script src="../vendor/nouislider/dist/nouislider.min.js"></script>
   <script>
     var snapSlider = document.getElementById('slider-snap');
-
+    min = 80, max = 300
     noUiSlider.create(snapSlider, {
-      start: [40, 110],
+      start: [min, max],
       snap: false,
       connect: true,
       step: 1,
@@ -161,6 +161,7 @@
         ?>
         'min':<?php echo $least[0];?>,
         'max':<?php echo $greatest[0];?>
+
       }
     });
     var snapValues = [
