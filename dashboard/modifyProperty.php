@@ -11,7 +11,6 @@ if(isset($_POST["enter"])) {
     if (!$hotelProp) exit( "<p class='error'>Error Hotel Property does not exist: ($addAmenity) " . mysqli_error($conn) . "</p>");
 }
 
-
 //echo "<p>Successfully Modified Hotel Property \"". $hotelName . "\"</p>";
 mysqli_close($conn);
 
