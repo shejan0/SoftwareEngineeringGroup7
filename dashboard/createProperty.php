@@ -96,7 +96,7 @@ if(isset($_POST["create"])) {
 
     /* number of rooms of each type when 1 out of 3 types are selected
         * includes all combination */
-    if(isset($_POST['king']) && isset($_POST['queen']) && !isset($_POST['standard'])) $numKing = $numRooms;
+    if(isset($_POST['king']) && !isset($_POST['queen']) && !isset($_POST['standard'])) $numKing = $numRooms;
     if(!isset($_POST['king']) && isset($_POST['queen']) && !isset($_POST['standard'])) $numQueen = $numRooms;
     if(!isset($_POST['king']) && !isset($_POST['queen']) && isset($_POST['standard'])) $numStandard = $numRooms;
 
