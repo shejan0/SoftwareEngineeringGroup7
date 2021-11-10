@@ -2,7 +2,7 @@
 include_once "inc/user-connection.php";
 $queryLastRow = "SELECT * FROM `hotel`.`hotel` Where hotelID = (SELECT MAX(hotelID) FROM `hotel`.`hotel`)";
 $resultLastRow = mysqli_query($conn, $queryLastRow);
-$lastID = mysqli_fetch_array($resultLastRow);
+$lastID = mysqli_fetch_aassoc($resultLastRow);
 // hotel property variables
 $hotelID = $lastID['hotelID'] + 1;
 $hotelName = NULL;
