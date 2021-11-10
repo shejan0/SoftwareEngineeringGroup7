@@ -96,7 +96,7 @@ if(isset($_POST["create"])) {
 
     /* number of rooms of each type when 1 out of 3 types are selected
         * includes all combination */
-    if(isset($_POST['king']) && isset($_POST['queen']) && !isset($_POST['standard'])) $numKing = $numRooms;
+    if(isset($_POST['king']) && !isset($_POST['queen']) && !isset($_POST['standard'])) $numKing = $numRooms;
     if(!isset($_POST['king']) && isset($_POST['queen']) && !isset($_POST['standard'])) $numQueen = $numRooms;
     if(!isset($_POST['king']) && !isset($_POST['queen']) && isset($_POST['standard'])) $numStandard = $numRooms;
 
@@ -104,7 +104,7 @@ if(isset($_POST["create"])) {
     if(!empty($hotelName) && !empty($numRooms) && !empty($weekendSurge)) {
         $insertProp = "INSERT INTO `hotel`.`hotel` (hotelID, hotelName, number_of_rooms, weekendSurge, priceKing, priceQueen, priceStandard, numKing, numQueen, numStandard) 
             VALUES ('$hotelID', '$hotelName', '$numRooms', '$weekendSurge', '$priceKing', '$priceQueen', '$priceStandard', '$numKing', '$numQueen', '$numStandard')";
-        $createProp = mysqli_query($conn, $insert);
+        $createProp = mysqli_query($conn, $insertProp);
 
         if (!$createProp) exit( "<p class='error'>Error Creating Hotel Property: ($insertProp) " . mysqli_error($conn) . "</p>");
     }
