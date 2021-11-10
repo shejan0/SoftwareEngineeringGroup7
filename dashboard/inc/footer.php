@@ -23,7 +23,7 @@
         </div>
     </div>
 
-    <!-- <div class="card theme-settings bg-gray-800 theme-settings-expand" id="theme-settings-expand">
+    <div class="card theme-settings bg-gray-800 theme-settings-expand" id="theme-settings-expand">
         <div class="card-body bg-primary text-white rounded-top p-3 py-2 animate-up-2">
             <span class="fw-bold d-inline-flex align-items-center h6">
                 <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -32,7 +32,7 @@
                 Settings
             </span>
         </div>
-    </div> -->
+    </div>
   
     <footer class="bg-white shadow-soft border-light text-center py-4  p-5 mb-4 mt-4">
         <div class="row">
