@@ -11,13 +11,12 @@ if(isset($_POST["enter"])) {
     if (!$hotelProp) exit( "<p class='error'>Error Hotel Property does not exist: ($addAmenity) " . mysqli_error($conn) . "</p>");
 }
 
-
 //echo "<p>Successfully Modified Hotel Property \"". $hotelName . "\"</p>";
 mysqli_close($conn);
 
 ?>
 <html lang="en-US">
-    <form>
+    <form action="modifyProperty.php" method="post">
         <div><br><label for="hotelID">Enter Hotel ID of Hotel to be Modified (required):</label><input type="text" name="hotelID"><br></div>
         <br><input type="submit" name="enter" value="Enter"><br>
     </form>
