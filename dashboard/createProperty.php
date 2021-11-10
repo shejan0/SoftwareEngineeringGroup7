@@ -106,10 +106,8 @@ if(isset($_POST["create"])) {
             VALUES ('$hotelID', '$hotelName', '$numRooms', '$weekendSurge', '$priceKing', '$priceQueen', '$priceStandard', '$numKing', '$numQueen', '$numStandard')";
         $createProp = mysqli_query($conn, $insert);
 
-    if (!$createProp) exit( "<p class='error'>Error Creating Hotel Property: ($insertProp) " . mysqli_error($conn) . "</p>");
-
+        if (!$createProp) exit( "<p class='error'>Error Creating Hotel Property: ($insertProp) " . mysqli_error($conn) . "</p>");
     }
-    
     
     // check and insert amenities to GenAmenities table
     if(isset($_POST['pool'])) {
