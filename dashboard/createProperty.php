@@ -104,7 +104,7 @@ if(isset($_POST["create"])) {
     if(!empty($hotelName) && !empty($numRooms) && !empty($weekendSurge)) {
         $insertProp = "INSERT INTO `hotel`.`hotel` (hotelID, hotelName, number_of_rooms, weekendSurge, priceKing, priceQueen, priceStandard, numKing, numQueen, numStandard) 
             VALUES ('$hotelID', '$hotelName', '$numRooms', '$weekendSurge', '$priceKing', '$priceQueen', '$priceStandard', '$numKing', '$numQueen', '$numStandard')";
-        $createProp = mysqli_query($conn, $insert);
+        $createProp = mysqli_query($conn, $insertProp);
 
         if (!$createProp) exit( "<p class='error'>Error Creating Hotel Property: ($insertProp) " . mysqli_error($conn) . "</p>");
     }
