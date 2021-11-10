@@ -14,12 +14,13 @@ $priceStandard = NULL;
 $numKing = NULL;
 $numQueen = NULL;
 $numStandard = NULL;
+
 // Process info when create (submit button) is clicked
-if (isset($_POST["create"])) { // all process provided below at each break point
+if (isset($_POST["create"])) {    // all process provided below at each break point
     if (empty($_POST['hotelName'])) echo "Enter Hotel Name<br>";
     else $hotelName = $_POST['hotelName'];
 
-    if (empty($_POST['numRooms'])) echo "Enter Total Number of Rooms<br>";
+    if (empty($_POST['numRooms']))  echo "Enter Total Number of Rooms<br>";
     else if (!ctype_digit($_POST['numRooms'])) echo "Enter \"non-zero integer\" for Total Number of Rooms<br>";
     else $numRooms = $_POST['numRooms'];
 
@@ -39,7 +40,7 @@ if (isset($_POST["create"])) { // all process provided below at each break point
         else $numStandard = floor($numStandard);
     }
     /* number of rooms of each type when 2 out of 3 types are selected
-* includes all combination */
+        * includes all combination */
     if (isset($_POST['king']) && isset($_POST['queen']) && !isset($_POST['standard'])) {
         $numKing = ($numRooms * 0.5);
         if (($numKing - floor($numKing)) >= 0.5) $numKing = round($numKing);
@@ -68,7 +69,7 @@ if (isset($_POST["create"])) { // all process provided below at each break point
         else $numStandard = floor($numStandard);
     }
     /* number of rooms of each type when 1 out of 3 types are selected
-* includes all combination */
+        * includes all combination */
     if (isset($_POST['king']) && !isset($_POST['queen']) && !isset($_POST['standard'])) $numKing = $numRooms;
     if (!isset($_POST['king']) && isset($_POST['queen']) && !isset($_POST['standard'])) $numQueen = $numRooms;
     if (!isset($_POST['king']) && !isset($_POST['queen']) && isset($_POST['standard'])) $numStandard = $numRooms;
@@ -88,14 +89,14 @@ if (isset($_POST["create"])) { // all process provided below at each break point
     if (!isset($_POST['standard']) && (!empty($_POST['priceStandard']))) echo "Standard type not selected. Leave blank or enter 0 for price of Standard<br>";
     $priceStandard = $_POST['priceStandard'];
 
-    if (empty($_POST['weekendSurge'])) echo "Enter Weekend Surge<br>";
+    if (empty($_POST['weekendSurge']))  echo "Enter Weekend Surge<br>";
     else if (!ctype_digit($_POST['weekendSurge'])) echo "Enter \"non-zero integer\" for Weekend Surge<br>";
     else $weekendSurge = $_POST['weekendSurge'];
 
     // insert property info into hotel table
     if (!empty($hotelName) && !empty($numRooms) && !empty($weekendSurge)) {
-        $insertProp = "INSERT INTO `hotel`.`hotel` (hotelID, hotelName, number_of_rooms, weekendSurge, priceKing, priceQueen, priceStandard, numKing, numQueen, numStandard)
-VALUES ('$hotelID', '$hotelName', '$numRooms', '$weekendSurge', '$priceKing', '$priceQueen', '$priceStandard', '$numKing', '$numQueen', '$numStandard')";
+        $insertProp = "INSERT INTO `hotel`.`hotel` (hotelID, hotelName, number_of_rooms, weekendSurge, priceKing, priceQueen, priceStandard, numKing, numQueen, numStandard) 
+            VALUES ('$hotelID', '$hotelName', '$numRooms', '$weekendSurge', '$priceKing', '$priceQueen', '$priceStandard', '$numKing', '$numQueen', '$numStandard')";
         $createProp = mysqli_query($conn, $insertProp);
 
         if (!$createProp) exit("<p class='error'>Error Creating Hotel Property: ($insertProp) " . mysqli_error($conn) . "</p>");
@@ -134,7 +135,7 @@ VALUES ('$hotelID', '$hotelName', '$numRooms', '$weekendSurge', '$priceKing', '$
         $add = mysqli_query($conn, $addAmenity);
         if (!$add) exit("<p class='error'>Error Adding Amenity to Hotel Property: ($addAmenity) " . mysqli_error($conn) . "</p>");
     }
-} // close big if statement for when create (submit) is clicked
+}   // close big if statement for when create (submit) is clicked
 
 
 mysqli_close($conn);
@@ -145,37 +146,45 @@ mysqli_close($conn);
 
 <html lang="en-US">
 
-<!-- Main form for property creation -->
-<form action="createProperty.php" method="post">
-    <div><br><label for="hotelName">Enter Hotel Name (required):</label><input type="text" name="hotelName"><br></div>
-    <div>
-        <br><label>Select Amenities (optional):</label> <br>
-        <label for="pool">Pool</label> <input type="checkbox" name="pool" , value="pool"><br>
-        <label for="gym">Gym</label> <input type="checkbox" name="gym" , value="gym"><br>
-        <label for="spa">Spa</label> <input type="checkbox" name="spa" , value="spa"><br>
-        <label for="businessOffice">Business Office</label> <input type="checkbox" name="businessOffice" , value="businessOffice"><br>
-    </div>
-    <div>
-        <br><label>Select Room Types (at least one required):</label><br>
-        <label for="king">King</label> <input type="checkbox" name="king" , value="king"><br>
-        <label for="queen">Queen</label> <input type="checkbox" name="queen" , value="queen"><br>
-        <label for="standard">Standard</label> <input type="checkbox" name="standard" , value="standard"><br>
-    </div>
-
-    <div>
-        <br><label>Enter Price for each Room Type included:
-            <br>- Enter integer, no currency sign.
-            <br>- Leave blank or enter 0 if no rooms of particular type:</label><br>
-        <label for="priceKing">Price for King</label> <input type="text" name="priceKing"><br>
-        <label for="priceQueen">Price for Queen</label> <input type="text" name="priceQueen"><br>
-        <label for="priceStandard">Price for Standard</label> <input type="text" name="priceStandard"><br>
-
-    </div>
-    <div><br><label for="weekendSurge">Enter Weekend Surcharge(Required):</label> <input type="text" name="weekendSurge"><br></div>
-    <br><input type="submit" name="create" value="Create Property"><br>
-</form>
-<a href="hotel.php">Back to Hotel Properties List</a>
+<head>
+    <title>Create/Modify Property</title>
+</head>
 
 <body>
+    <h1>Fill form to create property</h1>
+    <h3>Hotel ID: <?php echo $hotelID ?></h3>
+
+    <!-- Main form for property creation -->
+    <form action="createProperty.php" method="post">
+        <div><br><label for="hotelName">Enter Hotel Name (required):</label><input type="text" name="hotelName"><br></div>
+        <div><br><label for="numRooms">Enter Total number of Rooms (required):</label> <input type="text" name="numRooms"><br></div>
+        <div>
+            <br><label>Select Amenities (optional):</label> <br>
+            <label for="pool">Pool</label> <input type="checkbox" name="pool" , value="pool"><br>
+            <label for="gym">Gym</label> <input type="checkbox" name="gym" , value="gym"><br>
+            <label for="spa">Spa</label> <input type="checkbox" name="spa" , value="spa"><br>
+            <label for="businessOffice">Business Office</label> <input type="checkbox" name="businessOffice" , value="businessOffice"><br>
+        </div>
+        <div>
+            <br><label>Select Room Types (at least one required):</label><br>
+            <label for="king">King</label> <input type="checkbox" name="king" , value="king"><br>
+            <label for="queen">Queen</label> <input type="checkbox" name="queen" , value="queen"><br>
+            <label for="standard">Standard</label> <input type="checkbox" name="standard" , value="standard"><br>
+        </div>
+
+        <div>
+            <br><label>Enter Price for each Room Type included:
+                <br>- Enter integer, no currency sign.
+                <br>- Leave blank or enter 0 if no rooms of particular type:</label><br>
+            <label for="priceKing">Price for King</label> <input type="text" name="priceKing"><br>
+            <label for="priceQueen">Price for Queen</label> <input type="text" name="priceQueen"><br>
+            <label for="priceStandard">Price for Standard</label> <input type="text" name="priceStandard"><br>
+        </div>
+        <div><br><label for="weekendSurge">Enter Weekend Surcharge(Required):</label> <input type="text" name="weekendSurge"><br></div>
+        <br><input type="submit" name="create" value="Create Property"><br>
+    </form>
+    <a href="hotel.php">Back to Hotel Properties List</a>
+
+    <body>
 
 </html>
