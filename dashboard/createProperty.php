@@ -101,11 +101,15 @@ if(isset($_POST["create"])) {
     if(!isset($_POST['king']) && !isset($_POST['queen']) && isset($_POST['standard'])) $numStandard = $numRooms;
 
     // insert property info into hotel table
-    $insert = "INSERT INTO `hotel`.`hotel` (hotelID, hotelName, number_of_rooms, weekendSurge, priceKing, priceQueen, priceStandard, numKing, numQueen, numStandard) 
+    if(!empty($hotelName) && !empty($numRooms) && !empty($weekendSurge)) {
+        $insertProp = "INSERT INTO `hotel`.`hotel` (hotelID, hotelName, number_of_rooms, weekendSurge, priceKing, priceQueen, priceStandard, numKing, numQueen, numStandard) 
             VALUES ('$hotelID', '$hotelName', '$numRooms', '$weekendSurge', '$priceKing', '$priceQueen', '$priceStandard', '$numKing', '$numQueen', '$numStandard')";
-    $create = mysqli_query($conn, $insert);
+        $createProp = mysqli_query($conn, $insert);
 
-    if (!$create) exit( "<p class='error'>Error Creating Hotel Property: ($insert) " . mysqli_error($conn) . "</p>");
+    if (!$createProp) exit( "<p class='error'>Error Creating Hotel Property: ($insertProp) " . mysqli_error($conn) . "</p>");
+
+    }
+    
     
     // check and insert amenities to GenAmenities table
     if(isset($_POST['pool'])) {
@@ -152,7 +156,7 @@ if(isset($_POST["create"])) {
         <h3>Hotel ID: <?php echo $hotelID?></h3>
         
         <!-- Main form for property creation -->
-        <form action="properties.php" method="post">
+        <form action="createProperty.php" method="post">
             <div><br><label for="hotelName">Enter Hotel Name (required):</label><input type="text" name="hotelName"><br></div>
             <div><br><label for="numRooms">Enter Total number of Rooms (required):</label> <input type="text" name="numRooms"><br></div>
             <div>
