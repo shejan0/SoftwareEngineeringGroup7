@@ -3358,7 +3358,56 @@ progress {
     color: #6c757d;
     font-size: 0.875rem;
   }
+  
+/* Range slider value labels */
+.range-slider-value {
+    font-size: 0.75rem;
+    font-weight: 500;
+    background-color: rgba(49, 52, 75, 0.7);
+    color: #ECF0F3;
+    border-radius: 10px;
+    padding: .4em .8em .3em .85em;
+}
 
+.range-slider-wrapper .upper-info {
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.input-slider-value-output {
+    background: #31344b;
+    color: #ECF0F3;
+    padding: 4px 8px;
+    position: relative;
+    top: 12px;
+    font-size: 11px;
+    border-radius: 2px;
+}
+
+.input-slider-value-output:after {
+    bottom: 100%;
+    left: 10px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: #31344b;
+    border-bottom-color: #333;
+    border-width: 4px;
+    margin-left: -4px;
+}
+
+.input-slider-value-output.left:after {
+    left: 10px;
+    right: auto;
+}
+
+.input-slider-value-output.right:after {
+    right: 10px;
+    left: auto;
+}
 /*
 * ===================================================
 *     Bootstrap select theming

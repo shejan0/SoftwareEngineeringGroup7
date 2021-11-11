@@ -1,6 +1,6 @@
 <?php
 $config = parse_ini_file('/var/www/database/hotel_db.ini');
-print_r($config);
+//print_r($config);
 $host = $config['DB_HOST'];
 $username = $config['DB_USERNAME'];
 $password = $config['DB_PASSWORD'];

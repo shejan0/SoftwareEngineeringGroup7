@@ -39,7 +39,7 @@
           <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
             <h6 class="text-uppercase text-dark mb-3">Rentals</h6>
             <ul class="list-unstyled">
-              <li><a class="text-muted" href="../index.html">Home</a></li>
+              <li><a class="text-muted" href="../">Home</a></li>
             </ul>
           </div>
           <div class="col-lg-4">
@@ -137,15 +137,31 @@
   <script src="../vendor/nouislider/dist/nouislider.min.js"></script>
   <script>
     var snapSlider = document.getElementById('slider-snap');
-
+    min = 80, max = 300
     noUiSlider.create(snapSlider, {
-      start: [40, 110],
+      start: [min, max],
       snap: false,
       connect: true,
       step: 1,
       range: {
-        'min': 40,
-        'max': 110
+        <?php
+                $greatestquery = "SELECT GREATEST(MAX(priceStandard),MAX(priceQueen),MAX(priceKing)) FROM hotel.hotel";
+                $leastquery = "SELECT LEAST(MIN(priceStandard),MIN(priceQueen),MIN(priceKing)) FROM hotel.hotel";
+                $greatestresult = $conn->query($greatestquery);
+                $leastresult=$conn->query($leastquery);
+                $least = $leastresult->fetch_row();
+                $greatest = $greatestresult->fetch_row();
+                //print_r($least[0]);
+                //print_r($greatest[0]);
+               // echo "<input type=\"hidden\" name=\"pricefrom\" id=\"slider-snap-input-from\" value=\"$least[0]\">";
+               /*
+               'min': 40,
+                'max': 110
+               */
+        ?>
+        'min':<?php echo $least[0];?>,
+        'max':<?php echo $greatest[0];?>
+
       }
     });
     var snapValues = [

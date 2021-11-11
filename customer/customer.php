@@ -5,7 +5,7 @@ include_once "php/header.php";
 ?>
 
 <div class="container-fluid bg-white">
-  <div class="row">
+  <div class="row justify-content-center">
     <div class="col-lg-6 py-4 p-xl-5">
       <h2 class="mb-4">San Antonio, TX</h2>
       <hr class="my-4">
@@ -173,9 +173,10 @@ include_once "php/header.php";
         </ul>
       </nav> -->
     </div>
-    <div class="col-lg-6 map-side-lg pe-lg-0">
+    <!-- <div class="col-lg-6 map-side-lg pe-lg-0">
       <div class="map-full shadow-soft border-light" id="categorySideMap"></div>
-    </div>
+    </div> -->
+    
   </div>
 </div>
 <?php
