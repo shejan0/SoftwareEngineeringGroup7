@@ -146,7 +146,7 @@ mysqli_close($conn);
 ?>
 
 <html lang="en-US">
-    <head><title>Create/Modify Property</title></head>
+    <head><title>Create Property</title></head>
     <body>
         <h1>Fill form to create property</h1>
         <h3>Hotel ID: <?php echo $hotelID?></h3>
