@@ -2,7 +2,7 @@
 include_once "user-connection.php";
 
 ?>
-<form autocomplete="off" method="get"> <!--Get the action back to the host page -->
+<form autocomplete="off" method="post" action=""> <!--Get the action back to the host page -->
           <div class="row">
             <div class="col-xl-4 col-md-6 mb-4 ">
               <label class="form-label" for="form_dates">Dates</label>
@@ -73,9 +73,9 @@ include_once "user-connection.php";
                         echo "<li class=\"list-inline-item\">";
                         echo "<div class=\"form-check form-switch\">";
                         if(isset($_GET[$aname])){
-                          echo "<input class=\"form-check-input \" id=\"\" name=\"$aname\" type=\"checkbox\" checked>";  
+                          echo '<input class="form-check-input" name="'.$aname.'" type="checkbox" checked>';  
                         }else{
-                          echo "<input class=\"form-check-input \" id=\"\" name=\"$aname\" type=\"checkbox\">";
+                          echo "<input class=\"form-check-input \" name=\"$aname\" type=\"checkbox\">";
                         }
                         echo "<label class=\"form-check-label\" for=\"\"> <span class=\"text-sm\">$aname</span></label>";
                         echo "</div>";
@@ -89,7 +89,22 @@ include_once "user-connection.php";
           </div>
           <div class="row">
             <div class="col-sm-6 mb-4 order-2 order-sm-1">
-              <button class="btn btn-primary shadow-soft border-light animate-up-2" type="submit"> <i class="fas fa-search me-1"></i>Search</button>
+              <button name="search" class="btn btn-primary shadow-soft border-light animate-up-2" type="submit"> <i class="fas fa-search me-1"></i>Search</button>
             </div>
           </div>
         </form>
+        <?php
+        if (isset($_POST['search']))
+                    {
+                      $roomType = $_POST['roomType'];
+                      $amenityquery = "SELECT DISTINCT amenityName FROM GenAmenities;";
+                      $result = $conn->query($amenityquery);
+                      while ($data=$result->fetch_assoc())
+                        {
+                          if isset($_POST["$data[amenityName]"])
+                            $amenities[]=$data['amenityName'];
+                        }
+                        
+                    }
+                    
+        ?>

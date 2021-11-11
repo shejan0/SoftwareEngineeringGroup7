@@ -9,7 +9,9 @@ include_once "php/header.php";
     <div class="col-lg-6 py-4 p-xl-5">
       <h2 class="mb-4">San Antonio, TX</h2>
       <hr class="my-4">
-      <?php include_once "php/search-filter.php" ?>
+      <?php include "php/search-filter.php" 
+
+      ?>
       <hr class="my-4">
       <div class="d-flex justify-content-between align-items-center flex-column flex-md-row mb-4">
         <div class="me-3">
@@ -177,7 +179,7 @@ include_once "php/header.php";
   </div>
 </div>
 <?php
-include_once "php/footer.php";  ?>
+include_once "php/footer.php";?>
 <script>
   createListingsMap({
     mapId: 'categorySideMap',
