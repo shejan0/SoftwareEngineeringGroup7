@@ -94,6 +94,9 @@ include_once "inc/side-bar.php";
                     <?php  } ?>
         </table>
     </div>
+    <a href ="createProperty.php">Create Property</a>
+    <br>
+    <a href ="modifyProperty.php">Modify Property</a>
     <?php include_once "inc/footer.php" ?>
     <!-- Core -->
     <script src=" ../vendor/@popperjs/core/dist/umd/popper.min.js">
