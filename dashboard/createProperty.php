@@ -3,8 +3,8 @@ include_once "inc/user-connection.php";
 $queryLastRow = "SELECT * FROM `hotel`.`hotel` Where hotelID = (SELECT MAX(hotelID) FROM `hotel`.`hotel`)";
 $resultLastRow = mysqli_query($conn, $queryLastRow);
 $lastID = mysqli_fetch_assoc($resultLastRow);
-// hotel property variables
-$hotelID = $lastID['hotelID'] + 1;
+if($lastID != NULL) $hotelID = $lastID['hotelID'] + 1;
+else $hotelID = 1;
 $hotelName = NULL;
 $numRooms = NULL;
 $weekendSurge = NULL;
@@ -75,18 +75,18 @@ if (isset($_POST["create"])) {    // all process provided below at each break po
     if (!isset($_POST['king']) && !isset($_POST['queen']) && isset($_POST['standard'])) $numStandard = $numRooms;
 
     if (isset($_POST['king']) && empty($_POST['priceKing'])) echo "Enter price of King type room<br>";
-    else if (!ctype_digit($_POST['priceKing'])) echo "Enter \"non-zero integer\" for Price of King <br>";
-    if (!isset($_POST['king']) && (!empty($_POST['kingPrice']))) echo "King type not selected. Leave blank or enter 0 for price of King<br>";
+    else if (isset($_POST['king']) && !ctype_digit($_POST['priceKing'])) echo "Enter \"non-zero integer\" for Price of King <br>";
+    else if (!isset($_POST['king']) && !empty($_POST['kingPrice'])) echo "King type not selected. Leave blank or enter 0 for price of King<br>";
     $priceKing = $_POST['priceKing'];
 
     if (isset($_POST['queen']) && empty($_POST['priceQueen'])) echo "Enter price of Queen type room<br>";
-    else if (!ctype_digit($_POST['priceQueen'])) echo "Enter \"non-zero integer\" for price of Queen<br>";
-    if (!isset($_POST['queen']) && (!empty($_POST['priceQueen']))) echo "Queen type not selected. Leave blank or enter 0 for price of Queen<br>";
+    else if (isset($_POST['queen']) && !ctype_digit($_POST['priceQueen'])) echo "Enter \"non-zero integer\" for price of Queen<br>";
+    else if (!isset($_POST['queen']) && !empty($_POST['priceQueen'])) echo "Queen type not selected. Leave blank or enter 0 for price of Queen<br>";
     $priceQueen = $_POST['priceQueen'];
 
     if (isset($_POST['standard']) && empty($_POST['priceStandard'])) echo "Enter price of Standard type room<br>";
-    else if (!ctype_digit($_POST['priceStandard'])) echo "Enter Integer for price of Standard<br>";
-    if (!isset($_POST['standard']) && (!empty($_POST['priceStandard']))) echo "Standard type not selected. Leave blank or enter 0 for price of Standard<br>";
+    else if (isset($_POST['standard']) && !ctype_digit($_POST['priceStandard'])) echo "Enter Integer for price of Standard<br>";
+    else if (!isset($_POST['standard']) && !empty($_POST['priceStandard'])) echo "Standard type not selected. Leave blank or enter 0 for price of Standard<br>";
     $priceStandard = $_POST['priceStandard'];
 
     if (empty($_POST['weekendSurge']))  echo "Enter Weekend Surge<br>";
@@ -147,7 +147,7 @@ mysqli_close($conn);
 <html lang="en-US">
 
 <head>
-    <title>Create/Modify Property</title>
+    <title>Create Property</title>
 </head>
 
 <body>
