@@ -20,11 +20,11 @@ if (isset($_POST["create"])) {    // all process provided below at each break po
     if (empty($_POST['hotelName'])) echo "Error: Hotel Name required<br>";
     else $hotelName = $_POST['hotelName'];
 
-    if (empty($_POST['numRooms']))  echo "Enter Total Number of Rooms<br>";
-    else if (!ctype_digit($_POST['numRooms'])) echo "Enter \"positive integer\" for Total Number of Rooms<br>";
+    if (empty($_POST['numRooms']))  echo "Error: Total Number of Rooms required<br>";
+    else if (!ctype_digit($_POST['numRooms'])) echo "Error: Enter \"positive integer\" for Total Number of Rooms<br>";
     else $numRooms = $_POST['numRooms'];
 
-    if (!isset($_POST['king']) && !isset($_POST['queen']) && !isset($_POST['standard'])) echo "Select at least one room type<br>";
+    if (!isset($_POST['king']) && !isset($_POST['queen']) && !isset($_POST['standard'])) echo "Error: Select at least one room type<br>";
     // number of rooms of each room type when all room types selected
     if (isset($_POST['king']) && isset($_POST['queen']) && isset($_POST['standard'])) {
         $numKing = ($numRooms * 0.2);
@@ -38,6 +38,9 @@ if (isset($_POST["create"])) {    // all process provided below at each break po
         $numStandard = ($numRooms * 0.5);
         if (($numStandard - floor($numStandard)) >= 0.5) $numStandard = round($numStandard);
         else $numStandard = floor($numStandard);
+        
+        $currTotal = $numKing + $numQueen + $numStandard;
+        if ($currTotal > $numRooms) $numKing = $numKing - ($currTotal - $numRooms);
     }
     /* number of rooms of each type when 2 out of 3 types are selected
         * includes all combination */
@@ -49,6 +52,9 @@ if (isset($_POST["create"])) {    // all process provided below at each break po
         $numQueen = ($numRooms * 0.5);
         if (($numQueen - floor($numQueen)) >= 0.5) $numQueen = round($numQueen);
         else $numQueen = floor($numQueen);
+
+        $currTotal = $numKing + $numQueen;
+        if ($currTotal > $numRooms) $numKing = $numKing - ($currTotal - $numRooms);
     }
     if (isset($_POST['king']) && !isset($_POST['queen']) && isset($_POST['standard'])) {
         $numKing = ($numRooms * 0.5);
@@ -58,6 +64,9 @@ if (isset($_POST["create"])) {    // all process provided below at each break po
         $numStandard = ($numRooms * 0.5);
         if (($numStandard - floor($numStandard)) >= 0.5) $numStandard = round($numStandard);
         else $numStandard = floor($numStandard);
+
+        $currTotal = $numKing + $numStandard;
+        if ($currTotal > $numRooms) $numKing = $numKing - ($currTotal - $numRooms);
     }
     if (!isset($_POST['king']) && isset($_POST['queen']) && isset($_POST['standard'])) {
         $numQueen = ($numRooms * 0.5);
@@ -67,6 +76,9 @@ if (isset($_POST["create"])) {    // all process provided below at each break po
         $numStandard = ($numRooms * 0.5);
         if (($numStandard - floor($numStandard)) >= 0.5) $numStandard = round($numStandard);
         else $numStandard = floor($numStandard);
+
+        $currTotal = $numQueen + $numStandard;
+        if ($currTotal > $numRooms) $numQueen = $numQueen - ($currTotal - $numRooms);
     }
     /* number of rooms of each type when 1 out of 3 types are selected
         * includes all combination */
