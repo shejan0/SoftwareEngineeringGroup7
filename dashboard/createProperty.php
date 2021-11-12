@@ -17,11 +17,11 @@ $numStandard = NULL;
 
 // Process info when create (submit button) is clicked
 if (isset($_POST["create"])) {    // all process provided below at each break point
-    if (empty($_POST['hotelName'])) echo "Enter Hotel Name<br>";
+    if (empty($_POST['hotelName'])) echo "Error: Hotel Name required<br>";
     else $hotelName = $_POST['hotelName'];
 
     if (empty($_POST['numRooms']))  echo "Enter Total Number of Rooms<br>";
-    else if (!ctype_digit($_POST['numRooms'])) echo "Enter \"non-zero integer\" for Total Number of Rooms<br>";
+    else if (!ctype_digit($_POST['numRooms'])) echo "Enter \"positive integer\" for Total Number of Rooms<br>";
     else $numRooms = $_POST['numRooms'];
 
     if (!isset($_POST['king']) && !isset($_POST['queen']) && !isset($_POST['standard'])) echo "Select at least one room type<br>";
@@ -75,22 +75,22 @@ if (isset($_POST["create"])) {    // all process provided below at each break po
     if (!isset($_POST['king']) && !isset($_POST['queen']) && isset($_POST['standard'])) $numStandard = $numRooms;
 
     if (isset($_POST['king']) && empty($_POST['priceKing'])) echo "Enter price of King type room<br>";
-    else if (isset($_POST['king']) && !ctype_digit($_POST['priceKing'])) echo "Enter \"non-zero integer\" for Price of King <br>";
+    else if (isset($_POST['king']) && !ctype_digit($_POST['priceKing'])) echo "Enter \"positive integer\" for Price of King <br>";
     else if (!isset($_POST['king']) && !empty($_POST['kingPrice'])) echo "King type not selected. Leave blank or enter 0 for price of King<br>";
     $priceKing = $_POST['priceKing'];
 
     if (isset($_POST['queen']) && empty($_POST['priceQueen'])) echo "Enter price of Queen type room<br>";
-    else if (isset($_POST['queen']) && !ctype_digit($_POST['priceQueen'])) echo "Enter \"non-zero integer\" for price of Queen<br>";
+    else if (isset($_POST['queen']) && !ctype_digit($_POST['priceQueen'])) echo "Enter \"positive integer\" for price of Queen<br>";
     else if (!isset($_POST['queen']) && !empty($_POST['priceQueen'])) echo "Queen type not selected. Leave blank or enter 0 for price of Queen<br>";
     $priceQueen = $_POST['priceQueen'];
 
     if (isset($_POST['standard']) && empty($_POST['priceStandard'])) echo "Enter price of Standard type room<br>";
-    else if (isset($_POST['standard']) && !ctype_digit($_POST['priceStandard'])) echo "Enter Integer for price of Standard<br>";
+    else if (isset($_POST['standard']) && !ctype_digit($_POST['priceStandard'])) echo "Enter \"positive integer\" for price of Standard<br>";
     else if (!isset($_POST['standard']) && !empty($_POST['priceStandard'])) echo "Standard type not selected. Leave blank or enter 0 for price of Standard<br>";
     $priceStandard = $_POST['priceStandard'];
 
-    if (empty($_POST['weekendSurge']))  echo "Enter Weekend Surge<br>";
-    else if (!ctype_digit($_POST['weekendSurge'])) echo "Enter \"non-zero integer\" for Weekend Surge<br>";
+    if (empty($_POST['weekendSurge']))  echo "Enter Weekend Surcharge<br>";
+    else if (!ctype_digit($_POST['weekendSurge'])) echo "Enter \"positive integer\" for Weekend Surcharge<br>";
     else $weekendSurge = $_POST['weekendSurge'];
 
     // insert property info into hotel table
