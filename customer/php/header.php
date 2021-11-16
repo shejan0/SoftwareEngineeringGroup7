@@ -16,7 +16,7 @@ if(!isset($_SESSION['email']))
         <nav id="navbar-main" aria-label="Primary navigation" class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
             <div class="container-fluid position-relative">
                 <div class="d-flex align-items-center">
-                    <a class="navbar-brand py-1" href="index.html">
+                    <a class="navbar-brand py-1" href="/">
                         <img src="../assets/img/brand/dark.svg" alt="Directory logo"></a>
                 </div>
                 <div class="navbar-collapse collapse me-auto" id="navbar_global">
@@ -32,7 +32,7 @@ if(!isset($_SESSION['email']))
                     </div>
                     <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
                         <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link" href="customer.php">home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="customer.php">Customer Home</a></li>
 
                     </ul>
                 </div>
@@ -60,7 +60,7 @@ if(!isset($_SESSION['email']))
                                 }
                                 ?>
                             </span>
-                            <a class="dropdown-item" href="../index.html">Home</a>
+                            <a class="dropdown-item" href="customer.php">Customer Home</a>
                             <a class="dropdown-item" href="profile.php">Profile</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item rounded-bottom" href="../php/logout.php">
