@@ -1,5 +1,5 @@
 <?php
-include_once "inc/user-connection.php";
+include_once "../php/inc/user-connection.php";
 include_once "inc/head.php";
 include_once "inc/side-bar.php";
 ?>
