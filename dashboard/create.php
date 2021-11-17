@@ -98,72 +98,29 @@ if (isset($_POST["create"])) {    // all process provided below at each break po
     if (!isset($_POST['king']) && !isset($_POST['queen']) && isset($_POST['standard'])) $numStandard = $numRooms;
 
     // if king is selected but no price is entered
-    if (isset($_POST['king']) && empty($_POST['priceKing'])) {
+    if ((isset($_POST['king']) && empty($_POST['priceKing'])) || (isset($_POST['queen']) && empty($_POST['priceQueen'])) || (isset($_POST['standard']) && empty($_POST['priceStandard']))) {
         $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-        $_SESSION['message'] = "Error: No price entered for king room";
+        $_SESSION['message'] = "Error: Missing price for rooms - enter price for selected rooms";
         header("location: createProperty.php");
         exit();
     }
     // if king is selected but price entered is not a valid input (has to be an int)
-    else if (isset($_POST['king']) && !ctype_digit($_POST['priceKing'])) {
+    else if ((isset($_POST['king']) && !ctype_digit($_POST['priceKing'])) || (isset($_POST['queen']) && !ctype_digit($_POST['priceQueen'])) || (isset($_POST['standard']) && !ctype_digit($_POST['priceStandard']))) {
         $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
         $_SESSION['message'] = "Error - Invalid input: Only positive integer are allowed";
         header("location: createProperty.php");
         exit();
     }
     // if king isn't selected
-    else if (!isset($_POST['king']) && !empty($_POST['kingPrice'])) {
+    else if ((!isset($_POST['king']) && !empty($_POST['kingPrice'])) || (!isset($_POST['queen']) && !empty($_POST['priceQueen'])) || (!isset($_POST['standard']) && !empty($_POST['priceStandard']))) {
         $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
         $_SESSION['message'] = "Error: King not selected.";
         header("location: createProperty.php");
         exit();
     }
+    // if no error assign price to room 
     $priceKing = $_POST['priceKing'];
-
-    // if queen is selected but no price entered
-    if (isset($_POST['queen']) && empty($_POST['priceQueen'])) {
-        $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-        $_SESSION['message'] = "Error: No price entered for queen room";
-        header("location: createProperty.php");
-        exit();
-    }
-    // if queen is selected but price entered is not a valid input (has to be an int)
-    else if (isset($_POST['queen']) && !ctype_digit($_POST['priceQueen'])) {
-        $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-        $_SESSION['message'] = "Error - Invalid input: Only positive integer are allowed";
-        header("location: createProperty.php");
-        exit();
-
-        // if queen is not selected
-    } else if (!isset($_POST['queen']) && !empty($_POST['priceQueen'])) {
-        $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-        $_SESSION['message'] = "Error: queen not selected.";
-        header("location: createProperty.php");
-        exit();
-    }
-    $priceQueen = $_POST['priceQueen'];
-
-    // if standard is selected but no price entered
-    if (isset($_POST['standard']) && empty($_POST['priceStandard'])) {
-        $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-        $_SESSION['message'] = "Error: No price entered for standard room";
-        header("location: createProperty.php");
-        exit();
-
-        // if standard is selected but invalid input
-    } else if (isset($_POST['standard']) && !ctype_digit($_POST['priceStandard'])) {
-        $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-        $_SESSION['message'] = "Error - Invalid input: Only positive integer are allowed";
-        header("location: createProperty.php");
-        exit();
-    
-    // if standard isnt selected
-    } else if (!isset($_POST['standard']) && !empty($_POST['priceStandard'])) {
-        $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-        $_SESSION['message'] = "Error: standard not selected.";
-        header("location: createProperty.php");
-        exit();
-    }
+    $priceQueen = $_POST['priceQueen'];   
     $priceStandard = $_POST['priceStandard'];
 
     if (!ctype_digit($_POST['weekendSurge'])){
@@ -243,5 +200,6 @@ if (isset($_POST["create"])) {    // all process provided below at each break po
             header("location: createProperty.php");
             exit();
         }    }
-}   // close big if statement for when create (submit) is clicked
+} 
+// close connection
 mysqli_close($conn);
