@@ -25,15 +25,17 @@
             <div class="row justify-content-center">
                 <div class="col-12 d-flex align-items-center justify-content-center">
                     <div class="signin-inner my-4 my-lg-0 bg-white  rounded  p-4 p-lg-5 w-100 fmxw-500">
-                        <!-- <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <span class="fas fa-bullhorn me-1"></span>
-                            <strong>Sucessfully created <?php echo "$hotelName"; ?> </strong>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div> -->
                         <?php 
-                        if(isset($_SESSION['message'])){
-                            echo "$_SESSION[message]";
+                        if(isset($_SESSION['message']) && isset($_SESSION['alert'])){ ?>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <span class="fas fa-bullhorn me-1"></span>
+                            <strong>Sucessfully created <?php echo $hotelName ?> </strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                <?php
                             unset($_SESSION['message']);
+                            unset($_SESSION['alert']);
+
                         }
                             ?>
                         <p class="text-center">
@@ -121,21 +123,21 @@
                                 <label for="priceKing">King price</label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
-                                    <input type="text" name="priceKing"class="form-control" required>
+                                    <input type="text" name="priceKing"class="form-control">
                                 </div>
                             </div>
                             <div class="form-group mb-4">
                                 <label  for="priceQueen">Queen price</label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
-                                    <input type="text" name="priceQueen" class="form-control" required>
+                                    <input type="text" name="priceQueen" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group mb-4">
                                 <label for="priceStandard">Standard price</label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
-                                    <input type="text" name="priceStandard" class="form-control" required>
+                                    <input type="text" name="priceStandard" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group mb-4">
