@@ -1,5 +1,5 @@
 <?php
-    include_once "create.php";
+include_once "create.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,19 +25,18 @@
             <div class="row justify-content-center">
                 <div class="col-12 d-flex align-items-center justify-content-center">
                     <div class="signin-inner my-4 my-lg-0 bg-white  rounded  p-4 p-lg-5 w-100 fmxw-500">
-                        <?php 
-                        if(isset($_SESSION['message']) && isset($_SESSION['alert'])){ ?>
-                            <div class="<?php echo $_SESSION['alert']?>" role="alert">
-                            <span class="fas fa-bullhorn me-1"></span>
-                            <strong><?php echo $_SESSION['message']?></strong>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                <?php
+                        <?php
+                        if (isset($_SESSION['message']) && isset($_SESSION['alert'])) { ?>
+                            <div class="<?php echo $_SESSION['alert'] ?>" role="alert">
+                                <span class="fas fa-bullhorn me-1"></span>
+                                <strong><?php echo $_SESSION['message'] ?></strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php
                             unset($_SESSION['message']);
                             unset($_SESSION['alert']);
-
                         }
-                            ?>
+                        ?>
                         <p class="text-center">
                             <a href="hotel.php" class="d-flex align-items-center justify-content-center">
                                 <span class="text-gray"><span class="fas fa-arrow-left me-2"></span>Back to Hotel list
@@ -123,11 +122,11 @@
                                 <label for="priceKing">King price</label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
-                                    <input type="text" name="priceKing"class="form-control">
+                                    <input type="text" name="priceKing" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group mb-4">
-                                <label  for="priceQueen">Queen price</label>
+                                <label for="priceQueen">Queen price</label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
                                     <input type="text" name="priceQueen" class="form-control">
@@ -148,8 +147,8 @@
                                 </div>
                             </div>
                             <div class="d-grid">
-                                   <button type="submit" class="btn btn-primary" name="create" value="Create Property">Create Property</button>
-                                </div>
+                                <button type="submit" class="btn btn-primary" name="create" value="Create Property">Create Property</button>
+                            </div>
                         </form>
                     </div>
                 </div>
