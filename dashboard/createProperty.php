@@ -265,7 +265,7 @@ mysqli_close($conn);
                                 <label for="priceKing">King price</label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
-                                    <input type="text" name="priceQueen"class="form-control" required>
+                                    <input type="text" name="priceKing"class="form-control" required>
                                 </div>
                             </div>
                             <div class="form-group mb-4">
