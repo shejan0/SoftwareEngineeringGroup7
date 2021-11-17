@@ -117,8 +117,13 @@ if (isset($_POST["create"])) {    // all process provided below at each break po
         $createProp = mysqli_query($conn, $insertProp);
 
         if (!$createProp) exit("<p class='error'>Error Creating Hotel Property: ($insertProp) " . mysqli_error($conn) . "</p>");
-        echo "<p>Successfully Created Hotel Property \"" . $hotelName . "\"</p>";
-    }
+?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <span class="fas fa-bullhorn me-1"></span>
+            <strong>Sucessfully created <?php echo "$hotelName"; ?> </strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+<?php }
 
     // check and insert amenities to GenAmenities table
     if (isset($_POST['pool'])) {
@@ -265,33 +270,33 @@ mysqli_close($conn);
                                 <label for="priceKing">King price</label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
-                                    <input type="text" name="priceQueen"class="form-control" required>
+                                    <input type="text" name="priceQueen" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group mb-4">
-                                <label  for="priceQueen">Queen price</label>
+                                <label for="priceQueen">Queen price</label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
-                                    <input type="text" name="priceQueen" class="form-control" required>
+                                    <input type="text" name="priceQueen" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group mb-4">
                                 <label for="priceStandard">Standard price</label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
-                                    <input type="text" name="priceStandard" class="form-control" required>
+                                    <input type="text" name="priceStandard" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group mb-4">
                                 <label for="weekendSurge">Weekend surge (percentage - omit percent sign)</label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
-                                    <input type="text" name="weekendSurge" class="form-control" required>
+                                    <input type="text" name="weekendSurge" class="form-control">
                                 </div>
                             </div>
                             <div class="d-grid">
-                                   <button type="submit" class="btn btn-primary" name="create" value="Create Property">Create Property</button>
-                                </div>
+                                <button type="submit" class="btn btn-primary" name="create" value="Create Property">Create Property</button>
+                            </div>
                         </form>
                     </div>
                 </div>
