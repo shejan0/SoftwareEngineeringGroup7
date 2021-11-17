@@ -93,7 +93,7 @@ if (isset($_POST["create"])) {    // all process provided below at each break po
 
     if (isset($_POST['king']) && empty($_POST['priceKing'])) echo "Enter price of King type room<br>";
     else if (isset($_POST['king']) && !ctype_digit($_POST['priceKing'])) echo "Enter \"positive integer\" for Price of King <br>";
-    else if (!isset($_POST['king']) && !empty($_POST['kingPrice'])) echo "King type not selected. Leave blank or enter 0 for price of King<br>";
+    else if (!isset($_POST['king']) && !empty($_POST['priceKing'])) echo "King type not selected. Leave blank or enter 0 for price of King<br>";
     $priceKing = $_POST['priceKing'];
 
     if (isset($_POST['queen']) && empty($_POST['priceQueen'])) echo "Enter price of Queen type room<br>";
