@@ -217,24 +217,24 @@ mysqli_close($conn);
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="pool" , value="pool" id="defaultCheck1">
-                                            <label class="form-check-label" for="defaultCheck1">Pool</label>
+                                            <label class="form-check-label" for="pool">Pool</label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="gym" , value="gym" id="defaultCheck1">
-                                            <label class="form-check-label" for="defaultCheck1">
+                                            <label class="form-check-label" for="gym">
                                                 Gym
                                             </label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="spa" , value="spa" id="defaultCheck1">
-                                            <label class="form-check-label" for="defaultCheck1">
+                                            <label class="form-check-label" for="spa">
                                                 Spa
                                             </label>
                                         </div>
 
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="businessOffice" , value="businessOffice">
-                                            <label class="form-check-label" for="defaultCheck1">
+                                            <label class="form-check-label" for="businessOffice">
                                                 Business Office
                                             </label>
                                         </div>
@@ -247,15 +247,15 @@ mysqli_close($conn);
 
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="standard" , value="standard" id="defaultCheck1">
-                                            <label class="form-check-label" for="defaultCheck1">Standard</label>
+                                            <label class="form-check-label" for="standard">Standard</label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="queen" , value="queen" id="defaultCheck1">
-                                            <label class="form-check-label" for="defaultCheck1">Queen</label>
+                                            <label class="form-check-label" for="queen">Queen</label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="king" , value="king" id="defaultCheck1">
-                                            <label class="form-check-label" for="defaultCheck1">King</label>
+                                            <label class="form-check-label" for="king">King</label>
                                         </div>
                                     </div>
                                 </div>
