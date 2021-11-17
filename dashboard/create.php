@@ -17,7 +17,7 @@ $numQueen = NULL;
 $numStandard = NULL;
 
 if (!isset($_SESSION['email'])) {
-    header("Location: ../html/admin-sign-in.html");
+    header("Location: ../html/admin-sign-in.php");
 }
 // Process info when create (submit button) is clicked
 if (isset($_POST["create"])) {    // all process provided below at each break point
