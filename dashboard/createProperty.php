@@ -1,5 +1,22 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- Primary Meta Tags -->
+    <title>Create hotel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="title" content="Pixel Bootstrap 5 - Sign in">
+    <meta name="author" content="Themesberg">
+    <meta name="description" content="Open source and free Bootstrap 5 UI Kit featuring 80 UI components, 5 example pages, and a Gulp and Sass workflow.">
+    <link rel="canonical" href="https://themesberg.com/product/ui-kit/pixel-free-bootstrap-5-ui-kit">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon/favicon.ico">
+    <link type="text/css" href="../vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link type="text/css" href="../css/pixel.css" rel="stylesheet">
+
+</head>
+
+<?php
 session_start();
 include_once "inc/user-connection.php";
 $queryLastRow = "SELECT * FROM `hotel`.`hotel` Where hotelID = (SELECT MAX(hotelID) FROM `hotel`.`hotel`)";
@@ -158,28 +175,8 @@ if (isset($_POST["create"])) {    // all process provided below at each break po
         if (!$add) exit("<p class='error'>Error Adding Amenity to Hotel Property: ($addAmenity) " . mysqli_error($conn) . "</p>");
     }
 }   // close big if statement for when create (submit) is clicked
-
-
 mysqli_close($conn);
 ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <!-- Primary Meta Tags -->
-    <title>Create hotel</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="title" content="Pixel Bootstrap 5 - Sign in">
-    <meta name="author" content="Themesberg">
-    <meta name="description" content="Open source and free Bootstrap 5 UI Kit featuring 80 UI components, 5 example pages, and a Gulp and Sass workflow.">
-    <link rel="canonical" href="https://themesberg.com/product/ui-kit/pixel-free-bootstrap-5-ui-kit">
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon/favicon.ico">
-    <link type="text/css" href="../vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link type="text/css" href="../css/pixel.css" rel="stylesheet">
-
-</head>
-
 <body>
     <section class="min-vh-100 d-flex align-items-center section-image overlay-soft-dark" data-background="../assets/img/pages/form-image.jpg">
         <div class="container">
@@ -195,9 +192,6 @@ mysqli_close($conn);
                         <div class="text-center text-md-center mb-4 mt-md-0">
                             <h1 class="mb-0 h3">Add Hotel</h1>
                         </div>
-                        <!-- <h3>Hotel ID: <?php //echo $hotelID 
-                                            ?></h3> -->
-
                         <!-- Main form for property creation -->
                         <form action="createProperty.php" method="post" class="mt-4">
                             <div class="form-group mb-4">
@@ -270,7 +264,7 @@ mysqli_close($conn);
                                 <label for="priceKing">King price</label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
-                                    <input type="text" name="priceQueen" class="form-control">
+                                    <input type="text" name="priceKing" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group mb-4">
