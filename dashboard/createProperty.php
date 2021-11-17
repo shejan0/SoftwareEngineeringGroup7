@@ -27,9 +27,9 @@
                     <div class="signin-inner my-4 my-lg-0 bg-white  rounded  p-4 p-lg-5 w-100 fmxw-500">
                         <?php 
                         if(isset($_SESSION['message']) && isset($_SESSION['alert'])){ ?>
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <div class="<?php echo $_SESSION['alert']?>" role="alert">
                             <span class="fas fa-bullhorn me-1"></span>
-                            <strong>Sucessfully created <?php echo $hotelName ?> </strong>
+                            <strong><?php echo $_SESSION['message']?></strong>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                 <?php

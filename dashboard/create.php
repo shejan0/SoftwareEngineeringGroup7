@@ -21,17 +21,12 @@
     }
     // Process info when create (submit button) is clicked
     if (isset($_POST["create"])) {    // all process provided below at each break point
-        // if (empty($_POST['hotelName'])) echo "Error: Hotel Name required<br>";
         $hotelName = $_POST['hotelName'];
 
-        // if (empty($_POST['numRooms']))  echo "Error: Total Number of Rooms required<br>";
         if (!ctype_digit($_POST['numRooms'])){
-            $_SESSION['message'] = '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <span class="fas fa-bullhorn me-1"></span>
-            <strong>Enter a positie integer for number of rooms</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>';
-        header("location: createProperty.php");
+            $_SESSION['alert']= "alert alert-danger alert-dismissible fade show";
+            $_SESSION['message'] = "Error: Enter a positive integer for number of rooms";
+            header("location: createProperty.php");
         }
         else $numRooms = $_POST['numRooms'];
 
