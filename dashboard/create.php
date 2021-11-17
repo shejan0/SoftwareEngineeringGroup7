@@ -97,24 +97,24 @@ if (isset($_POST["create"])) {    // all process provided below at each break po
     if (!isset($_POST['king']) && isset($_POST['queen']) && !isset($_POST['standard'])) $numQueen = $numRooms;
     if (!isset($_POST['king']) && !isset($_POST['queen']) && isset($_POST['standard'])) $numStandard = $numRooms;
 
-    // if king is selected but no price is entered
+    // if no price is entered for selected type
     if ((isset($_POST['king']) && empty($_POST['priceKing'])) || (isset($_POST['queen']) && empty($_POST['priceQueen'])) || (isset($_POST['standard']) && empty($_POST['priceStandard']))) {
         $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
         $_SESSION['message'] = "Error: Missing price for rooms - enter price for selected rooms";
         header("location: createProperty.php");
         exit();
     }
-    // if king is selected but price entered is not a valid input (has to be an int)
+    // if price entered is not a valid input (has to be an int)
     else if ((isset($_POST['king']) && !ctype_digit($_POST['priceKing'])) || (isset($_POST['queen']) && !ctype_digit($_POST['priceQueen'])) || (isset($_POST['standard']) && !ctype_digit($_POST['priceStandard']))) {
         $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-        $_SESSION['message'] = "Error - Invalid input: Only positive integer are allowed";
+        $_SESSION['message'] = "Error - Invalid input for price: Only positive integer are allowed";
         header("location: createProperty.php");
         exit();
     }
-    // if king isn't selected
+    // if price entered for a type that's not selected
     else if ((!isset($_POST['king']) && !empty($_POST['kingPrice'])) || (!isset($_POST['queen']) && !empty($_POST['priceQueen'])) || (!isset($_POST['standard']) && !empty($_POST['priceStandard']))) {
         $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-        $_SESSION['message'] = "Error: King not selected.";
+        $_SESSION['message'] = "Error: Price entered for a non-selected type.";
         header("location: createProperty.php");
         exit();
     }
