@@ -46,6 +46,9 @@
                             <h1 class="mb-0 h3">Add Hotel</h1>
 
                         </div>
+                        <!-- <h3>Hotel ID: <?php //echo $hotelID 
+                                            ?></h3> -->
+
                         <!-- Main form for property creation -->
                         <form action="create.php" method="post" class="mt-4">
                             <div class="form-group mb-4">
@@ -118,33 +121,33 @@
                                 <label for="priceKing">King price</label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
-                                    <input type="text" name="priceKing" class="form-control">
+                                    <input type="text" name="priceKing"class="form-control" required>
                                 </div>
                             </div>
                             <div class="form-group mb-4">
-                                <label for="priceQueen">Queen price</label>
+                                <label  for="priceQueen">Queen price</label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
-                                    <input type="text" name="priceQueen" class="form-control">
+                                    <input type="text" name="priceQueen" class="form-control" required>
                                 </div>
                             </div>
                             <div class="form-group mb-4">
                                 <label for="priceStandard">Standard price</label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
-                                    <input type="text" name="priceStandard" class="form-control">
+                                    <input type="text" name="priceStandard" class="form-control" required>
                                 </div>
                             </div>
                             <div class="form-group mb-4">
                                 <label for="weekendSurge">Weekend surge (percentage - omit percent sign)</label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
-                                    <input type="text" name="weekendSurge" class="form-control">
+                                    <input type="text" name="weekendSurge" class="form-control" required>
                                 </div>
                             </div>
                             <div class="d-grid">
-                                <button type="submit" class="btn btn-primary" name="create" value="Create Property">Create Property</button>
-                            </div>
+                                   <button type="submit" class="btn btn-primary" name="create" value="Create Property">Create Property</button>
+                                </div>
                         </form>
                     </div>
                 </div>
