@@ -1,9 +1,11 @@
 <?php
+
+session_start();
 include_once "inc/user-connection.php";
 $queryLastRow = "SELECT * FROM `hotel`.`hotel` Where hotelID = (SELECT MAX(hotelID) FROM `hotel`.`hotel`)";
 $resultLastRow = mysqli_query($conn, $queryLastRow);
 $lastID = mysqli_fetch_assoc($resultLastRow);
-if($lastID != NULL) $hotelID = $lastID['hotelID'] + 1;
+if ($lastID != NULL) $hotelID = $lastID['hotelID'] + 1;
 else $hotelID = 1;
 $hotelName = NULL;
 $numRooms = NULL;
@@ -15,6 +17,9 @@ $numKing = NULL;
 $numQueen = NULL;
 $numStandard = NULL;
 
+if (!isset($_SESSION['email'])) {
+    header("Location: ../html/admin-sign-in.html");
+}
 // Process info when create (submit button) is clicked
 if (isset($_POST["create"])) {    // all process provided below at each break point
     if (empty($_POST['hotelName'])) echo "Error: Hotel Name required<br>";
@@ -38,7 +43,7 @@ if (isset($_POST["create"])) {    // all process provided below at each break po
         $numStandard = ($numRooms * 0.5);
         if (($numStandard - floor($numStandard)) >= 0.5) $numStandard = round($numStandard);
         else $numStandard = floor($numStandard);
-        
+
         $currTotal = $numKing + $numQueen + $numStandard;
         if ($currTotal > $numRooms) $numKing = $numKing - ($currTotal - $numRooms);
     }
@@ -151,51 +156,161 @@ if (isset($_POST["create"])) {    // all process provided below at each break po
 
 
 mysqli_close($conn);
-
-
-
 ?>
-
-<html lang="en-US">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <title>Create Property</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- Primary Meta Tags -->
+    <title>Create hotel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="title" content="Pixel Bootstrap 5 - Sign in">
+    <meta name="author" content="Themesberg">
+    <meta name="description" content="Open source and free Bootstrap 5 UI Kit featuring 80 UI components, 5 example pages, and a Gulp and Sass workflow.">
+    <link rel="canonical" href="https://themesberg.com/product/ui-kit/pixel-free-bootstrap-5-ui-kit">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon/favicon.ico">
+    <link type="text/css" href="../vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link type="text/css" href="../css/pixel.css" rel="stylesheet">
+
 </head>
 
 <body>
-    <h1>Fill form to create property</h1>
-    <h3>Hotel ID: <?php echo $hotelID ?></h3>
+    <section class="min-vh-100 d-flex align-items-center section-image overlay-soft-dark" data-background="../assets/img/pages/form-image.jpg">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 d-flex align-items-center justify-content-center">
+                    <div class="signin-inner my-4 my-lg-0 bg-white  rounded  p-4 p-lg-5 w-100 fmxw-500">
+                        <p class="text-center">
+                            <a href="hotel.php" class="d-flex align-items-center justify-content-center">
+                                <span class="text-gray"><span class="fas fa-arrow-left me-2"></span>Back to Hotel list
+                                </span>
+                            </a>
+                        </p>
+                        <div class="text-center text-md-center mb-4 mt-md-0">
+                            <h1 class="mb-0 h3">Add Hotel</h1>
+                        </div>
+                        <!-- <h3>Hotel ID: <?php //echo $hotelID 
+                                            ?></h3> -->
 
-    <!-- Main form for property creation -->
-    <form action="createProperty.php" method="post">
-        <div><br><label for="hotelName">Enter Hotel Name (required):</label><input type="text" name="hotelName"><br></div>
-        <div><br><label for="numRooms">Enter Total number of Rooms (required):</label> <input type="text" name="numRooms"><br></div>
-        <div>
-            <br><label>Select Amenities (optional):</label> <br>
-            <label for="pool">Pool</label> <input type="checkbox" name="pool" , value="pool"><br>
-            <label for="gym">Gym</label> <input type="checkbox" name="gym" , value="gym"><br>
-            <label for="spa">Spa</label> <input type="checkbox" name="spa" , value="spa"><br>
-            <label for="businessOffice">Business Office</label> <input type="checkbox" name="businessOffice" , value="businessOffice"><br>
-        </div>
-        <div>
-            <br><label>Select Room Types (at least one required):</label><br>
-            <label for="king">King</label> <input type="checkbox" name="king" , value="king"><br>
-            <label for="queen">Queen</label> <input type="checkbox" name="queen" , value="queen"><br>
-            <label for="standard">Standard</label> <input type="checkbox" name="standard" , value="standard"><br>
-        </div>
+                        <!-- Main form for property creation -->
+                        <form action="createProperty.php" method="post" class="mt-4">
+                            <div class="form-group mb-4">
+                                <label for="hotelName">Enter Hotel Name (required):</label>
+                                <div class="input-group">
+                                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
+                                    <input type="text" name="hotelName" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group mb-4">
+                                <label for="numRooms">Enter Total number of Rooms (required):</label>
+                                <div class="input-group">
+                                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
+                                    <input type="text" name="numRooms" class='form-control'>
+                                </div>
+                            </div>
+                            <div class="row mb-5 mb-lg-5">
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="form-group mb-4">
+                                        <div class="mb-3">
+                                            <span class="fw-bold">Amenities</span>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="pool" , value="pool" id="defaultCheck1">
+                                            <label class="form-check-label" for="defaultCheck1">Pool</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="gym" , value="gym" id="defaultCheck1">
+                                            <label class="form-check-label" for="defaultCheck1">
+                                                Gym
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="spa" , value="spa" id="defaultCheck1">
+                                            <label class="form-check-label" for="defaultCheck1">
+                                                Spa
+                                            </label>
+                                        </div>
 
-        <div>
-            <br><label>Enter Price for each Room Type included:
-                <br>- Enter integer, no currency sign.
-                <br>- Leave blank or enter 0 if no rooms of particular type:</label><br>
-            <label for="priceKing">Price for King</label> <input type="text" name="priceKing"><br>
-            <label for="priceQueen">Price for Queen</label> <input type="text" name="priceQueen"><br>
-            <label for="priceStandard">Price for Standard</label> <input type="text" name="priceStandard"><br>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="businessOffice" , value="businessOffice">
+                                            <label class="form-check-label" for="defaultCheck1">
+                                                Business Office
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-7 col-sm-6 mt-4 mt-md-0">
+
+                                    <div class="form-group mb-4">
+                                        <label for="hotelName">Room Type (at least one)</label>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="standard" , value="standard" id="defaultCheck1">
+                                            <label class="form-check-label" for="defaultCheck1">Standard</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="queen" , value="queen" id="defaultCheck1">
+                                            <label class="form-check-label" for="defaultCheck1">Queen</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="king" , value="king" id="defaultCheck1">
+                                            <label class="form-check-label" for="defaultCheck1">King</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3"><span class="h6 fw-bold">Room type pricing</span></div>
+                            <div class="form-group mb-4">
+                                <label for="priceKing">King price</label>
+                                <div class="input-group">
+                                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
+                                    <input type="text" name="priceQueen"class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group mb-4">
+                                <label  for="priceQueen">Queen price</label>
+                                <div class="input-group">
+                                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
+                                    <input type="text" name="priceQueen" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group mb-4">
+                                <label for="priceStandard">Standard price</label>
+                                <div class="input-group">
+                                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
+                                    <input type="text" name="priceStandard" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group mb-4">
+                                <label for="weekendSurge">Weekend surge (percentage - omit percent sign)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
+                                    <input type="text" name="weekendSurge" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="d-grid">
+                                   <button type="submit" class="btn btn-primary" name="create" value="Create Property">Create Property</button>
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div><br><label for="weekendSurge">Enter Weekend Surcharge(Required):</label> <input type="text" name="weekendSurge"><br></div>
-        <br><input type="submit" name="create" value="Create Property"><br>
-    </form>
-    <a href="hotel.php">Back to Hotel Properties List</a>
+    </section>
+    <script src="../vendor/@popperjs/core/dist/umd/popper.min.js"></script>
+    <script src="../vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../vendor/headroom.js/dist/headroom.min.js"></script>
+
+    <!-- Vendor JS -->
+    <script src="../vendor/onscreen/dist/on-screen.umd.min.js"></script>
+    <script src="../vendor/jarallax/dist/jarallax.min.js"></script>
+    <script src="../vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="../vendor/vivus/dist/vivus.min.js"></script>
+    <script src="../vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
+
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script src="../assets/js/pixel.js"></script>
 
     <body>
 
