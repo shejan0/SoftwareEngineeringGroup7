@@ -77,20 +77,20 @@ include_once "create.php";
                                             <label class="form-check-label" for="pool">Pool</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="gym" , value="gym" id="defaultCheck1">
+                                            <input class="form-check-input" type="checkbox" name="gym" value="gym" id="defaultCheck1">
                                             <label class="form-check-label" for="gym">
                                                 Gym
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="spa" , value="spa" id="defaultCheck1">
+                                            <input class="form-check-input" type="checkbox" name="spa" value="spa" id="defaultCheck1">
                                             <label class="form-check-label" for="spa">
                                                 Spa
                                             </label>
                                         </div>
 
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="businessOffice" , value="businessOffice">
+                                            <input class="form-check-input" type="checkbox" name="businessOffice" value="businessOffice" id="defaultCheck1" >
                                             <label class="form-check-label" for="businessOffice">
                                                 Business Office
                                             </label>
