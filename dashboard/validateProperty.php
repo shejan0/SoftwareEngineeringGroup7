@@ -143,6 +143,4 @@ function addAmenity($amenityName, $amenityID, $hotelID, $header) {
     }
 }
 
-mysqli_close($conn);
-
 ?>
