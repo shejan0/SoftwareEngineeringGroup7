@@ -3,8 +3,7 @@ include_once "../php/inc/user-connection.php";
 include_once "inc/session_start.php";
 
 $conn;
-
-if(!$conn){
+if (!$conn) {
     $_SESSION['message'] = "Could not connect";
     header("location: settings.php");
     exit();
@@ -13,25 +12,45 @@ if(!$conn){
 if (isset($_POST['update'])) {
 
     // if no input field was entered before submitting form
-    if (empty($_POST['name']) && empty($_POST['email']) && empty($_POST['password'])){
+    if (empty($_POST['newName']) && empty($_POST['newEmail']) && empty($_POST['newPassword'])) {
         $_SESSION['alert'] = "alert alert-warning alert-dismissible fade show";
         $_SESSION['message'] = "Warning: User profile not updated - did not enter any inputs.";
         header("location: settings.php");
         exit();
     }
-    $name = $_POST['name'];
-    $password =  $_POST['password'];
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    $email = $_POST['email'];
-
-        // if invalid email and not empty
-    if(!filter_var($email, FILTER_VALIDATE_EMAIL) && !empty($email)){
+    // if invalid email and not empty
+    if (!filter_var($newEmail, FILTER_VALIDATE_EMAIL) && !empty($newEmail)) {
         $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
         $_SESSION['message'] = "Error: Not a valid email address";
         header("location: settings.php");
         exit();
     }
-    $_SESSION['message'] = "Name:" . $name . " Email: " . $email . " Password: " . " password: " . $password;
-    header("location: settings.php");
-    exit();
+    // current user info
+    $currName = $_SESSION['name'];
+    $currEmail = $_SESSION['email'];
+    $currPassword = $_SESSION['password'];
+
+    // new user info
+    $newName = $_POST['newName'];
+    $newPassword =  $_POST['newPassword'];
+    $hashed_password = password_hash($newPassword, PASSWORD_DEFAULT);
+    $newEmail = $_POST['newEmail'];
+    // update
+    $updateName = "UPDATE admin set name='$newName' where name='$currName'";
+    $result = mysqli_query($conn,$updateName);
+    if ($result) {
+        $currName = $newName;
+        $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+        $_SESSION['message'] = "Error: Failed to update profile";
+        $_SESSION['new_name'] = $newName;
+        $_SESSION['track'] = "Current name: " . $currName . " New name: " . $newName;
+        header("location: settings.php");
+        exit();
+
+    } else if (!$result){
+        $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+        $_SESSION['message'] = "Error: Failed to update profile";
+        header("location: settings.php");
+        exit();
+    }
 }

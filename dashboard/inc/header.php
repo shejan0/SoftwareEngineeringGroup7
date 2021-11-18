@@ -23,7 +23,16 @@
                             <div class="media d-flex align-items-center">
                                 <img class="avatar rounded-circle animate-up-2 shadow-soft border border-light" alt="Image placeholder" src="../assets/img/team/discord.png">
                                 <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
-                                    <span class="mb-0 font-small fw-bold text-gray-900"><?php echo $_SESSION['name']; ?></span>
+                                    <span class="mb-0 font-small fw-bold text-gray-900">
+                                      <?php 
+                                      if(isset($_SESSION['new_name']))
+                                        echo $_SESSION['new_name']; 
+                                      
+                                      else
+                                      echo $_SESSION['name']; 
+
+                                      ?>
+                                    </span>
                                 </div>
                             </div>
                         </a>
@@ -32,8 +41,14 @@
                                 <svg class="dropdown-icon text-gray-400 me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"></path>
                                 </svg>
-                                <?php echo $_SESSION['name']?>
-                            </a>
+                                <?php 
+                                      if(isset($_SESSION['new_name']))
+                                        echo $_SESSION['new_name']; 
+                                      
+                                      else
+                                      echo $_SESSION['name']; 
+
+                                      ?>                            </a>
                             <div role="separator" class="dropdown-divider my-1"></div>
                             <a class="dropdown-item d-flex align-items-center" href="../php/logout.php">
                                 <svg class="dropdown-icon text-danger me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -48,15 +63,3 @@
             </div>
         </div>
     </nav>
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
-        <div class="d-block mb-4 mb-md-0">
-            <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
-                <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
-                    <li class="breadcrumb-item">
-                        <a href="dashboard.php">
-                            <svg class="icon icon-xxs" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
-                                </path>
-                            </svg>
-                        </a>
-                    </li>
