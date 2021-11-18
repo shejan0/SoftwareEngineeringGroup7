@@ -1,5 +1,5 @@
 INSERT INTO
-  user (name, email, password)
+  admin (name, email, password)
 VALUES
   ("Kevin Nguyen", "kevin0@gmail.com", "admin"),
   ("Shejan Shuza", "shejan1@gmail.com", "admin"),

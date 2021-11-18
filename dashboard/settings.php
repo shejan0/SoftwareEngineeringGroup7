@@ -33,7 +33,6 @@ include_once "inc/side-bar.php";
       <div class="<?php echo $_SESSION['alert'] ?>" role="alert">
         <span class="fas fa-bullhorn me-1"></span>
         <strong><?php echo $_SESSION['message'] ?></strong>
-        <strong><?php echo $_SESSION['track'] ?></strong>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     <?php
