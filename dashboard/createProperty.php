@@ -60,10 +60,10 @@ include_once "create.php";
                                 </div>
                             </div>
                             <div class="form-group mb-4">
-                                <label for="numRooms">Enter Total number of Rooms (required):</label>
+                                <label for="totalRooms">Enter Total number of Rooms (required):</label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
-                                    <input type="text" name="numRooms" class='form-control' required>
+                                    <input type="text" name="totalRooms" class='form-control' required>
                                 </div>
                             </div>
                             <div class="row mb-5 mb-lg-5">
@@ -101,19 +101,19 @@ include_once "create.php";
 
                                     <div class="form-group mb-4">
                                         <label for="hotelName">Room Type (at least one)</label>
-
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="standard" , value="standard" id="defaultCheck1">
-                                            <label class="form-check-label" for="standard">Standard</label>
+                                            <input class="form-check-input" type="checkbox" name="king" , value="king" id="defaultCheck1">
+                                            <label class="form-check-label" for="king">King</label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="queen" , value="queen" id="defaultCheck1">
                                             <label class="form-check-label" for="queen">Queen</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="king" , value="king" id="defaultCheck1">
-                                            <label class="form-check-label" for="king">King</label>
+                                            <input class="form-check-input" type="checkbox" name="standard" , value="standard" id="defaultCheck1">
+                                            <label class="form-check-label" for="standard">Standard</label>
                                         </div>
+                                        
                                     </div>
                                 </div>
                             </div>
