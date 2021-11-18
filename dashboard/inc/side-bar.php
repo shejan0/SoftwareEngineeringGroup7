@@ -93,25 +93,6 @@ session_start();
                 </a>
             </li>
             <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
-            <!-- <li class="nav-item">
-                <a href="#" class="nav-link d-flex align-items-center">
-                    <span class="sidebar-icon">
-                        <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path>
-                        </svg>
-                    </span>
-                    <span class="sidebar-text">Support</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="../index.html" class="nav-link d-flex align-items-center">
-                    <span class="sidebar-icon">
-                        <span class="fas fa-home me-2">
-                        </span>
-                    </span>
-                    <span class="sidebar-text">Back to homepage </span>
-                </a>
-            </li> -->
             <li class="nav-item">
                 <button class="btn btn-info d-flex align-items-center justify-content-center btn-upgrade-pro animate-up-2" id='sign-out'>
                     <svg class="icon icon-xxs me-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
