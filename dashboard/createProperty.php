@@ -1,5 +1,5 @@
 <?php
-include_once "create.php";
+include_once "insertProperty.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +50,7 @@ include_once "create.php";
                                             ?></h3> -->
 
                         <!-- Main form for property creation -->
-                        <form action="create.php" method="post" class="mt-4">
+                        <form action="insertProperty.php" method="post" class="mt-4">
                             <div class="form-group mb-4">
                                 <label for="hotelName">Enter Hotel Name (required):</label>
                                 <div class="input-group">
