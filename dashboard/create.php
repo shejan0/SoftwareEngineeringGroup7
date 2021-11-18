@@ -56,55 +56,6 @@ if (isset($_POST["create"])) {    // all process provided below at each break po
     }
     // check and insert amenities to GenAmenities table
     validateAmenities($pool, $gym, $spa, $businessOffice, $hotelID, $header, $conn);
-    // if (isset($pool)) {
-    //     $amenityID = 1;
-    //     $amenityName=$pool;
-    //     $addQuery = "INSERT INTO `hotel`.`GenAmenities` (hotelID, amenityID, amenityName)
-    //     VALUES ('$hotelID','$amenityID', '$amenityName')";
-    //     $addResult = mysqli_query($conn, $addQuery);
-    //     if (!$addResult) {
-    //         $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-    //         $_SESSION['message'] = "Error adding amenities";
-    //         header("location: $header");
-    //         exit();
-    //     }
-    // }
-    // if (isset($gym)) {
-    //     $amenityID = 2;
-    //     $amenityName=$gym;
-    //     $addQuery = "INSERT INTO `hotel`.`GenAmenities` (hotelID, amenityID, amenityName) VALUES ('$hotelID','$amenityID', '$amenityName')";
-    //     $addResult = mysqli_query($conn, $addQuery);
-    //     if (!$addResult) {
-    //         $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-    //         $_SESSION['message'] = "Error adding amenities";
-    //         header("location: $header");
-    //         exit();
-    //     }
-    // }
-    // if (isset($spa)) {
-    //     $amenityID = 3;
-    //     $amenityName=$spa;
-    //     $addQuery = "INSERT INTO `hotel`.`GenAmenities` (hotelID, amenityID, amenityName) VALUES ('$hotelID','$amenityID', '$amenityName')";
-    //     $addResult = mysqli_query($conn, $addQuery);
-    //     if (!$addResult) {
-    //         $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-    //         $_SESSION['message'] = "Error adding amenities";
-    //         header("location: $header");
-    //         exit();
-    //     }
-    // }
-    // if (isset($businessOffice)) {
-    //     $amenityID = 4;
-    //     $amenityName=$businessOffice;
-    //     $addQuery = "INSERT INTO `hotel`.`GenAmenities` (hotelID, amenityID, amenityName) VALUES ('$hotelID','$amenityID', '$amenityName')";
-    //     $addResult = mysqli_query($conn, $addQuery);
-    //     if (!$addResult) {
-    //         $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-    //         $_SESSION['message'] = "Error adding amenities";
-    //         header("location: $header");
-    //         exit();
-    //     }
-    // }
 } 
 
 // close connection
