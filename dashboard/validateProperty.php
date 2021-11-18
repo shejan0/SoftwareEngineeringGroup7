@@ -1,5 +1,4 @@
 <?php 
-include "inc/user-connection.php";
 
 function validateTotalRooms($totalRooms, $header) {
     if (!ctype_digit($totalRooms)) {
@@ -141,7 +140,7 @@ function addAmenity($amenityName, $amenityID, $hotelID, $header, $conn) {
         header("location: $header");
         exit();
     }
-    //return $addResult;
+    return $addResult;
 }
 
 ?>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once "inc/user-connection.php";
+include_once "../php/inc/user-connection.php";
 include_once "validateProperty.php";
 
 $queryLastRow = "SELECT * FROM `hotel`.`hotel` Where hotelID = (SELECT MAX(hotelID) FROM `hotel`.`hotel`)";
