@@ -29,7 +29,7 @@
                                         echo $_SESSION['name']; 
                                       
                                       else
-                                      echo $_SESSION['name']; 
+                                      echo "User"; 
 
                                       ?>
                                     </span>
@@ -46,7 +46,7 @@
                                         echo $_SESSION['name']; 
                                       
                                       else
-                                      echo $_SESSION['name']; 
+                                      echo "User"; 
 
                                       ?>                            </a>
                             <div role="separator" class="dropdown-divider my-1"></div>
