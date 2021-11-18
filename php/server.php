@@ -19,8 +19,10 @@ if (isset($_POST['sign-up'])) {
 
             // if email is taken
             if ($stmt_email->num_rows() > 0) {
-                $err = "Email already taken";
-                header("location: ../html/sign-up-error.html");
+                $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+                $_SESSION['message'] = "ERROR: Email already taken.";
+                header("location: ../html/sign-up.php");
+                exit();
             }
             // if  email isn't taken, insert into database
             else {
@@ -30,14 +32,14 @@ if (isset($_POST['sign-up'])) {
                     $stmt->bind_param('sss', $name, $email, $password);
                     $stmt->execute();
                     $stmt->store_result();
-                    header("location: ../html/sign-in.html");
-                    die();
+                    $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
+                    $_SESSION['message'] = "Successfully created account!";
+                    header("location: ../html/sign-in.php");
+                    exit();
                 }
                 $_SESSION['email'] = $email;
                 $_SESSION['name'] = $name;
             }
-            $stmt->close();
-            $conn->close();
         }
     }
 }
@@ -63,23 +65,28 @@ if (isset($_POST['sign-in'])) {
                     $_SESSION['name'] = $name;
                     // upon successful login, redirect user to landing apge
                     header("location: ../customer/customer.php");
-                    die();
+                    exit();
+
+                // incorrect password
                 } else {
-                    // Incorrect password
-                    $err = "Incorrect email or password";
-                    header("location: ../html/error.php");
-                    die();
+                    $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+                    $_SESSION['message'] = "ERROR: Entered wrong password - Please try again";
+                    header("location: ../html/sign-in.php");
+                    exit();
                 }
             }
+
+            // wrong email
             else{
-                header('location: ../html/error.php');
-                die();
+                $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+                    $_SESSION['message'] = "ERROR: Entered wrong email - Please try again";
+                    header("location: ../html/sign-in.php");
+                    exit();
             }
-            $stmt->close();
         }
     }
 }
-
+// checks admin credential
 if (isset($_POST['admin-sign-in'])) {
     if (!empty($email) and !empty($password)) {
         $sql = 'SELECT email, password, name FROM admin WHERE email = ?';
@@ -101,19 +108,24 @@ if (isset($_POST['admin-sign-in'])) {
                     $_SESSION['email'] = $email;
                     // upon successful login, redirect user to landing apge
                     header("location: ../dashboard/dashboard.php");
-                    die();
+                    exit();
                 } else {
-                    // Incorrect password
-                    $err = "Incorrect email or password";
-                    header("location: ../html/error.php");
-                    die();
+                    $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+                    $_SESSION['message'] = "ERROR: Entered wrong password - Please try again";
+                    header("location: ../html/admin-sign-in.php");
+                    exit();
                 }
             } 
+            // wrong email
             else{
-                header('location: ../html/error.php');
-                die();
+                $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+                $_SESSION['message'] = "ERROR: Entered wrong email - Please try again";
+                header("location: ../html/admin-sign-in.php");
+                exit();
             }
-            $stmt->close();
         }
     }
 }
+
+$stmt->close();
+$conn->close();

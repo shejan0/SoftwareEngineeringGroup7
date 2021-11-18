@@ -1,7 +1,7 @@
 <?php
 include_once "php/head.php";
 include_once "php/header.php";
-
+include_once "../php/inc/user-connection.php";
 ?>
     <section class="py-5 bg-white shadow-inset border-light">
       <div class="container">

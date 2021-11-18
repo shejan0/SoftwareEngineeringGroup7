@@ -1,7 +1,7 @@
 <?php
 include_once "php/head.php";
 include_once "php/header.php";
-
+include_once "../php/inc/user-connection.php";
 ?>
 
 <div class="container-fluid bg-white">
@@ -26,7 +26,50 @@ include_once "php/header.php";
         </div>
       </div>
       <div class="row">
-        <!-- place item-->
+        <?php
+          $fillquery = "SELECT h.hotelID, h.hotelName, h.priceStandard,d.imageLink FROM hotel h, Descriptions d WHERE h.hotelID = d.hotelID;";
+          $result = $conn->query($fillquery);
+          if($result->num_rows<=0){
+            echo "<div class=\"col-sm-6 mb-5 hover-animate\">";
+            echo "<div class=\"card h-100  shadow-soft border-light animate-up-2 bg-white\">";
+            echo "<div class=\"card-img-top overflow-hidden shadow-soft border-light animate-up-2\">";
+            echo "<a href=\"\">";
+            echo "<img src=\"\" alt=\"Front pages overview\">";
+            echo "</a></div>";
+            echo "<div class=\"card-body d-flex align-items-center\">";
+            echo "<div class=\"w-100\">";
+            echo "<h6 class=\"card-title\">";
+            echo "<a class=\"text-decoration-none text-dark\" href=\"\">FAILED</a>";
+            echo "</h6>";
+            echo "<div class=\"d-flex card-subtitle mb-3\">";
+            echo "</div>";
+            echo "<p class=\"card-text text-muted\"><span class=\"h4 text-secondary\">$9999</span> per night</p>";
+            echo "</div></div></div></div>";
+          }else{
+            while($list = $result->fetch_assoc()){
+              $id=$list['hotelID'];
+              $name=$list['hotelName'];
+              $price=$list['priceStandard'];
+              $imageLink=$list['imageLink'];
+              echo "<div class=\"col-sm-6 mb-5 hover-animate\">";
+              echo "<div class=\"card h-100  shadow-soft border-light animate-up-2 bg-white\">";
+              echo "<div class=\"card-img-top overflow-hidden shadow-soft border-light animate-up-2\">";
+              echo "<a href=\"room-details.php?hotelID=$id\">";
+              echo "<img src=\"$imageLink\" alt=\"Front pages overview\">";
+              echo "</a></div>";
+              echo "<div class=\"card-body d-flex align-items-center\">";
+              echo "<div class=\"w-100\">";
+              echo "<h6 class=\"card-title\">";
+              echo "<a class=\"text-decoration-none text-dark\" href=\"room-details.php?hotelID=$id\">$name</a>";
+              echo "</h6>";
+              echo "<div class=\"d-flex card-subtitle mb-3\">";
+              echo "</div>";
+              echo "<p class=\"card-text text-muted\"><span class=\"h4 text-secondary\">$$price</span> per night</p>";
+              echo "</div></div></div></div>";
+            }
+          }
+        ?>
+        <!-- place item
         <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92">
           <div class="card h-100  shadow-soft border-light animate-up-2 bg-white">
           <div class="card-img-top overflow-hidden shadow-soft border-light animate-up-2">
@@ -50,7 +93,7 @@ include_once "php/header.php";
           </div>
         </div>
   
-        <!-- place item-->
+
         <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e322f3375db4d89128">
           <div class="card h-100 shadow-soft border-light animate-up-2 bg-white">
           <div class="card-img-top overflow-hidden shadow-soft border-light animate-up-2">
@@ -71,7 +114,8 @@ include_once "php/header.php";
             </div>
           </div>
         </div>
-        <!-- place item-->
+
+
         <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e3a31e62979bf147c8">
           <div class="card h-100 shadow-soft border-light animate-up-2 bg-white">
           <div class="card-img-top overflow-hidden shadow-soft border-light animate-up-2">
@@ -95,7 +139,8 @@ include_once "php/header.php";
             </div>
           </div>
         </div>
-        <!-- place item-->
+
+        
         <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e3503eb77d487e8082">
           <div class="card h-100 shadow-soft border-light animate-up-2 bg-white">
           <div class="card-img-top overflow-hidden shadow-soft border-light animate-up-2">
@@ -116,7 +161,8 @@ include_once "php/header.php";
             </div>
           </div>
         </div>
-        <!-- place item-->
+
+        
         <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e39aa2eed0626e485d">
           <div class="card h-100 shadow-soft border-light animate-up-2 bg-white">
           <div class="card-img-top overflow-hidden shadow-soft border-light animate-up-2">
@@ -138,7 +184,8 @@ include_once "php/header.php";
             </div>
           </div>
         </div>
-        <!-- place item-->
+
+        
         <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e39aa2edasd626e485d">
           <div class="card h-100 shadow-soft border-light animate-up-2 bg-white">
           <div class="card-img-top overflow-hidden shadow-soft border-light animate-up-2">
@@ -159,6 +206,7 @@ include_once "php/header.php";
             </div>
           </div>
         </div>
+        -->
       </div>
       <!-- Pagination -->
       <!-- <nav aria-label="Page navigation example">

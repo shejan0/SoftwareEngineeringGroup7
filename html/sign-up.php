@@ -1,3 +1,4 @@
+<?php session_start()?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,6 +27,18 @@
                     <div class="col-12 d-flex align-items-center justify-content-center">
                         <div
                             class="signin-inner my-4 my-lg-0 bg-white border rounded border-gray-300 p-4 p-lg-5 w-100 fmxw-500">
+                            <?php
+                        if (isset($_SESSION['message']) && isset($_SESSION['alert'])) { ?>
+                            <div class="<?php echo $_SESSION['alert'] ?>" role="alert">
+                                <span class="fas fa-bullhorn me-1"></span>
+                                <strong><?php echo $_SESSION['message'] ?></strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php
+                            unset($_SESSION['message']);
+                            unset($_SESSION['alert']);
+                        }
+                        ?>
                             <p class="text-center">
                                 <a href="../index.html" class="d-flex align-items-center justify-content-center">
                                     <span class="text-gray"><span class="fas fa-arrow-left me-2"></span>Back to homepage
@@ -68,14 +81,6 @@
                                                 id="password" name='password' required>
                                         </div>
                                     </div>
-                                    <div class="d-flex justify-content-between align-items-center mb-4">
-                                        <div class="form-check mb-0">
-                                            <input class="form-check-input" type="checkbox" value="" id="remember" required>
-                                            <label class="form-check-label mb-0" for="remember">
-                                                I agree to the terms and conditions
-                                            </label>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="d-grid">
                                     <button type="submit" class="btn btn-primary" name="sign-up">Sign up</button>
@@ -84,7 +89,7 @@
                             <div class="d-flex justify-content-center align-items-center mt-4">
                                 <span class="fw-normal">
                                     Already have an account?
-                                    <a href="sign-in.html" class="fw-bold text-underline">Login here</a>
+                                    <a href="sign-in.php" class="fw-bold text-underline">Login here</a>
                                 </span>
                             </div>
                         </div>
