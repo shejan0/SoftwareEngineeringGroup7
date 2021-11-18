@@ -60,10 +60,10 @@ include_once "create.php";
                                 </div>
                             </div>
                             <div class="form-group mb-4">
-                                <label for="numRooms">Enter Total number of Rooms (required):</label>
+                                <label for="totalRooms">Enter Total number of Rooms (required):</label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
-                                    <input type="text" name="numRooms" class='form-control' required>
+                                    <input type="text" name="totalRooms" class='form-control' required>
                                 </div>
                             </div>
                             <div class="row mb-5 mb-lg-5">
