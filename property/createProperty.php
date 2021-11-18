@@ -1,5 +1,5 @@
 <?php
-include_once "create.php";
+include_once "insertProperty.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,10 +35,9 @@ include_once "create.php";
                         <?php
                             unset($_SESSION['message']);
                             unset($_SESSION['alert']);
-                        }
-                        ?>
+                        }?>
                         <p class="text-center">
-                            <a href="hotel.php" class="d-flex align-items-center justify-content-center">
+                            <a href="../dashboard/hotel.php" class="d-flex align-items-center justify-content-center">
                                 <span class="text-gray"><span class="fas fa-arrow-left me-2"></span>Back to Hotel list
                                 </span>
                             </a>
@@ -51,18 +50,18 @@ include_once "create.php";
                                             ?></h3> -->
 
                         <!-- Main form for property creation -->
-                        <form action="create.php" method="post" class="mt-4">
+                        <form action="insertProperty.php" method="post" class="mt-4">
                             <div class="form-group mb-4">
                                 <label for="hotelName">Enter Hotel Name (required):</label>
                                 <div class="input-group">
-                                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
+                                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-hotel"></span></span>
                                     <input type="text" name="hotelName" class="form-control" required>
                                 </div>
                             </div>
                             <div class="form-group mb-4">
                                 <label for="totalRooms">Enter Total number of Rooms (required):</label>
                                 <div class="input-group">
-                                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
+                                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-door-open	"></span></span>
                                     <input type="text" name="totalRooms" class='form-control' required>
                                 </div>
                             </div>
@@ -121,28 +120,28 @@ include_once "create.php";
                             <div class="form-group mb-4">
                                 <label for="priceKing">King price</label>
                                 <div class="input-group">
-                                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
+                                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-dollar-sign	"></span></span>
                                     <input type="text" name="priceKing" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group mb-4">
                                 <label for="priceQueen">Queen price</label>
                                 <div class="input-group">
-                                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
+                                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-dollar-sign	"></span></span>
                                     <input type="text" name="priceQueen" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group mb-4">
                                 <label for="priceStandard">Standard price</label>
                                 <div class="input-group">
-                                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
+                                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-dollar-sign	"></span></span>
                                     <input type="text" name="priceStandard" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group mb-4">
                                 <label for="weekendSurge">Weekend surge (percentage - omit percent sign)</label>
                                 <div class="input-group">
-                                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
+                                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-percentage"></span></span>
                                     <input type="text" name="weekendSurge" class="form-control" required>
                                 </div>
                             </div>
