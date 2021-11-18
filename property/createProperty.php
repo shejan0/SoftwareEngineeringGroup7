@@ -37,7 +37,7 @@ include_once "insertProperty.php";
                             unset($_SESSION['alert']);
                         }?>
                         <p class="text-center">
-                            <a href="hotel.php" class="d-flex align-items-center justify-content-center">
+                            <a href="/dashboard/hotel.php" class="d-flex align-items-center justify-content-center">
                                 <span class="text-gray"><span class="fas fa-arrow-left me-2"></span>Back to Hotel list
                                 </span>
                             </a>
