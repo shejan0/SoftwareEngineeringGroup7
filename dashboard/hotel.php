@@ -14,8 +14,8 @@ include_once "inc/side-bar.php";
             <p class="mb-0">Search hotel.</p>
         </div>
         <div class="btn mb-2 mb-md-0">
-        <a href="createProperty.php" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center animate-up-2">Add Property</a>
-        <a href="modifyProperty.php" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center animate-up-2">Modify Property</a>
+        <a href="/property/createProperty.php" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center animate-up-2">Add Property</a>
+        <a href="/property/modifyProperty.php" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center animate-up-2">Modify Property</a>
 
 </div>
     </div>
