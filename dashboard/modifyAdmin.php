@@ -40,10 +40,10 @@ if (isset($_POST['update'])) {
     $result = mysqli_query($conn,$updateName);
     if ($result) {
         $currName = $newName;
-        $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-        $_SESSION['message'] = "Error: Failed to update profile";
-        $_SESSION['new_name'] = $newName;
-        $_SESSION['track'] = "Current name: " . $currName . " New name: " . $newName;
+        $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
+        $_SESSION['message'] = "Success! Updated profile.";
+        $_SESSION['name'] = $newName;
+        $_SESSION['track'] = "Current name: " . $currName. " new Session name: " . $_SESSION['name'];
         header("location: settings.php");
         exit();
 
