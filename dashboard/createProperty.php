@@ -101,19 +101,19 @@ include_once "create.php";
 
                                     <div class="form-group mb-4">
                                         <label for="hotelName">Room Type (at least one)</label>
-
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="standard" , value="standard" id="defaultCheck1">
-                                            <label class="form-check-label" for="standard">Standard</label>
+                                            <input class="form-check-input" type="checkbox" name="king" , value="king" id="defaultCheck1">
+                                            <label class="form-check-label" for="king">King</label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="queen" , value="queen" id="defaultCheck1">
                                             <label class="form-check-label" for="queen">Queen</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="king" , value="king" id="defaultCheck1">
-                                            <label class="form-check-label" for="king">King</label>
+                                            <input class="form-check-input" type="checkbox" name="standard" , value="standard" id="defaultCheck1">
+                                            <label class="form-check-label" for="standard">Standard</label>
                                         </div>
+                                        
                                     </div>
                                 </div>
                             </div>

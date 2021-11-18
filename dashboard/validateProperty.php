@@ -113,26 +113,26 @@ function validatePrice($king, $queen, $standard, $priceKing, $priceQueen, $price
         exit();
     }
 }
-function validateAmenities($pool, $gym, $spa, $businessOffice, $hotelID, $header) {
+function validateAmenities($pool, $gym, $spa, $businessOffice, $hotelID, $header, $conn) {
     if (isset($pool)) {
         $amenityID = 1;
-        addAmenity($pool, $amenityID, $hotelID, $header);
+        addAmenity($pool, $amenityID, $hotelID, $header, $conn);
     }
     if (isset($gym)) {
         $amenityID = 2;
-        addAmenity($gym, $amenityID, $hotelID, $header);
+        addAmenity($gym, $amenityID, $hotelID, $header, $conn);
     }
     if (isset($spa)) {
         $amenityID = 3;
-        addAmenity($spa, $amenityID, $hotelID, $header);
+        addAmenity($spa, $amenityID, $hotelID, $header, $conn);
     }
     if (isset($businessOffice)) {
         $amenityID = 4;
-        addAmenity($businessOffice, $amenityID, $hotelID, $header);
+        addAmenity($businessOffice, $amenityID, $hotelID, $header, $conn);
     }
 }
 
-function addAmenity($amenityName, $amenityID, $hotelID, $header) {
+function addAmenity($amenityName, $amenityID, $hotelID, $header, $conn) {
     $addQuery = "INSERT INTO `hotel`.`GenAmenities` (hotelID, amenityID, amenityName) VALUES ('$hotelID','$amenityID', '$amenityName')";
     $addResult = mysqli_query($conn, $addQuery);
     if (!$addResult) {
@@ -141,6 +141,7 @@ function addAmenity($amenityName, $amenityID, $hotelID, $header) {
         header("location: $header");
         exit();
     }
+    //return $addResult;
 }
 
 ?>

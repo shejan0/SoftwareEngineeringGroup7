@@ -56,7 +56,7 @@ if (isset($_POST["create"])) {    // all process provided below at each break po
         }
     }
     // check and insert amenities to GenAmenities table
-    validateAmenities($pool, $gym, $spa, $businessOffice, $hotelID, $header);
+    validateAmenities($pool, $gym, $spa, $businessOffice, $hotelID, $header, $conn);
 } 
 // close connection
 mysqli_close($conn);
