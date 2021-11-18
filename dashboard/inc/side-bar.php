@@ -1,5 +1,5 @@
 <?php
-session_start();
+include_once "session_start.php";
 ?>
 <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none bg-primary  ">
     <a class="navbar-brand me-lg-5" href="dashboard.php">
