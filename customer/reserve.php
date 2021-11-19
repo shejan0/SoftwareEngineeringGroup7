@@ -26,8 +26,30 @@ $totalPrice = NULL;
         $dates = $_POST['bookingDate'];
         $numRes = $_POST['rooms'];
         $roomType = $_POST['type'];
-        $hotelID = $_POST['hotelID']
+        $hotelID = $_POST['hotelID'];
         
+        if($roomType == "Standard"){
+            $queryPrice = "SELECT priceStandard, weekendSurge FROM 'hotel'.'hotel' Where hotelID = $hotelID";
+            $resultPrice = mysquli_query($conn, $queryPrice);
+            $arrPrice = mysqli_fetch_assoc($resultPrice);
+            $surgePrice = $arrPrice['weekendSurge'];
+            $roomPrice = $arrPrice['priceStandard'];
+        }
+        else if($roomType == "Queen"){
+            $queryPrice = "SELECT priceQueen, weekendSurge FROM 'hotel'.'hotel' Where hotelID = $hotelID";
+            $resultPrice = mysquli_query($conn, $queryPrice);
+            $arrPrice = mysqli_fetch_assoc($resultPrice);
+            $surgePrice = $arrPrice['weekendSurge'];
+            $roomPrice = $arrPrice['priceQueen'];
+        }
+        else if($roomType == "King"){
+            $queryPrice = "SELECT priceking, weekendSurge FROM 'hotel'.'hotel' Where hotelID = $hotelID";
+            $resultPrice = mysquli_query($conn, $queryPrice);
+            $arrPrice = mysqli_fetch_assoc($resultPrice);
+            $surgePrice = $arrPrice['weekendSurge'];
+            $roomPrice = $arrPrice['priceKing'];
+        }
+
         //Separate $dates into arrival and departure dates
         $pattern = '{(\d+-\d+-\d+) to (\d+-\d+-\d+)/)}';
         if(preg_match($pattern, $dates, $matches)){
