@@ -47,7 +47,7 @@ if (!isset($_SESSION['email'])) {
             unset($_SESSION['alert']);
         } ?>
         <div class="btn mb-2 mb-md-0">
-            <a href="hotel.php" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center animate-up-2">Back to hotel</a>
+            <a href="../dashboard/hotel.php" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center animate-up-2">Back to hotel</a>
         </div>
     </div>
     <!-- Hotel info  -->
