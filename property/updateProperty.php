@@ -1,9 +1,9 @@
 <?php
-include_once "..dashboard/inc/session_start.php";
+include_once "../dashboard/inc/session_start.php";
 include_once "../php/inc/user-connection.php";
 include_once "validateProperty.php";
-include_once "..dashboard/inc/head.php";
-include_once "..dashboard/inc/side-bar.php";
+include_once "../dashboard/inc/head.php";
+include_once "../dashboard/inc/side-bar.php";
 $all_amenities = array();
 if (!isset($_SESSION['email'])) {
     $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
@@ -13,7 +13,7 @@ if (!isset($_SESSION['email'])) {
 }
 ?>
 <main class="content bg-white">
-    <?php include_once "inc/header.php"; ?>
+    <?php include_once "../dashboard/inc/header.php"; ?>
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
         <div class="d-block mb-4 mb-md-0">
             <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
@@ -203,4 +203,4 @@ if (!isset($_SESSION['email'])) {
             </div>
         </form>
     </div>
-    <?php include_once "inc/footer.php" ?>
+    <?php include_once "../dashboard/inc/footer.php" ?>
