@@ -47,6 +47,8 @@ if (!isset($_SESSION['email'])) {
         } ?>
         <div class="btn mb-2 mb-md-0">
             <a href="../property/createProperty.php" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center animate-up-2">Add Property </a>
+            <a href="../property/modifyProperty.php" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center animate-up-2">modify Property </a>
+
             <button type="button" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center animate-up-2" data-bs-toggle="modal" data-bs-target="#modal-form">Modify Property </button>
 
             <!-- Modal -->
