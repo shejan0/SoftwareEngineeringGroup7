@@ -3,7 +3,7 @@ session_start();
 include_once "../php/inc/user-connection.php";
 include_once "validateProperty.php";
 
-$header = "modifyProperty.php";
+$header = "updateProperty.php";
 $all_amenities = array();  
 ?>
 <html lang="en-US">
@@ -26,7 +26,7 @@ $all_amenities = array();
                 else {
                     $hotelProp = mysqli_fetch_assoc($hotelResult);
                     $_SESSION['property'] = $hotelProp;
-                    header("location: updateProperty.php");
+                    header("location: $header");
                 }
             }
         }

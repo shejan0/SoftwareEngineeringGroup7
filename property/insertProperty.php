@@ -37,11 +37,16 @@ if (isset($_POST["create"])) {    // all process provided below at each break po
 
     if(!empty($hotelName) && !empty($totalRooms) && !empty($weekendSurge)) {
         // all validation done, insert property info into hotel table
-        $insertProp = "INSERT INTO `hotel`.`hotel` (hotelID, hotelName, number_of_rooms, weekendSurge, priceKing, priceQueen, priceStandard, numKing, numQueen, numStandard) 
+        $insertHotel = "INSERT INTO `hotel`.`hotel` (hotelID, hotelName, number_of_rooms, weekendSurge, priceKing, priceQueen, priceStandard, numKing, numQueen, numStandard) 
             VALUES ('$hotelID', '$hotelName', '$totalRooms', '$weekendSurge', '$priceKing', '$priceQueen', '$priceStandard', '$numKing', '$numQueen', '$numStandard')";
-        $createProp = mysqli_query($conn, $insertProp);
+        $insertHotelResult = mysqli_query($conn, $insertHotel);
 
-        if (!$createProp) {
+        $hotelDesc = "";
+        $imageLink = "";
+        $insertDesc = "INSERT INTO `hotel`.`Descriptions` (hotelID, hotelDesc, imageLink) VALUES ('$hotelID', '$hotelDesc', '$imageLink')";
+        $insertDescResult = mysqli_query($conn, $insertDesc);
+
+        if (!$insertHotelResult || !$insertDescResult) {
             $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
             $_SESSION['message'] = "Error creating hotel property";
             header("location: $header");

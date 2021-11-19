@@ -40,7 +40,7 @@ $header="updateProperty.php";
             <?php 
             $_POST['hotelID'] = $hotelID;
             echo $hotelID; 
-        ?>
+            ?>
         </strong>
         <div><br><label for="hotelName">Enter Hotel Name (optional):</label><input type="text" name="hotelName"><br></div>
         <div><br><label for="totalRooms">Enter Total number of Rooms (optional):</label> <input type="text" name="totalRooms"><br></div>
@@ -77,7 +77,7 @@ $header="updateProperty.php";
         <br><input type="submit" name="modify" value="Modify Property"><br>
     </form>
     <?php
-    if (isset($_POST["modify"])) {    // all process provided below at each break point
+        if (isset($_POST["modify"])) {    // all process provided below at each break point
             //initialize vars
             $hotelName = $_POST['hotelName'];
             $totalRooms = $_POST['totalRooms'];
@@ -122,13 +122,16 @@ $header="updateProperty.php";
                     echo "<p>Successfully Updated Total Number of rooms to \"" . $totalRooms . "\"</p>";
                 }
             }
-
+            else $totalRooms = $hotelProp['number_of_rooms'];
+            
             [$numKing, $numQueen, $numStandard] = calcNumRooms($king, $queen, $standard, $totalRooms, $header);
             validatePrice($king, $queen, $standard, $priceKing, $priceQueen, $priceStandard, $header);
 
-            $updateQuery = "UPDATE `hotel`.`hotel` SET `numKing`='$numKing', `numQueen`='$numQueen', `numStandard`='$numStandard', 
-            `priceKing`='$priceKing', `priceQueen`='priceQueen' `priceStandard`='$priceStandard' WHERE (`hotelID`='$hotelID')";
+            $updateQuery = "UPDATE hotel.hotel SET numKing='$numKing', numQueen='$numQueen', numStandard='$numStandard', 
+            priceKing='$priceKing', priceQueen='$priceQueen', priceStandard='$priceStandard' WHERE (hotelID='$hotelID')";
             $updateResult = mysqli_query($conn, $updateQuery);
+            if(!$updateResult) exit("<p class='error'>Error Updating Room Types' Values: ($updateQuery) " . mysqli_error($conn) . "</p>");
+            echo "<p>Successfully updated room types' values<p>";
 
             if (!empty($weekendSurge)) {
                 validateWeekendSurge($weekendSurge, $header);
@@ -147,5 +150,6 @@ $header="updateProperty.php";
         }
        
         mysqli_close($conn);
-        ?>
+    ?>
+    <br><a href ="../dashboard/hotel.php">Back to Hotel Properties List</a>
 </html>

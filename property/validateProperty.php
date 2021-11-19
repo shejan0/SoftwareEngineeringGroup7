@@ -19,6 +19,9 @@ function validateWeekendSurge($weekendSurge, $header) {
 }
 
 function calcNumRooms($king, $queen, $standard, $totalRooms, $header) {
+    $numKing = 0;
+    $numQueen = 0;
+    $numStandard = 0;
     if (!isset($king) && !isset($queen) && !isset($standard)) {
         $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
         $_SESSION['message'] = "Error: Please select at least one room type.";
