@@ -1,12 +1,12 @@
-<?php 
+<?php
 include_once "inc/session_start.php";
 include_once "../php/inc/user-connection.php";
 include_once "validateProperty.php";
 
-$all_amenities = array();  
+$all_amenities = array();
 $hotelProp = $_SESSION['property'];
 $hotelID = $hotelProp['hotelID'];
-$header="updateProperty.php";
+$header = "updateProperty.php";
 
 // modify property
 if (isset($_POST["enter"])) {
@@ -19,11 +19,11 @@ if (isset($_POST["enter"])) {
         $hotelRow = mysqli_num_rows($hotelResult);
 
         // no hotel with id
-        if ($hotelRow == 0){
+        if ($hotelRow == 0) {
             $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
             $_SESSION['message'] = 'Hotel Property with ID ' . $hotelID . ' does not exist';
-             header("location: hotel.php");
-             exit();
+            header("location: hotel.php");
+            exit();
         }
 
         // found hotel
@@ -43,46 +43,54 @@ if (isset($_POST["modify"])) {    // all process provided below at each break po
     $totalRooms = $_POST['totalRooms'];
 
 
-    if(isset($_POST['king'])) 
-        $king=$_POST['king'];
-    else 
-        $king=NULL;
-
-    if(isset($_POST['queen']))
-         $queen=$_POST['queen'];
-    else 
-        $queen=NULL;
-    if(isset($_POST['standard'])) 
-        $standard=$_POST['standard'];
+    if (isset($_POST['king']))
+        $king = $_POST['king'];
     else
-         $standard=NULL;
+        $king = NULL;
+
+    if (isset($_POST['queen']))
+        $queen = $_POST['queen'];
+    else
+        $queen = NULL;
+    if (isset($_POST['standard']))
+        $standard = $_POST['standard'];
+    else
+        $standard = NULL;
 
     $priceKing = $_POST['priceKing'];
-    $priceQueen = $_POST['priceQueen'];   
+    $priceQueen = $_POST['priceQueen'];
     $priceStandard = $_POST['priceStandard'];
-    
-    if(isset($_POST['pool'])) $pool=$_POST['pool'];
-    else $pool=NULL;
-    if(isset($_POST['gym'])) $gym=$_POST['gym'];
-    else $gym=NULL;
-    if(isset($_POST['spa'])) $spa=$_POST['spa'];
-    else $spa=NULL;
-    if(isset($_POST['businessOffice'])) $businessOffice=$_POST['businessOffice'];
-    else $businessOffice=NULL;
 
-    $weekendSurge=$_POST['weekendSurge'];
+    if (isset($_POST['pool'])) $pool = $_POST['pool'];
+    else $pool = NULL;
+    if (isset($_POST['gym'])) $gym = $_POST['gym'];
+    else $gym = NULL;
+    if (isset($_POST['spa'])) $spa = $_POST['spa'];
+    else $spa = NULL;
+    if (isset($_POST['businessOffice'])) $businessOffice = $_POST['businessOffice'];
+    else $businessOffice = NULL;
 
+    $weekendSurge = $_POST['weekendSurge'];
+
+    // if hotel name is not empty insert new hotel name
     if (!empty($hotelName)) {
         if ($hotelName != $hotelProp['hotelName']) {
             $updateQuery = "UPDATE `hotel`.`hotel` SET hotelName = '$hotelName' WHERE (hotelID = '$hotelID')";
             $updateResult = mysqli_query($conn, $updateQuery);
-            if (!$updateResult){
-                exit("<p class='error'>Error Updating Hotel Name: ($updateQuery) " . mysqli_error($conn) . "</p>");
+            if (!$updateResult) {
+                $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+                $_SESSION['message'] = "Error updating hotel name";
+                header("location: $header");
+                exit();
+            } else {
+                $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
+                $_SESSION['message'] = "Successfully Updated Hotel Name to \"" . $hotelName . "\"";
+                header("location: hotel.php");
+                exit();
             }
-            echo "<p>Successfully Updated Hotel Name to \"" . $hotelName . "\"</p>";
         }
     }
-    
+
     //update total rooms
     if (!empty($totalRooms)) {
         validateTotalRooms($totalRooms, $header);
@@ -92,16 +100,15 @@ if (isset($_POST["modify"])) {    // all process provided below at each break po
             if (!$updateResult) exit("<p class='error'>Error Updating Total Number of rooms: ($updateQuery) " . mysqli_error($conn) . "</p>");
             echo "<p>Successfully Updated Total Number of rooms to \"" . $totalRooms . "\"</p>";
         }
-    }
-    else $totalRooms = $hotelProp['number_of_rooms'];
-    
+    } else $totalRooms = $hotelProp['number_of_rooms'];
+
     [$numKing, $numQueen, $numStandard] = calcNumRooms($king, $queen, $standard, $totalRooms, $header);
     validatePrice($king, $queen, $standard, $priceKing, $priceQueen, $priceStandard, $header);
 
     $updateQuery = "UPDATE hotel.hotel SET numKing='$numKing', numQueen='$numQueen', numStandard='$numStandard', 
     priceKing='$priceKing', priceQueen='$priceQueen', priceStandard='$priceStandard' WHERE (hotelID='$hotelID')";
     $updateResult = mysqli_query($conn, $updateQuery);
-    if(!$updateResult) exit("<p class='error'>Error Updating Room Types' Values: ($updateQuery) " . mysqli_error($conn) . "</p>");
+    if (!$updateResult) exit("<p class='error'>Error Updating Room Types' Values: ($updateQuery) " . mysqli_error($conn) . "</p>");
     echo "<p>Successfully updated room types' values<p>";
 
     if (!empty($weekendSurge)) {
@@ -121,4 +128,3 @@ if (isset($_POST["modify"])) {    // all process provided below at each break po
 }
 
 mysqli_close($conn);
-?>
