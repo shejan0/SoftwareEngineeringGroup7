@@ -10,8 +10,20 @@ $header = "updateProperty.php";
 
 // modify property
 if (isset($_POST["enter"])) {
-    if (empty($_POST['hotelID'])) echo "Enter Hotel ID<br>";
-    else if (!ctype_digit($_POST['hotelID'])) echo "Enter \"positive integer\" for Hotel ID<br>";
+    // if user entered nothing for hotel ID
+    if (empty($_POST['hotelID'])) {
+        $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+        $_SESSION['message'] = "Error: Enter hotel ID";
+        header("location: hotel.php");
+        exit();
+
+    // if user entered an invalid input for hotel ID
+    } else if (!ctype_digit($_POST['hotelID'])) {
+        $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+        $_SESSION['message'] = "Error: Enter a positive integer for ID only";
+        header("location: hotel.php");
+        exit();
+    }
     else {
         $hotelID = $_POST['hotelID'];
         $hotelQuery = "SELECT * FROM `hotel`.`hotel` WHERE hotelID = $hotelID";
@@ -85,20 +97,24 @@ if (isset($_POST["modify"])) {    // all process provided below at each break po
             } else {
                 $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
                 $_SESSION['message'] = "Successfully Updated Hotel Name to \"" . $hotelName . "\"";
-                header("location: hotel.php");
-                exit();
             }
         }
     }
-
     //update total rooms
     if (!empty($totalRooms)) {
         validateTotalRooms($totalRooms, $header);
         if ($totalRooms != $hotelProp['number_of_rooms']) {
             $updateQuery = "UPDATE `hotel`.`hotel` SET number_of_rooms='$totalRooms' WHERE (hotelID = '$hotelID')";
             $updateResult = mysqli_query($conn, $updateQuery);
-            if (!$updateResult) exit("<p class='error'>Error Updating Total Number of rooms: ($updateQuery) " . mysqli_error($conn) . "</p>");
-            echo "<p>Successfully Updated Total Number of rooms to \"" . $totalRooms . "\"</p>";
+            if (!$updateResult) {
+                $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+                $_SESSION['message'] = "Error updating total number of hotel rooms";
+                header("location: $header");
+                exit();
+            } else {
+                $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
+                $_SESSION['message'] = "Successfully Updated total number of rooms to \"" . $totalRooms . "\"";
+            }
         }
     } else $totalRooms = $hotelProp['number_of_rooms'];
 
@@ -109,7 +125,10 @@ if (isset($_POST["modify"])) {    // all process provided below at each break po
     priceKing='$priceKing', priceQueen='$priceQueen', priceStandard='$priceStandard' WHERE (hotelID='$hotelID')";
     $updateResult = mysqli_query($conn, $updateQuery);
     if (!$updateResult) exit("<p class='error'>Error Updating Room Types' Values: ($updateQuery) " . mysqli_error($conn) . "</p>");
-    echo "<p>Successfully updated room types' values<p>";
+    else {
+        $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
+        $_SESSION['message'] = "Successfully Updated room types";
+    }
 
     if (!empty($weekendSurge)) {
         validateWeekendSurge($weekendSurge, $header);
@@ -117,7 +136,12 @@ if (isset($_POST["modify"])) {    // all process provided below at each break po
             $updateQuery = "UPDATE `hotel`.`hotel` SET `weekendSurge`='$weekendSurge' WHERE (`hotelID` = '$hotelID')";
             $updateResult = mysqli_query($conn, $updateQuery);
             if (!$updateResult) exit("<p class='error'>Error Updating Total Number of rooms: ($updateQuery) " . mysqli_error($conn) . "</p>");
-            echo "<p>Successfully Updated Weekend Surge to \"" . $weekendSurge . "\"</p>";
+            else {
+                $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
+                $_SESSION['message'] = "Successfully Updated weekend surge to " . $weekendSurge;
+                header("location: hotel.php");
+                exit();
+            }
         }
     }
     // delete amenity to then re-add based on updated amenities
