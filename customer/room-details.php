@@ -146,7 +146,7 @@ include_once "../php/inc/user-connection.php"
               }
             ?>
             <hr class="my-4">
-            <form class="form" id="booking-form" method="post" action="/reserve.php" autocomplete="off">
+            <form class="form" id="booking-form" method="post" action="reserve.php" autocomplete="off">
               <div class="mb-4">
                 <label class="form-label" for="bookingDate">Your stay *</label>
                 <div class="datepicker-container datepicker-container-left">
