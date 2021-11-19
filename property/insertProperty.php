@@ -56,6 +56,7 @@ if (isset($_POST["create"])) {    // all process provided below at each break po
             $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
             $_SESSION['message'] = "Successfully created " . $hotelName . " Property";
             header("location: $header");
+            exit();
         }
     }
     // check and insert amenities to GenAmenities table

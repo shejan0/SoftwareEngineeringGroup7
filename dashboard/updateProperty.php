@@ -58,7 +58,7 @@ if (!isset($_SESSION['email'])) {
                 $hotelID = $hotelProp['hotelID'];
                 $query = mysqli_query($conn, "SELECT * FROM hotel;");
             ?>
-                <h2 class="h5 mb-4"><?php echo "$hotelProp[hotelName] info"?></h2>
+                <h2 class="h5 mb-4"><?php echo "$hotelProp[hotelName] info" ?></h2>
                 <thread>
                     <tr>
                         <th class="border-gray-200">Hotel ID</th>
@@ -107,20 +107,20 @@ if (!isset($_SESSION['email'])) {
         <!-- end of table -->
     </div>
     <div class="card-body shadow-soft border-light animate-up-5 bg-white row justify-content-center mt-5">
-        <h2 class="h5 mb-4"><?php echo "Update $hotelProp[hotelName]"?></h2>
+        <h2 class="h5 mb-4"><?php echo "Update $hotelProp[hotelName]" ?></h2>
         <form action="" method="post" class="mt-4">
             <div class="form-group mb-4">
-                <label for="hotelName">Enter Hotel Name (required):</label>
+                <label for="hotelName">Enter Hotel Name:</label>
                 <div class="input-group">
                     <span class="input-group-text" id="basic-addon2"><span class="fas fa-hotel"></span></span>
-                    <input type="text" name="hotelName" class="form-control" required>
+                    <input type="text" name="hotelName" class="form-control">
                 </div>
             </div>
             <div class="form-group mb-4">
-                <label for="totalRooms">Enter Total number of Rooms (required):</label>
+                <label for="totalRooms">Enter Total number of Rooms:</label>
                 <div class="input-group">
                     <span class="input-group-text" id="basic-addon2"><span class="fas fa-door-open	"></span></span>
-                    <input type="text" name="totalRooms" class='form-control' required>
+                    <input type="text" name="totalRooms" class='form-control'>
                 </div>
             </div>
             <div class="row mb-5 mb-lg-5">
@@ -130,27 +130,21 @@ if (!isset($_SESSION['email'])) {
                             <span class="fw-bold">Amenities</span>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="pool" , value="pool" id="defaultCheck1">
+                            <input class="form-check-input" type="checkbox" name="pool" , value="pool" <?php if (in_array("pool", $all_amenities)) echo 'checked="checked"'; ?>>
                             <label class="form-check-label" for="pool">Pool</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="gym" value="gym" id="defaultCheck1">
-                            <label class="form-check-label" for="gym">
-                                Gym
-                            </label>
+                            <input class="form-check-input" type="checkbox" name="gym" value="gym"  <?php if (in_array("gym", $all_amenities)) echo 'checked="checked"'; ?>>
+                            <label class="form-check-label" for="gym">Gym</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="spa" value="spa" id="defaultCheck1">
-                            <label class="form-check-label" for="spa">
-                                Spa
-                            </label>
+                            <input class="form-check-input" type="checkbox" name="spa" value="spa"  <?php if (in_array("spa", $all_amenities)) echo 'checked="checked"'; ?>>
+                            <label class="form-check-label" for="spa">Spa</label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="businessOffice" value="businessOffice" id="defaultCheck1">
-                            <label class="form-check-label" for="businessOffice">
-                                Business Office
-                            </label>
+                            <input class="form-check-input" type="checkbox" name="businessOffice" value="businessOffice"  <?php if (in_array("businessOffice", $all_amenities)) echo 'checked="checked"'; ?>>
+                            <label class="form-check-label" for="businessOffice">Business Office</label>
                         </div>
                     </div>
                 </div>
@@ -159,15 +153,15 @@ if (!isset($_SESSION['email'])) {
                     <div class="form-group mb-4">
                         <label for="hotelName">Room Type (at least one)</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="king" , value="king" id="defaultCheck1">
+                            <input class="form-check-input" type="checkbox" name="king" , value="king"  <?php if ($hotelProp['numKing']>0) echo 'checked="checked"'; ?>>
                             <label class="form-check-label" for="king">King</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="queen" , value="queen" id="defaultCheck1">
+                            <input class="form-check-input" type="checkbox" name="queen" , value="queen" <?php if ($hotelProp['numQueen']>0) echo 'checked="checked"'; ?>>
                             <label class="form-check-label" for="queen">Queen</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="standard" , value="standard" id="defaultCheck1">
+                            <input class="form-check-input" type="checkbox" name="standard" , value="standard" <?php if ($hotelProp['numStandard']>0) echo 'checked="checked"'; ?>>
                             <label class="form-check-label" for="standard">Standard</label>
                         </div>
 
@@ -179,32 +173,32 @@ if (!isset($_SESSION['email'])) {
                 <label for="priceKing">King price</label>
                 <div class="input-group">
                     <span class="input-group-text" id="basic-addon2"><span class="fas fa-dollar-sign	"></span></span>
-                    <input type="text" name="priceKing" class="form-control">
+                    <input type="text" name="priceKing" class="form-control" value=<?php echo $hotelProp['priceKing']; ?>>
                 </div>
             </div>
             <div class="form-group mb-4">
                 <label for="priceQueen">Queen price</label>
                 <div class="input-group">
-                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-dollar-sign	"></span></span>
-                    <input type="text" name="priceQueen" class="form-control">
+                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-dollar-sign"></span></span>
+                    <input type="text" name="priceQueen" class="form-control" value=<?php echo $hotelProp['priceKing']; ?>>
                 </div>
             </div>
             <div class="form-group mb-4">
                 <label for="priceStandard">Standard price</label>
                 <div class="input-group">
-                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-dollar-sign	"></span></span>
-                    <input type="text" name="priceStandard" class="form-control">
+                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-dollar-sign"></span></span>
+                    <input type="text" name="priceStandard" class="form-control" value=<?php echo $hotelProp['priceKing']; ?>>
                 </div>
             </div>
             <div class="form-group mb-4">
                 <label for="weekendSurge">Weekend surge (percentage - omit percent sign)</label>
                 <div class="input-group">
                     <span class="input-group-text" id="basic-addon2"><span class="fas fa-percentage"></span></span>
-                    <input type="text" name="weekendSurge" class="form-control" required>
+                    <input type="text" name="weekendSurge" class="form-control">
                 </div>
             </div>
             <div class="d-grid">
-                <button type="submit" class="btn btn-primary" name="create" value="Create Property">Create Property</button>
+                <button type="submit" class="btn btn-primary" name="modify"  value="Modify Property">Save changes</button>
             </div>
         </form>
     </div>
