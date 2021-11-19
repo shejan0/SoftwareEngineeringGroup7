@@ -2,6 +2,12 @@
 include_once "modifyAdmin.php";
 include_once "inc/head.php";
 include_once "inc/side-bar.php";
+if(!isset($_SESSION['email']))
+{
+  $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+  $_SESSION['message'] = "ERROR: You've signed out and do not have permission to access this page - please sign in again.";
+  header("Location: ../html/admin-sign-in.php");
+  exit();}
 ?>
 <main class="content bg-white">
   <?php include_once "inc/header.php"?>
@@ -33,7 +39,6 @@ include_once "inc/side-bar.php";
       <div class="<?php echo $_SESSION['alert'] ?>" role="alert">
         <span class="fas fa-bullhorn me-1"></span>
         <strong><?php echo $_SESSION['message'] ?></strong>
-        <strong><?php echo $_SESSION['track'] ?></strong>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     <?php

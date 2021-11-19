@@ -6,6 +6,7 @@ $name = mysqli_real_escape_string($conn, $_POST['name']);
 $password = mysqli_real_escape_string($conn, $_POST['password']);
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 $email = mysqli_real_escape_string($conn, $_POST['email']);
+
 // sign up 
 if (isset($_POST['sign-up'])) {
     if (!empty($email)) {
@@ -45,6 +46,46 @@ if (isset($_POST['sign-up'])) {
         }
     }
 }
+
+// admin sign up
+if (isset($_POST['createAdmin'])) {
+    if (!empty($email)) {
+        if (!empty($password)) {
+            $check_email = "SELECT * FROM admin WHERE email=?";
+
+            $stmt_email = $conn->prepare($check_email);
+            $stmt_email->bind_param('s', $email);
+            $stmt_email->execute();
+            $stmt_email->store_result();
+
+            // if email is taken
+            if ($stmt_email->num_rows() > 0) {
+                $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+                $_SESSION['message'] = "ERROR: Email already taken.";
+                header("location: ../dashboard/employees.php");
+                exit();
+            }
+            // if  email isn't taken, insert into database
+            else {
+                $sql = "INSERT INTO admin (name,email,password) values (?,?,?)";
+
+                if ($stmt = $conn->prepare($sql)) {
+                    $stmt->bind_param('sss', $name, $email, $password);
+                    $stmt->execute();
+                    $stmt->store_result();
+                    $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
+                    $_SESSION['message'] = "Successfully created account!";
+                    $_SESSION['email'] = $email;
+                    $_SESSION['name'] = $name;
+                    $_SESSION['password'] = $password;
+                    header("location: ../dashboard/employees.php");
+                    exit();
+                }
+            }
+        }
+    }
+}
+
 // sign in
 if (isset($_POST['sign-in'])) {
     if (!empty($email) and !empty($password)) {
