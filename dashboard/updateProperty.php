@@ -181,14 +181,14 @@ if (!isset($_SESSION['email'])) {
                 <label for="priceQueen">Queen price</label>
                 <div class="input-group">
                     <span class="input-group-text" id="basic-addon2"><span class="fas fa-dollar-sign"></span></span>
-                    <input type="text" name="priceQueen" class="form-control" value=<?php echo $hotelProp['priceKing']; ?>>
+                    <input type="text" name="priceQueen" class="form-control" value=<?php echo $hotelProp['priceQueen']; ?>>
                 </div>
             </div>
             <div class="form-group mb-4">
                 <label for="priceStandard">Standard price</label>
                 <div class="input-group">
                     <span class="input-group-text" id="basic-addon2"><span class="fas fa-dollar-sign"></span></span>
-                    <input type="text" name="priceStandard" class="form-control" value=<?php echo $hotelProp['priceKing']; ?>>
+                    <input type="text" name="priceStandard" class="form-control" value=<?php echo $hotelProp['priceStandard']; ?>>
                 </div>
             </div>
             <div class="form-group mb-4">
