@@ -100,7 +100,7 @@ include_once "user-connection.php"
 
                         array_push($hotelList,$array[0]);
                       }
-                      print_r($hotelList);
+                      //print_r($hotelList);
                      }
                      else if ($roomType == "Queen") {
                       $query_string ="SELECT hotelID FROM hotel WHERE numQueen>0 AND priceQueen>$price_from AND priceQueen<$price_to;";
@@ -110,7 +110,7 @@ include_once "user-connection.php"
 
                        array_push($hotelList,$array[0]);
                      }
-                     print_r($hotelList);
+                     //print_r($hotelList);
 
 
                      }
@@ -122,19 +122,38 @@ include_once "user-connection.php"
 
                        array_push($hotelList,$array[0]);
                      }
-                     print_r($hotelList);
+                     //print_r($hotelList);
                      }else {
                       echo "<p>NOT A VALID ROOM TYPE</p>";
                     }
                     //LIST IS IN HOTEL LIST
-
-                    foreach($_POST as $key => $value){
+                    $stmt_str = "SELECT DISTINCT hotelID FROM GenAmenities WHERE amenityName = ?";
+                    $stmt_object = $conn->stmt_init();
+                    if(!$stmt_object){
+                      echo "<p>ERROR: Statement object doesn't work</p>";
+                    }
+                    if(!($stmt_object->prepare($stmt_str)&&$stmt_object->bind_param("s", $key)&&$stmt_object->bind_result($current_hotel))){
+                      echo "<p>ERROR: ".$stmt_object->error . "</p>";
+                    }
+          
+                    foreach($_POST as $key => $value){                    
                       if($value == 'on'){
-                        //this is a amenity inside the post table
-                        echo $key;
-                        //figure out if one query can find all the hotel IDs
+                        $query_result_arr = array();
+                        //echo $key;
+                        $stmt_object->execute();
+                        while($stmt_object->fetch()){
+                          array_push($query_result_arr,$current_hotel);
+                        }
+                        //print_r($query_result_arr);
+                        foreach($hotelList as $hotelKey => $hotelID){
+                          if(!in_array($hotelID,$query_result_arr)){
+                            //the hotel from our previous search is not in this search
+                            unset($hotelList[$hotelKey]);
+                          }
+                        }
                       }
                     }
+                    print_r($hotelList);
+                    //check if space given dates and reservation number of rooms
                     }
-        
         ?>
