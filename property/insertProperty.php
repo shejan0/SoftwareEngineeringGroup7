@@ -29,7 +29,6 @@ if (isset($_POST["create"])) {    // all process provided below at each break po
     $spa = $_POST['spa'];
     $businessOffice = $_POST['businessOffice'];
     $weekendSurge=$_POST['weekendSurge'];
-
     
     validateTotalRooms($totalRooms, $header);
     [$numKing, $numQueen, $numStandard] = calcNumRooms($king, $queen, $standard, $totalRooms, $header);
