@@ -1,3 +1,4 @@
+<?php session_start()?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,6 +26,18 @@
                     <div class="col-12 d-flex align-items-center justify-content-center">
                         <div
                             class="signin-inner my-4 my-lg-0 bg-white  border rounded border-gray-300 p-4 p-lg-5 w-100 fmxw-500">
+                            <?php
+                        if (isset($_SESSION['message']) && isset($_SESSION['alert'])) { ?>
+                            <div class="<?php echo $_SESSION['alert'] ?>" role="alert">
+                                <span class="fas fa-bullhorn me-1"></span>
+                                <strong><?php echo $_SESSION['message'] ?></strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php
+                            unset($_SESSION['message']);
+                            unset($_SESSION['alert']);
+                        }
+                        ?>
                             <p class="text-center">
                                 <a href="../index.html" class="d-flex align-items-center justify-content-center">
                                     <span class="text-gray"><span class="fas fa-arrow-left me-2"></span>Back to homepage
@@ -58,47 +71,15 @@
                                         </div>
                                     </div>
                                     <!-- End of Form -->
-                                    <div class="d-flex justify-content-between align-items-center mb-4">
-                                        <div class="form-check mb-0">
-                                            <input class="form-check-input" type="checkbox" value="" id="remember">
-                                            <label class="form-check-label mb-0" for="remember">
-                                                Remember me
-                                            </label>
-                                        </div>
-                                        <div><a href="#" class="small text-right">Lost password?</a></div>
-                                    </div>
                                 </div>
                                 <div class="d-grid">
                                    <button type="submit" class="btn btn-primary" name='admin-sign-in'>Sign in</button>
                                 </div>
                             </form>
-                            <div class="mt-3 mb-4 text-center">
-                                <span class="fw-normal">or login with</span>
-                            </div>
-                            <div class="btn-wrapper my-4 text-center">
-                                <a href="https://www.facebook.com/login" class="btn btn-icon-only btn-pill btn-outline-gray-300 text-facebook me-2"
-                                    aria-label="facebook button" title="facebook button">
-                                    <span aria-hidden="true" class="fab fa-facebook-f"></span>
-                                </a>
-                                <a href="https://twitter.com/login" class="btn btn-icon-only btn-pill btn-outline-gray-300 text-twitter me-2"
-                                    aria-label="twitter button" title="twitter button">
-                                    <span aria-hidden="true" class="fab fa-twitter"></span>
-                                </a>
-                                <a href="https://github.com/login" class="btn btn-icon-only btn-pill btn-outline-gray-300 text-facebook"
-                                    aria-label="github button" title="github button">
-                                    <span aria-hidden="true" class="fab fa-github"></span>
-                                </a>
-                            </div>
-                            <div class="d-flex justify-content-center align-items-center mt-4">
-                                <span class="fw-normal">
-                                    Not registered?
-                                    <a href="sign-up.html" class="fw-bold text-underline">Create account</a>
-                                </span>
-                            </div>
                             <div class="d-flex justify-content-center align-items-center mt-1">
                                 <span class="fw-normal">
                                      Customer?
-                                    <a href="sign-in.html" class="fw-bold text-underline">Sign in here</a>
+                                    <a href="sign-in.php" class="fw-bold text-underline">Sign in here</a>
                                 </span>
                             </div>
                         </div>

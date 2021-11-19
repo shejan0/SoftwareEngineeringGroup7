@@ -141,16 +141,18 @@ include_once "../php/inc/user-connection.php"
                 if($priceKing!=0){
                   echo "<p class=\"text-muted\"><span class=\"text-primary h2\">$$priceKing</span> per night <b>KING</b></p>";
                 }
+                $hotelID = $_GET["hotelID"];
                 $prepared->close();
               }
             ?>
             <hr class="my-4">
-            <form class="form" id="booking-form" method="get" action="#" autocomplete="off">
+            <form class="form" id="booking-form" method="post" action="/reserve.php" autocomplete="off">
               <div class="mb-4">
                 <label class="form-label" for="bookingDate">Your stay *</label>
                 <div class="datepicker-container datepicker-container-left">
                 <input class="form-control input-group btn-pill bg-white shadow-soft border-light" type="text" name="bookingDate" id="form_dates"
                   placeholder="Choose your dates">
+                <input type="hidden" name="hotelID" value=<?php$hotelID?>>
               </div>
               </div>
               <div class="mb-4">

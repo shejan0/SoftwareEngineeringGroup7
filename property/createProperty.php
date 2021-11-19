@@ -1,5 +1,5 @@
 <?php
-    include_once "create.php";
+include_once "insertProperty.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,19 +25,19 @@
             <div class="row justify-content-center">
                 <div class="col-12 d-flex align-items-center justify-content-center">
                     <div class="signin-inner my-4 my-lg-0 bg-white  rounded  p-4 p-lg-5 w-100 fmxw-500">
-                        <!-- <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <span class="fas fa-bullhorn me-1"></span>
-                            <strong>Sucessfully created <?php echo "$hotelName"; ?> </strong>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div> -->
-                        <?php 
-                        if(isset($_SESSION['message'])){
-                            echo "$_SESSION[message]";
+                        <?php
+                        if (isset($_SESSION['message']) && isset($_SESSION['alert'])) { ?>
+                            <div class="<?php echo $_SESSION['alert'] ?>" role="alert">
+                                <span class="fas fa-bullhorn me-1"></span>
+                                <strong><?php echo $_SESSION['message'] ?></strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php
                             unset($_SESSION['message']);
-                        }
-                            ?>
+                            unset($_SESSION['alert']);
+                        }?>
                         <p class="text-center">
-                            <a href="hotel.php" class="d-flex align-items-center justify-content-center">
+                            <a href="../dashboard/hotel.php" class="d-flex align-items-center justify-content-center">
                                 <span class="text-gray"><span class="fas fa-arrow-left me-2"></span>Back to Hotel list
                                 </span>
                             </a>
@@ -50,19 +50,19 @@
                                             ?></h3> -->
 
                         <!-- Main form for property creation -->
-                        <form action="create.php" method="post" class="mt-4">
+                        <form action="insertProperty.php" method="post" class="mt-4">
                             <div class="form-group mb-4">
                                 <label for="hotelName">Enter Hotel Name (required):</label>
                                 <div class="input-group">
-                                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
+                                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-hotel"></span></span>
                                     <input type="text" name="hotelName" class="form-control" required>
                                 </div>
                             </div>
                             <div class="form-group mb-4">
-                                <label for="numRooms">Enter Total number of Rooms (required):</label>
+                                <label for="totalRooms">Enter Total number of Rooms (required):</label>
                                 <div class="input-group">
-                                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
-                                    <input type="text" name="numRooms" class='form-control' required>
+                                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-door-open	"></span></span>
+                                    <input type="text" name="totalRooms" class='form-control' required>
                                 </div>
                             </div>
                             <div class="row mb-5 mb-lg-5">
@@ -76,20 +76,20 @@
                                             <label class="form-check-label" for="pool">Pool</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="gym" , value="gym" id="defaultCheck1">
+                                            <input class="form-check-input" type="checkbox" name="gym" value="gym" id="defaultCheck1">
                                             <label class="form-check-label" for="gym">
                                                 Gym
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="spa" , value="spa" id="defaultCheck1">
+                                            <input class="form-check-input" type="checkbox" name="spa" value="spa" id="defaultCheck1">
                                             <label class="form-check-label" for="spa">
                                                 Spa
                                             </label>
                                         </div>
 
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="businessOffice" , value="businessOffice">
+                                            <input class="form-check-input" type="checkbox" name="businessOffice" value="businessOffice" id="defaultCheck1" >
                                             <label class="form-check-label" for="businessOffice">
                                                 Business Office
                                             </label>
@@ -100,19 +100,19 @@
 
                                     <div class="form-group mb-4">
                                         <label for="hotelName">Room Type (at least one)</label>
-
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="standard" , value="standard" id="defaultCheck1">
-                                            <label class="form-check-label" for="standard">Standard</label>
+                                            <input class="form-check-input" type="checkbox" name="king" , value="king" id="defaultCheck1">
+                                            <label class="form-check-label" for="king">King</label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="queen" , value="queen" id="defaultCheck1">
                                             <label class="form-check-label" for="queen">Queen</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="king" , value="king" id="defaultCheck1">
-                                            <label class="form-check-label" for="king">King</label>
+                                            <input class="form-check-input" type="checkbox" name="standard" , value="standard" id="defaultCheck1">
+                                            <label class="form-check-label" for="standard">Standard</label>
                                         </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -120,34 +120,34 @@
                             <div class="form-group mb-4">
                                 <label for="priceKing">King price</label>
                                 <div class="input-group">
-                                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
-                                    <input type="text" name="priceKing"class="form-control" required>
+                                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-dollar-sign	"></span></span>
+                                    <input type="text" name="priceKing" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group mb-4">
-                                <label  for="priceQueen">Queen price</label>
+                                <label for="priceQueen">Queen price</label>
                                 <div class="input-group">
-                                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
-                                    <input type="text" name="priceQueen" class="form-control" required>
+                                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-dollar-sign	"></span></span>
+                                    <input type="text" name="priceQueen" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group mb-4">
                                 <label for="priceStandard">Standard price</label>
                                 <div class="input-group">
-                                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
-                                    <input type="text" name="priceStandard" class="form-control" required>
+                                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-dollar-sign	"></span></span>
+                                    <input type="text" name="priceStandard" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group mb-4">
                                 <label for="weekendSurge">Weekend surge (percentage - omit percent sign)</label>
                                 <div class="input-group">
-                                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
+                                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-percentage"></span></span>
                                     <input type="text" name="weekendSurge" class="form-control" required>
                                 </div>
                             </div>
                             <div class="d-grid">
-                                   <button type="submit" class="btn btn-primary" name="create" value="Create Property">Create Property</button>
-                                </div>
+                                <button type="submit" class="btn btn-primary" name="create" value="Create Property">Create Property</button>
+                            </div>
                         </form>
                     </div>
                 </div>
