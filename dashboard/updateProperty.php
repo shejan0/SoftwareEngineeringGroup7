@@ -1,10 +1,10 @@
 <?php
+include_once "inc/session_start.php";
 include_once "../php/inc/user-connection.php";
 include_once "inc/head.php";
 include_once "inc/side-bar.php";
 
 if (!isset($_SESSION['email'])) {
-
     $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
     $_SESSION['message'] = "ERROR: You've signed out and do not have permission to access this page - please sign in again.";
     header("Location: ../html/admin-sign-in.php");
@@ -32,34 +32,6 @@ if (!isset($_SESSION['email'])) {
                 </ol>
             </nav>
             <h2 class="h4">Update Property</h2>
-            <?php
-        if(isset($_SESSION['property'])) {
-            $hotelProp = $_SESSION['property'];
-            $hotelID = $hotelProp['hotelID'];
-            echo "<h3>Current Hotel Info for Hotel ID " . $hotelID . "</h3>";
-            echo "Hotel Name: " . $hotelProp['hotelName'] . "<br>";
-            echo "Total number of rooms: " . $hotelProp['number_of_rooms'] . "<br>";
-            echo "Number of King Rooms: " . $hotelProp['numKing'] . "<br>";
-            echo "Number of Queen Rooms: " . $hotelProp['numQueen'] . "<br>";
-            echo "Number of Standard Rooms: " . $hotelProp['numStandard'] . "<br>";
-            echo "Price of King Rooms: " . $hotelProp['priceKing'] . "<br>";
-            echo "Price of Queen Rooms: " . $hotelProp['priceQueen'] . "<br>";
-            echo "Price of Standard Rooms: " . $hotelProp['priceStandard'] . "<br>";
-            echo "Weekend Surcharge: " . $hotelProp['weekendSurge'] . "<br>"; 
-            $amenityQuery = "SELECT * FROM `hotel`.`GenAmenities` WHERE hotelID = $hotelID";
-            $amenityResult = mysqli_query($conn, $amenityQuery); 
-            $amenityRows = mysqli_num_rows($amenityResult);
-            echo "Currently amenities for \"" . $hotelProp['hotelName'] . "\": ";
-            if ($amenityRows == 0) echo "N/A<br>";
-            else {
-                while ($amenity = mysqli_fetch_assoc($amenityResult)) {
-                    $all_amenities[] = $amenity['amenityName'];
-                    echo $amenity['amenityName'] . " ";
-                }
-            }
-        }
-
-    ?>
         </div>
         <?php
         if (isset($_SESSION['message']) && isset($_SESSION['alert'])) { ?>
@@ -73,5 +45,46 @@ if (!isset($_SESSION['email'])) {
             unset($_SESSION['alert']);
         } ?>
     </div>
-    
+    </div>
+    <!-- Hotel info  -->
+    <div class="card card-body border-0 shadow-soft border border-light table-wrapper table-responsive animate-up-5 bg-white">
+        <table class="table table-hover">
+            <thread>
+                <tr>
+                    <th class="border-gray-200">Hotel ID</th>
+                    <th class="border-gray-200">Hotel Name</th>
+                    <th class="border-gray-200">Total Number of Rooms</th>
+                    <th class="border-gray-200">Number of Standard Rooms</th>
+                    <th class="border-gray-200">Number of Queen Rooms</th>
+                    <th class="border-gray-200">Number of King Rooms</th>
+                    <th class="border-gray-200">Price of Standard</th>
+                    <th class="border-gray-200">Price of Queen</th>
+                    <th class="border-gray-200">Price of King</th>
+                    <th class="border-gray-200">Weekend Surge</th>
+                    <th class="border-gray-200">Current Amenities</th>
+
+                </tr>
+                <thread>
+                    <?php
+                    if (isset($_SESSION['property'])) {
+                        $hotelProp = $_SESSION['property'];
+                        $hotelID = $hotelProp['hotelID'];
+                        $query = mysqli_query($conn, "SELECT * FROM hotel;");
+                    ?>
+                            <tr>
+                                <td><span class="fw-bold"><?php echo  $hotelID; ?></span></td>
+                                <td><span class="fw-normal"><?php echo $hotelProp['hotelName']; ?></span></td>
+                                <td><span class="fw-normal"><?php echo  $hotelProp['number_of_rooms']; ?></span></td>
+                                <td><span class="fw-normal"><?php echo $hotelProp['numStandard']; ?></span></td>
+                                <td><span class="fw-normal"><?php echo $hotelProp['numQueen']; ?></span></td>
+                                <td><span class="fw-normal"><?php echo $hotelProp['numKing']; ?></span></td>
+                                <td><span class="fw-normal"><?php echo $hotelProp['priceStandard']; ?></span></td>
+                                <td><span class="fw-normal"><?php echo $hotelProp['priceQueen']; ?></span></td>
+                                <td><span class="fw-normal"><?php echo $hotelProp['priceKing']; ?></span></td>
+                                <td><span class="fw-normal"><?php echo $hotelProp['weekendSurge']; ?></span></td>
+                            </tr>
+                    <?php  
+                    } ?>
+        </table>
+    </div>
     <?php include_once "inc/footer.php" ?>
