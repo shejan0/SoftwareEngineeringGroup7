@@ -3,7 +3,6 @@ include_once "../dashboard/inc/session_start.php";
 include_once "../php/inc/user-connection.php";
 include_once "validateProperty.php";
 include_once "../dashboard/inc/head.php";
-include_once "../dashboard/inc/side-bar.php";
 $all_amenities = array();
 if (!isset($_SESSION['email'])) {
     $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
@@ -109,7 +108,7 @@ if (!isset($_SESSION['email'])) {
     </div>
     <div class="card-body shadow-soft border-light animate-up-5 bg-white row justify-content-center mt-5">
         <h2 class="h5 mb-4"><?php echo "Update $hotelProp[hotelName]" ?></h2>
-        <form action="modify.php" method="post" class="mt-4">
+        <form action="modifyProperty.php" method="post" class="mt-4">
             <div class="form-group mb-4">
                 <label for="hotelName">Enter Hotel Name:</label>
                 <div class="input-group">
