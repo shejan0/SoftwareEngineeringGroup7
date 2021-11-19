@@ -46,6 +46,8 @@ if (isset($_POST["create"])) {    // all process provided below at each break po
         $insertDesc = "INSERT INTO `hotel`.`Descriptions` (hotelID, hotelDesc, imageLink) VALUES ('$hotelID', '$hotelDesc', '$imageLink')";
         $insertDescResult = mysqli_query($conn, $insertDesc);
 
+        validateAmenities($pool, $gym, $spa, $businessOffice, $hotelID, $header, $conn);
+
         if (!$insertHotelResult || !$insertDescResult) {
             $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
             $_SESSION['message'] = "Error creating hotel property";
@@ -58,9 +60,8 @@ if (isset($_POST["create"])) {    // all process provided below at each break po
             header("location: $header");
             exit();
         }
+
     }
-    // check and insert amenities to GenAmenities table
-    validateAmenities($pool, $gym, $spa, $businessOffice, $hotelID, $header, $conn);
 } 
 
 // close connection
