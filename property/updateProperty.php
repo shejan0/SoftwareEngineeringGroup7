@@ -1,229 +1,155 @@
 <?php
-<<<<<<< HEAD
-include_once "..dashboard/inc/session_start.php";
+session_start();
 include_once "../php/inc/user-connection.php";
 include_once "validateProperty.php";
-include_once "..dashboard/inc/head.php";
-include_once "..dashboard/inc/side-bar.php";
-=======
-include_once "../dashboard/inc/session_start.php";
-include_once "../php/inc/user-connection.php";
-include_once "validateProperty.php";
-include_once "../dashboard/inc/head.php";
->>>>>>> a188ebceb0c3223215768eb9a587148defe7d714
-$all_amenities = array();
-if (!isset($_SESSION['email'])) {
-    $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-    $_SESSION['message'] = "ERROR: You've signed out and do not have permission to access this page - please sign in again.";
-    header("Location: ../html/admin-sign-in.php");
-    exit();
-}
+$header="updateProperty.php";
 ?>
-<main class="content bg-white">
-<<<<<<< HEAD
-    <?php include_once "inc/header.php"; ?>
-=======
-    <?php include_once "../dashboard/inc/header.php"; ?>
->>>>>>> a188ebceb0c3223215768eb9a587148defe7d714
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
-        <div class="d-block mb-4 mb-md-0">
-            <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
-                <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
-                    <li class="breadcrumb-item">
-                        <a href="dashboard.php">
-                            <svg class="icon icon-xxs" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
-                                </path>
-                            </svg>
-                        </a>
-                    </li>
-                    <li class="breadcrumb-item active" aria-current="page">
-                        <a href=" <?php echo basename(__FILE__) ?>"><?php echo basename(__FILE__, '.php') ?>
-                        </a>
-                    </li>
-                </ol>
-            </nav>
-            <h2 class="h4">Hotel</h2>
-            <p class="mb-0">Hotel table - add or edit hotels.</p>
-        </div>
-        <?php
-        if (isset($_SESSION['message']) && isset($_SESSION['alert'])) { ?>
-            <div class="<?php echo $_SESSION['alert'] ?>" role="alert">
-                <span class="fas fa-bullhorn me-1"></span>
-                <strong><?php echo $_SESSION['message'] ?></strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        <?php
-            unset($_SESSION['message']);
-            unset($_SESSION['alert']);
-        } ?>
-        <div class="btn mb-2 mb-md-0">
-<<<<<<< HEAD
-            <a href="hotel.php" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center animate-up-2">Back to hotel</a>
-=======
-            <a href="../dashboard/hotel.php" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center animate-up-2">Back to hotel</a>
->>>>>>> a188ebceb0c3223215768eb9a587148defe7d714
-        </div>
-    </div>
-    <!-- Hotel info  -->
-    <div class="card card-body border-0 shadow-soft border border-light table-wrapper table-responsive animate-up-5 bg-white">
-        <table class="table table-hover">
-            <?php
-            if (isset($_SESSION['property'])) {
-                $hotelProp = $_SESSION['property'];
-                $hotelID = $hotelProp['hotelID'];
-                $query = mysqli_query($conn, "SELECT * FROM hotel;");
-            ?>
-                <h2 class="h5 mb-4"><?php echo "$hotelProp[hotelName] info" ?></h2>
-                <thread>
-                    <tr>
-                        <th class="border-gray-200">Hotel ID</th>
-                        <th class="border-gray-200">Hotel Name</th>
-                        <th class="border-gray-200">Total Number of Rooms</th>
-                        <th class="border-gray-200">Number of Standard Rooms</th>
-                        <th class="border-gray-200">Number of Queen Rooms</th>
-                        <th class="border-gray-200">Number of King Rooms</th>
-                        <th class="border-gray-200">Price of Standard</th>
-                        <th class="border-gray-200">Price of Queen</th>
-                        <th class="border-gray-200">Price of King</th>
-                        <th class="border-gray-200">Weekend Surge</th>
-                        <th class="border-gray-200">Current Amenities</th>
 
-                    </tr>
-                    <thread>
-                        <tr>
-                            <td><span class="fw-bold"><?php echo  $hotelID; ?></span></td>
-                            <td><span class="fw-normal"><?php echo $hotelProp['hotelName']; ?></span></td>
-                            <td><span class="fw-normal"><?php echo  $hotelProp['number_of_rooms']; ?></span></td>
-                            <td><span class="fw-normal"><?php echo $hotelProp['numStandard']; ?></span></td>
-                            <td><span class="fw-normal"><?php echo $hotelProp['numQueen']; ?></span></td>
-                            <td><span class="fw-normal"><?php echo $hotelProp['numKing']; ?></span></td>
-                            <td><span class="fw-normal"><?php echo $hotelProp['priceStandard']; ?></span></td>
-                            <td><span class="fw-normal"><?php echo $hotelProp['priceQueen']; ?></span></td>
-                            <td><span class="fw-normal"><?php echo $hotelProp['priceKing']; ?></span></td>
-                            <td><span class="fw-normal"><?php echo $hotelProp['weekendSurge']; ?></span></td>
-                            <td><span class="fw-normal">
-                                    <?php
-                                    $amenityQuery = "SELECT * FROM `hotel`.`GenAmenities` WHERE hotelID = $hotelID";
-                                    $amenityResult = mysqli_query($conn, $amenityQuery);
-                                    $amenityRows = mysqli_num_rows($amenityResult);
-                                    if ($amenityRows == 0) echo "N/A<br>";
-                                    else {
-                                        while ($amenity = mysqli_fetch_assoc($amenityResult)) {
-                                            $all_amenities[] = $amenity['amenityName'];
-                                            echo $amenity['amenityName'] . " ";
-                                        }
-                                    } ?>
-                                </span></td>
-                        </tr>
-                    <?php
+<html>
+    <?php
+        if(isset($_SESSION['property'])) {
+            $hotelProp = $_SESSION['property'];
+            $hotelID = $hotelProp['hotelID'];
+            echo "<h3>Current Hotel Info for Hotel ID " . $hotelID . "</h3>";
+            echo "Hotel Name: " . $hotelProp['hotelName'] . "<br>";
+            echo "Total number of rooms: " . $hotelProp['number_of_rooms'] . "<br>";
+            echo "Number of King Rooms: " . $hotelProp['numKing'] . "<br>";
+            echo "Number of Queen Rooms: " . $hotelProp['numQueen'] . "<br>";
+            echo "Number of Standard Rooms: " . $hotelProp['numStandard'] . "<br>";
+            echo "Price of King Rooms: " . $hotelProp['priceKing'] . "<br>";
+            echo "Price of Queen Rooms: " . $hotelProp['priceQueen'] . "<br>";
+            echo "Price of Standard Rooms: " . $hotelProp['priceStandard'] . "<br>";
+            echo "Weekend Surcharge: " . $hotelProp['weekendSurge'] . "<br>"; 
+            $amenityQuery = "SELECT * FROM `hotel`.`GenAmenities` WHERE hotelID = $hotelID";
+            $amenityResult = mysqli_query($conn, $amenityQuery); 
+            $amenityRows = mysqli_num_rows($amenityResult);
+            echo "Currently amenities for \"" . $hotelProp['hotelName'] . "\": ";
+            if ($amenityRows == 0) echo "N/A<br>";
+            else {
+                while ($amenity = mysqli_fetch_assoc($amenityResult)) {
+                    $all_amenities[] = $amenity['amenityName'];
+                    echo $amenity['amenityName'] . " ";
                 }
-                    ?>
-        </table>
-        <!-- end of table -->
-    </div>
-    <div class="card-body shadow-soft border-light animate-up-5 bg-white row justify-content-center mt-5">
-        <h2 class="h5 mb-4"><?php echo "Update $hotelProp[hotelName]" ?></h2>
-<<<<<<< HEAD
-        <form action="modify.php" method="post" class="mt-4">
-=======
-        <form action="modifyProperty.php" method="post" class="mt-4">
->>>>>>> a188ebceb0c3223215768eb9a587148defe7d714
-            <div class="form-group mb-4">
-                <label for="hotelName">Enter Hotel Name:</label>
-                <div class="input-group">
-                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-hotel"></span></span>
-                    <input type="text" name="hotelName" class="form-control">
-                </div>
-            </div>
-            <div class="form-group mb-4">
-                <label for="totalRooms">Enter Total number of Rooms:</label>
-                <div class="input-group">
-                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-door-open	"></span></span>
-                    <input type="text" name="totalRooms" class='form-control'>
-                </div>
-            </div>
-            <div class="row mb-5 mb-lg-5">
-                <div class="col-lg-4 col-md-6">
-                    <div class="form-group mb-4">
-                        <div class="mb-3">
-                            <span class="fw-bold">Amenities</span>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="pool" , value="pool" <?php if (in_array("pool", $all_amenities)) echo 'checked="checked"'; ?>>
-                            <label class="form-check-label" for="pool">Pool</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="gym" value="gym"  <?php if (in_array("gym", $all_amenities)) echo 'checked="checked"'; ?>>
-                            <label class="form-check-label" for="gym">Gym</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="spa" value="spa"  <?php if (in_array("spa", $all_amenities)) echo 'checked="checked"'; ?>>
-                            <label class="form-check-label" for="spa">Spa</label>
-                        </div>
+            }
+        }
 
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="businessOffice" value="businessOffice"  <?php if (in_array("businessOffice", $all_amenities)) echo 'checked="checked"'; ?>>
-                            <label class="form-check-label" for="businessOffice">Business Office</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-7 col-sm-6 mt-4 mt-md-0">
+    ?>
+    <h3>Fill fields that need Modification.</h3> 
+    <form action="updateProperty.php" method="post">
+        <strong>Hotel ID: 
+            <?php 
+            $_POST['hotelID'] = $hotelID;
+            echo $hotelID; 
+            ?>
+        </strong>
+        <div><br><label for="hotelName">Enter Hotel Name (optional):</label><input type="text" name="hotelName"><br></div>
+        <div><br><label for="totalRooms">Enter Total number of Rooms (optional):</label> <input type="text" name="totalRooms"><br></div>
+        <div>
+            <br><label>Select Amenities (optional):
+            <br>(Note: All current amenitites are checked. To modify check aditional or uncheck current)</label><br>
+            <label for="pool">Pool</label> <input type="checkbox" name="pool", value="pool"
+            <?php if (in_array("pool", $all_amenities)) echo 'checked="checked"'; ?>><br>
+            <label for="gym">Gym</label> <input type="checkbox" name="gym", value="gym" 
+            <?php if (in_array("gym", $all_amenities)) echo 'checked="checked"'; ?>><br>
+            <label for="spa">Spa</label> <input type="checkbox" name="spa", value="spa"
+            <?php if (in_array("spa", $all_amenities)) echo 'checked="checked"'; ?>><br>
+            <label for="businessOffice">Business Office</label> <input type="checkbox" name="businessOffice", value="businessOffice" 
+            <?php if (in_array("businessOffice", $all_amenities)) echo 'checked="checked"'; ?>><br>
+        </div>
+        <div>
+            <br><label>Select Room Types (at least one required):
+            <br>(Note: All current types are checked.)</label><br>
+            <label for="king">King</label> <input type="checkbox" name="king", value="king"
+            <?php if ($hotelProp['numKing']>0) echo 'checked="checked"'; ?>><br>
+            <label for="queen">Queen</label> <input type="checkbox" name="queen", value="queen"
+            <?php if ($hotelProp['numQueen']>0) echo 'checked="checked"'; ?>><br>
+            <label for="standard">Standard</label> <input type="checkbox" name="standard", value="standard"
+            <?php if ($hotelProp['numStandard']>0) echo 'checked="checked"'; ?>><br>
+        </div>
+        <div>
+            <br><label>Enter Price for each Room Type selected:
+            <br>(Note: Current prices auto-filled, modify based on selected room types.)</label><br>
+            <label for="priceKing">Price for King</label> <input type="text" name="priceKing" value=<?php echo $hotelProp['priceKing']; ?>><br>
+            <label for="priceQueen">Price for Queen</label> <input type="text" name="priceQueen" value=<?php echo $hotelProp['priceQueen']; ?>><br>
+            <label for="priceStandard">Price for Standard</label> <input type="text" name="priceStandard" value=<?php echo $hotelProp['priceStandard']; ?>><br>
+        </div>
+        <div><br><label for="weekendSurge">Enter Weekend Surcharge(optional):</label> <input type="text" name="weekendSurge"><br></div>
+        <br><input type="submit" name="modify" value="Modify Property"><br>
+    </form>
+    <?php
+        if (isset($_POST["modify"])) {    // all process provided below at each break point
+            //initialize vars
+            $hotelName = $_POST['hotelName'];
+            $totalRooms = $_POST['totalRooms'];
+            if(isset($_POST['king'])) $king=$_POST['king'];
+            else $king=NULL;
+            if(isset($_POST['queen'])) $queen=$_POST['queen'];
+            else $queen=NULL;
+            if(isset($_POST['standard'])) $standard=$_POST['standard'];
+            else $standard=NULL;
 
-                    <div class="form-group mb-4">
-                        <label for="hotelName">Room Type (at least one)</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="king" , value="king"  <?php if ($hotelProp['numKing']>0) echo 'checked="checked"'; ?>>
-                            <label class="form-check-label" for="king">King</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="queen" , value="queen" <?php if ($hotelProp['numQueen']>0) echo 'checked="checked"'; ?>>
-                            <label class="form-check-label" for="queen">Queen</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="standard" , value="standard" <?php if ($hotelProp['numStandard']>0) echo 'checked="checked"'; ?>>
-                            <label class="form-check-label" for="standard">Standard</label>
-                        </div>
+            $priceKing = $_POST['priceKing'];
+            $priceQueen = $_POST['priceQueen'];   
+            $priceStandard = $_POST['priceStandard'];
+            
+            if(isset($_POST['pool'])) $pool=$_POST['pool'];
+            else $pool=NULL;
+            if(isset($_POST['gym'])) $gym=$_POST['gym'];
+            else $gym=NULL;
+            if(isset($_POST['spa'])) $spa=$_POST['spa'];
+            else $spa=NULL;
+            if(isset($_POST['businessOffice'])) $businessOffice=$_POST['businessOffice'];
+            else $businessOffice=NULL;
 
-                    </div>
-                </div>
-            </div>
-            <div class="mb-3"><span class="h6 fw-bold">Room type pricing</span></div>
-            <div class="form-group mb-4">
-                <label for="priceKing">King price</label>
-                <div class="input-group">
-                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-dollar-sign	"></span></span>
-                    <input type="text" name="priceKing" class="form-control" value=<?php echo $hotelProp['priceKing']; ?>>
-                </div>
-            </div>
-            <div class="form-group mb-4">
-                <label for="priceQueen">Queen price</label>
-                <div class="input-group">
-                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-dollar-sign"></span></span>
-                    <input type="text" name="priceQueen" class="form-control" value=<?php echo $hotelProp['priceQueen']; ?>>
-                </div>
-            </div>
-            <div class="form-group mb-4">
-                <label for="priceStandard">Standard price</label>
-                <div class="input-group">
-                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-dollar-sign"></span></span>
-                    <input type="text" name="priceStandard" class="form-control" value=<?php echo $hotelProp['priceStandard']; ?>>
-                </div>
-            </div>
-            <div class="form-group mb-4">
-                <label for="weekendSurge">Weekend surge (percentage - omit percent sign)</label>
-                <div class="input-group">
-                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-percentage"></span></span>
-                    <input type="text" name="weekendSurge" class="form-control">
-                </div>
-            </div>
-            <div class="d-grid">
-                <button type="submit" class="btn btn-primary" name="modify"  value="Modify Property">Save changes</button>
-            </div>
-        </form>
-    </div>
-<<<<<<< HEAD
-    <?php include_once "inc/footer.php" ?>
-=======
-    <?php include_once "../dashboard/inc/footer.php" ?>
->>>>>>> a188ebceb0c3223215768eb9a587148defe7d714
+            $weekendSurge=$_POST['weekendSurge'];
+
+            if (!empty($hotelName)) {
+                if ($hotelName != $hotelProp['hotelName']) {
+                    $updateQuery = "UPDATE `hotel`.`hotel` SET hotelName = '$hotelName' WHERE (hotelID = '$hotelID')";
+                    $updateResult = mysqli_query($conn, $updateQuery);
+                    if (!$updateResult) exit("<p class='error'>Error Updating Hotel Name: ($updateQuery) " . mysqli_error($conn) . "</p>");
+                    echo "<p>Successfully Updated Hotel Name to \"" . $hotelName . "\"</p>";
+                }
+            }
+            
+            //update total rooms
+            if (!empty($totalRooms)) {
+                validateTotalRooms($totalRooms, $header);
+                if ($totalRooms != $hotelProp['number_of_rooms']) {
+                    $updateQuery = "UPDATE `hotel`.`hotel` SET number_of_rooms='$totalRooms' WHERE (hotelID = '$hotelID')";
+                    $updateResult = mysqli_query($conn, $updateQuery);
+                    if (!$updateResult) exit("<p class='error'>Error Updating Total Number of rooms: ($updateQuery) " . mysqli_error($conn) . "</p>");
+                    echo "<p>Successfully Updated Total Number of rooms to \"" . $totalRooms . "\"</p>";
+                }
+            }
+            else $totalRooms = $hotelProp['number_of_rooms'];
+            
+            [$numKing, $numQueen, $numStandard] = calcNumRooms($king, $queen, $standard, $totalRooms, $header);
+            validatePrice($king, $queen, $standard, $priceKing, $priceQueen, $priceStandard, $header);
+
+            $updateQuery = "UPDATE hotel.hotel SET numKing='$numKing', numQueen='$numQueen', numStandard='$numStandard', 
+            priceKing='$priceKing', priceQueen='$priceQueen', priceStandard='$priceStandard' WHERE (hotelID='$hotelID')";
+            $updateResult = mysqli_query($conn, $updateQuery);
+            if(!$updateResult) exit("<p class='error'>Error Updating Room Types' Values: ($updateQuery) " . mysqli_error($conn) . "</p>");
+            echo "<p>Successfully updated room types' values<p>";
+
+            if (!empty($weekendSurge)) {
+                validateWeekendSurge($weekendSurge, $header);
+                if ($weekendSurge != $hotelProp['weekendSurge']) {
+                    $updateQuery = "UPDATE `hotel`.`hotel` SET `weekendSurge`='$weekendSurge' WHERE (`hotelID` = '$hotelID')";
+                    $updateResult = mysqli_query($conn, $updateQuery);
+                    if (!$updateResult) exit("<p class='error'>Error Updating Total Number of rooms: ($updateQuery) " . mysqli_error($conn) . "</p>");
+                    echo "<p>Successfully Updated Weekend Surge to \"" . $weekendSurge . "\"</p>";
+                }
+            }
+            // delete amenity to then re-add based on updated amenities
+            $deleteAmenitiesQuery = "DELETE FROM `hotel`.`GenAmenities` WHERE (`hotelID` = '$hotelID')";
+            $deleteAmenitiesResult = mysqli_query($conn, $deleteAmenitiesQuery);
+            // check and insert amenities to GenAmenities table
+            validateAmenities($pool, $gym, $spa, $businessOffice, $hotelID, $header, $conn);
+        }
+       
+        mysqli_close($conn);
+    ?>
+    <br><a href ="../dashboard/hotel.php">Back to Hotel Properties List</a>
+</html>
