@@ -16,8 +16,9 @@ $numRes = NULL;
 $cancelled = 0;
 
 $numDays = NULL;
-$weekDays = NULL;
-$weekendDays = NULL;
+$weekDays = 0;
+$weekendDays = 0;
+$surgePrice = NULL;
 $totalPrice = NULL;
 
     if(isset($_POST['submit']))
@@ -26,11 +27,32 @@ $totalPrice = NULL;
         $numRes = $_POST['rooms'];
         $roomType = $_POST['type'];
         $hotelID = $_POST['hotelID']
-
+        
+        //Separate $dates into arrival and departure dates
         $pattern = '{(\d+-\d+-\d+) to (\d+-\d+-\d+)/)}';
         if(preg_match($pattern, $dates, $matches)){
             $arrival = $matches[1];
             $departure = $matches[2];
+        }
+        //Calculate total number of days 
+        $datediff = $arrival - $departure;
+        $numDays = ($datediff / (60 * 60 * 24));
+
+        $begin = new DateTime( $arrival );
+        $end   = new DateTime( $departure );
+        //Loop through days and identify number of weekend days and week days
+        for($i = $begin; $i <= $end; $i->modify('+1 day')){
+            $day = date("D", strtotime($i));
+
+            //Check to see if it is equal to Sat or Sun.
+            if($day == 'Sat' || $day == 'Sun'){
+                //Increment weekend days
+                $weekendDays++;
+            }
+            else{
+                //Increment week days
+                $weekDays++;
+            }
         }
     }
 
