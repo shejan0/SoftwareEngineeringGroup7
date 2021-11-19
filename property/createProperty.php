@@ -46,9 +46,6 @@ include_once "insertProperty.php";
                             <h1 class="mb-0 h3">Add Hotel</h1>
 
                         </div>
-                        <!-- <h3>Hotel ID: <?php //echo $hotelID 
-                                            ?></h3> -->
-
                         <!-- Main form for property creation -->
                         <form action="insertProperty.php" method="post" class="mt-4">
                             <div class="form-group mb-4">

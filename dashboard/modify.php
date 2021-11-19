@@ -26,6 +26,7 @@ if (isset($_POST["enter"])) {
             $hotelProp = mysqli_fetch_assoc($hotelResult);
             $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
             $_SESSION['message'] = 'Success: Found hotel ID - modify hotel below';
+            $_SESSION['property'] = $hotelProp;
             header("location: updateProperty.php");
         }
     }
