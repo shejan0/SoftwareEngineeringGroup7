@@ -1,5 +1,5 @@
 <?php
-session_start();
+include_once "session_start.php";
 ?>
 <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none bg-primary  ">
     <a class="navbar-brand me-lg-5" href="dashboard.php">
@@ -93,46 +93,12 @@ session_start();
                 </a>
             </li>
             <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
-            <!-- <li class="nav-item">
-                <a href="#" class="nav-link d-flex align-items-center">
-                    <span class="sidebar-icon">
-                        <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path>
-                        </svg>
-                    </span>
-                    <span class="sidebar-text">Support</span>
-                </a>
-            </li>
             <li class="nav-item">
-                <a href="../index.html" class="nav-link d-flex align-items-center">
-                    <span class="sidebar-icon">
-                        <span class="fas fa-home me-2">
-                        </span>
-                    </span>
-                    <span class="sidebar-text">Back to homepage </span>
-                </a>
-            </li> -->
-            <li class="nav-item">
-                <button class="btn btn-info d-flex align-items-center justify-content-center btn-upgrade-pro animate-up-2" id='sign-out'>
+                <a class="btn btn-info d-flex align-items-center justify-content-center btn-upgrade-pro animate-up-2" id='sign-out' name='sign-out' href='../php/logout.php'>
                     <svg class="icon icon-xxs me-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
                     </svg>
-                    sign out
-                </button>
-                <script>
-                    document.getElementById('sign-out').addEventListener('click', function() {
-                        Swal.fire({
-                            title: 'Sign out?',
-                            icon: 'info',
-                            html: 'Are you sure you want to sign out?',
-                            showCancelButton: true,
-                            focusConfirm: false,
-                            cancelButtonColor: '#d33',
-                            confirmButtonText: '<a class="text-white" href="../php/logout.php">Sign out</a>',
-                        
-                        })
-                    });
-                </script>
+                    sign out</a>
             </li>
         </ul>
     </div>
