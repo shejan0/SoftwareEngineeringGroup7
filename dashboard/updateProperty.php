@@ -109,7 +109,7 @@ if (!isset($_SESSION['email'])) {
     </div>
     <div class="card-body shadow-soft border-light animate-up-5 bg-white row justify-content-center mt-5">
         <h2 class="h5 mb-4"><?php echo "Update $hotelProp[hotelName]" ?></h2>
-        <form action="" method="post" class="mt-4">
+        <form action="modify.php" method="post" class="mt-4">
             <div class="form-group mb-4">
                 <label for="hotelName">Enter Hotel Name:</label>
                 <div class="input-group">
