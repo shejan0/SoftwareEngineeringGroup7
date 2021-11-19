@@ -33,5 +33,5 @@ $all_amenities = array();
 
         mysqli_close($conn);
     ?>
-    <br><a href ="/dashboard/hotel.php">Back to Hotel Properties List</a>
+    <br><a href ="../dashboard/hotel.php">Back to Hotel Properties List</a>
 </html>

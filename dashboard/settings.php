@@ -40,12 +40,6 @@ include_once "inc/side-bar.php";
       unset($_SESSION['alert']);
     } ?>
     <h2 class="h5 mb-4">General information</h2>
-    <?php
-    if (isset($_SESSION['message'])) { ?>
-      <h2 class="h5 mb-4"><?php echo $_SESSION['track']; ?></h2>
-    <?php
-      unset($_SESSION['message']);
-    } ?>
     <form action="modifyAdmin.php" method="post">
       <div class="row mb-4 mb-lg-5">
         <div class="col-12 col-md-4">

@@ -35,15 +35,17 @@ if (isset($_POST['update'])) {
     $newPassword =  $_POST['newPassword'];
     $hashed_password = password_hash($newPassword, PASSWORD_DEFAULT);
     $newEmail = $_POST['newEmail'];
-    // update
+
+    // update name
     $updateName = "UPDATE admin set name='$newName' where name='$currName'";
     $result = mysqli_query($conn,$updateName);
     if ($result) {
         $currName = $newName;
-        $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-        $_SESSION['message'] = "Error: Failed to update profile";
-        $_SESSION['new_name'] = $newName;
-        $_SESSION['track'] = "Current name: " . $currName . " New name: " . $newName;
+        $_SESSION['name'] = $newName;
+
+        $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
+        $_SESSION['message'] = "Success! Updated profile.";
+
         header("location: settings.php");
         exit();
 
