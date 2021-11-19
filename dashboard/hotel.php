@@ -63,7 +63,7 @@ if (!isset($_SESSION['email'])) {
                                 </div>
                                 <div class="card-body">
                                     <!-- Form -->
-                                    <form action="modify.php" method='post' class="mt-4">
+                                    <form action="../property/modifyProperty.php" method='post' class="mt-4">
                                         <div class="form-group mb-4">
                                             <label for="hotelID">Property ID</label>
                                             <div class="input-group">
