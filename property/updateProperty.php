@@ -1,9 +1,16 @@
 <?php
+<<<<<<< HEAD
 include_once "..dashboard/inc/session_start.php";
 include_once "../php/inc/user-connection.php";
 include_once "validateProperty.php";
 include_once "..dashboard/inc/head.php";
 include_once "..dashboard/inc/side-bar.php";
+=======
+include_once "../dashboard/inc/session_start.php";
+include_once "../php/inc/user-connection.php";
+include_once "validateProperty.php";
+include_once "../dashboard/inc/head.php";
+>>>>>>> a188ebceb0c3223215768eb9a587148defe7d714
 $all_amenities = array();
 if (!isset($_SESSION['email'])) {
     $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
@@ -13,7 +20,11 @@ if (!isset($_SESSION['email'])) {
 }
 ?>
 <main class="content bg-white">
+<<<<<<< HEAD
     <?php include_once "inc/header.php"; ?>
+=======
+    <?php include_once "../dashboard/inc/header.php"; ?>
+>>>>>>> a188ebceb0c3223215768eb9a587148defe7d714
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
         <div class="d-block mb-4 mb-md-0">
             <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
@@ -47,7 +58,11 @@ if (!isset($_SESSION['email'])) {
             unset($_SESSION['alert']);
         } ?>
         <div class="btn mb-2 mb-md-0">
+<<<<<<< HEAD
             <a href="hotel.php" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center animate-up-2">Back to hotel</a>
+=======
+            <a href="../dashboard/hotel.php" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center animate-up-2">Back to hotel</a>
+>>>>>>> a188ebceb0c3223215768eb9a587148defe7d714
         </div>
     </div>
     <!-- Hotel info  -->
@@ -109,7 +124,11 @@ if (!isset($_SESSION['email'])) {
     </div>
     <div class="card-body shadow-soft border-light animate-up-5 bg-white row justify-content-center mt-5">
         <h2 class="h5 mb-4"><?php echo "Update $hotelProp[hotelName]" ?></h2>
+<<<<<<< HEAD
         <form action="modify.php" method="post" class="mt-4">
+=======
+        <form action="modifyProperty.php" method="post" class="mt-4">
+>>>>>>> a188ebceb0c3223215768eb9a587148defe7d714
             <div class="form-group mb-4">
                 <label for="hotelName">Enter Hotel Name:</label>
                 <div class="input-group">
@@ -203,4 +222,8 @@ if (!isset($_SESSION['email'])) {
             </div>
         </form>
     </div>
+<<<<<<< HEAD
     <?php include_once "inc/footer.php" ?>
+=======
+    <?php include_once "../dashboard/inc/footer.php" ?>
+>>>>>>> a188ebceb0c3223215768eb9a587148defe7d714
