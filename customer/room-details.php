@@ -145,12 +145,11 @@ include_once "../php/inc/user-connection.php"
         }
         ?>
         <hr class="my-4">
-        <form class="form" id="booking-form" method="post" action="reserve.php" autocomplete="off">
+        <form class="form" id="booking-form" method="get" action="#" autocomplete="off">
           <div class="mb-4">
             <label class="form-label" for="bookingDate">Your stay *</label>
             <div class="datepicker-container datepicker-container-left">
               <input class="form-control input-group btn-pill bg-white shadow-soft border-light" type="text" name="bookingDate" id="form_dates" placeholder="Choose your dates">
-              <input type="hidden" name="hotelID" value=<?php$hotelID?>>
             </div>
           </div>
           <div class="mb-4">
@@ -186,61 +185,12 @@ include_once "../php/inc/user-connection.php"
                 if ($numKing != 0) {
                   echo "<option value=\"King\">King</option>";
                 }
-                $hotelID = $_GET["hotelID"];
-                $prepared->close();
               }
-            ?>
-            <hr class="my-4">
-            <form class="form" id="booking-form" method="post" action="reserve.php" autocomplete="off">
-              <div class="mb-4">
-                <label class="form-label" for="bookingDate">Your stay *</label>
-                <div class="datepicker-container datepicker-container-left">
-                <input class="form-control input-group btn-pill bg-white shadow-soft border-light" type="text" name="bookingDate" id="form_dates"
-                  placeholder="Choose your dates">
-                <input type="hidden" name="hotelID" value=<?php$hotelID?>>
-              </div>
-              </div>
-              <div class="mb-4">
-                <label class="form-label" for="rooms">Rooms *</label>
-                <select class="form-control input-group btn-pill bg-white shadow-soft border-light" name="rooms" id="rooms">
-                  <?php
-                    for($i = 1; $i<=10;$i++){
-                      echo "<option value=\"$i\">$i</option>";
-                    }
-                  ?>
-                </select>
-              </div>
-
-              <div class="mb-4">
-                <label class="form-label" for="type">Room Type *</label>
-                <select class="form-control input-group btn-pill bg-white shadow-soft border-light" name="type" id="type">
-                  <?php
-                    if(empty($_GET["hotelID"])){
-                      echo "<option>FAILED</option>";
-                     }else{
-                      $numquery="SELECT numStandard,numQueen,numKing FROM hotel.hotel WHERE hotelID=?;";
-                      $prepared=$conn->prepare($numquery);
-                      $prepared->bind_param("i",$_GET["hotelID"]);
-                      $prepared->execute();
-                      $prepared->bind_result($numStandard,$numQueen,$numKing);
-                      $prepared->fetch();
-                      if($numStandard!=0){
-                        echo "<option value=\"Standard\">Standard</option>";
-                      }
-                      if($numQueen!=0){
-                        echo "<option value=\"Queen\">Queen</option>";
-                      }
-                      if($numKing!=0){
-                        echo "<option value=\"King\">King</option>";
-                      }
-                     }
-                  ?>
-                </select>
-              </div>
-              <div class="d-grid mb-4">
-                <button class="btn btn-primary" type="submit">Book your stay</button>
-              </div>
-            </form>
+              ?>
+            </select>
+          </div>
+          <div class="d-grid mb-4">
+            <button class="btn btn-primary" type="submit">Book your stay</button>
           </div>
         </form>
       </div>
