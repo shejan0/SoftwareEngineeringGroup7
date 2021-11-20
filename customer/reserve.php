@@ -8,14 +8,15 @@ if ($lastID != NULL) $reservationID = $lastID['reservationID'] + 1;
 else $reservationID = 1;
 $hotelID  = NULL;
 $roomType = NULL;
-$email = NULL;
-$arrival = NULL;
-$departure = NULL;
+$email = "ERROR";
+$arrival = 1990-01-01;
+$departure = 1990-01-02; 
 $totalPrice = -1;
 $numRes = NULL;
 $cancelled = 0;
 
 $numDays = NULL;
+$roomPrice = -1;
 $weekDays = 0;
 $weekendDays = 0;
 $surgePrice = -1;
@@ -53,7 +54,7 @@ $surgePrice = -1;
         $totalPrice = (($roomPrice * $weekDays) + ($surgePrice * $weekendDays)) * $numRes;
 
         //Separate $dates into arrival and departure dates
-        $pattern = '{(\d+-\d+-\d+) to (\d+-\d+-\d+)/)}';
+        $pattern = '{(\d+-\d+-\d+) to (\d+-\d+-\d+)}';
         if(preg_match($pattern, $dates, $matches)){
             $arrival = $matches[1];
             $departure = $matches[2];
