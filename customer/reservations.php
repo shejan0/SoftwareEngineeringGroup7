@@ -27,7 +27,6 @@ include_once "../php/inc/user-connection.php";
                     <?php
                     $email = $_SESSION['email'];
                     $query = mysqli_query($conn, "SELECT * FROM reservation where email = '$email';");
-                    echo gettype($_SESSION['email']);
                     while ($row = mysqli_fetch_array($query)) {
                     ?>
                         <tr>
