@@ -42,18 +42,6 @@
               <li><a class="text-muted" href="../">Home</a></li>
             </ul>
           </div>
-          <div class="col-lg-4">
-            <h6 class="text-uppercase text-dark mb-3">Daily Offers & Discounts</h6>
-            <p class="mb-3"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. At itaque temporibus.</p>
-            <form action='#'>
-              <div class="input-group mb-3">
-                <input class="form-control bg-transparent border-dark border-end-0" type="email"
-                  placeholder="Your Email Address" aria-label="Your Email Address">
-                <button class="btn btn-outline-dark border-start-0" type="submit"> <i
-                    class="fa fa-paper-plane text-lg"></i></button>
-              </div>
-            </form>
-          </div>
         </div>
       </div>
     </div>
