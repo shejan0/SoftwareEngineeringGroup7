@@ -11,15 +11,14 @@ $roomType = NULL;
 $email = NULL;
 $arrival = NULL;
 $departure = NULL;
-$totalPrice = NULL;
+$totalPrice = -1;
 $numRes = NULL;
 $cancelled = 0;
 
 $numDays = NULL;
 $weekDays = 0;
 $weekendDays = 0;
-$surgePrice = NULL;
-$totalPrice = NULL;
+$surgePrice = -1;
 
     if(isset($_POST['submit']))
     {
@@ -30,11 +29,11 @@ $totalPrice = NULL;
         $email = $_SESSION['email'];
         
         if($roomType == "Standard"){
-            $queryPrice = "SELECT priceStandard, weekendSurge FROM hotel Where hotelID = $hotelID";
-            $resultPrice = mysqli_query($conn, $queryPrice);
-            $arrPrice = mysqli_fetch_array($resultPrice);
-            $roomPrice = $arrPrice['priceStandard'];
-            $surgePrice = $roomPrice * (1 + $arrPrice['weekendSurge']);
+            //$queryPrice = "SELECT priceStandard, weekendSurge FROM hotel Where hotelID = $hotelID";
+            //$resultPrice = mysqli_query($conn, $queryPrice);
+            //$arrPrice = mysqli_fetch_array($resultPrice);
+            //$roomPrice = $arrPrice['priceStandard'];
+            //$surgePrice = $roomPrice * (1 + $arrPrice['weekendSurge']);
         }
         else if($roomType == "Queen"){
             $queryPrice = "SELECT priceQueen, weekendSurge FROM 'hotel'.'hotel' Where hotelID = $hotelID";
