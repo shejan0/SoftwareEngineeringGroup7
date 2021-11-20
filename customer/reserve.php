@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once "../php/inc/user-connection.php";
-$queryLastRow = "SELECT * FROM `hotel`.`Reservation` Where reservationID = (SELECT MAX(reservationID) FROM `hotel`.`Reservation`)";
+$queryLastRow = "SELECT * FROM Reservation Where reservationID = (SELECT MAX(reservationID) FROM Reservation)";
 $resultLastRow = mysqli_query($conn, $queryLastRow);
 $lastID = mysqli_fetch_assoc($resultLastRow);
 if ($lastID != NULL) $reservationID = $lastID['reservationID'] + 1;
@@ -30,7 +30,7 @@ $totalPrice = NULL;
         $email = $_SESSION['email'];
         
         if($roomType == "Standard"){
-            $queryPrice = "SELECT priceStandard, weekendSurge FROM 'hotel'.'hotel' Where hotelID = $hotelID";
+            $queryPrice = "SELECT priceStandard, weekendSurge FROM hotel Where hotelID = $hotelID";
             $resultPrice = mysqli_query($conn, $queryPrice);
             $arrPrice = mysqli_fetch_array($resultPrice);
             $roomPrice = $arrPrice['priceStandard'];
