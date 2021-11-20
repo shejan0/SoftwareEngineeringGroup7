@@ -80,6 +80,19 @@ $totalPrice = NULL;
             }
         }
     }
+    ?>
 
+<tr>
+    <td><span class="fw-bold"><?php echo $reservationID; ?></span></td>
+    <td><span class="fw-normal"><?php echo $hotelID; ?></span></td>
+    <td><span class="fw-normal"><?php echo $roomType; ?></span></td>
+    <td><span class="fw-normal"><?php echo $email; ?></span></td>
+    <td><span class="fw-normal"><?php echo $arrival; ?></span></td>
+    <td><span class="fw-normal"><?php echo $departure; ?></span></td>
+    <td><span class="fw-normal"><?php echo $totalPrice; ?></span></td>
+    <td><span class="fw-normal"><?php echo $numRes; ?></span></td>
+</tr>
+
+<?php
 mysqli_close($conn);
 ?>
