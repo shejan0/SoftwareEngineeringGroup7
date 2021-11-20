@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once "inc/user-connection.php";
+include_once "../php/inc/user-connection.php";
 $queryLastRow = "SELECT * FROM `hotel`.`Reservation` Where reservationID = (SELECT MAX(reservationID) FROM `hotel`.`Reservation`)";
 $resultLastRow = mysqli_query($conn, $queryLastRow);
 $lastID = mysqli_fetch_assoc($resultLastRow);
@@ -82,7 +82,7 @@ $totalPrice = NULL;
     }
     ?>
 
-<tr>
+<html>
     <td><span class="fw-bold"><?php echo $reservationID; ?></span></td>
     <td><span class="fw-normal"><?php echo $hotelID; ?></span></td>
     <td><span class="fw-normal"><?php echo $roomType; ?></span></td>
@@ -91,7 +91,7 @@ $totalPrice = NULL;
     <td><span class="fw-normal"><?php echo $departure; ?></span></td>
     <td><span class="fw-normal"><?php echo $totalPrice; ?></span></td>
     <td><span class="fw-normal"><?php echo $numRes; ?></span></td>
-</tr>
+</html>
 
 <?php
 mysqli_close($conn);
