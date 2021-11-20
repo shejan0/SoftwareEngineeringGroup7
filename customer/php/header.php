@@ -11,7 +11,7 @@ if(!isset($_SESSION['email']))
 }
 ?>
 
-<body style="padding-top: 72px;">
+<body style="padding-top: 72px" class='bg-white'>
     <header class="header">
         <!-- Navbar-->
         <nav id="navbar-main" aria-label="Primary navigation" class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
