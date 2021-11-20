@@ -145,11 +145,12 @@ include_once "../php/inc/user-connection.php"
         }
         ?>
         <hr class="my-4">
-        <form class="form" id="booking-form" method="get" action="#" autocomplete="off">
+        <form class="form" id="booking-form" method="post" action="reserve.php" autocomplete="off">
           <div class="mb-4">
             <label class="form-label" for="bookingDate">Your stay *</label>
             <div class="datepicker-container datepicker-container-left">
               <input class="form-control input-group btn-pill bg-white shadow-soft border-light" type="text" name="bookingDate" id="form_dates" placeholder="Choose your dates">
+              <input type="hidden" name="hotelID" value=<?php$hotelID?>>
             </div>
           </div>
           <div class="mb-4">
@@ -185,7 +186,6 @@ include_once "../php/inc/user-connection.php"
                 if ($numKing != 0) {
                   echo "<option value=\"King\">King</option>";
                 }
-<<<<<<< HEAD
                 $hotelID = $_GET["hotelID"];
                 $prepared->close();
               }
@@ -241,14 +241,6 @@ include_once "../php/inc/user-connection.php"
                 <button class="btn btn-primary" type="submit">Book your stay</button>
               </div>
             </form>
-=======
-              }
-              ?>
-            </select>
-          </div>
-          <div class="d-grid mb-4">
-            <button class="btn btn-primary" type="submit">Book your stay</button>
->>>>>>> 33a5c01a463333a9370bbac72e6c08137d61d124
           </div>
         </form>
       </div>
