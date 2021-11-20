@@ -81,7 +81,7 @@ $totalPrice = NULL;
         }
     }
     echo($hotelID);
-    echo($reservationID;)
+    echo($reservationID);
     echo($roomType);
     echo($email);
     echo($arrival);
