@@ -80,13 +80,21 @@ $totalPrice = NULL;
             }
         }
     }
-    echo $hotelID;
-    echo $reservationID;
-    echo $roomType;
-    echo $email;
-    echo $arrival;
-    echo $departure;
-    echo $totalPrice;
-    echo $numRes;
+    ?>
+    <html>
+        <body>
+            <?php
+            echo $hotelID;
+            echo $reservationID;
+            echo $roomType;
+            echo $email;
+            echo $arrival;
+            echo $departure;
+            echo $totalPrice;
+            echo $numRes;
+            ?>
+        </body>
+    </html>
+    <?php
     mysqli_close($conn);
 ?>
