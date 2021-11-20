@@ -121,7 +121,7 @@ include_once "../php/inc/user-connection.php"
       </div>
     </div>
     <div class="col-lg-4">
-      <div class="p-4 shadow ms-lg-4 rounded sticky-top" style="top: 100px;">
+      <div class="p-4 shadow-soft border-light animate-up-2  ms-lg-4 rounded sticky-top" style="top: 100px;">
         <?php
         if (empty($_GET["hotelID"])) {
           echo "<p class=\"text-muted\"><span class=\"text-primary h2\">FAILED</span></p>";
@@ -256,92 +256,36 @@ include_once "../php/inc/user-connection.php"
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-10 mx-auto">
-            <!-- <div id="Carousel2" class="carousel slide shadow-soft border border-light p-4 rounded-pill animate-up-3"
-                                data-ride="carousel">
-                                <div class="carousel-inner rounded-pill ">
-                                    <div class="carousel-item active  rounded-pill">
-                                        <img class="d-block w-100 " src="../assets/img/hotels/hotel5.jpeg"
-                                            alt="First slide">
-                                    </div>
-                                    <div class="carousel-item   rounded-pill">
-                                        <img class="d-block w-100" src="../assets/img/hotels/hotel-room1.jpeg"
-                                            alt="West hotel">
-                                    </div>
-                                    <div class="carousel-item   rounded-pill">
-                                        <img class="d-block w-100" src="../assets/img/hotels/lobby1.jpeg"
-                                            alt="West hotel">
-                                    </div>
-                                  
-                                    <div class="carousel-item   rounded-pill">
-                                        <img class="d-block w-100" src="../assets/img/hotels/bathroom1.jpeg"
-                                            alt="Bellagio hotel">
-                                    </div>
-                                    <div class="carousel-item  rounded-pill">
-                                        <img class="d-block w-100" src="../assets/img/hotels/dining1.jpeg"
-                                            alt="Bellagio hotel">
-                                    </div>
-                                    <div class="carousel-item  rounded-pill">
-                                        <img class="d-block w-100" src="../assets/img/hotels/gym1.jpeg"
-                                            alt="Bellagio hotel">
-                                    </div>
-                                    
-                                    <div class="carousel-item   rounded-pill">
-                                        <img class="d-block w-100" src="../assets/img/hotels/pool.jpeg"
-                                            alt="Bellagio hotel">
-                                    </div>
-                                </div>
-                                <a class="carousel-control-prev" href="#Carousel2" role="button" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="carousel-control-next" href="#Carousel2" role="button" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </div> -->
-            <?php
+            <div class="section section-lg bg-white border-light shadow-soft animate-up-2 pb-0">
+              <div class="container">
+                <div class="row justify-content-center">
+                  <div class="col-12 col-md-8 text-center mb-4 mb-lg-6">
+                    <h2 class="display-2 fw-bold"><?php echo $name ?></h2>
+                    <p class="lead">Pictures of the hotel</p>
+                  </div>
+                </div>
+                <div class="row align-items-center">
+                  <?php
+                  // gets random image
+                  function randomPic($dir = '../assets/img/hotel-detail')
+                  {
+                    $files = glob($dir . '/*.*');
+                    $file = array_rand($files);
+                    return $files[$file];
+                  }
 
-            // gets random image
-            function randomPic($dir = '../assets/img/hotels')
-            {
-              $files = glob($dir . '/*.*');
-              $file = array_rand($files);
-              return $files[$file];
-            }
-
-            for ($i = 0; $i < 10; $i++) {
-              $imageLink = randomPic();
-              echo " <div id=\"Carousel2\" class=\"carousel slide shadow-soft border border-light p-4 rounded-pill animate-up-3\" data-ride=\"carousel\">";
-              echo "<div class=\"carousel-inner rounded-pill\">";
-              echo "<div class=\"carousel-item active  rounded-pill\">";
-              echo "<img class=\"d-block w-100\" src=\"$imageLink\" href=\"Hotel images\">";
-              echo "</div>";
-              echo "</div>";
-              echo " <a class=\"carousel-control-prev\" href=\"#Carousel2\" role=\"button\" data-bs-slide=\"prev\">";
-              echo "<span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>";
-              echo "<span class=\"sr-only\">Previous</span>";
-              echo "<a>";
-              echo " <a class=\"carousel-control-next\" href=\"#Carousel2\" role=\"button\" data-bs-slide=\"next\">";
-              echo "<span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>";
-              echo "<span class=\"sr-only\">next</span>";
-              echo "<a>";
-              echo "</div>"; // outer dive
-            }
-            ?>
-            <div id="Carousel2" class="carousel slide shadow-soft border border-light p-4 rounded-pill animate-up-3" data-ride="carousel">
-              <div class="carousel-inner rounded-pill ">
-                <div class="carousel-item active  rounded-pill">
-                  <img class="d-block w-100 " src="../assets/img/hotels/hotel5.jpeg" alt="First slide">
+                  for ($i = 0; $i < 12; $i++) {
+                    $image = randomPic();
+                    echo "
+              <div class=\"col-md-6 col-lg-4 text-center\">
+                  <div class=\"card-body py-5 border-light shadow-inset aniamte-up-2\"><img src=\"$image\" class=\"image-xl\" alt=\"hotel image\"> 
+                  </div>
+              </div>
+            ";
+                  }
+                  ?>
                 </div>
               </div>
-              <a class="carousel-control-prev" href="#Carousel2" role="button" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#Carousel2" role="button" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
             </div>
           </div>
         </div>

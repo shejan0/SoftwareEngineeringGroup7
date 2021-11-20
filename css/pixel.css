@@ -319,6 +319,9 @@
 .date-picker-wrapper .selected-days {
   display: none;
 }
+.hide{
+    display: none;
+}
 
 .date-picker-wrapper .drp_top-bar {
   line-height: 1.4;

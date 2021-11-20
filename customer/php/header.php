@@ -2,15 +2,16 @@
 session_set_cookie_params(0);
 session_start();
 
-// Checks if user is logged in by checkign if email is set, if not logged in redirect to sign-in page.
-// ensures along with logout.php that once sign out - user won't be able to access the site that only is available to logged in users
 if(!isset($_SESSION['email']))
 {
-    header("Location: ../html/sign-in.html");
+    $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+    $_SESSION['message'] = "ERROR: You must sign in before continuing";
+    header("Location: ../html/sign-in.php");
+    exit();
 }
 ?>
 
-<body style="padding-top: 72px;">
+<body style="padding-top: 72px" class='bg-white'>
     <header class="header">
         <!-- Navbar-->
         <nav id="navbar-main" aria-label="Primary navigation" class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
@@ -32,7 +33,8 @@ if(!isset($_SESSION['email']))
                     </div>
                     <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
                         <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link" href="customer.php">Customer Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="customer.php">Hotel</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
 
                     </ul>
                 </div>
@@ -60,7 +62,7 @@ if(!isset($_SESSION['email']))
                                 }
                                 ?>
                             </span>
-                            <a class="dropdown-item" href="customer.php">Customer Home</a>
+                            <a class="dropdown-item" href="../index.html">Home</a>
                             <a class="dropdown-item" href="profile.php">Profile</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item rounded-bottom" href="../php/logout.php">

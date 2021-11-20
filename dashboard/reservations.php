@@ -4,13 +4,6 @@
 include_once "../php/inc/user-connection.php";
 include_once "inc/head.php";
 include_once "inc/side-bar.php";
-
-if(!isset($_SESSION['email']))
-{
-    $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-    $_SESSION['message'] = "ERROR: You've signed out and do not have permission to access this page - please sign in again.";
-    header("Location: ../html/admin-sign-in.php");
-    exit();}
 ?>
 <main class="content bg-white">
     <?php include_once "inc/header.php"; ?>
