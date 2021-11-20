@@ -27,28 +27,31 @@ $totalPrice = NULL;
         $numRes = $_POST['rooms'];
         $roomType = $_POST['type'];
         $hotelID = $_POST['hotelID'];
+        $email = $_SESSION['email'];
         
         if($roomType == "Standard"){
             $queryPrice = "SELECT priceStandard, weekendSurge FROM 'hotel'.'hotel' Where hotelID = $hotelID";
             $resultPrice = mysquli_query($conn, $queryPrice);
             $arrPrice = mysqli_fetch_assoc($resultPrice);
-            $surgePrice = $arrPrice['weekendSurge'];
             $roomPrice = $arrPrice['priceStandard'];
+            $surgePrice = $roomPrice * (1 + $arrPrice['weekendSurge']);
         }
         else if($roomType == "Queen"){
             $queryPrice = "SELECT priceQueen, weekendSurge FROM 'hotel'.'hotel' Where hotelID = $hotelID";
             $resultPrice = mysquli_query($conn, $queryPrice);
             $arrPrice = mysqli_fetch_assoc($resultPrice);
-            $surgePrice = $arrPrice['weekendSurge'];
             $roomPrice = $arrPrice['priceQueen'];
+            $surgePrice = $roomPrice * (1 + $arrPrice['weekendSurge']);
         }
         else if($roomType == "King"){
             $queryPrice = "SELECT priceking, weekendSurge FROM 'hotel'.'hotel' Where hotelID = $hotelID";
             $resultPrice = mysquli_query($conn, $queryPrice);
             $arrPrice = mysqli_fetch_assoc($resultPrice);
-            $surgePrice = $arrPrice['weekendSurge'];
             $roomPrice = $arrPrice['priceKing'];
+            $surgePrice = $roomPrice * (1 + $arrPrice['weekendSurge']);
         }
+
+        $totalPrice = (($roomPrice * $weekDays) + ($surgePrice * $weekendDays)) * $numRes;
 
         //Separate $dates into arrival and departure dates
         $pattern = '{(\d+-\d+-\d+) to (\d+-\d+-\d+)/)}';
