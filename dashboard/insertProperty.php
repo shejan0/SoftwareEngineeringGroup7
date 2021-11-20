@@ -10,9 +10,6 @@ if ($lastID != NULL) $hotelID = $lastID['hotelID'] + 1;
 else $hotelID = 1;
 $header = "createProperty.php";
 
-if (!isset($_SESSION['email'])) {
-    header("Location: ../html/admin-sign-in.php");
-}
 // Process info when create (submit button) is clicked
 if (isset($_POST["create"])) {    // all process provided below at each break point
     // assign all values from $_post before validation

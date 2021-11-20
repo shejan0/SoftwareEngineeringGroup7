@@ -281,7 +281,10 @@ include_once "../php/inc/user-connection.php"
             <div id="Carousel2" class="carousel slide shadow-soft border border-light p-4 rounded-pill animate-up-3" data-ride="carousel">
               <div class="carousel-inner rounded-pill ">
                 <div class="carousel-item active  rounded-pill">
-                  <img class="d-block w-100 " src="../assets/img/hotels/hotel5.jpeg" alt="First slide">
+                  <img class="d-block w-100 " src="../assets/img/hotel/hotel-room2.jpeg" alt="Firsdt slide">
+                </div>
+                <div class="carousel-item active  rounded-pill">
+                  <img class="d-block w-100 " src="../assets/img/hotel/hotel-room1.jpeg" alt="First slide">
                 </div>
               </div>
               <a class="carousel-control-prev" href="#Carousel2" role="button" data-bs-slide="prev">
