@@ -30,16 +30,7 @@ include_once "../php/inc/user-connection.php"
           echo "<h1>$name</h1>";
           $prepared->close();
         }
-
         ?>
-        <!--
-            <p class="text-muted text-uppercase mb-4">Entire Apartment </p>
-
-            <ul class="list-inline text-sm mb-4">
-              <li class="list-inline-item me-3"><i class="fa fa-users me-1 text-secondary"></i> Number of guests</li>
-              <li class="list-inline-item me-3"><i class="fa fa-bed me-1 text-secondary"></i> 3 beds</li>
-            </ul>
-           -->
         <?php
         if (empty($_GET["hotelID"])) {
           echo "<p class=\"text-muted fw-light\">FAILED</p>";
@@ -90,9 +81,16 @@ include_once "../php/inc/user-connection.php"
             $prepared->execute();
             $prepared->bind_result($amenity);
             echo "<div class=\"col-md-6\">";
-            echo "<ul class=\"text-muted\">";
+            echo "<ul class=\"text-muted list-inline text-sm mb-4\">";
             while ($prepared->fetch()) {
-              echo "<li class=\"mb-2\"><span class=\"text-sm\">$amenity</span></li>";
+              if($amenity == 'pool')
+              echo "<li class=\"list-inline-item me-3\"><i class=\"fa fa-swimming-pool me-1 text-secondary\"></i>$amenity</li>";
+              if($amenity == 'gym')
+              echo "<li class=\"list-inline-item me-3\"><i class=\"fas fa-weight-hanging me-1 text-secondary\"></i>$amenity</li>";
+              if($amenity == 'spa')
+              echo "<li class=\"list-inline-item me-3\"><i class=\"fa fa-spa me-1 text-secondary\"></i>$amenity</li>";
+              if($amenity == 'businessOffice')
+              echo "<li class=\"list-inline-item me-3\"><i class=\"fas fa-briefcase me-1 text-secondary\"></i>$amenity</li>";
             }
             echo "</ul></div>";
             $prepared->close();
