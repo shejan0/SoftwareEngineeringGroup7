@@ -1,7 +1,7 @@
 <?php
 include_once "php/head.php";
 include_once "php/header.php";
-include_once "../php/inc/user-connection.php"
+include_once "../php/inc/user-connection.php";
 ?>
 <div class="container py-5">
   <div class="row">
@@ -13,6 +13,17 @@ include_once "../php/inc/user-connection.php"
       </ol>
     </nav>
     <div class="col-lg-8">
+    <?php
+                        if (isset($_SESSION['message']) && isset($_SESSION['alert'])) { ?>
+                            <div class="<?php echo $_SESSION['alert'] ?>" role="alert">
+                                <span class="fas fa-bullhorn me-1"></span>
+                                <strong><?php echo $_SESSION['message'] ?></strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php
+                            unset($_SESSION['message']);
+                            unset($_SESSION['alert']);
+                        }?>
       <div class="text-block">
         <!--
             <p class="text-primary"><i class="fa-map-marker-alt fa me-1"></i> Brooklyn, New York</p>
@@ -45,7 +56,7 @@ include_once "../php/inc/user-connection.php"
           $prepared->close();
         }
         ?>
-        <!--
+<!--         
             <p class="text-muted fw-light">Our garden basement apartment is fully equipped with everything you need to enjoy your stay. Very comfortable for a couple but plenty of space for a small family. Close to many wonderful Brooklyn attractions and quick trip to Manhattan. </p>
             <h6 class="mb-3">The space</h6>
             <p class="text-muted fw-light">Welcome to Brooklyn! We are excited to share our wonderful neighborhood with you. Our modern apartment has a private entrance, fully equipped kitchen, and a very comfortable queen size bed. We are happy to accommodate additional guests with a single bed in the living room, another comfy mattress on the floor and can make arrangements for small children with a portable crib and highchair if requested. </p>
@@ -143,7 +154,9 @@ include_once "../php/inc/user-connection.php"
         }
         ?>
         <hr class="my-4">
-        <form class="form" id="booking-form" method="get" action="#" autocomplete="off">
+        <form class="form" id="booking-form" method="get" action="book.php" autocomplete="off">
+          <!-- passing ID to book.php -->
+        <input type="hidden" name="hotelID" value="<?php echo $_GET['hotelID']; ?>">
           <div class="mb-4">
             <label class="form-label" for="bookingDate">Your stay *</label>
             <div class="datepicker-container datepicker-container-left">
@@ -175,20 +188,20 @@ include_once "../php/inc/user-connection.php"
                 $prepared->bind_result($numStandard, $numQueen, $numKing);
                 $prepared->fetch();
                 if ($numStandard != 0) {
-                  echo "<option value=\"Standard\">Standard</option>";
+                  echo "<option value=\"standard\">Standard</option>";
                 }
                 if ($numQueen != 0) {
-                  echo "<option value=\"Queen\">Queen</option>";
+                  echo "<option value=\"queen\">Queen</option>";
                 }
                 if ($numKing != 0) {
-                  echo "<option value=\"King\">King</option>";
+                  echo "<option value=\"king\">King</option>";
                 }
               }
               ?>
             </select>
           </div>
           <div class="d-grid mb-4">
-            <button class="btn btn-primary" type="submit">Book your stay</button>
+            <button class="btn btn-primary" type="submit" name='book'>Book your stay</button>
           </div>
         </form>
       </div>
@@ -208,7 +221,7 @@ include_once "../php/inc/user-connection.php"
               <div class="container">
                 <div class="row justify-content-center">
                   <div class="col-12 col-md-8 text-center mb-4 mb-lg-6">
-                    <h2 class="display-2 fw-bold"><?php echo $name ?></h2>
+                    <h2 class="display-2 fw-bold"><?php if(isset($name))echo $name; else "Pictures of hotels"?></h2>
                     <p class="lead">Pictures of the hotel</p>
                   </div>
                 </div>
