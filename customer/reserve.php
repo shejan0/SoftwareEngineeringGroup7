@@ -32,7 +32,7 @@ $totalPrice = NULL;
         if($roomType == "Standard"){
             $queryPrice = "SELECT priceStandard, weekendSurge FROM 'hotel'.'hotel' Where hotelID = $hotelID";
             $resultPrice = mysqli_query($conn, $queryPrice);
-            $arrPrice = mysqli_fetch_assoc($resultPrice);
+            $arrPrice = mysqli_fetch_array($resultPrice);
             $roomPrice = $arrPrice['priceStandard'];
             $surgePrice = $roomPrice * (1 + $arrPrice['weekendSurge']);
         }
