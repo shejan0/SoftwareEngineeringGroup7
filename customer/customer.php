@@ -2,6 +2,12 @@
 include_once "php/head.php";
 include_once "php/header.php";
 include_once "../php/inc/user-connection.php";
+
+// gets total number of records BEFORE search
+$countRow = "SELECT count(1) from hotel;";
+$execute = mysqli_query($conn,$countRow);
+$row = mysqli_fetch_array($execute);
+$total = $row[0];
 ?>
 
 <div class="container-fluid bg-white">
@@ -13,9 +19,9 @@ include_once "../php/inc/user-connection.php";
       <hr class="my-4">
       <div class="d-flex justify-content-between align-items-center flex-column flex-md-row mb-4">
         <div class="me-3">
-          <p class="mb-3 mb-md-0"><strong>12</strong> results found</p>
+          <p class="mb-3 mb-md-0"><strong><?php echo $total?></strong> results found</p>
         </div>
-        <div>
+        <!-- <div>
           <label class="form-label me-2" for="form_sort">Sort by</label>
           <select class="selectpicker" name="sort" id="form_sort" data-style="btn-selectpicker" title="">
             <option value="sortBy_0">Most popular </option>
@@ -23,51 +29,61 @@ include_once "../php/inc/user-connection.php";
             <option value="sortBy_2">High-Low </option>
             <option value="sortBy_3">Low-High </option>
           </select>
-        </div>
+        </div> -->
+      </div>
       </div>
       <div class="row">
         <?php
-          $fillquery = "SELECT h.hotelID, h.hotelName, h.priceStandard,d.imageLink FROM hotel h, Descriptions d WHERE h.hotelID = d.hotelID;";
-          $result = $conn->query($fillquery);
-          if($result->num_rows<=0){
-            echo "<div class=\"col-sm-6 mb-5 hover-animate\">";
+        $fillquery = "SELECT h.hotelID, h.hotelName, h.priceStandard,d.imageLink FROM hotel h, Descriptions d WHERE h.hotelID = d.hotelID;";
+        $result = $conn->query($fillquery);
+
+        // gets random image
+        function randomPic($dir = '../assets/img/hotel')
+        {
+          $files = glob($dir . '/*.*');
+          $file = array_rand($files);
+          return $files[$file];
+        }
+        if ($result->num_rows <= 0) {
+          echo "<div class=\"col-md-5 mb-5 hover-animate\">";
+          echo "<div class=\"card h-100  shadow-soft border-light animate-up-2 bg-white\">";
+          echo "<div class=\"card-img-top overflow-hidden shadow-soft border-light animate-up-2\">";
+          echo "<a href=\"\">";
+          echo "<img src=\"\" alt=\"Front pages overview\">";
+          echo "</a></div>";
+          echo "<div class=\"card-body d-flex align-items-center\">";
+          echo "<div class=\"w-100\">";
+          echo "<h6 class=\"card-title\">";
+          echo "<a class=\"text-decoration-none text-dark\" href=\"\">FAILED</a>";
+          echo "</h6>";
+          echo "<div class=\"d-flex card-subtitle mb-3\">";
+          echo "</div>";
+          echo "<p class=\"card-text text-muted\"><span class=\"h4 text-secondary\">$9999</span> per night</p>";
+          echo "</div></div></div></div>";
+        } else {
+          while ($list = $result->fetch_assoc()) {
+            $id = $list['hotelID'];
+            $name = $list['hotelName'];
+            $price = $list['priceStandard'];
+            $imageLink = randomPic();
+            echo "<div class=\"col-md-4 mb-5 hover-animate\">";
             echo "<div class=\"card h-100  shadow-soft border-light animate-up-2 bg-white\">";
             echo "<div class=\"card-img-top overflow-hidden shadow-soft border-light animate-up-2\">";
-            echo "<a href=\"\">";
-            echo "<img src=\"\" alt=\"Front pages overview\">";
+            echo "<a href=\"room-details.php?hotelID=$id\">";
+            echo "<img src=\"$imageLink\" alt=\"Front pages overview\">";
+            // echo "<img src=\"../assets/img/hotels/hotel1.jpeg\" alt=\"Front pages overview\">";
             echo "</a></div>";
             echo "<div class=\"card-body d-flex align-items-center\">";
             echo "<div class=\"w-100\">";
             echo "<h6 class=\"card-title\">";
-            echo "<a class=\"text-decoration-none text-dark\" href=\"\">FAILED</a>";
+            echo "<a class=\"text-decoration-none text-dark\" href=\"room-details.php?hotelID=$id\">$name</a>";
             echo "</h6>";
             echo "<div class=\"d-flex card-subtitle mb-3\">";
             echo "</div>";
-            echo "<p class=\"card-text text-muted\"><span class=\"h4 text-secondary\">$9999</span> per night</p>";
+            echo "<p class=\"card-text text-muted\"><span class=\"h4 text-secondary\">$$price</span> per night</p>";
             echo "</div></div></div></div>";
-          }else{
-            while($list = $result->fetch_assoc()){
-              $id=$list['hotelID'];
-              $name=$list['hotelName'];
-              $price=$list['priceStandard'];
-              $imageLink=$list['imageLink'];
-              echo "<div class=\"col-sm-6 mb-5 hover-animate\">";
-              echo "<div class=\"card h-100  shadow-soft border-light animate-up-2 bg-white\">";
-              echo "<div class=\"card-img-top overflow-hidden shadow-soft border-light animate-up-2\">";
-              echo "<a href=\"room-details.php?hotelID=$id\">";
-              echo "<img src=\"$imageLink\" alt=\"Front pages overview\">";
-              echo "</a></div>";
-              echo "<div class=\"card-body d-flex align-items-center\">";
-              echo "<div class=\"w-100\">";
-              echo "<h6 class=\"card-title\">";
-              echo "<a class=\"text-decoration-none text-dark\" href=\"room-details.php?hotelID=$id\">$name</a>";
-              echo "</h6>";
-              echo "<div class=\"d-flex card-subtitle mb-3\">";
-              echo "</div>";
-              echo "<p class=\"card-text text-muted\"><span class=\"h4 text-secondary\">$$price</span> per night</p>";
-              echo "</div></div></div></div>";
-            }
           }
+        }
         ?>
         <!-- place item
         <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92">
@@ -218,21 +234,10 @@ include_once "../php/inc/user-connection.php";
           <li class="page-item"><a class="page-link" href="#"> <i class="fa fa-angle-right"></i></a></li>
         </ul>
       </nav> -->
-    </div>
-    <!-- <div class="col-lg-6 map-side-lg pe-lg-0">
+          <!-- <div class="col-lg-6 map-side-lg pe-lg-0">
       <div class="map-full shadow-soft border-light" id="categorySideMap"></div>
     </div> -->
-    
   </div>
 </div>
 <?php
 include_once "php/footer.php";  ?>
-<script>
-  createListingsMap({
-    mapId: 'categorySideMap',
-    jsonFile: '../assets/js/cities-map/san-antonio.json',
-    mapPopupType: 'rental',
-    useTextIcon: true,
-    // tileLayer: tileLayers[5]  - uncomment for a different map styling
-  });
-</script>

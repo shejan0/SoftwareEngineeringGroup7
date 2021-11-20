@@ -4,4 +4,4 @@
 // $db_password = $_ENV['DB_PASSWORD'];
 // $db_name = $_ENV['DB_DATABASE'];
 
-include_once "../../php/inc/user-connection.php";
+include_once "../php/inc/user-connection.php";
