@@ -150,6 +150,7 @@ include_once "../php/inc/user-connection.php"
             <label class="form-label" for="bookingDate">Your stay *</label>
             <div class="datepicker-container datepicker-container-left">
               <input class="form-control input-group btn-pill bg-white shadow-soft border-light" type="text" name="bookingDate" id="form_dates" placeholder="Choose your dates">
+              <input type="hidden" name="hotelID" value=<?php$hotelID?>>
             </div>
           </div>
           <div class="mb-4">
