@@ -25,7 +25,7 @@ if (isset($_GET['book'])) {
         if ($numRooms <= $records['numStandard']) {
             $update = "UPDATE hotel set numStandard = $records[numStandard] - $numRooms where hotelID = $id;";
             $updateResult = mysqli_query($conn, $update);
-            $price = $numRooms * $records['priceStandard'] * 8.25;
+            $price = $numRooms * $records['priceStandard'] * 1.0825;
             $insert = "INSERT into reservation (hotelID,hotelName,roomType,email,arrivalDate,departureDate,totalPrice,numRoom) 
                         values ('$id','$records[hotelName]','$roomType','$email','$start','$end','$price','$numRooms');";
 
@@ -54,7 +54,7 @@ if (isset($_GET['book'])) {
         if ($numRooms <= $records['numQueen']) {
             $update = "UPDATE hotel set numQueen = $records[numQueen] - $numRooms where hotelID = $id;";
             $updateResult = mysqli_query($conn, $update);
-            $price = $numRooms * $records['priceQueen'] * 8.25;
+            $price = $numRooms * $records['priceQueen'] * 1.0825;
             $insert = "INSERT into reservation (hotelID,hotelName,roomType,email,arrivalDate,departureDate,totalPrice,numRoom) 
                         values ('$id','$records[hotelName]','$roomType','$email','$start','$end','$price','$numRooms');";
 
@@ -81,7 +81,7 @@ if (isset($_GET['book'])) {
         if ($numRooms <= $records['numKing']) {
             $update = "UPDATE hotel set numKing = $records[numKing] - $numRooms where hotelID = $id;";
             $updateResult = mysqli_query($conn, $update);
-            $price = $numRooms * $records['priceKing'] * 8.25;
+            $price = $numRooms * $records['priceKing'] * 1.0825;
             $insert = "INSERT into reservation (hotelID,hotelName,roomType,email,arrivalDate,departureDate,totalPrice,numRoom) 
                         values ('$id','$records[hotelName]','$roomType','$email','$start','$end','$price','$numRooms');";
 
