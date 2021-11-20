@@ -5,7 +5,7 @@ include_once "../php/inc/user-connection.php";
 
 // gets total number of records BEFORE search
 $countRow = "SELECT count(1) from hotel;";
-$execute = mysqli_query($conn,$countRow);
+$execute = mysqli_query($conn, $countRow);
 $row = mysqli_fetch_array($execute);
 $total = $row[0];
 ?>
@@ -21,7 +21,7 @@ $total = $row[0];
       <hr class="my-4">
       <div class="d-flex justify-content-between align-items-center flex-column flex-md-row mb-4">
         <div class="me-3">
-          <p class="mb-3 mb-md-0"><strong><?php echo $total?></strong> results found</p>
+          <p class="mb-3 mb-md-0"><strong><?php echo $total ?></strong> results found</p>
         </div>
         <!-- <div>
           <label class="form-label me-2" for="form_sort">Sort by</label>
@@ -33,61 +33,84 @@ $total = $row[0];
           </select>
         </div> -->
       </div>
-      </div>
-      <div class="row">
-        <?php
-        $fillquery = "SELECT h.hotelID, h.hotelName, h.priceStandard,d.imageLink FROM hotel h, Descriptions d WHERE h.hotelID = d.hotelID;";
-        $result = $conn->query($fillquery);
+    </div>
+    <div class="row">
+      <?php
+      $fillquery = "SELECT h.hotelID, h.hotelName, h.priceStandard,d.imageLink,h.priceQueen,h.priceKing FROM hotel h, Descriptions d WHERE h.hotelID = d.hotelID;";
+      $result = $conn->query($fillquery);
 
-        // gets random image
-        function randomPic($dir = '../assets/img/hotel')
-        {
-          $files = glob($dir . '/*.*');
-          $file = array_rand($files);
-          return $files[$file];
-        }
-        if ($result->num_rows <= 0) {
-          echo "<div class=\"col-md-5 mb-5 hover-animate\">";
+      // gets random image
+      function randomPic($dir = '../assets/img/hotel')
+      {
+        $files = glob($dir . '/*.*');
+        $file = array_rand($files);
+        return $files[$file];
+      }
+      if ($result->num_rows <= 0) {
+        echo "<div class=\"col-md-5 mb-5 hover-animate\">";
+        echo "<div class=\"card h-100  shadow-soft border-light animate-up-2 bg-white\">";
+        echo "<div class=\"card-img-top overflow-hidden shadow-soft border-light animate-up-2\">";
+        echo "<a href=\"\">";
+        echo "<img src=\"\" alt=\"Front pages overview\">";
+        echo "</a></div>";
+        echo "<div class=\"card-body d-flex align-items-center\">";
+        echo "<div class=\"w-100\">";
+        echo "<h6 class=\"card-title\">";
+        echo "<a class=\"text-decoration-none text-dark\" href=\"\">FAILED</a>";
+        echo "</h6>";
+        echo "<div class=\"d-flex card-subtitle mb-3\">";
+        echo "</div>";
+        echo "<p class=\"card-text text-muted\"><span class=\"h4 text-secondary\">$9999</span> per night</p>";
+        echo "</div></div></div></div>";
+      } else {
+        while ($list = $result->fetch_assoc()) {
+          $id = $list['hotelID'];
+          $name = $list['hotelName'];
+          $priceStandard = $list['priceStandard'];
+          $priceQueen = $list['priceQueen'];
+          $priceKing = $list['priceKing'];
+          $imageLink = randomPic();
+
+          echo "<div class=\"col-md-4 mb-5 hover-animate\">";
           echo "<div class=\"card h-100  shadow-soft border-light animate-up-2 bg-white\">";
           echo "<div class=\"card-img-top overflow-hidden shadow-soft border-light animate-up-2\">";
-          echo "<a href=\"\">";
-          echo "<img src=\"\" alt=\"Front pages overview\">";
+          echo "<a href=\"room-details.php?hotelID=$id\">";
+          echo "<img src=\"$imageLink\" alt=\"Front pages overview\">";
           echo "</a></div>";
           echo "<div class=\"card-body d-flex align-items-center\">";
           echo "<div class=\"w-100\">";
           echo "<h6 class=\"card-title\">";
-          echo "<a class=\"text-decoration-none text-dark\" href=\"\">FAILED</a>";
+          echo "<a class=\"text-decoration-none text-dark\" href=\"room-details.php?hotelID=$id\">$name</a>";
           echo "</h6>";
           echo "<div class=\"d-flex card-subtitle mb-3\">";
           echo "</div>";
-          echo "<p class=\"card-text text-muted\"><span class=\"h4 text-secondary\">$9999</span> per night</p>";
-          echo "</div></div></div></div>";
-        } else {
-          while ($list = $result->fetch_assoc()) {
-            $id = $list['hotelID'];
-            $name = $list['hotelName'];
-            $price = $list['priceStandard'];
-            $imageLink = randomPic();
-            echo "<div class=\"col-md-4 mb-5 hover-animate\">";
-            echo "<div class=\"card h-100  shadow-soft border-light animate-up-2 bg-white\">";
-            echo "<div class=\"card-img-top overflow-hidden shadow-soft border-light animate-up-2\">";
-            echo "<a href=\"room-details.php?hotelID=$id\">";
-            echo "<img src=\"$imageLink\" alt=\"Front pages overview\">";
-            // echo "<img src=\"../assets/img/hotels/hotel1.jpeg\" alt=\"Front pages overview\">";
-            echo "</a></div>";
-            echo "<div class=\"card-body d-flex align-items-center\">";
-            echo "<div class=\"w-100\">";
-            echo "<h6 class=\"card-title\">";
-            echo "<a class=\"text-decoration-none text-dark\" href=\"room-details.php?hotelID=$id\">$name</a>";
-            echo "</h6>";
-            echo "<div class=\"d-flex card-subtitle mb-3\">";
-            echo "</div>";
-            echo "<p class=\"card-text text-muted\"><span class=\"h4 text-secondary\">$$price</span> per night</p>";
-            echo "</div></div></div></div>";
+
+          if (!empty($priceStandard) && !empty($priceQueen) && !empty($priceKing)) {
+            echo "<p class=\"card-text text-muted\"><span class=\"h4 text-secondary\">$$priceStandard</span> Standard / per night</p>";
+            echo "<p class=\"card-text text-muted\"><span class=\"h4 text-secondary\">$$priceQueen</span> Queen / per night</p>";
+            echo "<p class=\"card-text text-muted\"><span class=\"h4 text-secondary\">$$priceKing</span> King / per night</p>";
+          } else if (empty($priceKing) && empty($priceQueen))
+            echo "<p class=\"card-text text-muted\"><span class=\"h4 text-secondary\">$$priceStandard</span> Standard / per night</p>";
+          else if (empty($priceQueen) && empty($priceStandard))
+            echo "<p class=\"card-text text-muted\"><span class=\"h4 text-secondary\">$$priceKing</span> King / per night</p>";
+          else if (empty($priceKing) && empty($priceStandard))
+            echo "<p class=\"card-text text-muted\"><span class=\"h4 text-secondary\">$$priceQueen</span> Queen / per night</p>";
+          else if (empty($priceStandard)) {
+            echo "<p class=\"card-text text-muted\"><span class=\"h4 text-secondary\">$$priceQueen</span> Queen / per night</p>";
+            echo "<p class=\"card-text text-muted\"><span class=\"h4 text-secondary\">$$priceKing</span> King / per night</p>";
+          } else if (empty($priceQueen)) {
+            echo "<p class=\"card-text text-muted\"><span class=\"h4 text-secondary\">$$priceStandard</span> Standard / per night</p>";
+            echo "<p class=\"card-text text-muted\"><span class=\"h4 text-secondary\">$$priceKing</span> King / per night</p>";
+          } else if (empty($priceKing)) {
+            echo "<p class=\"card-text text-muted\"><span class=\"h4 text-secondary\">$$priceStandard</span> Standard / per night</p>";
+            echo "<p class=\"card-text text-muted\"><span class=\"h4 text-secondary\">$$priceQueen</span> Queen / per night</p>";
           }
+
+          echo "</div></div></div></div>";
         }
-        ?>
-        <!-- place item
+      }
+      ?>
+      <!-- place item
         <div class="col-sm-6 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92">
           <div class="card h-100  shadow-soft border-light animate-up-2 bg-white">
           <div class="card-img-top overflow-hidden shadow-soft border-light animate-up-2">
@@ -225,9 +248,9 @@ $total = $row[0];
           </div>
         </div>
         -->
-      </div>
-      <!-- Pagination -->
-      <!-- <nav aria-label="Page navigation example">
+    </div>
+    <!-- Pagination -->
+    <!-- <nav aria-label="Page navigation example">
         <ul class="pagination pagination-template d-flex justify-content-center ">
           <li class="page-item "><a class="page-link" href="#"> <i class="fa fa-angle-left"></i></a></li>
           <li class="page-item active"><a class="page-link" href="#">1</a></li>
@@ -236,7 +259,7 @@ $total = $row[0];
           <li class="page-item"><a class="page-link" href="#"> <i class="fa fa-angle-right"></i></a></li>
         </ul>
       </nav> -->
-          <!-- <div class="col-lg-6 map-side-lg pe-lg-0">
+    <!-- <div class="col-lg-6 map-side-lg pe-lg-0">
       <div class="map-full shadow-soft border-light" id="categorySideMap"></div>
     </div> -->
   </div>

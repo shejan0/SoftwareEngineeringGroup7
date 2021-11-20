@@ -1,5 +1,12 @@
 <?php
 include_once "session_start.php";
+if(!isset($_SESSION['email']))
+{
+    $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+    $_SESSION['message'] = "ERROR: You must be login in order to access the dashboard.";
+    header("Location: ../html/admin-sign-in.php");
+    exit();
+}
 ?>
 <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none bg-primary  ">
     <a class="navbar-brand me-lg-5" href="dashboard.php">
@@ -58,6 +65,15 @@ include_once "session_start.php";
                         </span>
                     </span>
                     <span class="sidebar-text">Employees</span>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a href="customer.php" class="nav-link">
+                    <span class="sidebar-icon">
+                        <span class="fas fa-user">
+                        </span>
+                    </span>
+                    <span class="sidebar-text">Customers</span>
                 </a>
             </li>
             <li class="nav-item">
