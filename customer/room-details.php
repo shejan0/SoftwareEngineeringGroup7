@@ -154,7 +154,7 @@ include_once "../php/inc/user-connection.php";
         }
         ?>
         <hr class="my-4">
-        <form class="form" id="booking-form" method="get" action="book.php" autocomplete="off">
+        <form class="form" id="booking-form" method="get" action="invoice.php" autocomplete="off">
           <!-- passing ID to book.php -->
         <input type="hidden" name="hotelID" value="<?php echo $_GET['hotelID']; ?>">
           <div class="mb-4">

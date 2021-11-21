@@ -43,7 +43,6 @@ if (isset($_GET['book'])) {
         exit();
     }
 }
-
 ?>
 <section class="section section-lg pt-5 bg-white">
     <div class="container">
@@ -154,7 +153,6 @@ if (isset($_GET['book'])) {
     </div>
 </section>
 <?php
-
-include_once "php/footer.php";
+    include_once "php/footer.php";
 ?>
 <!-- Footer-->

@@ -46,7 +46,7 @@ $records = mysqli_fetch_assoc($resultr);
  $reservationQuery = mysqli_query($conn, "SELECT ReservationID from reservation where hotelID = $id;");
  $reservation = mysqli_fetch_assoc($reservationQuery);
 
-if (isset($_GET['book'])) {
+if (isset($_GET['submit'])) {
     if (!empty($date)) {
 
         // if room avaliable
