@@ -34,9 +34,14 @@ for($i = $begin; $i <= $end; $i->modify('+1 day')){
 }
 
 // gets number of rooms for each room type
-$query = "SELECT * from hotel where hotelID = $id";
-$result = mysqli_query($conn, $query);
-$records = mysqli_fetch_assoc($result);
+echo $id;
+print_r($conn);
+$query = "SELECT * from hotel where hotelID = \"$id\"";
+$resultr = $conn->query($query);
+if(!$resultr){
+    echo mysqli_error($conn);   
+}
+$records = mysqli_fetch_assoc($resultr);
 
 if (isset($_GET['book'])) {
     if ($roomType == 'standard' && !empty($date)) {
