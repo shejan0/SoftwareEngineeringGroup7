@@ -50,9 +50,9 @@ if (isset($_GET['book'])) {
     if (!empty($date)) {
 
         // if room avaliable
-        if ($numRooms <= $records['numStandard']) {
-            $price = round(((($numRooms * $records['priceStandard']) * $weekDays )
-                        + (($numRooms * $records['priceStandard']) * $weekendDays * (1 + $records['weekendSurge'] / 100))) * 1.0825, 2);
+        if ($numRooms <= $records[$roomsAvailable]) {
+            $price = round(((($numRooms * $records[$priceRoom]) * $weekDays )
+                        + (($numRooms * $records[$priceRoom]) * $weekendDays * (1 + $records['weekendSurge'] / 100))) * 1.0825, 2);
             if(FindifFull($conn, $id, $roomType, $numRooms, $start, $end)){
                 $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
                 $_SESSION['message'] = "Error: The Room you are trying to book is full for the dates you selected";
@@ -60,7 +60,7 @@ if (isset($_GET['book'])) {
                 exit();
             }
             $insert = "INSERT into reservation (hotelID,hotelName,roomType,email,arrivalDate,departureDate,totalPrice,numRoom) 
-                        values ('$id','$records[hotelName]','$roomType','$email','$start','$end','$price','$numRooms');";
+                        values ('$id','$records[hotelName]','$_GET[type]','$email','$start','$end','$price','$numRooms');";
 
             // insert reseravation into table
             $insertResult = mysqli_query($conn, $insert);
