@@ -84,7 +84,7 @@ if (isset($_GET['book'])) {
                         + (($numRooms * $records['priceQueen']) * $weekendDays * (1 + $records['weekendSurge'] / 100))) * 1.0825, 2);
             if(FindifFull($conn, $id, $roomType, $numRooms, $start, $end)){
                 $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-                $_SESSION['message'] = "Error: The Room you are trying to book is full";
+                $_SESSION['message'] = "Error: The Room you are trying to book is full for the dates you selected";
                 header("location: room-details.php?" . $_SERVER['QUERY_STRING']);
                 exit();
             }
@@ -116,7 +116,7 @@ if (isset($_GET['book'])) {
                         + (($numRooms * $records['priceKing']) * $weekendDays * (1 + $records['weekendSurge'] / 100))) * 1.0825, 2);
             if(FindifFull($conn, $id, $roomType, $numRooms, $start, $end)){
                 $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-                $_SESSION['message'] = "Error: The Room you are trying to book is full";
+                $_SESSION['message'] = "Error: The Room you are trying to book is full for the dates you selected";
                 header("location: room-details.php?" . $_SERVER['QUERY_STRING']);
                 exit();
             }
