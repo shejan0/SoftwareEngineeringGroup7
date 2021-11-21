@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once "../php/inc/user-connection.php";
-
+include_once "resConflictCheck.php";
 
 $id = $_GET['hotelID'];
 $date = $_GET['bookingDate'];
@@ -34,8 +34,6 @@ for($i = $begin; $i <= $end2; $i->modify('+1 day')){
 }
 
 // gets number of rooms for each room type
-echo $id;
-print_r($conn);
 $query = "SELECT * from hotel where hotelID = \"$id\"";
 $resultr = $conn->query($query);
 if(!$resultr){
@@ -50,6 +48,12 @@ if (isset($_GET['book'])) {
         if ($numRooms <= $records['numStandard']) {
             $price = round(((($numRooms * $records['priceStandard']) * $weekDays )
                         + (($numRooms * $records['priceStandard']) * $weekendDays * (1 + $records['weekendSurge'] / 100))) * 1.0825, 2);
+            if(FindifFull($conn, $id, $roomType, $numRooms, $start, $end)){
+                $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+                $_SESSION['message'] = "Error: The Room you are trying to book is full";
+                header("location: room-details.php?" . $_SERVER['QUERY_STRING']);
+                exit();
+            }
             $insert = "INSERT into reservation (hotelID,hotelName,roomType,email,arrivalDate,departureDate,totalPrice,numRoom) 
                         values ('$id','$records[hotelName]','$roomType','$email','$start','$end','$price','$numRooms');";
 
@@ -78,6 +82,12 @@ if (isset($_GET['book'])) {
         if ($numRooms <= $records['numQueen']) {
             $price = round(((($numRooms * $records['priceQueen']) * $weekDays )
                         + (($numRooms * $records['priceQueen']) * $weekendDays * (1 + $records['weekendSurge'] / 100))) * 1.0825, 2);
+            if(FindifFull($conn, $id, $roomType, $numRooms, $start, $end)){
+                $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+                $_SESSION['message'] = "Error: The Room you are trying to book is full";
+                header("location: room-details.php?" . $_SERVER['QUERY_STRING']);
+                exit();
+            }
             $insert = "INSERT into reservation (hotelID,hotelName,roomType,email,arrivalDate,departureDate,totalPrice,numRoom) 
                         values ('$id','$records[hotelName]','$roomType','$email','$start','$end','$price','$numRooms');";
 
@@ -104,6 +114,12 @@ if (isset($_GET['book'])) {
         if ($numRooms <= $records['numKing']) {
             $price = round(((($numRooms * $records['priceKing']) * $weekDays )
                         + (($numRooms * $records['priceKing']) * $weekendDays * (1 + $records['weekendSurge'] / 100))) * 1.0825, 2);
+            if(FindifFull($conn, $id, $roomType, $numRooms, $start, $end)){
+                $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+                $_SESSION['message'] = "Error: The Room you are trying to book is full";
+                header("location: room-details.php?" . $_SERVER['QUERY_STRING']);
+                exit();
+            }
             $insert = "INSERT into reservation (hotelID,hotelName,roomType,email,arrivalDate,departureDate,totalPrice,numRoom) 
                         values ('$id','$records[hotelName]','$roomType','$email','$start','$end','$price','$numRooms');";
 
