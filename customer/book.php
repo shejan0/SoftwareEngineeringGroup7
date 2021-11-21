@@ -12,6 +12,26 @@ $numRooms = $_GET['rooms'];
 $roomType = $_GET['type'];
 $email = $_SESSION['email'];
 $name = $_SESSION['name'];
+$weekDays = 0;
+$weekendDays = 0;
+
+
+$begin = new DateTime(strval( $start ));
+$end   = new DateTime(strval( $end ));
+//Loop through days and identify number of weekend days and week days
+for($i = $begin; $i <= $end; $i->modify('+1 day')){
+    $day = $i->format("Y-m-d");
+    $test = (date('N', strtotime($day)) >= 6);
+    //Check to see if it is equal to Sat or Sun.
+    if($test){
+        //Increment weekend days
+        $weekendDays++;
+    }
+    else{
+        //Increment week days
+        $weekDays++;
+    }
+}
 
 // gets number of rooms for each room type
 $query = "SELECT * from hotel where hotelID = $id";
@@ -25,7 +45,8 @@ if (isset($_GET['book'])) {
         if ($numRooms <= $records['numStandard']) {
             $update = "UPDATE hotel set numStandard = $records[numStandard] - $numRooms where hotelID = $id;";
             $updateResult = mysqli_query($conn, $update);
-            $price = ($numRooms * $records['priceStandard']) * 1.0825;
+            $price = (($numRooms * $records['priceStandard']) * 1.0825) * $weekDays 
+                        + (($numRooms * $records['priceStandard']) * 1.0825) * $weekendDays * (1 + $records['weekendSurge'] / 100);
             $insert = "INSERT into reservation (hotelID,hotelName,roomType,email,arrivalDate,departureDate,totalPrice,numRoom) 
                         values ('$id','$records[hotelName]','$roomType','$email','$start','$end','$price','$numRooms');";
 
