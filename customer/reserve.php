@@ -51,11 +51,11 @@ $surgePrice = -1;
         }
 
         if($roomType == "Standard"){
-            $queryPrice = "SELECT priceStandard, weekendSurge FROM hotel Where hotelID = $hotelID";
-            $resultPrice = mysqli_query($conn, $queryPrice);
-            $arrPrice = mysqli_fetch_array($resultPrice);
-            $roomPrice = $arrPrice['priceStandard'];
-            $surgePrice = $roomPrice * (1 + $arrPrice['weekendSurge']);
+            $queryPrice = "SELECT * FROM hotel Where hotelID = $hotelID";
+            $result = mysqli_query($conn, $queryPrice);
+            $arr = mysqli_fetch_assoc($resultPrice);
+            $roomPrice = $arr['priceStandard'];
+            $surgePrice = $roomPrice * (1 + ($arr['weekendSurge'] / 100));
         }
         else if($roomType == "Queen"){
             $queryPrice = "SELECT priceQueen, weekendSurge FROM 'hotel'.'hotel' Where hotelID = $hotelID";
