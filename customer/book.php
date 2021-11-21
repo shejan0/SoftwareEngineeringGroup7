@@ -48,8 +48,6 @@ if (isset($_GET['book'])) {
 
         // if room avaliable
         if ($numRooms <= $records['numStandard']) {
-            $update = "UPDATE hotel set numStandard = $records[numStandard] - $numRooms where hotelID = $id;";
-            $updateResult = mysqli_query($conn, $update);
             $price = (($numRooms * $records['priceStandard']) * 1.0825) * $weekDays 
                         + (($numRooms * $records['priceStandard']) * 1.0825) * $weekendDays * (1 + $records['weekendSurge'] / 100);
             $insert = "INSERT into reservation (hotelID,hotelName,roomType,email,arrivalDate,departureDate,totalPrice,numRoom) 
@@ -78,8 +76,6 @@ if (isset($_GET['book'])) {
     } else if ($roomType == 'queen' && !empty($date)) {
         // if room avaliable
         if ($numRooms <= $records['numQueen']) {
-            $update = "UPDATE hotel set numQueen = $records[numQueen] - $numRooms where hotelID = $id;";
-            $updateResult = mysqli_query($conn, $update);
             $price = ($numRooms * $records['priceQueen']) * 1.0825;
             $insert = "INSERT into reservation (hotelID,hotelName,roomType,email,arrivalDate,departureDate,totalPrice,numRoom) 
                         values ('$id','$records[hotelName]','$roomType','$email','$start','$end','$price','$numRooms');";
@@ -105,8 +101,6 @@ if (isset($_GET['book'])) {
         }
     } else if ($roomType == 'king' && !empty($date)) {
         if ($numRooms <= $records['numKing']) {
-            $update = "UPDATE hotel set numKing = $records[numKing] - $numRooms where hotelID = $id;";
-            $updateResult = mysqli_query($conn, $update);
             $price = ($numRooms * $records['priceKing']) * 1.0825;
             $insert = "INSERT into reservation (hotelID,hotelName,roomType,email,arrivalDate,departureDate,totalPrice,numRoom) 
                         values ('$id','$records[hotelName]','$roomType','$email','$start','$end','$price','$numRooms');";
