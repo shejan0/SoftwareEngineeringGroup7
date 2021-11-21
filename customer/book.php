@@ -50,9 +50,9 @@ if (isset($_GET['book'])) {
     if (!empty($date)) {
 
         // if room avaliable
-        if ($numRooms <= $records['numStandard']) {
-            $price = round(((($numRooms * $records['priceStandard']) * $weekDays )
-                        + (($numRooms * $records['priceStandard']) * $weekendDays * (1 + $records['weekendSurge'] / 100))) * 1.0825, 2);
+        if ($numRooms <= $records[$roomsAvailable]) {
+            $price = round(((($numRooms * $records[$priceRoom]) * $weekDays )
+                        + (($numRooms * $records[$priceRoom]) * $weekendDays * (1 + $records['weekendSurge'] / 100))) * 1.0825, 2);
             if(FindifFull($conn, $id, $roomType, $numRooms, $start, $end)){
                 $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
                 $_SESSION['message'] = "Error: The Room you are trying to book is full for the dates you selected";
@@ -60,7 +60,7 @@ if (isset($_GET['book'])) {
                 exit();
             }
             $insert = "INSERT into reservation (hotelID,hotelName,roomType,email,arrivalDate,departureDate,totalPrice,numRoom) 
-                        values ('$id','$records[hotelName]','$roomType','$email','$start','$end','$price','$numRooms');";
+                        values ('$id','$records[hotelName]','$_GET[type]','$email','$start','$end','$price','$numRooms');";
 
             // insert reseravation into table
             $insertResult = mysqli_query($conn, $insert);
@@ -82,65 +82,7 @@ if (isset($_GET['book'])) {
             header("location: room-details.php?" . $_SERVER['QUERY_STRING']);
             exit();
         }
-    } else if ($roomType == 'queen' && !empty($date)) {
-        // if room avaliable
-        if ($numRooms <= $records['numQueen']) {
-            $price = round(((($numRooms * $records['priceQueen']) * $weekDays )
-                        + (($numRooms * $records['priceQueen']) * $weekendDays * (1 + $records['weekendSurge'] / 100))) * 1.0825, 2);
-            if(FindifFull($conn, $id, $roomType, $numRooms, $start, $end)){
-                $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-                $_SESSION['message'] = "Error: The Room you are trying to book is full for the dates you selected";
-                header("location: room-details.php?" . $_SERVER['QUERY_STRING']);
-                exit();
-            }
-            $insert = "INSERT into reservation (hotelID,hotelName,roomType,email,arrivalDate,departureDate,totalPrice,numRoom) 
-            values ('$id','$records[hotelName]','$_GET[type]','$email','$start','$end','$price','$numRooms');";
-            $insertResult = mysqli_query($conn, $insert);
-
-            if (!$insertResult ) {
-                $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-                $_SESSION['message'] = "Error: " . mysqli_error($conn);
-                header("location: room-details.php?" . $_SERVER['QUERY_STRING']);
-                exit();
-            }
-            // if no error, send to confirmation page to confirm before booking
-            $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
-            $_SESSION['message'] = "Confirm your reservation below." ;
-            header("location: room-details.php?" . $_SERVER['QUERY_STRING']);
-           // header("location: invoice.php?name=$name&email=$email&hotelName=$records[hotelName]&reservationID=$reservation[ReservationID]&subtotal=$subtotal&total=$price&roomPrice=$records[$priceRoom]&tax=$tax&" . $_SERVER['QUERY_STRING']);
-            exit();
-        }
-    } else if ($roomType == 'king' && !empty($date)) {
-        if ($numRooms <= $records['numKing']) {
-            $price = round(((($numRooms * $records['priceKing']) * $weekDays )
-                        + (($numRooms * $records['priceKing']) * $weekendDays * (1 + $records['weekendSurge'] / 100))) * 1.0825, 2);
-            if(FindifFull($conn, $id, $roomType, $numRooms, $start, $end)){
-                $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-                $_SESSION['message'] = "Error: The Room you are trying to book is full for the dates you selected";
-                header("location: room-details.php?" . $_SERVER['QUERY_STRING']);
-                exit();
-            }
-            $insert = "INSERT into reservation (hotelID,hotelName,roomType,email,arrivalDate,departureDate,totalPrice,numRoom) 
-                        values ('$id','$records[hotelName]','$roomType','$email','$start','$end','$price','$numRooms');";
-
-            $insertResult = mysqli_query($conn, $insert);
-            
-            if (!$insertResult ) {
-                $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-                $_SESSION['message'] = "Error: " . mysqli_error($conn);
-                header("location: room-details.php?" . $_SERVER['QUERY_STRING']);
-                exit();
-            }
-
-            // if room booked is full
-        } else {
-            $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-            $_SESSION['message'] = "Error: The Room you are trying to book is full";
-            header("location: room-details.php?" . $_SERVER['QUERY_STRING']);
-            exit();
-        }
-    }
-
+     }
     // if date field is empty
     else {
         $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";

@@ -28,8 +28,9 @@ include_once "../php/inc/user-connection.php";
       <h1 class="hero-heading mb-0">Overview</h1>
     </div>
   </div>
-  <div class="row">
-  <div class="col-12 col-xxl-6 mb-4">
+  <div class = "row">
+  <div class="col-12 mb-4">
+
       <div class="card">
     <div class="card card-body shadow-soft border border-light table-wrapper table-responsive animate-up-5 bg-white">
       <div class="fs-5 fw-normal mb-2">Reservation</div>
@@ -70,12 +71,12 @@ include_once "../php/inc/user-connection.php";
       </table>
             </div>
             </div>
-    </div>
-    <div class="fs-5 fw-normal mb-2"></div>
-    <div class="col-12 col-xxl-6 mb-4">
-      <div class="card">
+            </div>
+            <div class="col-12 mb-4">
+
+            <div class="card">
     <div class="card card-body shadow-soft border border-light table-wrapper table-responsive animate-up-5 bg-white">
-      <div class="fs-5 fw-normal mb-2">Hotel</div>
+      <div class="fs-5 fw-normal mb-2 mt-4">Hotel</div>
       <table class="table table-hover">
             <thread>
                 <tr>
@@ -112,8 +113,10 @@ include_once "../php/inc/user-connection.php";
         </table>
             </div>
             </div>
-    </div>
-    <div class="col-12 col-xxl-6 mb-4">
+                    </div>
+            </div>
+   <div class="row">
+    <div class="col-12 mb-4">
       <div class="card">
         <div class="card card-body shadow-soft border border-light table-wrapper table-responsive animate-up-5 bg-white">
           <div class="fs-5 fw-normal mb-2">Employees / Admin</div>
@@ -141,7 +144,7 @@ include_once "../php/inc/user-connection.php";
         </div>
       </div>
     </div>
-    <div class="col-12 col-xxl-6 mb-4">
+    <div class="col-12 mb-4">
       <div class="card">
         <div class="card card-body shadow-soft border border-light table-wrapper table-responsive animate-up-5 bg-white">
           <div class="fs-5 fw-normal mb-2">Customers</div>
@@ -167,5 +170,5 @@ include_once "../php/inc/user-connection.php";
         </div>
       </div>
     </div>
-  </div>
+    </div>
   <?php include_once "inc/footer.php" ?>
