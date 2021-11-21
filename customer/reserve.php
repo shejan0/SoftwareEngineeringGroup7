@@ -32,12 +32,9 @@ $surgePrice = -1;
         $arrival = trim($dateRange[0]);
         $departure = trim($dateRange[1]);
         
-        //Calculate total number of days 
-        $datediff = $arrival - $departure;
-        $numDays = ($datediff / (60 * 60 * 24));
 
-        $begin = new DateTime( $arrival );
-        $end   = new DateTime( $departure );
+        $begin = new DateTime(strval( $arrival ));
+        $end   = new DateTime(strval( $departure ));
         //Loop through days and identify number of weekend days and week days
         for($i = $begin; $i <= $end; $i->modify('+1 day')){
             $day = date("D", strtotime($i));
