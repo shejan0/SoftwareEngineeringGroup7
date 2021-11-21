@@ -24,14 +24,53 @@ include_once "inc/side-bar.php";
   </li>
   </ol>
   </nav>
-  <h2 class="h4">Placeholder for Reservation page</h2>
+  <h2 class="h4">All Reservations</h2>
   </div>
   </div>
     </div>
     </div>
     
-    <div class="card card-body border-0 shadow-soft border border-light animate-up-5 bg-white">
-    <h2 class="h5 mb-4">Reservation</h2>
+    <div class="col-12 col-xxl-6 mb-4">
+      <div class="card">
+    <div class="card card-body shadow-soft border border-light table-wrapper table-responsive animate-up-5 bg-white">
+      <div class="fs-5 fw-normal mb-2">Reservation</div>
+      <table class="table table-hover">
+        <thread>
+          <tr>
+            <th class="border-gray-200">Reservation ID</th>
+            <th class="border-gray-200">Hotel ID</th>
+            <th class="border-gray-200">Email</th>
+            <th class="border-gray-200">Hotel Name</th>
+            <th class="border-gray-200">Room Type</th>
+            <th class="border-gray-200">Roombs booked</th>
+            <th class="border-gray-200">Arrival Date</th>
+            <th class="border-gray-200">Departure Date</th>
+            <th class="border-gray-200">$ Total Price</th>
+
+          </tr>
+          <thread>
+            <?php
+            $email = $_SESSION['email'];
+            $query = mysqli_query($conn, "SELECT * FROM reservation;");
+            while ($row = mysqli_fetch_array($query)) {
+            ?>
+              <tr>
+                <td><span class="fw-bold"><?php echo $row['ReservationID']; ?></span></td>
+                <td><span class="fw-normal"><?php echo $row['hotelID']; ?></span></td>
+                <td><span class="fw-normal"><?php echo $row['email']; ?></span></td>
+                <td><span class="fw-normal"><?php echo $row['hotelName']; ?></span></td>
+                <td><span class="fw-normal"><?php echo $row['roomType']; ?></span></td>
+                <td><span class="fw-normal"><?php echo $row['numRoom']; ?></span></td>
+                <td><span class="fw-normal"><?php echo $row['arrivalDate']; ?></span></td>
+                <td><span class="fw-normal"><?php echo $row['departureDate']; ?></span></td>
+                <td><span class="fw-normal">$ <?php echo $row['totalPrice']; ?></span></td>
+
+
+              </tr>
+            <?php  } ?>
+      </table>
+            </div>
+            </div>
     </div>
     </div>
 
