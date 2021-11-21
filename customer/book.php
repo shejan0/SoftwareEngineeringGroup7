@@ -32,18 +32,18 @@ if (isset($_GET['book'])) {
             $price = ($numRooms * $records['priceStandard']) * 1.0825;
 
 
-            $update = "UPDATE hotel set numQueen = $records[numQueen] - $numRooms where hotelID = $id;";
-            $updateResult = mysqli_query($conn, $update);
-            $insert = "INSERT into reservation (hotelID,hotelName,roomType,email,arrivalDate,departureDate,totalPrice,numRoom) 
-            values ('$id','$records[hotelName]','$roomType','$email','$start','$end','$price','$numRooms');";
-            $insertResult = mysqli_query($conn, $insert);
+            // $update = "UPDATE hotel set numStandard = $records[numStandard] - $numRooms where hotelID = $id;";
+            // $updateResult = mysqli_query($conn, $update);
+            // $insert = "INSERT into reservation (hotelID,hotelName,roomType,email,arrivalDate,departureDate,totalPrice,numRoom) 
+            // values ('$id','$records[hotelName]','$roomType','$email','$start','$end','$price','$numRooms');";
+            // $insertResult = mysqli_query($conn, $insert);
 
-            if (!$insertResult || !$updateResult) {
-                $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-                $_SESSION['message'] = "Error: " . mysqli_error($conn);
-                header("location: room-details.php?" . $_SERVER['QUERY_STRING']);
-                exit();
-            }
+            // if (!$insertResult || !$updateResult) {
+            //     $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+            //     $_SESSION['message'] = "Error: " . mysqli_error($conn);
+            //     header("location: room-details.php?" . $_SERVER['QUERY_STRING']);
+            //     exit();
+            // }
             // if no error, send to confirmation page to confirm before booking
             $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
             $_SESSION['message'] = "Confirm your reservation below. ";
@@ -58,27 +58,27 @@ if (isset($_GET['book'])) {
     } else if ($roomType == 'queen' && !empty($date)) {
         // if room avaliable
         if ($numRooms <= $records['numQueen']) {
-            $subtotal = ($numRooms * $records['priceStandard']);
+            $subtotal = ($numRooms * $records['priceQueen']);
             $tax = $subtotal * .0825;
-            $price = ($numRooms * $records['priceStandard']) * 1.0825;
-            
-            $update = "UPDATE hotel set numQueen = $records[numQueen] - $numRooms where hotelID = $id;";
-            $updateResult = mysqli_query($conn, $update);
-            $insert = "INSERT into reservation (hotelID,hotelName,roomType,email,arrivalDate,departureDate,totalPrice,numRoom) 
-                        values ('$id','$records[hotelName]','$roomType','$email','$start','$end','$price','$numRooms');";
+            $price = ($numRooms * $records['priceQueen']) * 1.0825;
 
-            $insertResult = mysqli_query($conn, $insert);
+            // $update = "UPDATE hotel set numQueen = $records[numQueen] - $numRooms where hotelID = $id;";
+            // $updateResult = mysqli_query($conn, $update);
+            // $insert = "INSERT into reservation (hotelID,hotelName,roomType,email,arrivalDate,departureDate,totalPrice,numRoom) 
+            //             values ('$id','$records[hotelName]','$roomType','$email','$start','$end','$price','$numRooms');";
 
-            if (!$insertResult || !$updateResult) {
-                $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-                $_SESSION['message'] = "Error: " . mysqli_error($conn);
-                header("location: room-details.php?" . $_SERVER['QUERY_STRING']);
-                exit();
-            }
+            // $insertResult = mysqli_query($conn, $insert);
+
+            // if (!$insertResult || !$updateResult) {
+            //     $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+            //     $_SESSION['message'] = "Error: " . mysqli_error($conn);
+            //     header("location: room-details.php?" . $_SERVER['QUERY_STRING']);
+            //     exit();
+            // }
 
             $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
             $_SESSION['message'] = "Confirm your reservation below. ";
-            header("location: invoice.php?name=$name&email=$email&hotelName=$records[hotelName]&reservationID=$reservation[ReservationID]&subtotal=$subtotal&total=$price&roomPrice=$records[priceStandard]&tax=$tax&" . $_SERVER['QUERY_STRING']);
+            header("location: invoice.php?name=$name&email=$email&hotelName=$records[hotelName]&reservationID=$reservation[ReservationID]&subtotal=$subtotal&total=$price&roomPrice=$records[priceQueen]&tax=$tax&" . $_SERVER['QUERY_STRING']);
             exit();
         } else {
             $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
