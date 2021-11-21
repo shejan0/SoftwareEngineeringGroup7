@@ -187,10 +187,12 @@ include_once "../php/inc/user-connection.php";
                 $prepared->execute();
                 $prepared->bind_result($numStandard, $numQueen, $numKing);
                 $prepared->fetch();
+                if($numStandard > 0)
                   echo "<option value=\"standard\">Standard</option>";
+                if ($numQueen > 0)
                   echo "<option value=\"queen\">Queen</option>";  
+                if ($numKing > 0)
                   echo "<option value=\"king\">King</option>";
-                
               }
               ?>
             </select>
