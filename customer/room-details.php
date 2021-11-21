@@ -154,7 +154,7 @@ include_once "../php/inc/user-connection.php";
         }
         ?>
         <hr class="my-4">
-        <form class="form" id="booking-form" method="get" action="book.php" autocomplete="off">
+        <form class="form" id="booking-form" method="get" action="invoice.php" autocomplete="off">
           <!-- passing ID to book.php -->
         <input type="hidden" name="hotelID" value="<?php echo $_GET['hotelID']; ?>">
           <div class="mb-4">
@@ -187,16 +187,18 @@ include_once "../php/inc/user-connection.php";
                 $prepared->execute();
                 $prepared->bind_result($numStandard, $numQueen, $numKing);
                 $prepared->fetch();
+                if($numStandard > 0)
                   echo "<option value=\"standard\">Standard</option>";
+                if ($numQueen > 0)
                   echo "<option value=\"queen\">Queen</option>";  
+                if ($numKing > 0)
                   echo "<option value=\"king\">King</option>";
-                
               }
               ?>
             </select>
           </div>
           <div class="d-grid mb-4">
-            <button class="btn btn-primary" type="submit" name='book'>Book your stay</button>
+            <button class="btn btn-primary" type="submit" name='book' >Book your stay</button>
           </div>
         </form>
       </div>

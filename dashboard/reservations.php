@@ -24,15 +24,84 @@ include_once "inc/side-bar.php";
   </li>
   </ol>
   </nav>
-  <h2 class="h4">Placeholder for Reservation page</h2>
+  <h2 class="h4">All Reservations</h2>
+  <div class="btn mb-2 mb-md-0">
+  <button type="button" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center animate-up-2" data-bs-toggle="modal" data-bs-target="#modal-form">Modify Property </button>
+
+<!-- Modal -->
+<div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content rounded bg-white">
+            <div class="modal-body p-0">
+                <div class="card bg-white p-4">
+                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="card-header border-0 bg-white text-center pb-0">
+                        <h2 class="h4">Enter Reservation ID</h2>
+                    </div>
+                    <div class="card-body">
+                        <!-- Form -->
+                        <form action="modify.php" method='post' class="mt-4">
+                            <div class="form-group mb-4">
+                                <label for="hotelID">Reservation ID</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><span class="fas fa-hotel"></span></span>
+                                    <input type="text" class="form-control" name="hotelID" placeholder="Reservation ID">
+                                </div>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" name="enter" value="Enter" class="btn btn-primary">Modify reservations</button>
+                            </div></form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>        </div>
   </div>
   </div>
     </div>
     </div>
     
-    <div class="card card-body border-0 shadow-soft border border-light animate-up-5 bg-white">
-    <h2 class="h5 mb-4">Reservation</h2>
-    </div>
+      <div class="card">
+    <div class="card card-body shadow-soft border border-light table-wrapper table-responsive animate-up-5 bg-white">
+      <div class="fs-5 fw-normal mb-2">Reservation</div>
+      <table class="table table-hover">
+        <thread>
+          <tr>
+            <th class="border-gray-200">Reservation ID</th>
+            <th class="border-gray-200">Hotel ID</th>
+            <th class="border-gray-200">Email</th>
+            <th class="border-gray-200">Hotel Name</th>
+            <th class="border-gray-200">Room Type</th>
+            <th class="border-gray-200">Roombs booked</th>
+            <th class="border-gray-200">Arrival Date</th>
+            <th class="border-gray-200">Departure Date</th>
+            <th class="border-gray-200">$ Total Price</th>
+
+          </tr>
+          <thread>
+            <?php
+            $email = $_SESSION['email'];
+            $query = mysqli_query($conn, "SELECT * FROM reservation;");
+            while ($row = mysqli_fetch_array($query)) {
+            ?>
+              <tr>
+                <td><span class="fw-bold"><?php echo $row['ReservationID']; ?></span></td>
+                <td><span class="fw-normal"><?php echo $row['hotelID']; ?></span></td>
+                <td><span class="fw-normal"><?php echo $row['email']; ?></span></td>
+                <td><span class="fw-normal"><?php echo $row['hotelName']; ?></span></td>
+                <td><span class="fw-normal"><?php echo $row['roomType']; ?></span></td>
+                <td><span class="fw-normal"><?php echo $row['numRoom']; ?></span></td>
+                <td><span class="fw-normal"><?php echo $row['arrivalDate']; ?></span></td>
+                <td><span class="fw-normal"><?php echo $row['departureDate']; ?></span></td>
+                <td><span class="fw-normal">$ <?php echo $row['totalPrice']; ?></span></td>
+
+
+              </tr>
+            <?php  } ?>
+      </table>
+            </div>
+            </div>
     </div>
 
     </div>
