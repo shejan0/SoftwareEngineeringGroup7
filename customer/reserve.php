@@ -37,10 +37,10 @@ $surgePrice = -1;
         $end   = new DateTime(strval( $departure ));
         //Loop through days and identify number of weekend days and week days
         for($i = $begin; $i <= $end; $i->modify('+1 day')){
-            $day = date("D", strtotime($i));
-
+            $day = $i->format("Y-m-d");
+            $test = (date('N', strtotime($day)) >= 6);
             //Check to see if it is equal to Sat or Sun.
-            if($day == 'Sat' || $day == 'Sun'){
+            if($test){
                 //Increment weekend days
                 $weekendDays++;
             }
