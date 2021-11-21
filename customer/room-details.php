@@ -198,7 +198,7 @@ include_once "../php/inc/user-connection.php";
             </select>
           </div>
           <div class="d-grid mb-4">
-            <button class="btn btn-primary" type="submit" name='book' >Book your stay</button>
+            <button class="btn btn-primary" type="submit" name='book'>Book your stay</button>
           </div>
         </form>
       </div>

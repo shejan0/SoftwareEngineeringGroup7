@@ -23,7 +23,7 @@ $records = mysqli_fetch_assoc($result);
  $reservationQuery = mysqli_query($conn, "SELECT ReservationID from reservation where hotelID = $id;");
  $reservation = mysqli_fetch_assoc($reservationQuery);
 
-if (isset($_GET['book'])) {
+if (isset($_GET['submit'])) {
     if (!empty($date)) {
 
         // if room avaliable
@@ -39,6 +39,7 @@ if (isset($_GET['book'])) {
             values ('$id','$records[hotelName]','$_GET[type]','$email','$start','$end','$price','$numRooms');";
             $insertResult = mysqli_query($conn, $insert);
 
+            // if query failed
             if (!$insertResult || !$updateResult) {
                 $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
                 $_SESSION['message'] = "Error: " . mysqli_error($conn);
