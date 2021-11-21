@@ -48,7 +48,12 @@ if (isset($_GET['book'])) {
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
-                <div class="d-flex flex-column flex-lg-row align-items-center justify-content-between mb-4"><a href="room-details.php" class="mb-3 mb-lg-0"><span class="icon icon-xs"><span class="fas fa-chevron-left me-2"></span></span> Back to booking </a>
+                <div class="d-flex flex-column flex-lg-row align-items-center justify-content-between mb-4">
+                    <?php echo "<a href=\"room-details.php?hotelID=$id\" class=\"mb-3 mb-lg-0\">"; ?>
+                    <span class="icon icon-xs">
+                        <span class="fas fa-chevron-left me-2"></span>
+                    </span> Back to booking
+                 </a>
                 </div>
                 <div class="card border-light shadow-inset p-4 p-md-5 position-relative">
                     <div class="d-flex justify-content-between pb-4 pb-md-5 mb-4 mb-md-5 border-bottom border-gray-300">
