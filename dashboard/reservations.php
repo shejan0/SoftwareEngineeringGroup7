@@ -62,7 +62,6 @@ include_once "inc/side-bar.php";
     </div>
     </div>
     
-    <div class="col-12 col-xxl-6 mb-4">
       <div class="card">
     <div class="card card-body shadow-soft border border-light table-wrapper table-responsive animate-up-5 bg-white">
       <div class="fs-5 fw-normal mb-2">Reservation</div>
@@ -103,7 +102,6 @@ include_once "inc/side-bar.php";
       </table>
             </div>
             </div>
-    </div>
     </div>
 
     </div>
