@@ -31,7 +31,7 @@ include_once "../php/inc/user-connection.php";
                         </div>
                     </div>
                     <div class="mb-6 d-flex align-items-center justify-content-center">
-                        <h2 class="h1 mb-0">Confirmation #<?php echo $_GET['reservationID'] ?></h2><span class="badge badge-xl badge-success ms-2">Paid</span>
+                        <h2 class="h1 mb-0">Confirmation<?php //echo $_GET['reservationID'] ?></h2><span class="badge badge-xl badge-success ms-2">Paid</span>
                     </div>
                     <div class="row justify-content-between mb-4 mb-md-5">
                         <div class="col-sm">
