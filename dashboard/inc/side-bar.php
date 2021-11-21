@@ -67,6 +67,15 @@ if(!isset($_SESSION['email']))
                     <span class="sidebar-text">Employees</span>
                 </a>
             </li>
+            <li class="nav-item ">
+                <a href="customer.php" class="nav-link">
+                    <span class="sidebar-icon">
+                        <span class="fas fa-user">
+                        </span>
+                    </span>
+                    <span class="sidebar-text">Customers</span>
+                </a>
+            </li>
             <li class="nav-item">
                 <a href="hotel.php" class="nav-link d-flex justify-content-between">
                     <span>

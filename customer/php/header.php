@@ -2,8 +2,7 @@
 session_set_cookie_params(0);
 session_start();
 
-if(!isset($_SESSION['email']))
-{
+if (!isset($_SESSION['email'])) {
     $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
     $_SESSION['message'] = "ERROR: You must sign in before continuing";
     header("Location: ../html/sign-in.php");
@@ -34,7 +33,7 @@ if(!isset($_SESSION['email']))
                     <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
                         <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
                         <li class="nav-item"><a class="nav-link" href="customer.php">Hotel</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="reservations.php">Reservations</a></li>
 
                     </ul>
                 </div>
@@ -46,23 +45,15 @@ if(!isset($_SESSION['email']))
                         <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
                             <span class="mb-0 font-medium">
                                 <?php
-                                if(isset($_SESSION['email']))
-                                {
+                                if (isset($_SESSION['email'])) {
                                     echo $_SESSION['name'];
                                 }
                                 ?>
                             </span>
                         </div>
                         <div class="dropdown-menu dropdown-menu-end">
-                            <span class="dropdown-item rounded-top">Hi,
-                            <?php
-                                if(isset($_SESSION['email']))
-                                {
-                                    echo $_SESSION['name'];
-                                }
-                                ?>
-                            </span>
-                            <a class="dropdown-item" href="../index.html">Home</a>
+                            <a class="dropdown-item" href="customer.php">Hotel</a>
+                            <a class="dropdown-item" href="reservations.php">My Reservations</a>
                             <a class="dropdown-item" href="profile.php">Profile</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item rounded-bottom" href="../php/logout.php">
