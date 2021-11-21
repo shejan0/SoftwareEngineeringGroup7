@@ -25,6 +25,9 @@ include_once "inc/side-bar.php";
   </ol>
   </nav>
   <h2 class="h4">All Reservations</h2>
+  <div class="btn mb-2 mb-md-0">
+            <a href="" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center animate-up-2">Modify Reservations </a>
+        </div>
   </div>
   </div>
     </div>
