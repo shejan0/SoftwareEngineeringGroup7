@@ -1,11 +1,11 @@
 <?php
 session_start();
 include_once "../php/inc/user-connection.php";
-$queryLastRow = "SELECT * FROM Reservation Where reservationID = (SELECT MAX(reservationID) FROM Reservation)";
+/*$queryLastRow = "SELECT * FROM Reservation Where reservationID = (SELECT MAX(reservationID) FROM Reservation)";
 $resultLastRow = mysqli_query($conn, $queryLastRow);
 $lastID = mysqli_fetch_assoc($resultLastRow);
 if ($lastID != NULL) $reservationID = $lastID['reservationID'] + 1;
-else $reservationID = 1;
+else */$reservationID = 1;
 $hotelID  = NULL;
 $roomType = NULL;
 $email = "ERROR";
