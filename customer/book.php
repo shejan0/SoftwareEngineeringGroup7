@@ -17,9 +17,9 @@ $weekendDays = 0;
 
 
 $begin = new DateTime(strval( $start ));
-$end   = new DateTime(strval( $end ));
+$end2   = new DateTime(strval( $end ));
 //Loop through days and identify number of weekend days and week days
-for($i = $begin; $i <= $end; $i->modify('+1 day')){
+for($i = $begin; $i <= $end2; $i->modify('+1 day')){
     $day = $i->format("Y-m-d");
     $test = (date('N', strtotime($day)) >= 6);
     //Check to see if it is equal to Sat or Sun.
@@ -48,15 +48,15 @@ if (isset($_GET['book'])) {
 
         // if room avaliable
         if ($numRooms <= $records['numStandard']) {
-            $price = (($numRooms * $records['priceStandard']) * 1.0825) * $weekDays 
-                        + (($numRooms * $records['priceStandard']) * 1.0825) * $weekendDays * (1 + $records['weekendSurge'] / 100);
+            $price = round(((($numRooms * $records['priceStandard']) * $weekDays )
+                        + (($numRooms * $records['priceStandard']) * $weekendDays * (1 + $records['weekendSurge'] / 100))) * 1.0825, 2);
             $insert = "INSERT into reservation (hotelID,hotelName,roomType,email,arrivalDate,departureDate,totalPrice,numRoom) 
                         values ('$id','$records[hotelName]','$roomType','$email','$start','$end','$price','$numRooms');";
 
             // insert reseravation into table
             $insertResult = mysqli_query($conn, $insert);
 
-            if (!$insertResult || !$updateResult) {
+            if (!$insertResult ) {
                 $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
                 $_SESSION['message'] = "Error: " . mysqli_error($conn);
                 header("location: room-details.php?" . $_SERVER['QUERY_STRING']);
@@ -76,13 +76,14 @@ if (isset($_GET['book'])) {
     } else if ($roomType == 'queen' && !empty($date)) {
         // if room avaliable
         if ($numRooms <= $records['numQueen']) {
-            $price = ($numRooms * $records['priceQueen']) * 1.0825;
+            $price = round(((($numRooms * $records['priceQueen']) * $weekDays )
+                        + (($numRooms * $records['priceQueen']) * $weekendDays * (1 + $records['weekendSurge'] / 100))) * 1.0825, 2);
             $insert = "INSERT into reservation (hotelID,hotelName,roomType,email,arrivalDate,departureDate,totalPrice,numRoom) 
                         values ('$id','$records[hotelName]','$roomType','$email','$start','$end','$price','$numRooms');";
 
             $insertResult = mysqli_query($conn, $insert);
 
-            if (!$insertResult || !$updateResult) {
+            if (!$insertResult ) {
                 $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
                 $_SESSION['message'] = "Error: " . mysqli_error($conn);
                 header("location: room-details.php?" . $_SERVER['QUERY_STRING']);
@@ -101,13 +102,14 @@ if (isset($_GET['book'])) {
         }
     } else if ($roomType == 'king' && !empty($date)) {
         if ($numRooms <= $records['numKing']) {
-            $price = ($numRooms * $records['priceKing']) * 1.0825;
+            $price = round(((($numRooms * $records['priceKing']) * $weekDays )
+                        + (($numRooms * $records['priceKing']) * $weekendDays * (1 + $records['weekendSurge'] / 100))) * 1.0825, 2);
             $insert = "INSERT into reservation (hotelID,hotelName,roomType,email,arrivalDate,departureDate,totalPrice,numRoom) 
                         values ('$id','$records[hotelName]','$roomType','$email','$start','$end','$price','$numRooms');";
 
             $insertResult = mysqli_query($conn, $insert);
             
-            if (!$insertResult || !$updateResult) {
+            if (!$insertResult ) {
                 $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
                 $_SESSION['message'] = "Error: " . mysqli_error($conn);
                 header("location: room-details.php?" . $_SERVER['QUERY_STRING']);
