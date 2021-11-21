@@ -45,7 +45,7 @@ include_once "inc/side-bar.php";
                                 <label for="hotelID">Reservation ID</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><span class="fas fa-hotel"></span></span>
-                                    <input type="text" class="form-control" name="hotelID" placeholder="Reservation ID">
+                                    <input type="text" class="form-control" name="reservationID" placeholder="Reservation ID">
                                 </div>
                             </div>
                             <div class="d-grid">
