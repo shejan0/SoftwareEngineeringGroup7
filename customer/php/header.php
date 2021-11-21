@@ -34,6 +34,8 @@ if (!isset($_SESSION['email'])) {
                         <li class="nav-item"><a class="nav-link" href="settings.php">Profile</a></li>
                         <li class="nav-item"><a class="nav-link" href="customer.php">Hotel</a></li>
                         <li class="nav-item"><a class="nav-link" href="reservations.php">Reservations</a></li>
+                        <li class="nav-item"><a class="nav-link" href="invoice.php">Invoice</a></li>
+
 
                     </ul>
                 </div>
