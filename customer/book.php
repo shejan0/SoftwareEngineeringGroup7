@@ -9,7 +9,8 @@ $dateRange = explode(" to", $_GET['bookingDate']);
 $start = trim($dateRange[0]);
 $end = trim($dateRange[1]);
 $numRooms = $_GET['rooms'];
-$roomType = $_GET['type'];
+$priceRoom = "price". ucfirst($_GET['type']);
+$roomsAvailable = "num" . ucfirst($_GET['type']);
 $email = $_SESSION['email'];
 $name = $_SESSION['name'];
 $weekDays = 0;
@@ -41,8 +42,12 @@ if(!$resultr){
 }
 $records = mysqli_fetch_assoc($resultr);
 
+ // gets reservation ID
+ $reservationQuery = mysqli_query($conn, "SELECT ReservationID from reservation where hotelID = $id;");
+ $reservation = mysqli_fetch_assoc($reservationQuery);
+
 if (isset($_GET['book'])) {
-    if ($roomType == 'standard' && !empty($date)) {
+    if (!empty($date)) {
 
         // if room avaliable
         if ($numRooms <= $records['numStandard']) {
@@ -89,8 +94,7 @@ if (isset($_GET['book'])) {
                 exit();
             }
             $insert = "INSERT into reservation (hotelID,hotelName,roomType,email,arrivalDate,departureDate,totalPrice,numRoom) 
-                        values ('$id','$records[hotelName]','$roomType','$email','$start','$end','$price','$numRooms');";
-
+            values ('$id','$records[hotelName]','$_GET[type]','$email','$start','$end','$price','$numRooms');";
             $insertResult = mysqli_query($conn, $insert);
 
             if (!$insertResult ) {
@@ -99,15 +103,11 @@ if (isset($_GET['book'])) {
                 header("location: room-details.php?" . $_SERVER['QUERY_STRING']);
                 exit();
             }
-
+            // if no error, send to confirmation page to confirm before booking
             $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
-            $_SESSION['message'] = "Successfully booked your reservation from " . $start .  " to " . $end;
+            $_SESSION['message'] = "Confirm your reservation below." ;
             header("location: room-details.php?" . $_SERVER['QUERY_STRING']);
-            exit();
-        } else {
-            $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-            $_SESSION['message'] = "Error: The Room you are trying to book is full";
-            header("location: room-details.php?" . $_SERVER['QUERY_STRING']);
+           // header("location: invoice.php?name=$name&email=$email&hotelName=$records[hotelName]&reservationID=$reservation[ReservationID]&subtotal=$subtotal&total=$price&roomPrice=$records[$priceRoom]&tax=$tax&" . $_SERVER['QUERY_STRING']);
             exit();
         }
     } else if ($roomType == 'king' && !empty($date)) {
@@ -132,19 +132,19 @@ if (isset($_GET['book'])) {
                 exit();
             }
 
-            $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
-            $_SESSION['message'] = "Successfully booked your reservation from " . $start .  " to " . $end;
-            header("location: room-details.php?" . $_SERVER['QUERY_STRING']);
-            exit();
+            // if room booked is full
         } else {
             $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
             $_SESSION['message'] = "Error: The Room you are trying to book is full";
             header("location: room-details.php?" . $_SERVER['QUERY_STRING']);
             exit();
         }
-    } else {
+    }
+
+    // if date field is empty
+    else {
         $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-        $_SESSION['message'] = "Error: Enter valid dates.";
+        $_SESSION['message'] = "Error: Please enter a valid date before booking";
         header("location: room-details.php?" . $_SERVER['QUERY_STRING']);
         exit();
     }
