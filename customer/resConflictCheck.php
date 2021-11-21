@@ -6,7 +6,7 @@ function FindifFull($hotelID, $roomType, $numRooms, $arrival, $departure)
     $day = "1000-01-01";
     $begin = new DateTime(strval( $arrival ));
     $end2   = new DateTime(strval( $departure ));
-    $result=$conn->query("SELECT * FROM hotel WHERE hotelID = $hotelID");
+    $result=$conn->query("SELECT numStandard,numKing,numQueen FROM hotel WHERE hotelID = $hotelID");
     $assoc = $result->fetch_assoc();
     if($roomType = "Standard"){
         $totalRoom = $assoc['numStandard'];
