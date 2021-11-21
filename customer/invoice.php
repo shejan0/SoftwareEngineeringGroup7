@@ -50,7 +50,7 @@ if (isset($_GET['book'])) {
             $surgePercent = $records['weekendSurge'];
             $subtotal = ($numRooms * $records[$priceRoom]) * ($weekDays + $weekendDays);
             $weekendSurge = ($numRooms * $records[$priceRoom] * $weekendDays) * ( $surgePercent / 100);
-            $tax = ($subtotal + $weekendSurge) * .0825;
+            $tax = round(($subtotal + $weekendSurge) * .0825, 2);
             $price = round($subtotal + $weekendSurge + $tax, 2);
             
         } else {
