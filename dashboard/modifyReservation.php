@@ -36,11 +36,12 @@ if (isset($_POST['check'])) {
         if ($row == 0) {
             $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
             $_SESSION['message'] = 'Error: Could not find Reservation #' . $reservationID ;
+            $_SESSION['reservationID'] = $_POST['reservationID'];
             header("location: reservations.php");
             exit();
         }
 
-        // found hotel
+        // found 
         else {
             $reservation = mysqli_fetch_assoc($result);
             $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";

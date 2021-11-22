@@ -5,7 +5,7 @@ include_once "validateProperty.php";
 include_once "inc/head.php";
 include_once "inc/side-bar.php";
 $all_amenities = array();  
-$reservationID = $_POST['reservationID'];
+$reservationID = $_SESSION['reservationID'];
 ?>
 <main class="content bg-white">
     <?php include_once "inc/header.php"; ?>
