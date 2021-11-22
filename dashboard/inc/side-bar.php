@@ -23,9 +23,6 @@ if(!isset($_SESSION['email']))
     <div class="sidebar-inner px-4 pt-3">
         <div class="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
             <div class="d-flex align-items-center">
-                <div class="avatar-md me-3 ">
-                    <img src="../assets/img/team/discord.png" class="card-img-top rounded-pill border-white animate-up-2" alt="Profile Picture">
-                </div>
                 <div class="d-block">
                     <h1 class="lead fw-normal text-white mb-4 px-lg-10">Hello,
                         <?php echo $_SESSION['name']; ?>
