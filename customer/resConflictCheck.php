@@ -1,17 +1,25 @@
 <?php
-function FindifFull($conn, $hotelID, $roomType, $numRooms, $arrival, $departure)
+function FindifFull($conn, $reservationID, $hotelID, $roomType, $numRooms, $arrival, $departure)
 {
-    
+    if($reservationID != NULL)
+    {
+        $result=$conn->query("SELECT numRoom FROM reservation WHERE ReservationID = $reservationID");
+        $assoc = $result->fetch_assoc();
+        $curResRooms = $assoc['numRoom'];
+    }
+    else{
+        $curResRooms = 0;
+    }
     $day = "1000-01-01";
     $begin = new DateTime(strval( $arrival ));
     $end2   = new DateTime(strval( $departure ));
     $result=$conn->query("SELECT numStandard,numKing,numQueen FROM hotel WHERE hotelID = $hotelID");
     $assoc = $result->fetch_assoc();
-    if($roomType = "Standard"){
+    if($roomType == "Standard"){
         $totalRoom = $assoc['numStandard'];
-    }else if($roomType = "Queen"){
+    }else if($roomType == "Queen"){
         $totalRoom = $assoc['numQueen'];
-    }else if($roomType = "King"){
+    }else if($roomType == "King"){
         $totalRoom = $assoc['numKing'];
     }else{
         $totalRoom = NULL;
@@ -37,7 +45,7 @@ function FindifFull($conn, $hotelID, $roomType, $numRooms, $arrival, $departure)
             $roomTotal += $recordNum;
             
         }
-        if($totalRoom - $roomTotal - $numRooms < 0){
+        if($totalRoom - $roomTotal - $numRooms + $curResRooms < 0){
             return true;
         }
     }

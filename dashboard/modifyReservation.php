@@ -26,7 +26,7 @@
         #   the reservation dates are valid.
         if($newArrival != NULL && $newDeparture != NULL)
         {
-            if(FindifFull($conn, $assoc['hotelID'], $newRoomType, $numRooms, $newArrival, $newDeparture))
+            if(FindifFull($conn, $reservationID, $assoc['hotelID'], $newRoomType, $numRooms, $newArrival, $newDeparture))
             {
                 $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
                 $_SESSION['message'] = "Error: The Room you are trying to book is full for the dates you selected";
@@ -39,7 +39,7 @@
         else if($newArrival == NULL)
         {
             $newArrival = $assoc['arrivalDate'];
-            if(FindifFull($conn, $assoc['hotelID'], $newRoomType, $numRooms, $newArrival, $newDeparture))
+            if(FindifFull($conn, $reservationID, $assoc['hotelID'], $newRoomType, $numRooms, $newArrival, $newDeparture))
             {
                 $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
                 $_SESSION['message'] = "Error: The Room you are trying to book is full for the dates you selected";
@@ -52,7 +52,7 @@
         else if($newDeparture == NULL)
         {
             $newDeparture = $assoc['departureDate'];
-            if(FindifFull($conn, $assoc['hotelID'], $newRoomType, $numRooms, $newArrival, $newDeparture))
+            if(FindifFull($conn, $reservationID, $assoc['hotelID'], $newRoomType, $numRooms, $newArrival, $newDeparture))
             {
                 $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
                 $_SESSION['message'] = "Error: The Room you are trying to book is full for the dates you selected";
@@ -67,7 +67,7 @@
         {
             $newArrival = $assoc['arrivalDate'];
             $newDeparture = $assoc['departureDate'];
-            if(FindifFull($conn, $assoc['hotelID'], $newRoomType, $numRooms, $newArrival, $newDeparture))
+            if(FindifFull($conn, $reservationID, $assoc['hotelID'], $newRoomType, $numRooms, $newArrival, $newDeparture))
             {
                 $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
                 $_SESSION['message'] = "Error: The Room you are trying to book is full for the dates you selected";
