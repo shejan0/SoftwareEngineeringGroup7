@@ -2,6 +2,7 @@
 session_start();
 include_once "../php/inc/user-connection.php";
 include_once "resConflictCheck.php";
+include_once "../dashboard/modifyReservation.php"
 
 $id = $_GET['hotelID'];
 $date = $_GET['bookingDate'];
@@ -20,6 +21,7 @@ $weekendDays = 0;
 $begin = new DateTime(strval( $start ));
 $end2   = new DateTime(strval( $end ));
 //Loop through days and identify number of weekend days and week days
+/*
 for($i = $begin; $i <= $end2; $i->modify('+1 day')){
     $day = $i->format("Y-m-d");
     $test = (date('N', strtotime($day)) >= 6);
@@ -33,6 +35,7 @@ for($i = $begin; $i <= $end2; $i->modify('+1 day')){
         $weekDays++;
     }
 }
+*/
 
 // gets number of rooms for each room type
 $query = "SELECT * from hotel where hotelID = \"$id\"";
@@ -47,18 +50,19 @@ $records = mysqli_fetch_assoc($resultr);
  $reservation = mysqli_fetch_assoc($reservationQuery);
 
 if (isset($_GET['submit'])) {
-    if (!empty($date)) {
+    if ($roomType == 'standard' && !empty($date)) {
 
         // if room avaliable
         if ($numRooms <= $records[$roomsAvailable]) {
-            $price = round(((($numRooms * $records[$priceRoom]) * $weekDays )
-                        + (($numRooms * $records[$priceRoom]) * $weekendDays * (1 + $records['weekendSurge'] / 100))) * 1.0825, 2);
+            #$price = round(((($numRooms * $records[$priceRoom]) * $weekDays )
+            #            + (($numRooms * $records[$priceRoom]) * $weekendDays * (1 + $records['weekendSurge'] / 100))) * 1.0825, 2);
             if(FindifFull($conn, $id, $roomType, $numRooms, $start, $end)){
                 $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
                 $_SESSION['message'] = "Error: The Room you are trying to book is full for the dates you selected";
                 header("location: room-details.php?" . $_SERVER['QUERY_STRING']);
                 exit();
             }
+            $price = 
             $insert = "INSERT into reservation (hotelID,hotelName,roomType,email,arrivalDate,departureDate,totalPrice,numRoom) 
                         values ('$id','$records[hotelName]','$_GET[type]','$email','$start','$end','$price','$numRooms');";
 
