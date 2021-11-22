@@ -151,10 +151,10 @@ include_once "../php/inc/user-connection.php";
             echo "<p class=\"text-muted\"><span class=\"text-primary h2\">$$priceKing</span> per night <b>KING</b></p>";
           }
           if(!empty($weekendSurge)){
-            echo "<p class=\"text-muted\">$weekendSurge weekend upcharge</p>";
+            echo "<p class=\"text-muted\">$weekendSurge% weekend upcharge</p>";
           }
           $prepared->close();
-          
+
         }
         ?>
         <hr class="my-4">
