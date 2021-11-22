@@ -148,7 +148,7 @@ $total = $row[0];
               echo "<p class=\"card-text text-muted\"><span class=\"h4 text-secondary\">$$priceKing</span> King / per night</p>";
             }
             if(!empty($weekendSurge)){
-              echo "<p class=\"card-text text-muted\">". $weekendSurge/100 . "% weekend upcharge</p>";
+              echo "<p class=\"card-text text-muted\">". $weekendSurge . "% weekend upcharge</p>";
             }
             echo "</div></div></div></div>";
           }
