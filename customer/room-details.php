@@ -104,36 +104,19 @@ include_once "randomPic.php";
             while ($prepared->fetch()) {
               if ($amenity == 'pool')
                 echo "<li class=\"list-inline-item me-3\"><i class=\"fa fa-swimming-pool me-1 text-secondary\"></i>$amenity</li>";
-              if ($amenity == 'gym')
+              else if ($amenity == 'gym')
                 echo "<li class=\"list-inline-item me-3\"><i class=\"fas fa-weight-hanging me-1 text-secondary\"></i>$amenity</li>";
-              if ($amenity == 'spa')
+             else if ($amenity == 'spa')
                 echo "<li class=\"list-inline-item me-3\"><i class=\"fa fa-spa me-1 text-secondary\"></i>$amenity</li>";
-              if ($amenity == 'businessOffice')
+              else if ($amenity == 'businessOffice')
                 echo "<li class=\"list-inline-item me-3\"><i class=\"fas fa-briefcase me-1 text-secondary\"></i>$amenity</li>";
+              else
+                echo "<li class=\"list-inline-item me-3\">$amenity</li>";
             }
             echo "</ul></div>";
             $prepared->close();
           }
           ?>
-<!--           
-              <div class="col-md-6">
-                <ul class="text-muted">
-                  
-                  <li class="mb-2"><span class="text-sm">Wifi</span></li>
-                  <li class="mb-2"> <i class="fa fa-tv text-secondary w-1rem me-3 text-center"></i><span class="text-sm">Cable TV</span></li>
-                  <li class="mb-2"> <i class="fa fa-snowflake text-secondary w-1rem me-3 text-center"></i><span class="text-sm">Air conditioning</span></li>
-                  <li class="mb-2"> <i class="fa fa-thermometer-three-quarters text-secondary w-1rem me-3 text-center"></i><span class="text-sm">Heating</span></li>
-                </ul>
-              </div>
-              <div class="col-md-6">
-                <ul class="list-unstyled text-muted">
-                  <li class="mb-2"> <i class="fa fa-bath text-secondary w-1rem me-3 text-center"></i><span class="text-sm">Toiletteries</span></li>
-                  <li class="mb-2"> <i class="fa fa-utensils text-secondary w-1rem me-3 text-center"></i><span class="text-sm">Equipped Kitchen</span></li>
-                  <li class="mb-2"> <i class="fa fa-laptop text-secondary w-1rem me-3 text-center"></i><span class="text-sm">Desk for work</span></li>
-                  <li class="mb-2"> <i class="fa fa-tshirt text-secondary w-1rem me-3 text-center"></i><span class="text-sm">Washing machine</span></li>
-                </ul>
-              </div>
-              -->
               <div>
               <div>
               <div>
@@ -234,46 +217,7 @@ include_once "randomPic.php";
         </form>
       </div>
     </div>
-    <!--<div class="section section-sm pb-0 mb-n4">
-      <div class="container">
-        <div class="row justify-content-center">
-          <h3 class="text-center">Gallery</h3>
-        </div>
-      </div>
-    </div>
-    <div class="section section-md ">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-md-10 mx-auto">
-            <div class="section section-lg bg-white border-light shadow-soft animate-up-2 pb-0">
-              <div class="container">
-                <div class="row justify-content-center">
-                  <div class="col-12 col-md-8 text-center mb-4 mb-lg-6">
-                    <h2 class="display-2 fw-bold"><?php if (isset($name)) echo $name;
-                                                  else "Pictures of hotels" ?></h2>
-                    <p class="lead">Pictures of the hotel</p>
-                  </div>
-                </div>
-                <div class="row align-items-center">
-                  <?php
-                  // gets random image
-                  for ($i = 0; $i < 12; $i++) {
-                    $image = randomPic();
-                    echo "
-              <div class=\"col-md-6 col-lg-4 text-center\">
-                  <div class=\"card-body py-5 border-light shadow-inset aniamte-up-2\"><img src=\"$image\" class=\"image-xl\" alt=\"hotel image\"> 
-                  </div>
-              </div>
-            ";
-                  }
-                  ?>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
+   
   </div>
 </div>
 <?php include_once "php/footer.php" ?>
