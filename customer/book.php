@@ -53,7 +53,7 @@ if (isset($_GET['submit'])) {
         if ($numRooms <= $records[$roomsAvailable]) {
             $price = round(((($numRooms * $records[$priceRoom]) * $weekDays )
                         + (($numRooms * $records[$priceRoom]) * $weekendDays * (1 + $records['weekendSurge'] / 100))) * 1.0825, 2);
-            if(FindifFull($conn,1, $hotelID, $_GET['type'], $numRooms, $start, $end)){
+            if(FindifFull($conn,1,$hotelID, $_GET['type'], $numRooms, $start, $end)){
                 $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
                 $_SESSION['message'] = "Error: The Room you are trying to book is full";
                 header("location: room-details.php?" . $_SERVER['QUERY_STRING']);
