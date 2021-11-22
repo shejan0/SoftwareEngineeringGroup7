@@ -11,6 +11,8 @@ $revenue = mysqli_fetch_assoc(mysqli_query($conn, "SELECT sum(totalPrice) as tot
 
 // gets total revenue 
 $users = mysqli_fetch_assoc(mysqli_query($conn, "SELECT count(name) as totalUsers from user"));
+
+$hotels = mysqli_fetch_assoc(mysqli_query($conn,"SELECT count(hotelName) as totalHotel from hotel"));
 ?>
 <main class="content bg-white">
   <?php include_once "inc/header.php"; ?>
@@ -103,18 +105,15 @@ $users = mysqli_fetch_assoc(mysqli_query($conn, "SELECT count(name) as totalUser
                 </svg>
               </div>
               <div class="d-sm-none">
-                <h2 class="fw-extrabold h5"> Bounce Rate</h2>
-                <h3 class="mb-1">50.88%</h3>
+                <h2 class="fw-extrabold h5"> Registered Hotels</h2>
+                <h3 class="mb-1"><?php echo $hotels['totalHotel']?></h3>
               </div>
             </div>
             <div class="col-12 col-xl-7 px-xl-0">
               <div class="d-none d-sm-block">
-                <h2 class="h6 text-gray-400 mb-0"> Bounce Rate</h2>
-                <h3 class="fw-extrabold mb-2">50.88%</h3>
+                <h2 class="h6 text-gray-400 mb-0">Registered Hotels</h2>
+                <h3 class="fw-extrabold mb-2"><?php echo $hotels['totalHotel']?></h3>
               </div>
-              <small class="text-gray-500">
-                Feb 1 - Apr 1
-              </small>
             </div>
           </div>
         </div>
