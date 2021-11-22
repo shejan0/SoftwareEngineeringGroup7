@@ -167,6 +167,12 @@ include_once "resConflictCheck.php";
                         }
                       }
                     }
+                    if (empty($dates)){
+                      $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+                      $_SESSION['message'] = "Error: Enter the dates you want to search from";
+                      header("location: customer.php");
+                      exit();
+                    }
                     //print_r($hotelList);
                     } 
 

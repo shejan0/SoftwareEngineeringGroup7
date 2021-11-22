@@ -1,4 +1,5 @@
 <?php
+ob_start();
 include_once "php/head.php";
 include_once "php/header.php";
 include_once "../php/inc/user-connection.php";
@@ -13,6 +14,17 @@ $total = $row[0];
 <div class="container-fluid bg-white">
   <div class="row justify-content-center">
     <div class="col-lg-6 py-4 p-xl-5">
+    <?php
+      if (isset($_SESSION['message']) && isset($_SESSION['alert'])) { ?>
+        <div class="<?php echo $_SESSION['alert'] ?>" role="alert">
+          <span class="fas fa-bullhorn me-1"></span>
+          <strong><?php echo $_SESSION['message'] ?></strong>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <?php
+        unset($_SESSION['message']);
+        unset($_SESSION['alert']);
+      } ?>
       <h2 class="mb-4">San Antonio, TX</h2>
       <hr class="my-4">
       <?php 
