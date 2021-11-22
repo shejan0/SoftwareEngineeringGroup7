@@ -1,6 +1,6 @@
 <?php
 include_once "../php/inc/user-connection.php";
-
+session_start();
 
 $conn;
 if (!$conn) {
@@ -13,11 +13,12 @@ if (!$conn) {
 // if form is submitted
 if (isset($_POST['update'])) {
     echo "Update";
-    print_r($ext->bruh());
+    
     // if no input field was entered before submitting form
     if (empty($_POST['newName']) && empty($_POST['newEmail']) && empty($_POST['newPassword'])) {
         $_SESSION['alert'] = "alert alert-warning alert-dismissible fade show";
         $_SESSION['message'] = "Warning: User profile not updated - did not enter any inputs.";
+        
         header("location: settings.php");
         exit();
     }
@@ -25,6 +26,7 @@ if (isset($_POST['update'])) {
     if (!filter_var($newEmail, FILTER_VALIDATE_EMAIL) && !empty($newEmail)) {
         $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
         $_SESSION['message'] = "Error: Not a valid email address";
+        
         header("location: settings.php");
         exit();
     }
@@ -42,6 +44,7 @@ if (isset($_POST['update'])) {
 
     if(!empty($_POST['newName'])){
         // update name
+        //print_r($ext->bruh());
         $updateName = "UPDATE user set name='$newName' where email='$currEmail'";
         $result = mysqli_query($conn,$updateName);
         if ($result) {
