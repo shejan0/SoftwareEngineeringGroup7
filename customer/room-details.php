@@ -107,7 +107,7 @@ include_once "../php/inc/user-connection.php";
             $prepared->close();
           }
           ?>
-          <!--
+<!--           
               <div class="col-md-6">
                 <ul class="text-muted">
                   
@@ -126,7 +126,25 @@ include_once "../php/inc/user-connection.php";
                 </ul>
               </div>
               -->
+              <div>
+              <div>
+              <div>
+  <div class="col-12 col-md-10">
+       <div class="card shadow-soft border-light">
+            <div class="card-body p-5">
+                <h3 class="h4 card-title mb-3">Image here</h3>
+                <div class="card-body py-5 border-light shadow-inset aniamte-up-2"><img src="$image" class="image-xl" alt="hotel image"> 
+                  </div>        
+                    </div>
         </div>
+  </div>
+</div>
+</div>
+
+
+</div>
+        </div>
+
       </div>
     </div>
     <div class="col-lg-4">
