@@ -15,6 +15,26 @@ $roomsAvailable = "num" . ucfirst($_GET['type']);
 $email = $_SESSION['email'];
 $name = $_SESSION['name'];
 
+$weekDays = 0;
+$weekendDays = 0;
+
+$begin = new DateTime(strval( $start ));
+$end2   = new DateTime(strval( $end ));
+//Loop through days and identify number of weekend days and week days
+for($i = $begin; $i <= $end2; $i->modify('+1 day')){
+    $day = $i->format("Y-m-d");
+    $test = (date('N', strtotime($day)) >= 6);
+    //Check to see if it is equal to Sat or Sun.
+    if($test){
+        //Increment weekend days
+        $weekendDays++;
+    }
+    else{
+        //Increment week days
+        $weekDays++;
+    }
+}
+
 // gets number of rooms and price for each room type
 $query = "SELECT * from hotel where hotelID = $id";
 $result = mysqli_query($conn, $query);
@@ -27,9 +47,12 @@ $reservation = mysqli_fetch_assoc($reservationQuery);
 if (isset($_GET['book'])) {
     if (!empty($_GET['bookingDate'])) {
         if ($numRooms <= $records[$roomsAvailable]) {
-            $subtotal = ($numRooms * $records[$priceRoom]);
-            $tax = $subtotal * .0825;
-            $price = ($numRooms * $records[$priceRoom]) * 1.0825;
+            $surgePercent = $records['weekendSurge'];
+            $subtotal = ($numRooms * $records[$priceRoom]) * ($weekDays + $weekendDays);
+            $weekendSurge = ($numRooms * $records[$priceRoom] * $weekendDays) * ( $surgePercent / 100);
+            $tax = round(($subtotal + $weekendSurge) * .0825, 2);
+            $price = round($subtotal + $weekendSurge + $tax, 2);
+            
         } else {
             $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
             $_SESSION['message'] = "Error: The Room you are trying to book is full";
@@ -48,7 +71,12 @@ if (isset($_GET['book'])) {
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
-                <div class="d-flex flex-column flex-lg-row align-items-center justify-content-between mb-4"><a href="room-details.php" class="mb-3 mb-lg-0"><span class="icon icon-xs"><span class="fas fa-chevron-left me-2"></span></span> Back to booking </a>
+                <div class="d-flex flex-column flex-lg-row align-items-center justify-content-between mb-4">
+                    <?php echo "<a href=\"room-details.php?hotelID=$id\" class=\"mb-3 mb-lg-0\">"; ?>
+                    <span class="icon icon-xs">
+                        <span class="fas fa-chevron-left me-2"></span>
+                    </span> Back to booking
+                 </a>
                 </div>
                 <div class="card border-light shadow-inset p-4 p-md-5 position-relative">
                     <div class="d-flex justify-content-between pb-4 pb-md-5 mb-4 mb-md-5 border-bottom border-gray-300">
@@ -123,6 +151,10 @@ if (isset($_GET['book'])) {
                                             <tr>
                                                 <td class="left"><strong>Subtotal</strong></td>
                                                 <td class="right">$ <?php echo $subtotal ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="left"><strong>Weekend Surge</strong></td>
+                                                <td class="right">$ <?php echo $weekendSurge ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="left"><strong>Tax Rate (8.25%)</strong></td>

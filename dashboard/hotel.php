@@ -63,7 +63,8 @@ include_once "inc/side-bar.php";
                                         </div>
                                         <div class="d-grid">
                                             <button type="submit" name="enter" value="Enter" class="btn btn-primary">Modify property</button>
-                                        </div></form>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
