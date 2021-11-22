@@ -38,10 +38,6 @@ if (isset($_POST['sign-up'])) {
                     header("location: ../html/sign-in.php");
                     exit();
                 }
-                $_SESSION['email'] = $email;
-                $_SESSION['name'] = $name;
-                $_SESSION['password'] = $password;
-
             }
         }
     }
@@ -75,9 +71,6 @@ if (isset($_POST['createAdmin'])) {
                     $stmt->store_result();
                     $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
                     $_SESSION['message'] = "Successfully created account!";
-                    $_SESSION['email'] = $email;
-                    $_SESSION['name'] = $name;
-                    $_SESSION['password'] = $password;
                     header("location: ../dashboard/employees.php");
                     exit();
                 }
