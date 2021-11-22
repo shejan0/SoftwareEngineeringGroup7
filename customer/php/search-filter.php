@@ -1,5 +1,6 @@
 <?php
-include_once "user-connection.php"
+include_once "user-connection.php";
+include_once "resConflictCheck.php";
 ?>
 <form autocomplete="off" method="post" action=""> <!--Get the action back to the host page -->
           <div class="row">
@@ -86,10 +87,15 @@ include_once "user-connection.php"
         <?php
           if (isset($_POST['search']))
                     {
-                      print_r($_POST);
+                      //print_r($_POST);
                       $roomType = $_POST['roomType'];
                       $price_from = $_POST['pricefrom'];
                       $price_to = $_POST['priceto'];
+                      $roomsAsked = $_POST['rooms'];
+                      $dates = $_POST['bookingDate'];
+                      $dateRange = explode(" to", $dates);
+                      $arrival = trim($dateRange[0]);
+                      $departure = trim($dateRange[1]);
                       $hotelList= array();
                      if ($roomType == "Standard") {
                        
@@ -153,7 +159,17 @@ include_once "user-connection.php"
                         }
                       }
                     }
-                    print_r($hotelList);
-                    //check if space given dates and reservation number of rooms
+                    if(!empty($dates)){
+                      foreach($hotelList as $hotelKey => $hotelID) {
+                        if (FindifFull($conn, $hotelID, $roomType, $roomsAsked, $arrival, $departure)) {
+                          //if the hotel is full
+                          unset($hotelList[$hotelKey]);
+                        }
+                      }
                     }
+                    //print_r($hotelList);
+                    } 
+
+                    
+                    
         ?>

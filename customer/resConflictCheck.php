@@ -1,5 +1,4 @@
 <?php
-
 function FindifFull($conn, $hotelID, $roomType, $numRooms, $arrival, $departure)
 {
     
@@ -19,7 +18,7 @@ function FindifFull($conn, $hotelID, $roomType, $numRooms, $arrival, $departure)
     }
     //Loop through days and identify number of weekend days and week days
     $stmt_obj=$conn->stmt_init();
-    print_r($stmt_obj);
+   // print_r($stmt_obj);
     if(!$stmt_obj){
         echo $conn->error;
     }
