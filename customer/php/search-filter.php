@@ -161,7 +161,7 @@ include_once "resConflictCheck.php";
                     }
                     if(!empty($dates)){
                       foreach($hotelList as $hotelKey => $hotelID) {
-                        if (FindifFull($conn, $hotelID, $roomType, $roomsAsked, $arrival, $departure)) {
+                        if (FindifFull($conn, NULL,$hotelID, $roomType, $roomsAsked, $arrival, $departure)) {
                           //if the hotel is full
                           unset($hotelList[$hotelKey]);
                         }
