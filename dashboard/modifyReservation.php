@@ -139,9 +139,9 @@
             }
         }
         $weekdayValue = $roomPrice * $numRooms * $weekDays ;
-        $weekendValue = $roomPrice * $numRooms * $weekendDays * $assoc['weekendSurge'];
+        $weekendValue = $roomPrice * $numRooms * $weekendDays * (1 + $assoc['weekendSurge'] / 100);
         $totalPrice = ($weekdayValue + $weekendValue) * 1.0825;
-        return $totalPrice;
+        return round($totalPrice, 2);
     }
 
 ?>

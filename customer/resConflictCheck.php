@@ -7,7 +7,7 @@ function FindifFull($conn,$reservationID, $hotelID, $roomType, $numRooms, $arriv
         $assoc = $result->fetch_assoc();
         $curResRooms = $assoc['numRoom'];
     }
-    $curResRooms = 2;
+    $curResRooms = 0;
     $day = "1000-01-01";
     $begin = new DateTime(strval( $arrival ));
     $end2   = new DateTime(strval( $departure ));

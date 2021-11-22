@@ -12,7 +12,7 @@ $end = trim($dateRange[1]);
 $numRooms = $_GET['rooms'];
 $priceRoom = "price". ucfirst($_GET['type']);
 $roomsAvailable = "num" . ucfirst($_GET['type']);
-$roomType = $_GET['type'];
+$roomType = ucfirst($_GET['type']);
 $email = $_SESSION['email'];
 $name = $_SESSION['name'];
 
@@ -33,7 +33,7 @@ if (isset($_GET['submit'])) {
 
         // if room avaliable
         if ($numRooms <= $records[$roomsAvailable]) {
-            if(FindifFull($conn, NULL, $hotelID, $roomType, $numRooms, $start, $end)){
+            if(FindifFull($conn, NULL, $hotelID, ucfirst($roomType), $numRooms, $start, $end)){
                 $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
                 $_SESSION['message'] = "Error: The Room you are trying to book is full";
                 header("location: room-details.php?" . $_SERVER['QUERY_STRING']);
