@@ -3,6 +3,19 @@
     include_once "../php/inc/user-connection.php";
     include_once "../customer/resConflictCheck.php";
 
+    function customerResModify($reservationID, $newRoomType, $newNumRooms, $newArrival, $newDeparture, $email)
+    {
+        $result=$conn->query("SELECT ReservationID FROM reservation WHERE email = $email");
+        while($assoc = $result->fetch_assoc())
+        {
+            if($assoc['ReservationID'] == $reservationID)
+            {
+                $success = reservationModify($reservationID, $newRoomType, $newNumRooms, $newArrival, $newDeparture)
+                return $success;
+            }
+        }
+        return false;
+    }
 
     function reservationModify($reservationID, $newRoomType, $newNumRooms, $newArrival, $newDeparture)
     {
@@ -80,6 +93,15 @@
         $update = "UPDATE reservation SET roomType='$newRoomType', arrivalDate='$newArrival', departureDate='$newDeparture',
                          totalPrice='$newPrice', numRoom='$newNumRooms' WHERE ReservationID='$reservationID'";
         $result = mysqli_query($conn, $update);
+        if($result)
+        {
+            #returns true upon a successful update
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     function calculatePrice($hotelID, $roomType, $numRooms, $arrival, $departure)
