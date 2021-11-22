@@ -135,11 +135,11 @@ include_once "../php/inc/user-connection.php";
         if (empty($_GET["hotelID"])) {
           echo "<p class=\"text-muted\"><span class=\"text-primary h2\">FAILED</span></p>";
         } else {
-          $pricequery = "SELECT priceStandard,priceQueen,priceKing FROM hotel.hotel WHERE hotelID=?;";
+          $pricequery = "SELECT priceStandard,priceQueen,priceKing,weekendSurge FROM hotel.hotel WHERE hotelID=?;";
           $prepared = $conn->prepare($pricequery);
           $prepared->bind_param("i", $_GET["hotelID"]);
           $prepared->execute();
-          $prepared->bind_result($priceStandard, $priceQueen, $priceKing);
+          $prepared->bind_result($priceStandard, $priceQueen, $priceKing,$weekendSurge);
           $prepared->fetch();
           if ($priceStandard != 0) {
             echo "<p class=\"text-muted\"><span class=\"text-primary h2\">$$priceStandard</span> per night <b>STANDARD</b></p>";
@@ -150,7 +150,11 @@ include_once "../php/inc/user-connection.php";
           if ($priceKing != 0) {
             echo "<p class=\"text-muted\"><span class=\"text-primary h2\">$$priceKing</span> per night <b>KING</b></p>";
           }
+          if(!empty($weekendSurge)){
+            echo "<p class=\"text-muted\">$weekendSurge weekend upcharge</p>";
+          }
           $prepared->close();
+          
         }
         ?>
         <hr class="my-4">
