@@ -53,28 +53,16 @@ include_once "inc/side-bar.php";
                 </div>
                 <div class="card-body">
                   <!-- Form -->
-                  <form action="modifyReservation.php" method='post' class="mt-4">
+                  <form action="updateReservations.php" method='post' class="mt-4">
                     <div class="form-group mb-4">
                       <label for="hotelID">Reservation ID</label>
                       <div class="input-group">
                         <span class="input-group-text"><span class="fas fa-hotel"></span></span>
                         <input type="text" class="form-control" name="reservationID" placeholder="Reservation ID">
+                        <div>
+                          <button type="submit" name="enter" value="Enter" class="btn btn-primary">Modify reservations</button>
+                        </div>
                       </div>
-                    </div>
-                    <div class="card-body">
-                        <!-- Form -->
-                        <form action="modify.php" method='post' class="mt-4">
-                          <div class="form-group mb-4">
-                            <label for="hotelID">Reservation ID</label>
-                            <div class="input-group">
-                              <span class="input-group-text"><span class="fas fa-hotel"></span></span>
-                              <input type="text" class="form-control" name="reservationID" placeholder="Reservation ID">
-                            </div>
-                          </div>
-                          <div class="d-grid">
-                            <button type="submit" name="enter" value="Enter" class="btn btn-primary">Modify reservations</button>
-                          </div>
-                        </form>
                     </div>
                   </form>
                 </div>

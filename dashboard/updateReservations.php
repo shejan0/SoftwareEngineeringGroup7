@@ -5,7 +5,7 @@ include_once "validateProperty.php";
 include_once "inc/head.php";
 include_once "inc/side-bar.php";
 $all_amenities = array();  
-$reservationID = $_SESSION['reservationID'];
+$reservationID = $_POST['reservationID'];
 ?>
 <main class="content bg-white">
     <?php include_once "inc/header.php"; ?>
@@ -63,7 +63,7 @@ $reservationID = $_SESSION['reservationID'];
           <thread>
             <?php
             $email = $_SESSION['email'];
-            $query = mysqli_query($conn, "SELECT * FROM reservation where ReservationID = $reservationID;");
+            $query = mysqli_query($conn, "SELECT * FROM reservation where ReservationID = \"$reservationID\";");
             while ($row = mysqli_fetch_array($query)) {
             ?>
               <tr>
