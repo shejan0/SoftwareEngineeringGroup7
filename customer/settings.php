@@ -21,22 +21,22 @@ include_once "../php/inc/user-connection.php";
               <p class="text-sm text-muted"><i class="fa fa-id-card fa-fw me-2"></i><?php echo $_SESSION['name']?><br>
               <i class="fa fa-envelope-open fa-fw me-2"></i><?php echo $_SESSION['email']?> </p>
               <div class="collapse" id="personalDetails">
-                <form action="#">
+                <form action="modifyCustomer.php" method="post">
                   <div class="row pt-4">
                     <div class="mb-4 col-md-6">
                       <label class="form-label" for="name">Name</label>
-                      <input class="form-control" type="text" name="name" id="name" placeholder="name">
+                      <input class="form-control" type="text" name="newName" id="name" placeholder="name">
                     </div>
                     <div class="mb-4 col-md-6">
                       <label class="form-label" for="email">Email address</label>
-                      <input class="form-control" type="email" name="email" id="email" placeholder="email">
+                      <input class="form-control" type="email" name="newEmail" id="email" placeholder="email">
                     </div>
                     <div class="mb-4 col-md-6">
-                      <label class="form-label" for="phone">Password</label>
-                      <input class="form-control" type="text" name="phone" id="phone" placeholder="password">
+                      <label class="form-label" for="password">Password</label>
+                      <input class="form-control" type="text" name="newPassword" id="password" placeholder="password">
                     </div>
                   </div>
-                  <button class="btn btn-outline-primary mb-4" type="submit">Save your personal details</button>
+                  <button class="btn btn-outline-primary mb-4" type="submit" name = "update">Save your personal details</button>
                 </form>
               </div>
             </div>

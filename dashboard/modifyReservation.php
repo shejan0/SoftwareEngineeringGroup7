@@ -89,7 +89,7 @@
             }
         }
         # A new updated price is calculated from the func calculatePrice
-        $newPrice = calculatePrice($assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture);
+        $newPrice = calculatePrice($conn, $assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture);
         $update = "UPDATE reservation SET roomType='$newRoomType', arrivalDate='$newArrival', departureDate='$newDeparture',
                          totalPrice='$newPrice', numRoom='$newNumRooms' WHERE ReservationID='$reservationID'";
         $result = mysqli_query($conn, $update);
