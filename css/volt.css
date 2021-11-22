@@ -42,6 +42,20 @@
     border-radius: 4px;
     background-color: #ffffff;
 }
+.datepicker-container-left,
+.datepicker-container-right {
+  position: relative;
+}
+
+.datepicker-container-left .inline-wrapper {
+  position: absolute;
+  left: 0;
+}
+
+.datepicker-container-right .inline-wrapper {
+  position: absolute;
+  right: 0;
+}
 
 .datepicker-dropdown .datepicker-picker {
     box-shadow: 0 2px 3px rgba(17, 24, 39, 0.1), 0 0 0 1px rgba(17, 24, 39, 0.1);
