@@ -108,18 +108,19 @@ if (isset($_GET['book'])) {
                             <h5>Your Information:</h5>
                             <div>
                                 <ul class="list-group simple-list">
-                                    <li class="list-group-item font-weight-norma border-0 ps-0 py-1"><?php echo $_SESSION['name'] ?></li>
-                                    <li class="list-group-item font-weight-norma border-0 ps-0 py-1"><?php echo $_SESSION['email'] ?></li>
+                                    <li class="list-group-item font-weight-norma border-0 ps-0 py-1"><strong>Name: </strong> <?php echo $_SESSION['name'] ?></li>
+                                    <li class="list-group-item font-weight-norma border-0 ps-0 py-1"><strong>Email: </strong>  <?php echo $_SESSION['email'] ?></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-sm col-lg-4">
-                            <dl class="row text-sm-right">
-                                <dt class="col-6"><strong>Hotel Name</strong></dt>
-                                <dd class="col-6"><?php echo $records['hotelName'] ?></dd>
-                                <dt class="col-6"><strong>Booking date:</strong></dt>
-                                <dd class="col-6"><?php echo date("m-d-Y"); ?></dd>
-                            </dl>
+                        <h5>Hotel Information:</h5>
+                            <div>
+                                <ul class="list-group simple-list">
+                                    <li class="list-group-item font-weight-norma border-0 ps-0 py-1"><strong>Hotel Name: </strong> <?php echo $records['hotelName'] ?></li>
+                                    <li class="list-group-item font-weight-norma border-0 ps-0 py-1"><strong>Booking date: </strong>  <?php echo $date ?></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
@@ -132,6 +133,7 @@ if (isset($_GET['book'])) {
                                             <th scope="row" class="border-0">Room type</th>
                                             <th scope="row" class="border-0">Qty</th>
                                             <th scope="row" class="border-0">Price</th>
+                                            <th scope="row" class="border-0">Dates</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -140,6 +142,8 @@ if (isset($_GET['book'])) {
                                             <td><?php echo $_GET['type'] ?></td>
                                             <td><?php echo $_GET['rooms'] ?></td>
                                             <td><?php echo $records[$priceRoom] ?></td>
+                                            <td><?php echo $date ?></td>
+
                                         </tr>
                                     </tbody>
                                 </table>
