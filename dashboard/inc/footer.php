@@ -85,9 +85,11 @@
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
-    <!-- Volt JS -->
-    <script src="../assets/js/volt.js"></script>
+    <!-- apex charts -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
+    <!-- Volt JS -->
+    <script src="../assets/js/volt.js"></script> 
     </body>
 
     </html>
