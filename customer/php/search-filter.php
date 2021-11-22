@@ -161,11 +161,17 @@ include_once "resConflictCheck.php";
                     }
                     if(!empty($dates)){
                       foreach($hotelList as $hotelKey => $hotelID) {
-                        if (FindifFull($conn, $hotelID, $roomType, $roomsAsked, $arrival, $departure)) {
+                        if (FindifFull($conn, NULL,$hotelID, $roomType, $roomsAsked, $arrival, $departure)) {
                           //if the hotel is full
                           unset($hotelList[$hotelKey]);
                         }
                       }
+                    }
+                    if (empty($dates)){
+                      $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+                      $_SESSION['message'] = "Error: Enter the dates you want to search from";
+                      header("location: customer.php");
+                      exit();
                     }
                     //print_r($hotelList);
                     } 

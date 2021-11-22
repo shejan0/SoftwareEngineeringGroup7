@@ -99,7 +99,7 @@
   <script src="../vendor/nouislider/dist/nouislider.min.js"></script>
   <script>
     var snapSlider = document.getElementById('slider-snap');
-    min = 80, max = 300
+    min = 40, max = 300
     noUiSlider.create(snapSlider, {
       start: [min, max],
       snap: false,
@@ -133,7 +133,7 @@
         if(isset($greatest)){
           echo $greatest[0];
         }else{
-          echo "110";
+          echo "500";
         }
         
         ?>
