@@ -10,7 +10,7 @@
         {
             if($assoc['ReservationID'] == $reservationID)
             {
-                $success = reservationModify($reservationID, $newRoomType, $newNumRooms, $newArrival, $newDeparture)
+                $success = reservationModify($reservationID, $newRoomType, $newNumRooms, $newArrival, $newDeparture);
                 return $success;
             }
         }
@@ -89,7 +89,7 @@
             }
         }
         # A new updated price is calculated from the func calculatePrice
-        $newPrice = calculatePrice($assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture)
+        $newPrice = calculatePrice($assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture);
         $update = "UPDATE reservation SET roomType='$newRoomType', arrivalDate='$newArrival', departureDate='$newDeparture',
                          totalPrice='$newPrice', numRoom='$newNumRooms' WHERE ReservationID='$reservationID'";
         $result = mysqli_query($conn, $update);
@@ -104,7 +104,7 @@
         }
     }
 
-    function calculatePrice($hotelID, $roomType, $numRooms, $arrival, $departure)
+    function calculatePrice($conn, $hotelID, $roomType, $numRooms, $arrival, $departure)
     {
         $result=$conn->query("SELECT weekendSurge, priceKing, priceQueen, priceStandard FROM hotel WHERE hotelID = $hotelID");
         $assoc = $result->fetch_assoc();

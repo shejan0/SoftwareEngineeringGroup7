@@ -2,7 +2,7 @@
 session_start();
 include_once "../php/inc/user-connection.php";
 include_once "resConflictCheck.php";
-include_once "../dashboard/modifyReservation.php"
+include_once "../dashboard/modifyReservation.php";
 
 $hotelID = $_GET['hotelID'];
 $date = $_GET['bookingDate'];
@@ -12,30 +12,9 @@ $end = trim($dateRange[1]);
 $numRooms = $_GET['rooms'];
 $priceRoom = "price". ucfirst($_GET['type']);
 $roomsAvailable = "num" . ucfirst($_GET['type']);
+$roomType = $_GET['type'];
 $email = $_SESSION['email'];
 $name = $_SESSION['name'];
-$weekDays = 0;
-$weekendDays = 0;
-
-
-$begin = new DateTime(strval( $start ));
-$end2   = new DateTime(strval( $end ));
-//Loop through days and identify number of weekend days and week days
-/*
-for($i = $begin; $i <= $end2; $i->modify('+1 day')){
-    $day = $i->format("Y-m-d");
-    $test = (date('N', strtotime($day)) >= 6);
-    //Check to see if it is equal to Sat or Sun.
-    if($test){
-        //Increment weekend days
-        $weekendDays++;
-    }
-    else{
-        //Increment week days
-        $weekDays++;
-    }
-}
-*/
 
 // gets number of rooms for each room type
 $query = "SELECT * from hotel where hotelID = \"$hotelID\"";
@@ -50,19 +29,17 @@ $records = mysqli_fetch_assoc($resultr);
  $reservation = mysqli_fetch_assoc($reservationQuery);
 
 if (isset($_GET['submit'])) {
-    if ($roomType == 'standard' && !empty($date)) {
+    if (!empty($date)) {
 
         // if room avaliable
         if ($numRooms <= $records[$roomsAvailable]) {
-            #$price = round(((($numRooms * $records[$priceRoom]) * $weekDays )
-            #            + (($numRooms * $records[$priceRoom]) * $weekendDays * (1 + $records['weekendSurge'] / 100))) * 1.0825, 2);
-            if(FindifFull($conn, $id, $roomType, $numRooms, $start, $end)){
+            if(FindifFull($conn, NULL, $hotelID, $roomType, $numRooms, $start, $end)){
                 $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
                 $_SESSION['message'] = "Error: The Room you are trying to book is full";
                 header("location: room-details.php?" . $_SERVER['QUERY_STRING']);
                 exit();
             }
-            $price = 
+            $price = calculatePrice($conn, $hotelID, $roomType, $numRooms, $start, $end);
             $insert = "INSERT into reservation (hotelID,hotelName,roomType,email,arrivalDate,departureDate,totalPrice,numRoom) 
                         values ('$hotelID','$records[hotelName]','$_GET[type]','$email','$start','$end','$price','$numRooms');";
 
