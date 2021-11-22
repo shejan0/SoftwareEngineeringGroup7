@@ -86,6 +86,13 @@ $reservationID = $_SESSION['reservationID'];
     <div class="card-body shadow-soft border-light animate-up-5 bg-white row justify-content-center mt-5">
         <h2 class="h5 mb-4"><?php echo "Update Reservation #$reservationID" ?></h2>
         <form action="modifyReservation.php" method="post" class="mt-4">
+        <div class="col-xl-4 col-md-6 mb-4 ">
+              <label class="form-label" for="form_dates">Dates</label>
+              <div class="datepicker-container datepicker-container-left">
+                <input class="form-control  input-group btn-pill bg-white shadow-soft border-light" type="text" name="bookingDate" id="form_dates"
+                  placeholder="Choose your dates">
+              </div>
+            </div>
             <div class="form-group mb-4">
                 <label for="hotelName">Select new room type:</label>
                 <div class="input-group">
@@ -110,13 +117,6 @@ $reservationID = $_SESSION['reservationID'];
                 ?>
               </select>
                 </div>
-            </div>
-            <div class="col-xl-4 col-md-6 mb-4 ">
-              <label class="form-label" for="form_dates">Dates</label>
-              <div class="datepicker-container datepicker-container-left">
-                <input class="form-control  input-group btn-pill bg-white shadow-soft border-light" type="text" name="bookingDate" id="form_dates"
-                  placeholder="Choose your dates">
-              </div>
             </div>
             <div class="d-grid">
                 <button type="submit" class="btn btn-primary" name="modifyReservation"  value="Modify Property">Save changes</button>

@@ -64,9 +64,6 @@
  <script src="../vendor/chartist/dist/chartist.min.js"></script>
  <script src="../vendor/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
 
- <!-- Datepicker -->
- <script src="../vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
-
  <!-- Sweet Alerts 2 -->
  <script src="../vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
 
@@ -77,9 +74,6 @@
 
  <!-- Moment JS -->
  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
-
- <!-- Vanilla JS Datepicker -->
- <script src="../vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
 
  <!-- Notyf -->
  <script src="../vendor/notyf/notyf.min.js"></script>
