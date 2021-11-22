@@ -46,13 +46,25 @@ include_once "../php/inc/user-connection.php";
         if (empty($_GET["hotelID"])) {
           echo "<p class=\"text-muted fw-light\">FAILED</p>";
         } else {
-          $descquery = "SELECT hotelDesc FROM hotel.Descriptions WHERE hotelID=?;";
+
+          function randomPic($dir = '../assets/img/hotel')
+          {
+            $files = glob($dir . '/*.*');
+            $file = array_rand($files);
+            return $files[$file];
+          }
+
+
+          $descquery = "SELECT hotelDesc,imageLink FROM hotel.Descriptions WHERE hotelID=?;";
           $prepared = $conn->prepare($descquery);
           $prepared->bind_param("i", $_GET["hotelID"]);
           $prepared->execute();
-          $prepared->bind_result($desc);
+          $prepared->bind_result($desc,$image);
           $prepared->fetch();
           echo "<p class=\"text-muted fw-light\">$desc</p>";
+          if(empty($image)){
+            $image=randomPic();
+          }
           $prepared->close();
         }
         ?>
@@ -131,10 +143,11 @@ include_once "../php/inc/user-connection.php";
               <div>
   <div class="col-12 col-md-10">
        <div class="card shadow-soft border-light">
-            <div class="card-body p-5">
-                <h3 class="h4 card-title mb-3">Image here</h3>
-                <div class="card-body py-5 border-light shadow-inset aniamte-up-2"><img src="$image" class="image-xl" alt="hotel image"> 
-                  </div>        
+            <div class="card-body p-3">
+                <!--<h3 class="h4 card-title mb-3">Gallery</h3>-->
+                <img src="<?php echo $image?>" class="image-xl" alt="hotel image"> 
+               <!-- <div class="card-body py-5 border-light shadow-inset aniamte-up-2">
+                  </div>   -->     
                     </div>
         </div>
   </div>
@@ -225,7 +238,7 @@ include_once "../php/inc/user-connection.php";
         </form>
       </div>
     </div>
-    <div class="section section-sm pb-0 mb-n4">
+    <!--<div class="section section-sm pb-0 mb-n4">
       <div class="container">
         <div class="row justify-content-center">
           <h3 class="text-center">Gallery</h3>
@@ -248,13 +261,6 @@ include_once "../php/inc/user-connection.php";
                 <div class="row align-items-center">
                   <?php
                   // gets random image
-                  function randomPic($dir = '../assets/img/hotel-detail')
-                  {
-                    $files = glob($dir . '/*.*');
-                    $file = array_rand($files);
-                    return $files[$file];
-                  }
-
                   for ($i = 0; $i < 12; $i++) {
                     $image = randomPic();
                     echo "
@@ -271,7 +277,7 @@ include_once "../php/inc/user-connection.php";
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
 <?php include_once "php/footer.php" ?>
