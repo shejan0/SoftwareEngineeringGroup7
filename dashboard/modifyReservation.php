@@ -35,7 +35,7 @@ if (isset($_POST['check'])) {
         // no reservation ID found
         if ($row == 0) {
             $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-            $_SESSION['message'] = 'Error: Could not find Reservation ID ' . $reservationID ;
+            $_SESSION['message'] = 'Error: Could not find Reservation #' . $reservationID ;
             header("location: reservations.php");
             exit();
         }
