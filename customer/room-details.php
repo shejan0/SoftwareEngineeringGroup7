@@ -2,6 +2,7 @@
 include_once "php/head.php";
 include_once "php/header.php";
 include_once "../php/inc/user-connection.php";
+include_once "randomPic.php";
 ?>
 <div class="container py-5">
   <div class="row">
@@ -47,12 +48,7 @@ include_once "../php/inc/user-connection.php";
           echo "<p class=\"text-muted fw-light\">FAILED</p>";
         } else {
 
-          function randomPic($dir = '../assets/img/hotel')
-          {
-            $files = glob($dir . '/*.*');
-            $file = array_rand($files);
-            return $files[$file];
-          }
+          
 
 
           $descquery = "SELECT hotelDesc,imageLink FROM hotel.Descriptions WHERE hotelID=?;";

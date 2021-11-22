@@ -3,6 +3,7 @@ ob_start();
 include_once "php/head.php";
 include_once "php/header.php";
 include_once "../php/inc/user-connection.php";
+include_once "randomPic.php";
 
 // gets total number of records BEFORE search
 $countRow = "SELECT count(1) from hotel;";
@@ -48,12 +49,7 @@ $total = $row[0];
     </div>
     <div class="row">
       <?php
-      function randomPic($dir = '../assets/img/hotel')
-      {
-        $files = glob($dir . '/*.*');
-        $file = array_rand($files);
-        return $files[$file];
-      }
+      
 
       if(empty($hotelList)){
           $fillquery = "SELECT h.hotelID, h.hotelName, h.weekendSurge,h.priceStandard,d.imageLink,h.priceQueen,h.priceKing FROM hotel h, Descriptions d WHERE h.hotelID = d.hotelID;";
