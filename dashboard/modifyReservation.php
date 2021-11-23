@@ -1,5 +1,8 @@
 <?php
+
+if(!isset($_SESSION)){
 include_once "inc/session_start.php";
+}
 include_once "../php/inc/user-connection.php";
 include_once "../customer/resConflictCheck.php";
 
