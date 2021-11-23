@@ -66,7 +66,7 @@ include_once "insertProperty.php";
                                 <label for="desc">Enter Description (optional): </label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon2"><span class="fas fa-door-open	"></span></span>
-                                    <textarea name="desc" class='form-control' >
+                                    <textarea name="desc" class='form-control'>
                                 </div>
                             </div>
                             <div class="row mb-5 mb-lg-5">
@@ -146,14 +146,14 @@ include_once "insertProperty.php";
                                 <label for="weekendSurge">Weekend surge (percentage - omit percent sign)</label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon2"><span class="fas fa-percentage"></span></span>
-                                    <input type="text" name="weekendSurge" class="form-control" required>
+                                    <input type="text" name="weekendSurge" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group mb-4">
                                 <label for="imgLink">Image Link (optional):</label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon2"><span class="fas fa-door-open	"></span></span>
-                                    <input type="text" name="totalRooms" class='form-control' >
+                                    <input type="text" name="totalRooms" class='form-control'>
                                 </div>
                             </div>
                             <div class="d-grid">
