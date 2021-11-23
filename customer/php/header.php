@@ -34,6 +34,8 @@ if (!isset($_SESSION['email'])) {
                         <li class="nav-item"><a class="nav-link" href="settings.php">Profile</a></li>
                         <li class="nav-item"><a class="nav-link" href="customer.php">Hotel</a></li>
                         <li class="nav-item"><a class="nav-link" href="reservations.php">Reservations</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+
                     </ul>
                 </div>
                 <div class="d-flex align-items-center ">
@@ -54,6 +56,8 @@ if (!isset($_SESSION['email'])) {
                             <a class="dropdown-item" href="customer.php">Hotel</a>
                             <a class="dropdown-item" href="reservations.php">My Reservations</a>
                             <a class="dropdown-item" href="settings.php">Profile</a>
+                            <a class="dropdown-item" href="../index.html">Home</a>
+
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item rounded-bottom" href="../php/logout.php">
                                 <span class="fas fa-sign-out-alt"></span>
