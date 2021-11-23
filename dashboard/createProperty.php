@@ -66,7 +66,7 @@ include_once "insertProperty.php";
                                 <label for="desc">Enter Description (optional): </label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon2"><span class="fas fa-door-open	"></span></span>
-                                    <textarea name="desc" class='form-control'>
+                                    <textarea id="desc" name="desc" class='form-control' rows="5", cols="30">
                                 </div>
                             </div>
                             <div class="row mb-5 mb-lg-5">
