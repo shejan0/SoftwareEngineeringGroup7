@@ -59,7 +59,7 @@ include_once "randomPic.php";
           $prepared->fetch();
           echo "<p class=\"text-muted fw-light\">$desc</p>";
           if(empty($image)){
-            $image=randomPic();
+            $image=randomHotel();
           }
           $prepared->close();
         }
@@ -217,7 +217,43 @@ include_once "randomPic.php";
         </form>
       </div>
     </div>
-   
+    <div class="section section-sm pb-0 mb-n4">
+      <div class="container">
+        <div class="row justify-content-center">
+          <h3 class="text-center">Gallery for <?php echo $name?></h3>
+        </div>
+      </div>
+    </div>
+    <div class="section section-md ">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-10 mx-auto">
+            <div class="section section-lg bg-white border-light shadow-soft animate-up-2 pb-0">
+              <div class="container">
+                <div class="row justify-content-center">
+                  <div class="col-12 col-md-8 text-center mb-4 mb-lg-6">
+                    <h2 class="display-2 fw-bold"><?php if(isset($name))echo $name; else "Pictures of hotels"?></h2>
+                  </div>
+                </div>
+                <div class="row align-items-center">
+                  <?php
+                  for ($i = 0; $i < 12; $i++) {
+                    $image = randomPic();
+                    echo "
+              <div class=\"col-md-6 col-lg-4 text-center\">
+                  <div class=\"card-body py-5 border-light shadow-inset aniamte-up-2\"><img src=\"$image\" class=\"image-xl\" alt=\"hotel image\"> 
+                  </div>
+              </div>
+            ";
+                  }
+                  ?>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <?php include_once "php/footer.php" ?>

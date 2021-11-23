@@ -62,7 +62,7 @@ $total = $row[0];
           echo "<div class=\"card h-100  shadow-soft border-light animate-up-2 bg-white\">";
           echo "<div class=\"card-img-top overflow-hidden shadow-soft border-light animate-up-2\">";
           echo "<a href=\"\">";
-          echo "<img src=\".".randomPic()."\" alt=\"Front pages overview\">";
+          echo "<img src=\".".randomHotel()."\" alt=\"Front pages overview\">";
           echo "</a></div>";
           echo "<div class=\"card-body d-flex align-items-center\">";
           echo "<div class=\"w-100\">";
@@ -82,7 +82,7 @@ $total = $row[0];
             $priceKing = $list['priceKing'];
             $weekendSurge = $list['weekendSurge'];
             if(empty($list['imageLink'])){
-              $imageLink = randomPic();
+              $imageLink = randomHotel();
             }else{
               $imageLink=$list['imageLink'];
             }
