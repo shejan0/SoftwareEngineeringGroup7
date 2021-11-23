@@ -27,7 +27,7 @@ include_once "inc/side-bar.php";
   <p class="mb-0">Update user profile.</p>
   </div>
   </div>
-  <div class="card-body shadow-soft border-light animate-up-5 bg-white row justify-content-center">
+  <div class="card-body shadow-soft border-light bg-white row justify-content-center">
     <!-- alert message -->
     <?php
     if (isset($_SESSION['message']) && isset($_SESSION['alert'])) { ?>
