@@ -3,9 +3,11 @@ function FindifFull($conn,$reservationID, $hotelID, $roomType, $numRooms, $arriv
 {
     if($reservationID!= NULL)
     {
-        $result=$conn->query("SELECT numRoom FROM reservation WHERE ReservationID = $reservationID");
+        $result=$conn->query("SELECT numRoom, arrivalDate, departureDate FROM reservation WHERE ReservationID = $reservationID");
         $assoc = $result->fetch_assoc();
         $curResRooms = $assoc['numRoom'];
+        $oldArrival = $assoc['arrivalDate'];
+        $oldDeparture = $assoc['departureDate'];
     }
     $curResRooms = 0;
     $day = "1000-01-01";
@@ -40,10 +42,16 @@ function FindifFull($conn,$reservationID, $hotelID, $roomType, $numRooms, $arriv
         $stmt_obj->execute();
         while($stmt_obj->fetch())
         {
-            $roomTotal += $recordNum;
+            if($day >= $oldArrival && $day<= $oldDeparture){
+                $roomTotal += $recordNum;
+                $roomTotal -= $curResRooms;
+            }
+            else{
+                $roomTotal += $recordNum;
+            }
             
         }
-        if($totalRoom - $roomTotal - $numRooms + $curResRooms < 0){
+        if($totalRoom - $roomTotal - (int)$numRooms < 0){
             return true;
         }
     }

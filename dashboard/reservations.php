@@ -2,6 +2,28 @@
 include_once "../php/inc/user-connection.php";
 include_once "inc/head.php";
 include_once "inc/side-bar.php";
+include_once "modifyReservation.php";
+
+if(isset($_POST['update'])){
+  $start = NULL;
+  $end = NULL;
+  $roomType = NULL;
+  $numRooms = NULL;
+  $reservationID = $_POST['reservationID'];
+  if(!empty($_POST['bookingDate'])){
+    $dateRange = explode(" to", $_POST['bookingDate']);
+    $start = trim($dateRange[0]);
+    $end = trim($dateRange[1]);
+  }
+  if(!empty($_POST['roomType'])){
+    $roomType = $_POST['roomType'];
+  }
+  if(!empty($_POST['numRooms'])){
+    $numRooms = $_POST['numRooms'];
+  }
+  reservationModify($conn, $reservationID, $roomType, $numRooms, $start, $end);
+}
+
 ?>
 <main class="content bg-white">
   <?php include_once "inc/header.php"; ?>
