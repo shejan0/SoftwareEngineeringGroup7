@@ -41,17 +41,16 @@ if (isset($_POST['update'])) {
         // update name
         $updateName = "UPDATE admin set name='$newName' where email='$currEmail'";
         $result = mysqli_query($conn,$updateName);
-        if ($result) {
+        if ($result != 0) {
             $currName = $newName;
             $_SESSION['name'] = $newName;
-
             $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
             $_SESSION['message'] .= "Success! Updated name.";
-            header("location: settings.php");      
         } else{
             $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
             $_SESSION['message'] .= "Error: Failed to update name";
             header("location: settings.php");
+            exit();
         }
     }
     if(!empty($_POST['newPassword'])){
@@ -62,11 +61,11 @@ if (isset($_POST['update'])) {
             $_SESSION['password'] = $newPassword;
             $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
             $_SESSION['message'] .= "Success! Updated password.";
-            header("location: settings.php");     
         } else{
             $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
             $_SESSION['message'] .= "Error: Failed to update password";
             header("location: settings.php");
+            exit();
         }
     }
     if(!empty($_POST['newEmail'])){
@@ -87,17 +86,20 @@ if (isset($_POST['update'])) {
                 $_SESSION['email'] = $newEmail;
                 $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
                 $_SESSION['message'] .= "Success! Updated email.";
-                header("location: settings.php");
             } else{
                 $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
                 $_SESSION['message'] .= "Error: Failed to update email";
                 header("location: settings.php");
+                exit();
             }
         }
         else{
             $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
             $_SESSION['message'] .= "Error: Chosen email already exists. Please select a different email";
             header("location: settings.php");
+            exit();
         }
     }
+    header("location: settings.php");
+
 }

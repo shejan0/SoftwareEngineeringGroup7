@@ -7,7 +7,19 @@ include_once "../php/inc/user-connection.php";
       <div class="container">
         <h1 class="hero-heading mb-0">Personal info</h1>
         <p class="text-muted mb-5">Manage your Personal info and settings here.</p>
+        <?php
+        if (isset($_SESSION['message']) && isset($_SESSION['alert'])) { ?>
+            <div class="<?php echo $_SESSION['alert'] ?>" role="alert">
+                <span class="fas fa-bullhorn me-1"></span>
+                <strong><?php echo $_SESSION['message'] ?></strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php
+            unset($_SESSION['message']);
+            unset($_SESSION['alert']);
+        } ?>
         <div class="row">
+          
           <div class="col-lg-7 mb-5 mb-lg-0 shadow-soft border-light">
             <div class="text-block"> 
               <div class="row mb-3">
