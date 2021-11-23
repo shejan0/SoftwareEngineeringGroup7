@@ -62,9 +62,13 @@ include_once "insertProperty.php";
                                     <input type="text" name="totalRooms" class='form-control' required>
                                 </div>
                             </div>
-                            
-                                
-                            
+                            <div class="form-group mb-4">
+                                <label for="desc">Enter Description (optional): </label>
+                                <div class="input-group">
+                                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-door-open	"></span></span>
+                                    <input type="text" name="desc" class='form-control'>
+                                </div>
+                            </div>
                             <div class="row mb-5 mb-lg-5">
                                 <div class="col-lg-4 col-md-6">
                                     <div class="form-group mb-4">
