@@ -63,9 +63,9 @@ function customerResModify($reservationID, $newRoomType, $newNumRooms, $newArriv
     return false;
 }
 
-function reservationModify($reservationID, $newRoomType, $newNumRooms, $newArrival, $newDeparture)
+function reservationModify($conn, $reservationID, $newRoomType, $newNumRooms, $newArrival, $newDeparture)
 {
-    $result = $conn->query("SELECT * FROM reservation WHERE ReservationID = $reservationID");
+    $result = $conn->query("SELECT * FROM reservation WHERE ReservationID = \"$reservationID\";");
     $assoc = $result->fetch_assoc();
     # If a new room type isn't passed, then $newRoomType is 
     #   assigned the previous roomType from reservation
@@ -125,7 +125,7 @@ function reservationModify($reservationID, $newRoomType, $newNumRooms, $newArriv
         }
     }
     # A new updated price is calculated from the func calculatePrice
-    $newPrice = calculatePrice($assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture);
+    $newPrice = calculatePrice($conn, $assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture);
     $update = "UPDATE reservation SET roomType='$newRoomType', arrivalDate='$newArrival', departureDate='$newDeparture',
                          totalPrice='$newPrice', numRoom='$newNumRooms' WHERE ReservationID='$reservationID'";
     $result = mysqli_query($conn, $update);
