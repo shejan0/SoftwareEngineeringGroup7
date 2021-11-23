@@ -45,7 +45,7 @@ $all_amenities = array();
         </div>
     </div>
     <!-- Hotel info  -->
-    <div class="card card-body border-0 shadow-soft border border-light table-wrapper table-responsive animate-up-5 bg-white">
+    <div class="card card-body border-0 shadow-soft border border-light table-wrapper table-responsive  bg-white">
         <table class="table table-hover">
             <?php
             if (isset($_SESSION['property'])) {
@@ -101,7 +101,7 @@ $all_amenities = array();
         </table>
         <!-- end of table -->
     </div>
-    <div class="card-body shadow-soft border-light animate-up-5 bg-white row justify-content-center mt-5">
+    <div class="card-body shadow-soft border-light bg-white row justify-content-center mt-5">
         <h2 class="h5 mb-4"><?php echo "Update $hotelProp[hotelName]" ?></h2>
         <form action="modify.php" method="post" class="mt-4">
             <div class="form-group mb-4">
