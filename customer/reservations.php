@@ -21,6 +21,8 @@ include_once "../php/inc/user-connection.php";
                     <th class="border-gray-200">Arrival Date</th>
                     <th class="border-gray-200">Departure Date</th>
                     <th class="border-gray-200">$ Total Price</th>
+                    <th class="border-gray-200">Delete</th>
+
 
                 </tr>
                 <thread>
@@ -39,6 +41,12 @@ include_once "../php/inc/user-connection.php";
                             <td><span class="fw-normal"><?php echo $row['arrivalDate']; ?></span></td>
                             <td><span class="fw-normal"><?php echo $row['departureDate']; ?></span></td>
                             <td><span class="fw-normal">$ <?php echo $row['totalPrice']; ?></span></td>
+                            <td><span class="fw-normal"><a href="" class="nav-link">
+                    <span class="sidebar-icon">
+                        <span class="fas fa-window-close	">
+                        </span>
+                    </span>
+                </a></span></td>
 
 
                         </tr>
