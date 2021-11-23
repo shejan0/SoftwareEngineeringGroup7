@@ -148,10 +148,6 @@ if(isset($_POST)){
                 <td><span class="fw-normal"><?php echo $row['arrivalDate']; ?></span></td>
                 <td><span class="fw-normal"><?php echo $row['departureDate']; ?></span></td>
                 <td><span class="fw-normal">$ <?php echo $row['totalPrice']; ?></span></td>
-               
-
-
-
               </tr>
             <?php  } ?>
             </form>

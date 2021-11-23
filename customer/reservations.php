@@ -40,6 +40,40 @@ if(isset($_POST)){
       <div class="container">
         <h1 class="hero-heading mb-0">Your reservations</h1>
         <p class="text-muted mb-5">View your reservations</p>
+        <div class="btn mb-2 mb-md-0">
+      <button type="button" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center animate-up-2" data-bs-toggle="modal" data-bs-target="#modal-form">Modify Reservation </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content rounded bg-white">
+            <div class="modal-body p-0">
+              <div class="card bg-white p-4">
+                <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="card-header border-0 bg-white text-center pb-0">
+                  <h2 class="h4">Enter Reservation ID</h2>
+                </div>
+                <div class="card-body">
+                  <!-- Form -->
+                  <form action="modifyReservation.php" method='post' class="mt-4">
+                    <div class="form-group mb-4">
+                      <label for="hotelID">Reservation ID</label>
+                      <div class="input-group">
+                        <span class="input-group-text"><span class="fas fa-hotel"></span></span>
+                        <input type="text" class="form-control" name="reservationID" placeholder="Reservation ID">
+                        <div>
+                          <button type="submit" name="check" value="Enter" class="btn btn-primary">Modify reservations</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
             <!-- Employee Table -->
     <div class="card card-body border-0 shadow-soft border border-light table-wrapper table-responsive animate-up-5 bg-white">
         <table class="table table-hover">
