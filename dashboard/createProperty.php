@@ -62,8 +62,7 @@ include_once "insertProperty.php";
                                     <input type="text" name="totalRooms" class='form-control' required>
                                 </div>
                             </div>
-                            <label for="desc">Enter Description (optional): </label>
-                            <textarea id="desc" name="desc" class='form-control' rows="5", cols="30">
+                            
                                 
                             
                             <div class="row mb-5 mb-lg-5">
