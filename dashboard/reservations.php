@@ -22,7 +22,12 @@ if(isset($_POST)){
     if(!empty($_POST['numRooms'])){
       $numRooms = $_POST['numRooms'];
     }
-    reservationModify($conn, $reservationID, $roomType, $numRooms, $start, $end);
+    if(reservationModify($conn, $reservationID, $roomType, $numRooms, $start, $end)){
+      $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
+        $_SESSION['message'] = "Success! successfully updated reservation for customer";
+        header("location: reservations.php");
+        exit(); 
+    }
   }
 
   if(!empty($_POST['delete'])){
@@ -112,7 +117,7 @@ if(isset($_POST)){
   </div>
   </div>
   <div class="card">
-    <div class="card card-body shadow-soft border border-light table-wrapper table-responsive animate-up-5 bg-white">
+    <div class="card card-body shadow-soft border border-light table-wrapper table-responsive bg-white">
       <div class="fs-5 fw-normal mb-2">Reservation</div>
       <table class="table table-hover">
         <thread>

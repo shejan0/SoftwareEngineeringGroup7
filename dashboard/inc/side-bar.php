@@ -1,4 +1,5 @@
 <?php
+ob_start();
 include_once "session_start.php";
 if(!isset($_SESSION['email']))
 {

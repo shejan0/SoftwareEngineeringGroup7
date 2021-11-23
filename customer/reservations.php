@@ -54,7 +54,7 @@ if(isset($_POST)){
       unset($_SESSION['alert']);
     } ?>
         <div class="btn mb-md-2">
-      <button type="button" class="btn btn-sm btn-primary d-inline-flex align-items-center animate-up-2" data-bs-toggle="modal" data-bs-target="#modal-form">Modify Reservation </button>
+      <button type="button" class="btn btn-sm btn-primary d-inline-flex align-items-center " data-bs-toggle="modal" data-bs-target="#modal-form">Modify Reservation </button>
 
       <!-- Modal -->
       <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
@@ -88,7 +88,7 @@ if(isset($_POST)){
       </div>
     </div>
             <!-- Employee Table -->
-    <div class="card card-body border-0 shadow-soft border border-light table-wrapper table-responsive animate-up-5 bg-white">
+    <div class="card card-body border-0 shadow-soft border border-light table-wrapper table-responsive  bg-white">
         <table class="table table-hover">
             <thread>
                 <tr>
@@ -124,7 +124,7 @@ if(isset($_POST)){
                             <td><span class="fw-normal"><?php echo $row['arrivalDate']; ?></span></td>
                             <td><span class="fw-normal"><?php echo $row['departureDate']; ?></span></td>
                             <td><span class="fw-normal">$ <?php echo $row['totalPrice']; ?></span></td>
-                            <td><span class="fw-normal"><button class="btn btn-md btn-gray-primary d-inline-flex align-items-center animate-up-2" type="submit" name="delete" value="<?php echo $row['ReservationID'];?>"> <span class="sidebar-icon"><span class="fas fa-window-close"></span></span></button></td>                           
+                            <td><span class="fw-normal"><button class="btn btn-md btn-gray-primary d-inline-flex align-items-center " type="submit" name="delete" value="<?php echo $row['ReservationID'];?>"> <span class="sidebar-icon"><span class="fas fa-window-close"></span></span></button></td>                           
                         </tr>
                     <?php  } ?>
                     </form>

@@ -1,5 +1,5 @@
 <?php
-
+ob_start();
 if(!isset($_SESSION)){
 include_once "inc/session_start.php";
 }
@@ -51,6 +51,7 @@ if (isset($_POST['check'])) {
             $_SESSION['message'] = 'Success: Found Reservation ID';
             $_SESSION['reservationID'] = $reservationID;
             header("location: updateReservations.php");
+            exit();
         }
     }
 }
@@ -88,7 +89,7 @@ function reservationModify($conn, $reservationID, $newRoomType, $newNumRooms, $n
         if (FindifFull($conn, $reservationID, $assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture)) {
             $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
             $_SESSION['message'] = "Error: The Room you are trying to book is full for the dates you selected";
-            header("location: modifyReservation.php?" . $_SERVER['QUERY_STRING']);
+            header("location: updateReservations.php?" . $_SERVER['QUERY_STRING']);
             exit();
         }
     }
@@ -101,7 +102,7 @@ function reservationModify($conn, $reservationID, $newRoomType, $newNumRooms, $n
         if (FindifFull($conn, $reservationID, $assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture)) {
             $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
             $_SESSION['message'] = "Error: The Room you are trying to book is full for the dates you selected";
-            header("location: modifyReservation.php?" . $_SERVER['QUERY_STRING']);
+            header("location: updateReservations.php?" . $_SERVER['QUERY_STRING']);
             exit();
         }
     }
@@ -112,7 +113,7 @@ function reservationModify($conn, $reservationID, $newRoomType, $newNumRooms, $n
         if (FindifFull($conn, $reservationID, $assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture)) {
             $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
             $_SESSION['message'] = "Error: The Room you are trying to book is full for the dates you selected";
-            header("location: modifyReservation.php?" . $_SERVER['QUERY_STRING']);
+            header("location: updateReservations.php?" . $_SERVER['QUERY_STRING']);
             exit();
         }
     }
@@ -123,7 +124,7 @@ function reservationModify($conn, $reservationID, $newRoomType, $newNumRooms, $n
         if (FindifFull($conn, $reservationID, $assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture)) {
             $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
             $_SESSION['message'] = "Error: The Room you are trying to book is full for the dates you selected";
-            header("location: modifyReservation.php?" . $_SERVER['QUERY_STRING']);
+            header("location: updateReservations.php?" . $_SERVER['QUERY_STRING']);
             exit();
         }
     }
@@ -134,8 +135,7 @@ function reservationModify($conn, $reservationID, $newRoomType, $newNumRooms, $n
                          totalPrice='$newPrice', numRoom='$newNumRooms' WHERE ReservationID='$reservationID'";
     $result = mysqli_query($conn, $update);
     if ($result) {
-        #returns true upon a successful update
-        return true;
+               return true;
     } else {
         return false;
     }

@@ -1,15 +1,15 @@
 <?php
-include_once "inc/session_start.php";
+include_once "php/head.php";
+include_once "php/header.php";
 include_once "../php/inc/user-connection.php";
-include_once "validateProperty.php";
-include_once "inc/head.php";
-include_once "inc/side-bar.php";
+include_once "../dashboard/validateProperty.php";
+
 $all_amenities = array();  
 $reservationID = $_SESSION['reservationID'];
 ?>
-<main class="content bg-white">
-    <?php include_once "inc/header.php"; ?>
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+ <section class="py-5 bg-white shadow-inset border-light">
+      <div class="container">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
         <div class="d-block mb-4 mb-md-0">
             <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                 <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
@@ -41,12 +41,10 @@ $reservationID = $_SESSION['reservationID'];
             unset($_SESSION['alert']);
         } ?>
         <div class="btn mb-2 mb-md-0">
-            <a href="reservations.php" class="btn btn-sm btn-primary btn-pill d-inline-flex align-items-center animate-up-2">Back to reservations</a>
+            <a href="reservations.php" class="btn btn-sm btn-primary d-inline-flex align-items-center animate-up-2">Back to reservations</a>
         </div>
     </div>
-    <!-- Reservation info  -->
-    <div class="card card-body  shadow-soft border-light table-wrapper table-responsive bg-white">
-    <h2 class="h5 mb-4">Reservation information</h2>
+    <div class="card card-body border-0 shadow-soft border border-light table-wrapper table-responsive  bg-white">
     <table class="table table-hover">
         <thread>
           <tr>
@@ -64,7 +62,7 @@ $reservationID = $_SESSION['reservationID'];
           <thread>
             <?php
             $email = $_SESSION['email'];
-            $query = mysqli_query($conn, "SELECT * FROM reservation where ReservationID = \"$reservationID\";");
+            $query = mysqli_query($conn, "SELECT * FROM reservation where ReservationID = $reservationID;");
             while ($row = mysqli_fetch_array($query)) {
             ?>
               <tr>
@@ -84,14 +82,14 @@ $reservationID = $_SESSION['reservationID'];
       </table>
         <!-- end of table -->
     </div>
-    <div class=" card card-body  shadow-soft border-light table-wrapper table-responsive bg-white mt-4">
+    <div class="card-body shadow-soft border-light  bg-white row justify-content-center mt-5">
         <h2 class="h5 mb-4"><?php echo "Update Reservation #$reservationID" ?></h2>
         <form action="reservations.php" method="post" class="mt-4">
         <div class="col-xl-4 col-md-6 mb-4 ">
               <label class="form-label" for="form_dates">Dates</label>
               <div class="datepicker-container datepicker-container-left">
-                <input class="form-control  input-group btn-pill bg-white shadow-soft border-light" type="text" name="bookingDate" id="form_dates"
-                  placeholder="Choose your dates" autocomplete="off">
+                <input class="form-control  input-group btn-pill bg-white shadow-soft border-light" type="text" name="bookingDate" id="form_dates" autocomplete=off
+                  placeholder="Choose your dates">
               </div>
             </div>
             <div class="form-group mb-4">
@@ -120,9 +118,13 @@ $reservationID = $_SESSION['reservationID'];
                 </div>
             </div>
             <div class="d-grid">
-                <button type="submit" class="btn btn-primary" name="update"  value="Modify Property">Save changes</button>
+                <button type="submit" class="btn btn-primary animate-up-2" name="update"  value="Modify Property">Save changes</button>
             </div>
             <input type='hidden' name="reservationID" value="<?php echo $reservationID?>">
         </form>
     </div>
-    <?php include_once "inc/footer.php" ?>
+            </div>
+            </section>
+    <?php
+include_once "php/footer.php";  ?>
+    <!-- Footer-->
