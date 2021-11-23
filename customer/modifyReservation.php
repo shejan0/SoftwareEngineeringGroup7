@@ -79,7 +79,7 @@ if (isset($_POST['checkCust'])) {
             exit();
         }
         $row = mysqli_num_rows($result);
-        $assoc = fetch_assoc($result);
+        $assoc = $result->fetch_assoc();
         // no reservation ID found
         if ($row == 0) {
             $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
