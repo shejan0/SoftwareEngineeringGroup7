@@ -1,20 +1,24 @@
 <?php
 include_once "../php/inc/user-connection.php";
-include_once "inc/session_start.php";
+session_start();
 
 $conn;
 if (!$conn) {
     $_SESSION['message'] = "Could not connect";
+    echo "Could not connect";
     header("location: settings.php");
     exit();
 }
+
 // if form is submitted
 if (isset($_POST['update'])) {
-
+    echo "Update";
+    
     // if no input field was entered before submitting form
     if (empty($_POST['newName']) && empty($_POST['newEmail']) && empty($_POST['newPassword'])) {
         $_SESSION['alert'] = "alert alert-warning alert-dismissible fade show";
         $_SESSION['message'] = "Warning: User profile not updated - did not enter any inputs.";
+        
         header("location: settings.php");
         exit();
     }
@@ -22,6 +26,7 @@ if (isset($_POST['update'])) {
     if (!filter_var($newEmail, FILTER_VALIDATE_EMAIL) && !empty($newEmail)) {
         $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
         $_SESSION['message'] = "Error: Not a valid email address";
+        
         header("location: settings.php");
         exit();
     }
@@ -39,38 +44,40 @@ if (isset($_POST['update'])) {
 
     if(!empty($_POST['newName'])){
         // update name
-        $updateName = "UPDATE admin set name='$newName' where email='$currEmail'";
+        //print_r($ext->bruh());
+        $updateName = "UPDATE user set name='$newName' where email='$currEmail'";
         $result = mysqli_query($conn,$updateName);
         if ($result != 0) {
             $currName = $newName;
             $_SESSION['name'] = $newName;
+
             $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
-            $_SESSION['message'] .= "Success! Updated name.";
+            $_SESSION['message'] = "Success! Updated name. new email: $newEmail $currEmail";
         } else{
-            $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-            $_SESSION['message'] .= "Error: Failed to update name";
+            $_SESSION['alert'] = "alert alert-warning alert-dismissible fade show";
+            $_SESSION['message'] = "Error: Failed to update name, your name was not changed";
             header("location: settings.php");
             exit();
         }
     }
     if(!empty($_POST['newPassword'])){
-        $updateName = "UPDATE admin set password='$newPassword' where email='$currEmail'";
+        $updateName = "UPDATE user set password='$newPassword' where email='$currEmail'";
         $result = mysqli_query($conn,$updateName);
         if ($result) {
             $currName = $newName;
             $_SESSION['password'] = $newPassword;
             $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
-            $_SESSION['message'] .= "Success! Updated password.";
+            $_SESSION['message'] = "Success! Updated password.";
         } else{
-            $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-            $_SESSION['message'] .= "Error: Failed to update password";
+            $_SESSION['alert'] = "alert alert-warning alert-dismissible fade show";
+            $_SESSION['message'] = "Warning: Failed to update password, your password was not changed";
             header("location: settings.php");
             exit();
         }
     }
     if(!empty($_POST['newEmail'])){
         $exists = false;
-        $query = "SELECT email FROM admin";
+        $query = "SELECT email FROM user";
         $result = mysqli_query($conn,$query);
         while($assoc = $result->fetch_assoc()){
             if($newEmail == $assoc['email']){
@@ -79,27 +86,27 @@ if (isset($_POST['update'])) {
             }
         }
         if(!$exists){
-            $updateName = "UPDATE admin set email='$newEmail' where email='$currEmail'";
+            $updateName = "UPDATE user set email='$newEmail' where email='$currEmail'";
             $result = mysqli_query($conn,$updateName);
             if ($result) {
                 $currName = $newName;
                 $_SESSION['email'] = $newEmail;
                 $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
-                $_SESSION['message'] .= "Success! Updated email.";
+                $_SESSION['message'] = "Success! Updated email.";
+                header("location: settings.php");
             } else{
-                $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-                $_SESSION['message'] .= "Error: Failed to update email";
+                $_SESSION['alert'] = "alert alert-warning alert-dismissible fade show";
+                $_SESSION['message'] = "Warning: Failed to update email, your email was not changed " . mysqli_error($conn);
                 header("location: settings.php");
                 exit();
             }
         }
         else{
             $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-            $_SESSION['message'] .= "Error: Chosen email already exists. Please select a different email";
+            $_SESSION['message'] = "Error: Chosen email already exists. Please select a different email";
             header("location: settings.php");
             exit();
         }
     }
     header("location: settings.php");
-
 }

@@ -92,14 +92,13 @@
 <script src="../assets/js/map-category.js"> </script>
   <!-- Daterange picker-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"> </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-date-range-picker/0.19.0/jquery.daterangepicker.min.js">
-  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-date-range-picker/0.19.0/jquery.daterangepicker.min.js"></script>
   <script src="../assets/js/datepicker-category.js"> </script>
   <!-- Price Slider-->
   <script src="../vendor/nouislider/dist/nouislider.min.js"></script>
   <script>
     var snapSlider = document.getElementById('slider-snap');
-    min = 80, max = 300
+    min = 40, max = 300
     noUiSlider.create(snapSlider, {
       start: [min, max],
       snap: false,
@@ -133,7 +132,7 @@
         if(isset($greatest)){
           echo $greatest[0];
         }else{
-          echo "110";
+          echo "500";
         }
         
         ?>

@@ -1,7 +1,9 @@
 <?php
+ob_start();
 include_once "php/head.php";
 include_once "php/header.php";
 include_once "../php/inc/user-connection.php";
+include_once "randomPic.php";
 
 // gets total number of records BEFORE search
 $countRow = "SELECT count(1) from hotel;";
@@ -13,6 +15,17 @@ $total = $row[0];
 <div class="container-fluid bg-white">
   <div class="row justify-content-center">
     <div class="col-lg-6 py-4 p-xl-5">
+    <?php
+      if (isset($_SESSION['message']) && isset($_SESSION['alert'])) { ?>
+        <div class="<?php echo $_SESSION['alert'] ?>" role="alert">
+          <span class="fas fa-bullhorn me-1"></span>
+          <strong><?php echo $_SESSION['message'] ?></strong>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <?php
+        unset($_SESSION['message']);
+        unset($_SESSION['alert']);
+      } ?>
       <h2 class="mb-4">San Antonio, TX</h2>
       <hr class="my-4">
       <?php 
@@ -36,12 +49,7 @@ $total = $row[0];
     </div>
     <div class="row">
       <?php
-      function randomPic($dir = '../assets/img/hotel')
-      {
-        $files = glob($dir . '/*.*');
-        $file = array_rand($files);
-        return $files[$file];
-      }
+      
 
       if(empty($hotelList)){
           $fillquery = "SELECT h.hotelID, h.hotelName, h.weekendSurge,h.priceStandard,d.imageLink,h.priceQueen,h.priceKing FROM hotel h, Descriptions d WHERE h.hotelID = d.hotelID;";
@@ -54,7 +62,7 @@ $total = $row[0];
           echo "<div class=\"card h-100  shadow-soft border-light animate-up-2 bg-white\">";
           echo "<div class=\"card-img-top overflow-hidden shadow-soft border-light animate-up-2\">";
           echo "<a href=\"\">";
-          echo "<img src=\".".randomPic()."\" alt=\"Front pages overview\">";
+          echo "<img src=\".".randomHotel()."\" alt=\"Front pages overview\">";
           echo "</a></div>";
           echo "<div class=\"card-body d-flex align-items-center\">";
           echo "<div class=\"w-100\">";
@@ -74,7 +82,7 @@ $total = $row[0];
             $priceKing = $list['priceKing'];
             $weekendSurge = $list['weekendSurge'];
             if(empty($list['imageLink'])){
-              $imageLink = randomPic();
+              $imageLink = randomHotel();
             }else{
               $imageLink=$list['imageLink'];
             }
@@ -148,7 +156,7 @@ $total = $row[0];
               echo "<p class=\"card-text text-muted\"><span class=\"h4 text-secondary\">$$priceKing</span> King / per night</p>";
             }
             if(!empty($weekendSurge)){
-              echo "<p class=\"card-text text-muted\">". $weekendSurge/100 . "% weekend upcharge</p>";
+              echo "<p class=\"card-text text-muted\">". $weekendSurge . "% weekend upcharge</p>";
             }
             echo "</div></div></div></div>";
           }

@@ -9,8 +9,10 @@ $email = $_SESSION['email'];
 // gets total revenue 
 $revenue = mysqli_fetch_assoc(mysqli_query($conn, "SELECT sum(totalPrice) as totalPrice from reservation"));
 
-// gets total revenue 
+// gets total employee and customer
 $users = mysqli_fetch_assoc(mysqli_query($conn, "SELECT count(name) as totalUsers from user"));
+$employees = mysqli_fetch_assoc(mysqli_query($conn, "SELECT count(name) as totalEmployees from admin"));
+
 
 $hotels = mysqli_fetch_assoc(mysqli_query($conn,"SELECT count(hotelName) as totalHotel from hotel"));
 ?>
@@ -39,11 +41,11 @@ $hotels = mysqli_fetch_assoc(mysqli_query($conn,"SELECT count(hotelName) as tota
   </div>
   <div class="row">
     <div class="col-12 col-lg-6 col-xl-4 mb-4">
-      <div class="card border-light shadow-soft bg-white animate-up-2">
+      <div class="card border-light shadow-soft bg-white ">
         <div class="card-body">
           <div class="row d-block d-xl-flex align-items-center">
             <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
-              <div class="icon-shape icon-shape-secondary rounded me-4 me-sm-0">
+              <div class="icon-shape icon-shape-success rounded me-4 me-sm-0">
                 <svg class="icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
                 </svg>
@@ -58,23 +60,19 @@ $hotels = mysqli_fetch_assoc(mysqli_query($conn,"SELECT count(hotelName) as tota
                 <h2 class="h6 text-gray-400 mb-0">Revenue</h2>
                 <h3 class="fw-extrabold mb-2">$<?php echo $revenue['totalPrice'];?></h3>
               </div>
-              <small class="d-flex align-items-center text-gray-500">
-                To date
-              </small>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="col-12 col-lg-6 col-xl-4 mb-4">
-      <div class="card border-light shadow-soft bg-white animate-up-2">
+      <div class="card border-light shadow-soft bg-white ">
         <div class="card-body">
           <div class="row d-block d-xl-flex align-items-center">
             <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
-              <div class="icon-shape icon-shape-secondary rounded me-4 me-sm-0">
-                <svg class="icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
-                </svg>
+              <div class="icon-shape icon-shape-primary rounded me-4 me-sm-0 shadow-inset border-light">
+              <svg class="icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"></path></svg>
+               
               </div>
               <div class="d-sm-none">
                 <h2 class="fw-extrabold h5">User</h2>
@@ -86,32 +84,33 @@ $hotels = mysqli_fetch_assoc(mysqli_query($conn,"SELECT count(hotelName) as tota
                 <h2 class="h6 text-gray-400 mb-0">Users</h2>
                 <h3 class="fw-extrabold mb-2"><?php echo $users['totalUsers'];?></h3>
               </div>
-              <small class="d-flex align-items-center text-gray-500">
-                To date
-              </small>
+              <div class="d-none d-sm-block">
+                <h2 class="h6 text-gray-400 mb-0">Emplopyees</h2>
+                <h3 class="fw-extrabold mb-2"><?php echo $users['totalUsers'];?></h3>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="col-12 col-lg-12 col-xl-4 mb-4">
-      <div class="card border-light shadow-soft bg-white animate-up-2">
+      <div class="card border-light shadow-soft bg-white ">
         <div class="card-body">
           <div class="row d-block d-xl-flex align-items-center">
             <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
-              <div class="icon-shape icon-shape-tertiary rounded me-4 me-sm-0">
+              <div class="icon-shape icon-shape-tertiary rounded me-4 me-sm-0 shadow-inset border-light ">
                 <svg class="icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                 </svg>
               </div>
               <div class="d-sm-none">
-                <h2 class="fw-extrabold h5"> Registered Hotels</h2>
+                <h2 class="fw-extrabold h5">Total Properties</h2>
                 <h3 class="mb-1"><?php echo $hotels['totalHotel']?></h3>
               </div>
             </div>
             <div class="col-12 col-xl-7 px-xl-0">
               <div class="d-none d-sm-block">
-                <h2 class="h6 text-gray-400 mb-0">Registered Hotels</h2>
+                <h2 class="h6 text-gray-400 mb-0"># Properties</h2>
                 <h3 class="fw-extrabold mb-2"><?php echo $hotels['totalHotel']?></h3>
               </div>
             </div>
@@ -122,7 +121,7 @@ $hotels = mysqli_fetch_assoc(mysqli_query($conn,"SELECT count(hotelName) as tota
 
     <div class="col-12 mb-4">
       <div class="card">
-        <div class="card card-body shadow-soft border border-light table-wrapper table-responsive animate-up-2 bg-white">
+        <div class="card card-body shadow-soft border border-light table-wrapper table-responsive  bg-white">
           <div class="fs-5 fw-normal mb-2">Reservation</div>
           <table class="table table-hover">
             <thread>
@@ -164,7 +163,7 @@ $hotels = mysqli_fetch_assoc(mysqli_query($conn,"SELECT count(hotelName) as tota
     <div class="col-12 mb-4">
 
       <div class="card">
-        <div class="card card-body shadow-soft border border-light table-wrapper table-responsive animate-up-2 bg-white">
+        <div class="card card-body shadow-soft border border-light table-wrapper table-responsive  bg-white">
           <div class="fs-5 fw-normal mb-2 mt-4">Hotel</div>
           <table class="table table-hover">
             <thread>
@@ -207,7 +206,7 @@ $hotels = mysqli_fetch_assoc(mysqli_query($conn,"SELECT count(hotelName) as tota
   <div class="row">
     <div class="col-12 mb-4">
       <div class="card">
-        <div class="card card-body shadow-soft border border-light table-wrapper table-responsive animate-up-2 bg-white">
+        <div class="card card-body shadow-soft border border-light table-wrapper table-responsive  bg-white">
           <div class="fs-5 fw-normal mb-2">Employees / Admin</div>
           <table class="table table-hover">
             <thread>
@@ -235,7 +234,7 @@ $hotels = mysqli_fetch_assoc(mysqli_query($conn,"SELECT count(hotelName) as tota
     </div>
     <div class="col-12 mb-4">
       <div class="card">
-        <div class="card card-body shadow-soft border border-light table-wrapper table-responsive animate-up-2 bg-white">
+        <div class="card card-body shadow-soft border border-light table-wrapper table-responsive  bg-white">
           <div class="fs-5 fw-normal mb-2">Customers</div>
           <table class="table table-hover">
             <thread>

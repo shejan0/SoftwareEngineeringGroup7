@@ -80,7 +80,7 @@ include_once "inc/side-bar.php";
         </div>
     </div>
     <!-- Hotel Table -->
-    <div class="card card-body border-0 shadow-soft border border-light table-wrapper table-responsive animate-up-5 bg-white">
+    <div class="card card-body border-0 shadow-soft border border-light table-wrapper table-responsive  bg-white">
         <table class="table table-hover">
             <thread>
                 <tr>

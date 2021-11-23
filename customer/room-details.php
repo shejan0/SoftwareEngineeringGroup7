@@ -2,6 +2,7 @@
 include_once "php/head.php";
 include_once "php/header.php";
 include_once "../php/inc/user-connection.php";
+include_once "randomPic.php";
 ?>
 <div class="container py-5">
   <div class="row">
@@ -13,17 +14,17 @@ include_once "../php/inc/user-connection.php";
       </ol>
     </nav>
     <div class="col-lg-8">
-    <?php
-                        if (isset($_SESSION['message']) && isset($_SESSION['alert'])) { ?>
-                            <div class="<?php echo $_SESSION['alert'] ?>" role="alert">
-                                <span class="fas fa-bullhorn me-1"></span>
-                                <strong><?php echo $_SESSION['message'] ?></strong>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        <?php
-                            unset($_SESSION['message']);
-                            unset($_SESSION['alert']);
-                        }?>
+      <?php
+      if (isset($_SESSION['message']) && isset($_SESSION['alert'])) { ?>
+        <div class="<?php echo $_SESSION['alert'] ?>" role="alert">
+          <span class="fas fa-bullhorn me-1"></span>
+          <strong><?php echo $_SESSION['message'] ?></strong>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <?php
+        unset($_SESSION['message']);
+        unset($_SESSION['alert']);
+      } ?>
       <div class="text-block">
         <!--
             <p class="text-primary"><i class="fa-map-marker-alt fa me-1"></i> Brooklyn, New York</p>
@@ -46,17 +47,24 @@ include_once "../php/inc/user-connection.php";
         if (empty($_GET["hotelID"])) {
           echo "<p class=\"text-muted fw-light\">FAILED</p>";
         } else {
-          $descquery = "SELECT hotelDesc FROM hotel.Descriptions WHERE hotelID=?;";
+
+          
+
+
+          $descquery = "SELECT hotelDesc,imageLink FROM hotel.Descriptions WHERE hotelID=?;";
           $prepared = $conn->prepare($descquery);
           $prepared->bind_param("i", $_GET["hotelID"]);
           $prepared->execute();
-          $prepared->bind_result($desc);
+          $prepared->bind_result($desc,$image);
           $prepared->fetch();
           echo "<p class=\"text-muted fw-light\">$desc</p>";
+          if(empty($image)){
+            $image=randomHotel();
+          }
           $prepared->close();
         }
         ?>
-<!--         
+        <!--         
             <p class="text-muted fw-light">Our garden basement apartment is fully equipped with everything you need to enjoy your stay. Very comfortable for a couple but plenty of space for a small family. Close to many wonderful Brooklyn attractions and quick trip to Manhattan. </p>
             <h6 class="mb-3">The space</h6>
             <p class="text-muted fw-light">Welcome to Brooklyn! We are excited to share our wonderful neighborhood with you. Our modern apartment has a private entrance, fully equipped kitchen, and a very comfortable queen size bed. We are happy to accommodate additional guests with a single bed in the living room, another comfy mattress on the floor and can make arrangements for small children with a portable crib and highchair if requested. </p>
@@ -94,39 +102,41 @@ include_once "../php/inc/user-connection.php";
             echo "<div class=\"col-md-6\">";
             echo "<ul class=\"text-muted list-inline text-sm mb-4\">";
             while ($prepared->fetch()) {
-              if($amenity == 'pool')
-              echo "<li class=\"list-inline-item me-3\"><i class=\"fa fa-swimming-pool me-1 text-secondary\"></i>$amenity</li>";
-              if($amenity == 'gym')
-              echo "<li class=\"list-inline-item me-3\"><i class=\"fas fa-weight-hanging me-1 text-secondary\"></i>$amenity</li>";
-              if($amenity == 'spa')
-              echo "<li class=\"list-inline-item me-3\"><i class=\"fa fa-spa me-1 text-secondary\"></i>$amenity</li>";
-              if($amenity == 'businessOffice')
-              echo "<li class=\"list-inline-item me-3\"><i class=\"fas fa-briefcase me-1 text-secondary\"></i>$amenity</li>";
+              if ($amenity == 'pool')
+                echo "<li class=\"list-inline-item me-3\"><i class=\"fa fa-swimming-pool me-1 text-secondary\"></i>$amenity</li>";
+              else if ($amenity == 'gym')
+                echo "<li class=\"list-inline-item me-3\"><i class=\"fas fa-weight-hanging me-1 text-secondary\"></i>$amenity</li>";
+             else if ($amenity == 'spa')
+                echo "<li class=\"list-inline-item me-3\"><i class=\"fa fa-spa me-1 text-secondary\"></i>$amenity</li>";
+              else if ($amenity == 'businessOffice')
+                echo "<li class=\"list-inline-item me-3\"><i class=\"fas fa-briefcase me-1 text-secondary\"></i>$amenity</li>";
+              else
+                echo "<li class=\"list-inline-item me-3\">$amenity</li>";
             }
             echo "</ul></div>";
             $prepared->close();
           }
           ?>
-          <!--
-              <div class="col-md-6">
-                <ul class="text-muted">
-                  
-                  <li class="mb-2"><span class="text-sm">Wifi</span></li>
-                  <li class="mb-2"> <i class="fa fa-tv text-secondary w-1rem me-3 text-center"></i><span class="text-sm">Cable TV</span></li>
-                  <li class="mb-2"> <i class="fa fa-snowflake text-secondary w-1rem me-3 text-center"></i><span class="text-sm">Air conditioning</span></li>
-                  <li class="mb-2"> <i class="fa fa-thermometer-three-quarters text-secondary w-1rem me-3 text-center"></i><span class="text-sm">Heating</span></li>
-                </ul>
-              </div>
-              <div class="col-md-6">
-                <ul class="list-unstyled text-muted">
-                  <li class="mb-2"> <i class="fa fa-bath text-secondary w-1rem me-3 text-center"></i><span class="text-sm">Toiletteries</span></li>
-                  <li class="mb-2"> <i class="fa fa-utensils text-secondary w-1rem me-3 text-center"></i><span class="text-sm">Equipped Kitchen</span></li>
-                  <li class="mb-2"> <i class="fa fa-laptop text-secondary w-1rem me-3 text-center"></i><span class="text-sm">Desk for work</span></li>
-                  <li class="mb-2"> <i class="fa fa-tshirt text-secondary w-1rem me-3 text-center"></i><span class="text-sm">Washing machine</span></li>
-                </ul>
-              </div>
-              -->
+              <div>
+              <div>
+              <div>
+  <div class="col-12 col-md-10">
+       <div class="card shadow-soft border-light">
+            <div class="card-body p-3">
+                <!--<h3 class="h4 card-title mb-3">Gallery</h3>-->
+                <img src="<?php echo $image?>" class="image-xl" alt="hotel image"> 
+               <!-- <div class="card-body py-5 border-light shadow-inset aniamte-up-2">
+                  </div>   -->     
+                    </div>
         </div>
+  </div>
+</div>
+</div>
+
+
+</div>
+        </div>
+
       </div>
     </div>
     <div class="col-lg-4">
@@ -135,11 +145,11 @@ include_once "../php/inc/user-connection.php";
         if (empty($_GET["hotelID"])) {
           echo "<p class=\"text-muted\"><span class=\"text-primary h2\">FAILED</span></p>";
         } else {
-          $pricequery = "SELECT priceStandard,priceQueen,priceKing FROM hotel.hotel WHERE hotelID=?;";
+          $pricequery = "SELECT priceStandard,priceQueen,priceKing,weekendSurge FROM hotel.hotel WHERE hotelID=?;";
           $prepared = $conn->prepare($pricequery);
           $prepared->bind_param("i", $_GET["hotelID"]);
           $prepared->execute();
-          $prepared->bind_result($priceStandard, $priceQueen, $priceKing);
+          $prepared->bind_result($priceStandard, $priceQueen, $priceKing,$weekendSurge);
           $prepared->fetch();
           if ($priceStandard != 0) {
             echo "<p class=\"text-muted\"><span class=\"text-primary h2\">$$priceStandard</span> per night <b>STANDARD</b></p>";
@@ -150,13 +160,17 @@ include_once "../php/inc/user-connection.php";
           if ($priceKing != 0) {
             echo "<p class=\"text-muted\"><span class=\"text-primary h2\">$$priceKing</span> per night <b>KING</b></p>";
           }
+          if(!empty($weekendSurge)){
+            echo "<p class=\"text-muted\">$weekendSurge% weekend upcharge</p>";
+          }
           $prepared->close();
+
         }
         ?>
         <hr class="my-4">
         <form class="form" id="booking-form" method="get" action="invoice.php" autocomplete="off">
           <!-- passing ID to book.php -->
-        <input type="hidden" name="hotelID" value="<?php echo $_GET['hotelID']; ?>">
+          <input type="hidden" name="hotelID" value="<?php echo $_GET['hotelID']; ?>">
           <div class="mb-4">
             <label class="form-label" for="bookingDate">Your stay *</label>
             <div class="datepicker-container datepicker-container-left">
@@ -187,10 +201,10 @@ include_once "../php/inc/user-connection.php";
                 $prepared->execute();
                 $prepared->bind_result($numStandard, $numQueen, $numKing);
                 $prepared->fetch();
-                if($numStandard > 0)
+                if ($numStandard > 0)
                   echo "<option value=\"standard\">Standard</option>";
                 if ($numQueen > 0)
-                  echo "<option value=\"queen\">Queen</option>";  
+                  echo "<option value=\"queen\">Queen</option>";
                 if ($numKing > 0)
                   echo "<option value=\"king\">King</option>";
               }
@@ -198,15 +212,15 @@ include_once "../php/inc/user-connection.php";
             </select>
           </div>
           <div class="d-grid mb-4">
-            <button class="btn btn-primary" type="submit" name='book' >Book your stay</button>
+            <button class="btn btn-primary" type="submit" name='book'>Book your stay</button>
           </div>
         </form>
       </div>
     </div>
-    <div class="section section-sm pb-0 mb-n4">
+    <!-- <div class="section section-sm pb-0 mb-n4">
       <div class="container">
         <div class="row justify-content-center">
-          <h3 class="text-center">Gallery</h3>
+          <h3 class="text-center">Gallery for <?php //echo $name?></h3>
         </div>
       </div>
     </div>
@@ -218,29 +232,20 @@ include_once "../php/inc/user-connection.php";
               <div class="container">
                 <div class="row justify-content-center">
                   <div class="col-12 col-md-8 text-center mb-4 mb-lg-6">
-                    <h2 class="display-2 fw-bold"><?php if(isset($name))echo $name; else "Pictures of hotels"?></h2>
-                    <p class="lead">Pictures of the hotel</p>
+                    <h2 class="display-2 fw-bold"><?php //if(isset($name))echo $name; else "Pictures of hotels"?></h2>
                   </div>
                 </div>
                 <div class="row align-items-center">
                   <?php
-                  // gets random image
-                  function randomPic($dir = '../assets/img/hotel-detail')
-                  {
-                    $files = glob($dir . '/*.*');
-                    $file = array_rand($files);
-                    return $files[$file];
-                  }
-
-                  for ($i = 0; $i < 12; $i++) {
-                    $image = randomPic();
-                    echo "
-              <div class=\"col-md-6 col-lg-4 text-center\">
-                  <div class=\"card-body py-5 border-light shadow-inset aniamte-up-2\"><img src=\"$image\" class=\"image-xl\" alt=\"hotel image\"> 
-                  </div>
-              </div>
-            ";
-                  }
+            //       for ($i = 0; $i < 12; $i++) {
+            //         $image = randomPic();
+            //         echo "
+            //   <div class=\"col-md-6 col-lg-4 text-center\">
+            //       <div class=\"card-body py-5 border-light shadow-inset aniamte-up-2\"><img src=\"$image\" class=\"image-xl\" alt=\"hotel image\"> 
+            //       </div>
+            //   </div>
+            // ";
+            //       }
                   ?>
                 </div>
               </div>
@@ -248,7 +253,7 @@ include_once "../php/inc/user-connection.php";
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
 <?php include_once "php/footer.php" ?>
