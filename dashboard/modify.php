@@ -52,6 +52,8 @@ if (isset($_POST["modify"])) {    // all process provided below at each break po
     //initialize vars
     $hotelName = $_POST['hotelName'];
     $totalRooms = $_POST['totalRooms'];
+    $desc = $_POST['desc'];
+    $imgLink = $_POST['imgLink'];
 
 
     if (isset($_POST['king']))
@@ -152,6 +154,34 @@ if (isset($_POST["modify"])) {    // all process provided below at each break po
     $deleteAmenitiesResult = mysqli_query($conn, $deleteAmenitiesQuery);
     // check and insert amenities to GenAmenities table
     validateAmenities($pool, $gym, $spa, $businessOffice, $hotelID, $header, $conn);
+    if (!empty($desc)) {
+        if ($desc != $hotelProp['desc']) {
+            $updateQuery = "UPDATE `hotel`.`Descriptions` SET `hotelDesc`='$desc' WHERE (`hotelID` = '$hotelID')";
+            $updateResult = mysqli_query($conn, $updateQuery);
+            if (!$updateResult) {
+                $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+                $_SESSION['message'] = "Error updating hotel name";
+                header("location: $header");
+                exit();            }
+         
+                $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
+                $_SESSION['message'] = "Successfully Updated weekend surge to " . $weekendSurge;
+        }
+    }
+    if (!empty($imgLink)) {
+        if ($imgLink != $hotelProp['imgLink']) {
+            $updateQuery = "UPDATE `hotel`.`Descriptions` SET `imageLink`='$imgLink' WHERE (`hotelID` = '$hotelID')";
+            $updateResult = mysqli_query($conn, $updateQuery);
+            if (!$updateResult) {
+                $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+                $_SESSION['message'] = "Error updating hotel name";
+                header("location: $header");
+                exit();            }
+         
+                $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
+                $_SESSION['message'] = "Successfully Updated weekend surge to " . $weekendSurge;
+        }
+    }
 
     header("location: hotel.php");
     exit();
