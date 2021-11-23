@@ -63,7 +63,7 @@ $reservationID = $_SESSION['reservationID'];
           <thread>
             <?php
             $email = $_SESSION['email'];
-            $query = mysqli_query($conn, "SELECT * FROM reservation where ReservationID = $reservationID;");
+            $query = mysqli_query($conn, "SELECT * FROM reservation where ReservationID = \"$reservationID\";");
             while ($row = mysqli_fetch_array($query)) {
             ?>
               <tr>
@@ -85,7 +85,7 @@ $reservationID = $_SESSION['reservationID'];
     </div>
     <div class="card-body shadow-soft border-light animate-up-5 bg-white row justify-content-center mt-5">
         <h2 class="h5 mb-4"><?php echo "Update Reservation #$reservationID" ?></h2>
-        <form action="modifyReservation.php" method="post" class="mt-4">
+        <form action="reservations.php" method="post" class="mt-4">
         <div class="col-xl-4 col-md-6 mb-4 ">
               <label class="form-label" for="form_dates">Dates</label>
               <div class="datepicker-container datepicker-container-left">
@@ -107,7 +107,7 @@ $reservationID = $_SESSION['reservationID'];
             <div class="form-group mb-4">
                 <label for="totalRooms">Select new number of rooms booked:</label>
                 <div class="input-group">
-                <select class="form-select input-group btn-pill bg-white  shadow-soft border-light" name="rooms" id="form_rooms" 
+                <select class="form-select input-group btn-pill bg-white  shadow-soft border-light" name="numRooms" id="form_rooms" 
                 title=" ">
 
                 <?php
@@ -119,8 +119,9 @@ $reservationID = $_SESSION['reservationID'];
                 </div>
             </div>
             <div class="d-grid">
-                <button type="submit" class="btn btn-primary" name="modifyReservation"  value="Modify Property">Save changes</button>
+                <button type="submit" class="btn btn-primary" name="update"  value="Modify Property">Save changes</button>
             </div>
+            <input type='hidden' name="reservationID" value="<?php echo $reservationID?>">
         </form>
     </div>
     <?php include_once "inc/footer.php" ?>

@@ -107,10 +107,7 @@ if(!isset($_SESSION['email']))
             </li>
             <li class="nav-item ">
                 <a href="../index.html" class="nav-link">
-                    <span class="sidebar-icon">
-                        <span class="fas fa-home">
-                        </span>
-                    </span>
+                    <span class="sidebar-icon"><span class="fas fa-home"></span></span>
                     <span class="sidebar-text">Home</span>
                 </a>
             </li>

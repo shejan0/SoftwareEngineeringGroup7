@@ -1,8 +1,6 @@
 <?php
 
-if(!isset($_SESSION)){
-include_once "inc/session_start.php";
-}
+session_start();
 include_once "../php/inc/user-connection.php";
 include_once "../customer/resConflictCheck.php";
 
@@ -85,7 +83,7 @@ function reservationModify($conn, $reservationID, $newRoomType, $newNumRooms, $n
     #   If both are not null then it uses func FindifFull to check if
     #   the reservation dates are valid.
     if ($newArrival != NULL && $newDeparture != NULL) {
-        if (FindifFull($conn, $reservationID, $assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture)) {
+        if (FindifFull($conn, NULL, $reservationID, $assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture)) {
             $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
             $_SESSION['message'] = "Error: The Room you are trying to book is full for the dates you selected";
             header("location: modifyReservation.php?" . $_SERVER['QUERY_STRING']);
@@ -98,7 +96,7 @@ function reservationModify($conn, $reservationID, $newRoomType, $newNumRooms, $n
     else if ($newArrival == NULL && $newDeparture == NULL) {
         $newArrival = $assoc['arrivalDate'];
         $newDeparture = $assoc['departureDate'];
-        if (FindifFull($conn, $reservationID, $assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture)) {
+        if (FindifFull($conn, NULL, $reservationID, $assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture)) {
             $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
             $_SESSION['message'] = "Error: The Room you are trying to book is full for the dates you selected";
             header("location: modifyReservation.php?" . $_SERVER['QUERY_STRING']);
@@ -109,7 +107,7 @@ function reservationModify($conn, $reservationID, $newRoomType, $newNumRooms, $n
     #   from the original reservation and proceeds to check the date range.
     else if ($newArrival == NULL && $newDeparture != NULL) {
         $newArrival = $assoc['arrivalDate'];
-        if (FindifFull($conn, $reservationID, $assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture)) {
+        if (FindifFull($conn, NULL, $reservationID, $assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture)) {
             $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
             $_SESSION['message'] = "Error: The Room you are trying to book is full for the dates you selected";
             header("location: modifyReservation.php?" . $_SERVER['QUERY_STRING']);
@@ -120,7 +118,7 @@ function reservationModify($conn, $reservationID, $newRoomType, $newNumRooms, $n
     #   from the original reservation and proceeds to check the date range.
     else if ($newDeparture == NULL && $newArrival != NULL) {
         $newDeparture = $assoc['departureDate'];
-        if (FindifFull($conn, $reservationID, $assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture)) {
+        if (FindifFull($conn, NULL, $reservationID, $assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture)) {
             $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
             $_SESSION['message'] = "Error: The Room you are trying to book is full for the dates you selected";
             header("location: modifyReservation.php?" . $_SERVER['QUERY_STRING']);

@@ -2,6 +2,41 @@
 include_once "../php/inc/user-connection.php";
 include_once "inc/head.php";
 include_once "inc/side-bar.php";
+include_once "modifyReservation.php";
+
+if(isset($_POST)){
+  if(isset($_POST['update'])){
+    $start = NULL;
+    $end = NULL;
+    $roomType = NULL;
+    $numRooms = NULL;
+    $reservationID = $_POST['reservationID'];
+    if(!empty($_POST['bookingDate'])){
+      $dateRange = explode(" to", $_POST['bookingDate']);
+      $start = trim($dateRange[0]);
+      $end = trim($dateRange[1]);
+    }
+    if(!empty($_POST['roomType'])){
+      $roomType = $_POST['roomType'];
+    }
+    if(!empty($_POST['numRooms'])){
+      $numRooms = $_POST['numRooms'];
+    }
+    reservationModify($conn, $reservationID, $roomType, $numRooms, $start, $end);
+  }
+
+  if(!empty($_POST['delete'])){
+    if(!$conn->query("DELETE FROM reservation WHERE reservationID = $_POST[delete]")){
+      $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+      $_SESSION['message'] = $conn->error;
+    }else{
+      $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
+      $_SESSION['message'] = "Successfully deleted Hotel Name to \"" . $_POST['delete'] . "\"";
+    }
+    unset($_SESSION['message']);
+    unset($_SESSION['alert']);
+  }
+}
 ?>
 <main class="content bg-white">
   <?php include_once "inc/header.php"; ?>
@@ -59,14 +94,11 @@ include_once "inc/side-bar.php";
                       <div class="input-group">
                         <span class="input-group-text"><span class="fas fa-hotel"></span></span>
                         <input type="text" class="form-control" name="reservationID" placeholder="Reservation ID">
+                        <div>
+                          <button type="submit" name="check" value="Enter" class="btn btn-primary">Modify reservations</button>
+                        </div>
                       </div>
                     </div>
-                    <div class="d-grid">
-                            <button type="submit" name="check" class="btn btn-primary">Modify reservations</button>
-                          </div>
-                    <div class="card-body">
-                        </form>
-                
                   </form>
                 </div>
               </div>
@@ -94,8 +126,13 @@ include_once "inc/side-bar.php";
             <th class="border-gray-200">Arrival Date</th>
             <th class="border-gray-200">Departure Date</th>
             <th class="border-gray-200">$ Total Price</th>
+            <th class="border-gray-200">Delete</th>
+
+            
+
 
           </tr>
+          <form action="" method="post">
           <thread>
             <?php
             $email = $_SESSION['email'];
@@ -112,10 +149,11 @@ include_once "inc/side-bar.php";
                 <td><span class="fw-normal"><?php echo $row['arrivalDate']; ?></span></td>
                 <td><span class="fw-normal"><?php echo $row['departureDate']; ?></span></td>
                 <td><span class="fw-normal">$ <?php echo $row['totalPrice']; ?></span></td>
-
+                <td><span class="fw-normal"><button class="btn btn-sm d-inline-flex align-items-center animate-up-2" type="submit" name="delete" value="<?php echo $row['ReservationID'];?>"> <span><span class="fas fa-window-close"></span></span></button></td>                           
 
               </tr>
             <?php  } ?>
+            </form>
       </table>
     </div>
   </div>
