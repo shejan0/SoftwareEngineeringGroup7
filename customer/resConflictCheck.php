@@ -1,7 +1,7 @@
 <?php
 function FindifFull($conn,$reservationID, $hotelID, $roomType, $numRooms, $arrival, $departure)
 {
-    if($reservationID!= NULL)
+    if($reservationID != NULL)
     {
         $result=$conn->query("SELECT numRoom, arrivalDate, departureDate FROM reservation WHERE ReservationID = $reservationID");
         $assoc = $result->fetch_assoc();

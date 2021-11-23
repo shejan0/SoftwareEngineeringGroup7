@@ -52,6 +52,63 @@ if (isset($_POST['check'])) {
         }
     }
 }
+
+if (isset($_POST['checkCust'])) {
+
+    if (empty($_POST['reservationID'])) {
+        $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+        $_SESSION['message'] = "Error: Enter a reservation ID to modify";
+        header("location: reservations.php");
+        exit();
+    }
+    // if user entered an invalid input for hotel I
+    else if (!ctype_digit($_POST['reservationID'])) {
+        $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+        $_SESSION['message'] = "Error: Enter a positive integer for ID only";
+        header("location: reservations.php");
+        exit();
+    } else {
+        $reservationID = $_POST['reservationID'];
+        $query = "SELECT * FROM reservation where ReservationID = $reservationID";
+        $result = mysqli_query($conn, $query);
+
+        if(!$result){
+            $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+            $_SESSION['message'] = "Error: " . mysqli_error($conn);
+            header("location: reservations.php");
+            exit();
+        }
+        $row = mysqli_num_rows($result);
+
+        // no reservation ID found
+        if ($row == 0) {
+            $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+            $_SESSION['message'] = 'Error: Could not find Reservation #' . $reservationID ;
+            $_SESSION['reservationID'] = $_POST['reservationID'];
+            header("location: reservations.php");
+            exit();
+        }
+        // email associated with reservation does not match customer email
+        else if($row['email'] != $_SESSION['email']){
+            echo $row['email'];
+            echo $_SESSION['email'];
+            $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+            $_SESSION['message'] = 'Error: Reservation requested is not associated with customer: ' . $_SESSION['email'] ;
+            $_SESSION['reservationID'] = $_POST['reservationID'];
+            header("location: reservations.php");
+            exit();
+        }
+        // found 
+        else {
+            $reservation = mysqli_fetch_assoc($result);
+            $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
+            $_SESSION['message'] = 'Success: Found Reservation ID';
+            $_SESSION['reservationID'] = $reservationID;
+            header("location: updateReservations.php");
+        }
+    }
+}
+
 function customerResModify($conn, $reservationID, $newRoomType, $newNumRooms, $newArrival, $newDeparture, $email)
 {
     $result = $conn->query("SELECT ReservationID FROM reservation WHERE email = \"$email\";");

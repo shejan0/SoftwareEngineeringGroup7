@@ -75,7 +75,7 @@ if(isset($_POST)){
                         <span class="input-group-text"><span class="fas fa-hotel"></span></span>
                         <input type="text" class="form-control" name="reservationID" placeholder="Reservation ID">
                         <div>
-                          <button type="submit" name="check" value="Enter" class="btn btn-primary">Modify reservations</button>
+                          <button type="submit" name="checkCust" value="Enter" class="btn btn-primary">Modify reservations</button>
                         </div>
                       </div>
                     </div>
