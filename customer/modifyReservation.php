@@ -1,6 +1,8 @@
 <?php
-
-session_start();
+ob_start();
+if(!isset($_SESSION)){
+include_once "inc/session_start.php";
+}
 include_once "../php/inc/user-connection.php";
 include_once "../customer/resConflictCheck.php";
 
@@ -49,66 +51,10 @@ if (isset($_POST['check'])) {
             $_SESSION['message'] = 'Success: Found Reservation ID';
             $_SESSION['reservationID'] = $reservationID;
             header("location: updateReservations.php");
+            exit();
         }
     }
 }
-
-if (isset($_POST['checkCust'])) {
-
-    if (empty($_POST['reservationID'])) {
-        $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-        $_SESSION['message'] = "Error: Enter a reservation ID to modify";
-        header("location: reservations.php");
-        exit();
-    }
-    // if user entered an invalid input for hotel I
-    else if (!ctype_digit($_POST['reservationID'])) {
-        $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-        $_SESSION['message'] = "Error: Enter a positive integer for ID only";
-        header("location: reservations.php");
-        exit();
-    } else {
-        $reservationID = $_POST['reservationID'];
-        $query = "SELECT * FROM reservation where ReservationID = $reservationID";
-        $result = mysqli_query($conn, $query);
-
-        if(!$result){
-            $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-            $_SESSION['message'] = "Error: " . mysqli_error($conn);
-            header("location: reservations.php");
-            exit();
-        }
-        $row = mysqli_num_rows($result);
-        $assoc = $result->fetch_assoc();
-        // no reservation ID found
-        if ($row == 0) {
-            $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-            $_SESSION['message'] = 'Error: Could not find Reservation #' . $reservationID ;
-            $_SESSION['reservationID'] = $_POST['reservationID'];
-            header("location: reservations.php");
-            exit();
-        }
-        // email associated with reservation does not match customer email
-        else if($assoc['email'] != $_SESSION['email']){
-            echo $row['email'];
-            echo $_SESSION['email'];
-            $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-            $_SESSION['message'] = 'Error: Reservation requested is not associated with customer: ' . $_SESSION['email'] ;
-            $_SESSION['reservationID'] = $_POST['reservationID'];
-            header("location: reservations.php");
-            exit();
-        }
-        // found 
-        else {
-            $reservation = mysqli_fetch_assoc($result);
-            $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
-            $_SESSION['message'] = 'Success: Found Reservation ID';
-            $_SESSION['reservationID'] = $reservationID;
-            header("location: updateReservations.php");
-        }
-    }
-}
-
 function customerResModify($conn, $reservationID, $newRoomType, $newNumRooms, $newArrival, $newDeparture, $email)
 {
     $result = $conn->query("SELECT ReservationID FROM reservation WHERE email = \"$email\";");
@@ -140,10 +86,10 @@ function reservationModify($conn, $reservationID, $newRoomType, $newNumRooms, $n
     #   If both are not null then it uses func FindifFull to check if
     #   the reservation dates are valid.
     if ($newArrival != NULL && $newDeparture != NULL) {
-        if (FindifFull($conn, NULL, $reservationID, $assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture)) {
+        if (FindifFull($conn, $reservationID, $assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture)) {
             $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
             $_SESSION['message'] = "Error: The Room you are trying to book is full for the dates you selected";
-            header("location: modifyReservation.php?" . $_SERVER['QUERY_STRING']);
+            header("location: updateReservations.php?" . $_SERVER['QUERY_STRING']);
             exit();
         }
     }
@@ -153,10 +99,10 @@ function reservationModify($conn, $reservationID, $newRoomType, $newNumRooms, $n
     else if ($newArrival == NULL && $newDeparture == NULL) {
         $newArrival = $assoc['arrivalDate'];
         $newDeparture = $assoc['departureDate'];
-        if (FindifFull($conn, NULL, $reservationID, $assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture)) {
+        if (FindifFull($conn, $reservationID, $assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture)) {
             $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
             $_SESSION['message'] = "Error: The Room you are trying to book is full for the dates you selected";
-            header("location: modifyReservation.php?" . $_SERVER['QUERY_STRING']);
+            header("location: updateReservations.php?" . $_SERVER['QUERY_STRING']);
             exit();
         }
     }
@@ -164,10 +110,10 @@ function reservationModify($conn, $reservationID, $newRoomType, $newNumRooms, $n
     #   from the original reservation and proceeds to check the date range.
     else if ($newArrival == NULL && $newDeparture != NULL) {
         $newArrival = $assoc['arrivalDate'];
-        if (FindifFull($conn, NULL, $reservationID, $assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture)) {
+        if (FindifFull($conn, $reservationID, $assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture)) {
             $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
             $_SESSION['message'] = "Error: The Room you are trying to book is full for the dates you selected";
-            header("location: modifyReservation.php?" . $_SERVER['QUERY_STRING']);
+            header("location: updateReservations.php?" . $_SERVER['QUERY_STRING']);
             exit();
         }
     }
@@ -175,10 +121,10 @@ function reservationModify($conn, $reservationID, $newRoomType, $newNumRooms, $n
     #   from the original reservation and proceeds to check the date range.
     else if ($newDeparture == NULL && $newArrival != NULL) {
         $newDeparture = $assoc['departureDate'];
-        if (FindifFull($conn, NULL, $reservationID, $assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture)) {
+        if (FindifFull($conn, $reservationID, $assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture)) {
             $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
             $_SESSION['message'] = "Error: The Room you are trying to book is full for the dates you selected";
-            header("location: modifyReservation.php?" . $_SERVER['QUERY_STRING']);
+            header("location: updateReservations.php?" . $_SERVER['QUERY_STRING']);
             exit();
         }
     }
@@ -189,8 +135,7 @@ function reservationModify($conn, $reservationID, $newRoomType, $newNumRooms, $n
                          totalPrice='$newPrice', numRoom='$newNumRooms' WHERE ReservationID='$reservationID'";
     $result = mysqli_query($conn, $update);
     if ($result) {
-        #returns true upon a successful update
-        return true;
+               return true;
     } else {
         return false;
     }
