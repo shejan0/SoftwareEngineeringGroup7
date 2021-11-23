@@ -1,6 +1,6 @@
 <?php
-session_set_cookie_params(0);
-session_start();
+if (!isset($_SESSION))
+include_once "../dashboard/inc/session_start.php";
 
 if (!isset($_SESSION['email'])) {
     $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";

@@ -33,7 +33,8 @@ if(isset($_POST)){
       $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
       $_SESSION['message'] = "Successfully deleted Hotel Name to \"" . $_POST['delete'] . "\"";
     }
-   
+    unset($_SESSION['message']);
+    unset($_SESSION['alert']);
   }
 }
 ?>
@@ -116,7 +117,6 @@ if(isset($_POST)){
       <table class="table table-hover">
         <thread>
           <tr>
-            <th class="border-gray-200">Delete</th>
             <th class="border-gray-200">Reservation ID</th>
             <th class="border-gray-200">Hotel ID</th>
             <th class="border-gray-200">Email</th>
@@ -126,6 +126,8 @@ if(isset($_POST)){
             <th class="border-gray-200">Arrival Date</th>
             <th class="border-gray-200">Departure Date</th>
             <th class="border-gray-200">$ Total Price</th>
+            <th class="border-gray-200">Delete</th>
+
             
 
 
@@ -138,7 +140,6 @@ if(isset($_POST)){
             while ($row = mysqli_fetch_array($query)) {
             ?>
               <tr>
-              <td><span class="fw-normal"><input type="submit" name="delete" value="<?php echo $row['ReservationID']; ?>"></td>
                 <td><span class="fw-bold"><?php echo $row['ReservationID']; ?></span></td>
                 <td><span class="fw-normal"><?php echo $row['hotelID']; ?></span></td>
                 <td><span class="fw-normal"><?php echo $row['email']; ?></span></td>
@@ -148,6 +149,8 @@ if(isset($_POST)){
                 <td><span class="fw-normal"><?php echo $row['arrivalDate']; ?></span></td>
                 <td><span class="fw-normal"><?php echo $row['departureDate']; ?></span></td>
                 <td><span class="fw-normal">$ <?php echo $row['totalPrice']; ?></span></td>
+                <td><span class="fw-normal"><button class="btn btn-sm d-inline-flex align-items-center animate-up-2" type="submit" name="delete" value="<?php echo $row['ReservationID'];?>"> <span><span class="fas fa-window-close"></span></span></button></td>                           
+
               </tr>
             <?php  } ?>
             </form>
