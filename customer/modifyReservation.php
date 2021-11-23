@@ -79,7 +79,7 @@ if (isset($_POST['checkCust'])) {
             exit();
         }
         $row = mysqli_num_rows($result);
-
+        $assoc = $result->fetch_assoc();
         // no reservation ID found
         if ($row == 0) {
             $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
@@ -89,7 +89,7 @@ if (isset($_POST['checkCust'])) {
             exit();
         }
         // email associated with reservation does not match customer email
-        else if($row['email'] != $_SESSION['email']){
+        else if($assoc['email'] != $_SESSION['email']){
             echo $row['email'];
             echo $_SESSION['email'];
             $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
