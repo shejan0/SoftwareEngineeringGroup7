@@ -2,18 +2,39 @@
 include_once "php/head.php";
 include_once "php/header.php";
 include_once "../php/inc/user-connection.php";
+include_once "../dashboard/modifyReservation.php";
 if(isset($_POST)){
-    if(!empty($_POST['delete'])){
-      if(!$conn->query("DELETE FROM reservation WHERE reservationID = $_POST[delete]")){
-        $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-        $_SESSION['message'] = $conn->error;
-      }else{
-        $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
-        $_SESSION['message'] = "Successfully deleted Hotel Name to \"" . $_POST['delete'] . "\"";
-      }
-     
+  if(isset($_POST['update'])){
+    $start = NULL;
+    $end = NULL;
+    $roomType = NULL;
+    $numRooms = NULL;
+    $email = $_SESSION['email'];
+    $reservationID = $_POST['reservationID'];
+    if(!empty($_POST['bookingDate'])){
+      $dateRange = explode(" to", $_POST['bookingDate']);
+      $start = trim($dateRange[0]);
+      $end = trim($dateRange[1]);
     }
+    if(!empty($_POST['roomType'])){
+      $roomType = $_POST['roomType'];
+    }
+    if(!empty($_POST['numRooms'])){
+      $numRooms = $_POST['numRooms'];
+    }
+    customerResModify($conn, $reservationID, $roomType, $numRooms, $start, $end, $email);
   }
+  if(!empty($_POST['delete'])){
+    if(!$conn->query("DELETE FROM reservation WHERE reservationID = $_POST[delete]")){
+      $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+      $_SESSION['message'] = $conn->error;
+    }else{
+      $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
+      $_SESSION['message'] = "Successfully deleted Hotel Name to \"" . $_POST['delete'] . "\"";
+    }
+    
+  }
+}
 ?>
     <section class="py-5 bg-white shadow-inset border-light">
       <div class="container">

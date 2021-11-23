@@ -51,12 +51,12 @@ if (isset($_POST['check'])) {
         }
     }
 }
-function customerResModify($reservationID, $newRoomType, $newNumRooms, $newArrival, $newDeparture, $email)
+function customerResModify($conn, $reservationID, $newRoomType, $newNumRooms, $newArrival, $newDeparture, $email)
 {
-    $result = $conn->query("SELECT ReservationID FROM reservation WHERE email = $email");
+    $result = $conn->query("SELECT ReservationID FROM reservation WHERE email = \"$email\";");
     while ($assoc = $result->fetch_assoc()) {
         if ($assoc['ReservationID'] == $reservationID) {
-            $success = reservationModify($reservationID, $newRoomType, $newNumRooms, $newArrival, $newDeparture);
+            $success = reservationModify($conn, $reservationID, $newRoomType, $newNumRooms, $newArrival, $newDeparture);
             return $success;
         }
     }
@@ -89,29 +89,7 @@ function reservationModify($conn, $reservationID, $newRoomType, $newNumRooms, $n
             exit();
         }
     }
-    # If $newArrival is null, it is assigned the previous arrival date
-    #   from the original reservation and proceeds to check the date range.
-    else if ($newArrival == NULL) {
-        $newArrival = $assoc['arrivalDate'];
-        if (FindifFull($conn, NULL, $reservationID, $assoc['hotelID'], $newRoomType, $numRooms, $newArrival, $newDeparture)) {
-            $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-            $_SESSION['message'] = "Error: The Room you are trying to book is full for the dates you selected";
-            header("location: modifyReservation.php?" . $_SERVER['QUERY_STRING']);
-            exit();
-        }
-    }
-    # If $newDeparture is null, it is assigned the previous departure date
-    #   from the original reservation and proceeds to check the date range.
-    else if ($newDeparture == NULL) {
-        $newDeparture = $assoc['departureDate'];
-        if (FindifFull($conn, NULL, $reservationID, $assoc['hotelID'], $newRoomType, $numRooms, $newArrival, $newDeparture)) {
-            $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
-            $_SESSION['message'] = "Error: The Room you are trying to book is full for the dates you selected";
-            header("location: modifyReservation.php?" . $_SERVER['QUERY_STRING']);
-            exit();
-        }
-    }
-    # If both $newArrival and $newDeparture are null, it assigns both 
+        # If both $newArrival and $newDeparture are null, it assigns both 
     #   variables their respective values from the original reservation.
     #   a check is done just in case $newRoomType has a new value.
     else if ($newArrival == NULL && $newDeparture == NULL) {
@@ -124,6 +102,29 @@ function reservationModify($conn, $reservationID, $newRoomType, $newNumRooms, $n
             exit();
         }
     }
+    # If $newArrival is null, it is assigned the previous arrival date
+    #   from the original reservation and proceeds to check the date range.
+    else if ($newArrival == NULL && $newDeparture != NULL) {
+        $newArrival = $assoc['arrivalDate'];
+        if (FindifFull($conn, NULL, $reservationID, $assoc['hotelID'], $newRoomType, $numRooms, $newArrival, $newDeparture)) {
+            $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+            $_SESSION['message'] = "Error: The Room you are trying to book is full for the dates you selected";
+            header("location: modifyReservation.php?" . $_SERVER['QUERY_STRING']);
+            exit();
+        }
+    }
+    # If $newDeparture is null, it is assigned the previous departure date
+    #   from the original reservation and proceeds to check the date range.
+    else if ($newDeparture == NULL && $newArrival != NULL) {
+        $newDeparture = $assoc['departureDate'];
+        if (FindifFull($conn, NULL, $reservationID, $assoc['hotelID'], $newRoomType, $numRooms, $newArrival, $newDeparture)) {
+            $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+            $_SESSION['message'] = "Error: The Room you are trying to book is full for the dates you selected";
+            header("location: modifyReservation.php?" . $_SERVER['QUERY_STRING']);
+            exit();
+        }
+    }
+
     # A new updated price is calculated from the func calculatePrice
     $newPrice = calculatePrice($conn, $assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture);
     $update = "UPDATE reservation SET roomType='$newRoomType', arrivalDate='$newArrival', departureDate='$newDeparture',
