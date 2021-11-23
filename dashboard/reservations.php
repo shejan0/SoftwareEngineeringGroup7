@@ -24,6 +24,18 @@ if(isset($_POST['update'])){
   reservationModify($conn, $reservationID, $roomType, $numRooms, $start, $end);
 }
 
+if(isset($_POST)){
+  if(!empty($_POST['delete'])){
+    if(!$conn->query("DELETE FROM reservation WHERE reservationID = $_POST[delete]")){
+      $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+      $_SESSION['message'] = $conn->error;
+    }else{
+      $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
+      $_SESSION['message'] = "Successfully deleted Hotel Name to \"" . $_POST['delete'] . "\"";
+    }
+   
+  }
+}
 ?>
 <main class="content bg-white">
   <?php include_once "inc/header.php"; ?>
@@ -104,6 +116,7 @@ if(isset($_POST['update'])){
       <table class="table table-hover">
         <thread>
           <tr>
+            <th class="border-gray-200">Delete</th>
             <th class="border-gray-200">Reservation ID</th>
             <th class="border-gray-200">Hotel ID</th>
             <th class="border-gray-200">Email</th>
@@ -113,8 +126,11 @@ if(isset($_POST['update'])){
             <th class="border-gray-200">Arrival Date</th>
             <th class="border-gray-200">Departure Date</th>
             <th class="border-gray-200">$ Total Price</th>
+            
+
 
           </tr>
+          <form action="" method="post">
           <thread>
             <?php
             $email = $_SESSION['email'];
@@ -122,6 +138,7 @@ if(isset($_POST['update'])){
             while ($row = mysqli_fetch_array($query)) {
             ?>
               <tr>
+              <td><span class="fw-normal"><input type="submit" name="delete" value="<?php echo $row['ReservationID']; ?>"></td>
                 <td><span class="fw-bold"><?php echo $row['ReservationID']; ?></span></td>
                 <td><span class="fw-normal"><?php echo $row['hotelID']; ?></span></td>
                 <td><span class="fw-normal"><?php echo $row['email']; ?></span></td>
@@ -131,10 +148,13 @@ if(isset($_POST['update'])){
                 <td><span class="fw-normal"><?php echo $row['arrivalDate']; ?></span></td>
                 <td><span class="fw-normal"><?php echo $row['departureDate']; ?></span></td>
                 <td><span class="fw-normal">$ <?php echo $row['totalPrice']; ?></span></td>
+               
+
 
 
               </tr>
             <?php  } ?>
+            </form>
       </table>
     </div>
   </div>
