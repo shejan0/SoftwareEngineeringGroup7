@@ -140,10 +140,10 @@ function reservationModify($conn, $reservationID, $newRoomType, $newNumRooms, $n
     #   If both are not null then it uses func FindifFull to check if
     #   the reservation dates are valid.
     if ($newArrival != NULL && $newDeparture != NULL) {
-        if (FindifFull($conn, NULL, $reservationID, $assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture)) {
+        if (FindifFull($conn,$reservationID, $assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture)) {
             $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
             $_SESSION['message'] = "Error: The Room you are trying to book is full for the dates you selected";
-            header("location: modifyReservation.php?" . $_SERVER['QUERY_STRING']);
+            header("location: reservations.php?" . $_SERVER['QUERY_STRING']);
             exit();
         }
     }
@@ -156,7 +156,7 @@ function reservationModify($conn, $reservationID, $newRoomType, $newNumRooms, $n
         if (FindifFull($conn, NULL, $reservationID, $assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture)) {
             $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
             $_SESSION['message'] = "Error: The Room you are trying to book is full for the dates you selected";
-            header("location: modifyReservation.php?" . $_SERVER['QUERY_STRING']);
+            header("location: reservations.php?" . $_SERVER['QUERY_STRING']);
             exit();
         }
     }
@@ -167,7 +167,7 @@ function reservationModify($conn, $reservationID, $newRoomType, $newNumRooms, $n
         if (FindifFull($conn, NULL, $reservationID, $assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture)) {
             $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
             $_SESSION['message'] = "Error: The Room you are trying to book is full for the dates you selected";
-            header("location: modifyReservation.php?" . $_SERVER['QUERY_STRING']);
+            header("location: reservations.php?" . $_SERVER['QUERY_STRING']);
             exit();
         }
     }
@@ -178,7 +178,7 @@ function reservationModify($conn, $reservationID, $newRoomType, $newNumRooms, $n
         if (FindifFull($conn, NULL, $reservationID, $assoc['hotelID'], $newRoomType, $newNumRooms, $newArrival, $newDeparture)) {
             $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
             $_SESSION['message'] = "Error: The Room you are trying to book is full for the dates you selected";
-            header("location: modifyReservation.php?" . $_SERVER['QUERY_STRING']);
+            header("location: reservations.php?" . $_SERVER['QUERY_STRING']);
             exit();
         }
     }

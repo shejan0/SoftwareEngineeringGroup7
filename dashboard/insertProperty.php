@@ -15,8 +15,6 @@ if (isset($_POST["create"])) {    // all process provided below at each break po
     // assign all values from $_post before validation
     $hotelName = $_POST['hotelName'];
     $totalRooms = $_POST['totalRooms'];
-    $desc = $_POST['desc'];
-    $imgLink = $_POST['imgLink'];
     $king=$_POST['king'];
     $queen=$_POST['queen'];
     $standard=$_POST['standard'];
@@ -40,8 +38,9 @@ if (isset($_POST["create"])) {    // all process provided below at each break po
             VALUES ('$hotelID', '$hotelName', '$totalRooms', '$weekendSurge', '$priceKing', '$priceQueen', '$priceStandard', '$numKing', '$numQueen', '$numStandard')";
         $insertHotelResult = mysqli_query($conn, $insertHotel);
 
-        
-        $insertDesc = "INSERT INTO `hotel`.`Descriptions` (hotelID, hotelDesc, imageLink) VALUES ('$hotelID', '$desc', '$imgLink')";
+        $hotelDesc = "";
+        $imageLink = "";
+        $insertDesc = "INSERT INTO `hotel`.`Descriptions` (hotelID, hotelDesc, imageLink) VALUES ('$hotelID', '$hotelDesc', '$imageLink')";
         $insertDescResult = mysqli_query($conn, $insertDesc);
 
         validateAmenities($pool, $gym, $spa, $businessOffice, $hotelID, $header, $conn);

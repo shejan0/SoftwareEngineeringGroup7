@@ -11,7 +11,6 @@ $revenue = mysqli_fetch_assoc(mysqli_query($conn, "SELECT sum(totalPrice) as tot
 
 // gets total employee and customer
 $users = mysqli_fetch_assoc(mysqli_query($conn, "SELECT count(name) as totalUsers from user"));
-$employees = mysqli_fetch_assoc(mysqli_query($conn, "SELECT count(name) as totalEmployees from admin"));
 
 
 $hotels = mysqli_fetch_assoc(mysqli_query($conn,"SELECT count(hotelName) as totalHotel from hotel"));
@@ -82,10 +81,6 @@ $hotels = mysqli_fetch_assoc(mysqli_query($conn,"SELECT count(hotelName) as tota
             <div class="col-12 col-xl-7 px-xl-0">
               <div class="d-none d-sm-block">
                 <h2 class="h6 text-gray-400 mb-0">Users</h2>
-                <h3 class="fw-extrabold mb-2"><?php echo $users['totalUsers'];?></h3>
-              </div>
-              <div class="d-none d-sm-block">
-                <h2 class="h6 text-gray-400 mb-0">Emplopyees</h2>
                 <h3 class="fw-extrabold mb-2"><?php echo $users['totalUsers'];?></h3>
               </div>
             </div>

@@ -23,7 +23,11 @@ if(isset($_POST)){
     if(!empty($_POST['numRooms'])){
       $numRooms = $_POST['numRooms'];
     }
-    customerResModify($conn, $reservationID, $roomType, $numRooms, $start, $end, $email);
+    if( customerResModify($conn, $reservationID, $roomType, $numRooms, $start, $end, $email)){
+      $_SESSION['alert'] = "alert alert-success alert-dismissible fade show";
+      $_SESSION['message'] = "Successfully updated reservations";
+    }
+   
   }
   if(!empty($_POST['delete'])){
     if(!$conn->query("DELETE FROM reservation WHERE reservationID = $_POST[delete]")){
