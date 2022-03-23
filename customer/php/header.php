@@ -1,22 +1,22 @@
 <?php
-session_set_cookie_params(0);
-session_start();
+if (!isset($_SESSION))
+include_once "../dashboard/inc/session_start.php";
 
-// Checks if user is logged in by checkign if email is set, if not logged in redirect to sign-in page.
-// ensures along with logout.php that once sign out - user won't be able to access the site that only is available to logged in users
-if(!isset($_SESSION['email']))
-{
-    header("Location: ../html/sign-in.html");
+if (!isset($_SESSION['email'])) {
+    $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+    $_SESSION['message'] = "ERROR: You must sign in before continuing";
+    header("Location: ../html/sign-in.php");
+    exit();
 }
 ?>
 
-<body style="padding-top: 72px;">
+<body style="padding-top: 72px" class='bg-white'>
     <header class="header">
         <!-- Navbar-->
         <nav id="navbar-main" aria-label="Primary navigation" class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
             <div class="container-fluid position-relative">
                 <div class="d-flex align-items-center">
-                    <a class="navbar-brand py-1" href="index.html">
+                    <a class="navbar-brand py-1" href="/">
                         <img src="../assets/img/brand/dark.svg" alt="Directory logo"></a>
                 </div>
                 <div class="navbar-collapse collapse me-auto" id="navbar_global">
@@ -31,8 +31,10 @@ if(!isset($_SESSION['email']))
                         </div>
                     </div>
                     <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
-                        <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link" href="customer.php">home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="settings.php">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link" href="customer.php">Hotel</a></li>
+                        <li class="nav-item"><a class="nav-link" href="reservations.php">Reservations</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
 
                     </ul>
                 </div>
@@ -44,24 +46,18 @@ if(!isset($_SESSION['email']))
                         <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
                             <span class="mb-0 font-medium">
                                 <?php
-                                if(isset($_SESSION['email']))
-                                {
+                                if (isset($_SESSION['email'])) {
                                     echo $_SESSION['name'];
                                 }
                                 ?>
                             </span>
                         </div>
                         <div class="dropdown-menu dropdown-menu-end">
-                            <span class="dropdown-item rounded-top">Hi,
-                            <?php
-                                if(isset($_SESSION['email']))
-                                {
-                                    echo $_SESSION['name'];
-                                }
-                                ?>
-                            </span>
+                            <a class="dropdown-item" href="customer.php">Hotel</a>
+                            <a class="dropdown-item" href="reservations.php">My Reservations</a>
+                            <a class="dropdown-item" href="settings.php">Profile</a>
                             <a class="dropdown-item" href="../index.html">Home</a>
-                            <a class="dropdown-item" href="profile.php">Profile</a>
+
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item rounded-bottom" href="../php/logout.php">
                                 <span class="fas fa-sign-out-alt"></span>

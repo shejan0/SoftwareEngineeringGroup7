@@ -1,5 +1,13 @@
 <?php
-session_start();
+ob_start();
+include_once "session_start.php";
+if(!isset($_SESSION['email']))
+{
+    $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
+    $_SESSION['message'] = "ERROR: You must be login in order to access the dashboard.";
+    header("Location: ../html/admin-sign-in.php");
+    exit();
+}
 ?>
 <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none bg-primary  ">
     <a class="navbar-brand me-lg-5" href="dashboard.php">
@@ -16,9 +24,6 @@ session_start();
     <div class="sidebar-inner px-4 pt-3">
         <div class="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
             <div class="d-flex align-items-center">
-                <div class="avatar-md me-3 ">
-                    <img src="../assets/img/team/discord.png" class="card-img-top rounded-pill border-white animate-up-2" alt="Profile Picture">
-                </div>
                 <div class="d-block">
                     <h1 class="lead fw-normal text-white mb-4 px-lg-10">Hello,
                         <?php echo $_SESSION['name']; ?>
@@ -60,6 +65,15 @@ session_start();
                     <span class="sidebar-text">Employees</span>
                 </a>
             </li>
+            <li class="nav-item ">
+                <a href="customer.php" class="nav-link">
+                    <span class="sidebar-icon">
+                        <span class="fas fa-user">
+                        </span>
+                    </span>
+                    <span class="sidebar-text">Customers</span>
+                </a>
+            </li>
             <li class="nav-item">
                 <a href="hotel.php" class="nav-link d-flex justify-content-between">
                     <span>
@@ -92,47 +106,19 @@ session_start();
                     <span class="sidebar-text">Setting</span>
                 </a>
             </li>
-            <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
-            <!-- <li class="nav-item">
-                <a href="#" class="nav-link d-flex align-items-center">
-                    <span class="sidebar-icon">
-                        <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path>
-                        </svg>
-                    </span>
-                    <span class="sidebar-text">Support</span>
+            <li class="nav-item ">
+                <a href="../index.html" class="nav-link">
+                    <span class="sidebar-icon"><span class="fas fa-home"></span></span>
+                    <span class="sidebar-text">Home</span>
                 </a>
             </li>
+            <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
             <li class="nav-item">
-                <a href="../index.html" class="nav-link d-flex align-items-center">
-                    <span class="sidebar-icon">
-                        <span class="fas fa-home me-2">
-                        </span>
-                    </span>
-                    <span class="sidebar-text">Back to homepage </span>
-                </a>
-            </li> -->
-            <li class="nav-item">
-                <button class="btn btn-info d-flex align-items-center justify-content-center btn-upgrade-pro animate-up-2" id='sign-out'>
+                <a class="btn btn-info d-flex align-items-center justify-content-center btn-upgrade-pro animate-up-2" id='sign-out' name='sign-out' href='../php/logout.php'>
                     <svg class="icon icon-xxs me-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
                     </svg>
-                    sign out
-                </button>
-                <script>
-                    document.getElementById('sign-out').addEventListener('click', function() {
-                        Swal.fire({
-                            title: 'Sign out?',
-                            icon: 'info',
-                            html: 'Are you sure you want to sign out?',
-                            showCancelButton: true,
-                            focusConfirm: false,
-                            cancelButtonColor: '#d33',
-                            confirmButtonText: '<a class="text-white" href="../php/logout.php">Sign out</a>',
-                        
-                        })
-                    });
-                </script>
+                    sign out</a>
             </li>
         </ul>
     </div>

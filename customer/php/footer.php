@@ -6,53 +6,15 @@
         <div class="row">
           <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
             <div class="fw-bold text-uppercase text-dark mb-3">Portal</div>            
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <a class="text-muted text-primary-hover" href="https://twitter.com"
-                  title="twitter">
-                  <i class="fab fa-twitter"></i>
-                </a>
-                </li>
-
-                <li class="list-inline-item">
-                  <a class="text-muted text-primary-hover" href="https://facebook.com"
-                    title="facebook">
-                    <i class="fab fa-facebook"></i>
-                  </a>
-                  </li>
-
-                  <li class="list-inline-item">
-                    <a class="text-muted text-primary-hover" href="https://instagram.com"
-                      title="instagram">
-                      <i class="fab fa-instagram"></i>
-                    </a>
-                    </li>
-
-                    <li class="list-inline-item">
-                      <a class="text-muted text-primary-hover" href="https://pinterest.com"
-                        title="pinterest">
-                        <i class="fab fa-pinterest"></i>
-                      </a>
-                      </li>
-            </ul>
           </div>
           <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
-            <h6 class="text-uppercase text-dark mb-3">Rentals</h6>
+            <h6 class="text-uppercase text-dark mb-3">Links</h6>
             <ul class="list-unstyled">
               <li><a class="text-muted" href="../">Home</a></li>
+              <li><a class="text-muted" href="../php/logout.php">Sign out</a></li>
+              <li><a class="text-muted" href="reservations.php">Reservations</a></li>
+              <li><a class="text-muted" href="settings.php">Settings</a></li>
             </ul>
-          </div>
-          <div class="col-lg-4">
-            <h6 class="text-uppercase text-dark mb-3">Daily Offers & Discounts</h6>
-            <p class="mb-3"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. At itaque temporibus.</p>
-            <form action='#'>
-              <div class="input-group mb-3">
-                <input class="form-control bg-transparent border-dark border-end-0" type="email"
-                  placeholder="Your Email Address" aria-label="Your Email Address">
-                <button class="btn btn-outline-dark border-start-0" type="submit"> <i
-                    class="fa fa-paper-plane text-lg"></i></button>
-              </div>
-            </form>
           </div>
         </div>
       </div>
@@ -130,14 +92,13 @@
 <script src="../assets/js/map-category.js"> </script>
   <!-- Daterange picker-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"> </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-date-range-picker/0.19.0/jquery.daterangepicker.min.js">
-  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-date-range-picker/0.19.0/jquery.daterangepicker.min.js"></script>
   <script src="../assets/js/datepicker-category.js"> </script>
   <!-- Price Slider-->
   <script src="../vendor/nouislider/dist/nouislider.min.js"></script>
   <script>
     var snapSlider = document.getElementById('slider-snap');
-    min = 80, max = 300
+    min = 40, max = 300
     noUiSlider.create(snapSlider, {
       start: [min, max],
       snap: false,
@@ -149,18 +110,32 @@
                 $leastquery = "SELECT LEAST(MIN(priceStandard),MIN(priceQueen),MIN(priceKing)) FROM hotel.hotel";
                 $greatestresult = $conn->query($greatestquery);
                 $leastresult=$conn->query($leastquery);
-                $least = $leastresult->fetch_row();
-                $greatest = $greatestresult->fetch_row();
-                //print_r($least[0]);
-                //print_r($greatest[0]);
-               // echo "<input type=\"hidden\" name=\"pricefrom\" id=\"slider-snap-input-from\" value=\"$least[0]\">";
-               /*
-               'min': 40,
-                'max': 110
-               */
+                if($greatestresult){
+                  $greatest = $greatestresult->fetch_row();
+                }
+                if($leastresult){
+                  $least = $leastresult->fetch_row();
+                }
+                
+                
         ?>
-        'min':<?php echo $least[0];?>,
-        'max':<?php echo $greatest[0];?>
+        
+        'min':<?php
+        if(isset($least)){
+          echo $least[0];
+        }else{
+          echo "40";
+        }
+         
+         ?>,
+        'max':<?php 
+        if(isset($greatest)){
+          echo $greatest[0];
+        }else{
+          echo "500";
+        }
+        
+        ?>
 
       }
     });

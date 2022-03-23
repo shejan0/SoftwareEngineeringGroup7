@@ -21,7 +21,7 @@ CREATE TABLE `Hotel` (
     PRIMARY KEY (`location`)
   );
 DROP TABLE IF EXISTS Reservation;
-CREATE TABLE `Reservation` (
+CREATE TABLE Reservation (
     `hotelName` varchar (100) NOT NULL,
     `roomNo` varchar (100) NOT NULL,
     `location` varchar (100) NOT NULL,
@@ -45,4 +45,18 @@ create table hotel (
   King int,
   weekendSurge int,
   PRIMARY KEY (hotelID)
+);
+
+create table reservation(
+  ReservationID int not null AUTO_INCREMENT,
+  hotelID int,
+  hotelName varchar(50),
+  roomType varchar(10),
+  email varchar(30),
+  arrivalDate date,
+  departureDate date,
+  totalPrice double,
+  numRoom int,
+  cancel bool,
+  primary key (ReservationID)
 );

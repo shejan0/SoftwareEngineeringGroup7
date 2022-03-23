@@ -14,6 +14,6 @@
   <link rel="stylesheet" href="../vendor/magnific-popup/magnific-popup.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css">
   <link rel="stylesheet" href="../css/pixel.css" id="theme-stylesheet">
-  <link rel="shortcut icon" href="../assets/img/brand/favicon.png">
+  <link rel="shortcut icon" href="../assets/img/favicon/favicon.ico">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 </head>
