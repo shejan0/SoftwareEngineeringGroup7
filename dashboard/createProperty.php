@@ -167,20 +167,4 @@ include_once "insertProperty.php";
 
     <body>
 
-</html>     </div>
-            
-            <div>
-                <br><label>Enter Price for each Room Type included:
-                <br>- Enter integer, no currency sign.
-                <br>- Leave blank or enter 0 if no rooms of particular type:</label><br>
-                <label for="priceKing">Price for King</label> <input type="text" name="priceKing"><br>
-                <label for="priceQueen">Price for Queen</label> <input type="text" name="priceQueen"><br>
-                <label for="priceStandard">Price for Standard</label> <input type="text" name="priceStandard"><br>
-            </div>
-            <div><br><label for="weekendSurge">Enter Weekend Surcharge(Required):</label> <input type="text" name="weekendSurge"><br></div>
-            <br><input type="submit" name="create" value="Create Property"><br>
-        </form>
-        <a href ="hotel.php">Back to Hotel Properties List</a>
-    <body>
-
 </html>
