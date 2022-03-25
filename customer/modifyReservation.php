@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include_once "../php/inc/user-connection.php";
 include_once "../customer/resConflictCheck.php";
 
