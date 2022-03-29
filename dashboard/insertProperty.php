@@ -40,7 +40,7 @@ if (isset($_POST["create"])) {    // all process provided below at each break po
 
         $hotelDesc = "";
         $imageLink = "";
-        $insertDesc = "INSERT INTO `hotel`.`Descriptions` (hotelID, hotelDesc, imageLink) VALUES ('$hotelID', '$hotelDesc', '$imageLink')";
+        $insertDesc = "INSERT INTO `hotel`.`descriptions` (hotelID, hotelDesc, imageLink) VALUES ('$hotelID', '$hotelDesc', '$imageLink')";
         $insertDescResult = mysqli_query($conn, $insertDesc);
 
         validateAmenities($pool, $gym, $spa, $businessOffice, $hotelID, $header, $conn);

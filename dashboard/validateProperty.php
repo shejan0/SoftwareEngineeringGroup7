@@ -135,7 +135,7 @@ function validateAmenities($pool, $gym, $spa, $businessOffice, $hotelID, $header
 }
 
 function addAmenity($amenityName, $amenityID, $hotelID, $header, $conn) {
-    $addQuery = "INSERT INTO `hotel`.`GenAmenities` (hotelID, amenityID, amenityName) VALUES ('$hotelID','$amenityID', '$amenityName')";
+    $addQuery = "INSERT INTO `hotel`.`amenities` (hotelID, amenityID, amenityName) VALUES ('$hotelID','$amenityID', '$amenityName')";
     $addResult = mysqli_query($conn, $addQuery);
     if (!$addResult) {
         $_SESSION['alert'] = "alert alert-danger alert-dismissible fade show";
